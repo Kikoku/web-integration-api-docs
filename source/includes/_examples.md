@@ -4,10 +4,8 @@
 (function(API) {
   var integrationId = 'test-integration';
   API.subscribe(integrationId, 'page-load-v1', function (ev) {
-    console.log("page-load-v1 event:", ev.payload);
     if (ev.payload.searchPage) {
       API.inject(integrationId, 'vehicle-pricing-bottom', function (elem, meta) {
-        console.log("vehicle-pricing-bottom meta:", meta);
         var lowPrice = Math.round(meta.finalPrice - 1000);
         var highPrice = Math.round(meta.finalPrice + 1000);
         var button = API.create(integrationId, 'button', {

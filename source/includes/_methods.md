@@ -33,7 +33,7 @@ meta | The standard vehicle payload object for the current insertion point. | Ob
 
 ## DDC.API.create(key, type, data)
 
-> Usage
+> Create a Button
 
 ```javascript
 (function(API) {
@@ -44,7 +44,7 @@ meta | The standard vehicle payload object for the current insertion point. | Ob
     style: 'border: 2px solid #c00'
   });
   console.log(button);
-  // Output: <a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);">Visit Google</a>
+  // The above outputs: <a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);">Visit Google</a>
 })(window.DDC.API);
 ```
 
@@ -86,8 +86,8 @@ When calling the inject method, the goal is to insert some markup into a locatio
 > Usage
 
 ```javascript
-DDC.API.load(key, 'https://www.company.com/script.js') // Loads a JavaScript file
-DDC.API.load(key, 'https://www.company.com/integration.css') // Loads a CSS stylesheet
+DDC.API.load('your-integration-key', 'https://www.company.com/script.js') // Loads a JavaScript file
+DDC.API.load('your-integration-key', 'https://www.company.com/integration.css') // Loads a CSS stylesheet
 ```
 
 The load method is an easy way to include additional scripts or stylesheets required for your integration.
