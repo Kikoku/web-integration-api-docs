@@ -726,7 +726,7 @@
 </tbody></table>
 <h2 id='ddc-api-create-key-type-data'>DDC.API.create(key, type, data)</h2>
 <blockquote>
-<p>Usage</p>
+<p>Create a Button</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
@@ -736,7 +736,7 @@
     <span class="na">style</span><span class="p">:</span> <span class="s1">'border: 2px solid #c00'</span>
   <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
-  <span class="c1">// Output: &lt;a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);"&gt;Visit Google&lt;/a&gt;</span>
+  <span class="c1">// The above outputs: &lt;a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);"&gt;Visit Google&lt;/a&gt;</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>The create method can be used to generate markup which adheres to our standard practices. This allows you to simply &quot;create a button&quot;, for example, without having to know the inner workings of how buttons should be created on sites.</p>
@@ -771,8 +771,8 @@
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'https://www.company.com/script.js'</span><span class="p">)</span> <span class="c1">// Loads a JavaScript file</span>
-<span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'https://www.company.com/integration.css'</span><span class="p">)</span> <span class="c1">// Loads a CSS stylesheet</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'https://www.company.com/script.js'</span><span class="p">)</span> <span class="c1">// Loads a JavaScript file</span>
+<span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'https://www.company.com/integration.css'</span><span class="p">)</span> <span class="c1">// Loads a CSS stylesheet</span>
 </code></pre>
 <p>The load method is an easy way to include additional scripts or stylesheets required for your integration.</p>
 <h1 id='inject-locations'>Inject Locations</h1>
@@ -819,10 +819,8 @@
 <h1 id='example-implementation'>Example Implementation</h1><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">integrationId</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"page-load-v1 event:"</span><span class="p">,</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-pricing-bottom'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"vehicle-pricing-bottom meta:"</span><span class="p">,</span> <span class="nx">meta</span><span class="p">);</span>
         <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
