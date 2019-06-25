@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Dealer.com Website Integration API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,9 +211,6 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
@@ -222,281 +219,636 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#requirements" class="toc-h1 toc-link" data-title="Requirements">Requirements</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#integrated-partner-program" class="toc-h2 toc-link" data-title="Integrated Partner Program">Integrated Partner Program</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#bootstrapping-your-script" class="toc-h2 toc-link" data-title="Bootstrapping Your Script">Bootstrapping Your Script</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#technical-requirements" class="toc-h2 toc-link" data-title="Technical Requirements">Technical Requirements</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#events" class="toc-h1 toc-link" data-title="Events">Events</a>
+          </li>
+          <li>
+            <a href="#event-types" class="toc-h1 toc-link" data-title="Event Types">Event Types</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#page-event" class="toc-h2 toc-link" data-title="Page Event">Page Event</a>
+                  </li>
+                  <li>
+                    <a href="#vehicle-event" class="toc-h2 toc-link" data-title="Vehicle Event">Vehicle Event</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#event-subscriptions" class="toc-h1 toc-link" data-title="Event Subscriptions">Event Subscriptions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#page-load-v1" class="toc-h2 toc-link" data-title="page-load-v1">page-load-v1</a>
+                  </li>
+                  <li>
+                    <a href="#vehicle-clicked-v1" class="toc-h2 toc-link" data-title="vehicle-clicked-v1">vehicle-clicked-v1</a>
+                  </li>
+                  <li>
+                    <a href="#vehicle-shown-v1" class="toc-h2 toc-link" data-title="vehicle-shown-v1">vehicle-shown-v1</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-methods" class="toc-h1 toc-link" data-title="API Methods">API Methods</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ddc-api-subscribe-key-name-callback-ev" class="toc-h2 toc-link" data-title="DDC.API.subscribe(key, name, callback(ev))">DDC.API.subscribe(key, name, callback(ev))</a>
+                  </li>
+                  <li>
+                    <a href="#ddc-api-inject-key-name-callback-elem-meta" class="toc-h2 toc-link" data-title="DDC.API.inject(key, name, callback(elem, meta))">DDC.API.inject(key, name, callback(elem, meta))</a>
+                  </li>
+                  <li>
+                    <a href="#ddc-api-create-key-type-data" class="toc-h2 toc-link" data-title="DDC.API.create(key, type, data)">DDC.API.create(key, type, data)</a>
+                  </li>
+                  <li>
+                    <a href="#ddc-api-append-key-targetel-appendel" class="toc-h2 toc-link" data-title="DDC.API.append(key, targetEl, appendEl)">DDC.API.append(key, targetEl, appendEl)</a>
+                  </li>
+                  <li>
+                    <a href="#ddc-api-load-key-resourceurl" class="toc-h2 toc-link" data-title="DDC.API.load(key, resourceUrl)">DDC.API.load(key, resourceUrl)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#inject-locations" class="toc-h1 toc-link" data-title="Inject Locations">Inject Locations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#vehicle-media-bottom" class="toc-h2 toc-link" data-title="vehicle-media-bottom">vehicle-media-bottom</a>
+                  </li>
+                  <li>
+                    <a href="#vehicle-badge-bottom" class="toc-h2 toc-link" data-title="vehicle-badge-bottom">vehicle-badge-bottom</a>
+                  </li>
+                  <li>
+                    <a href="#vehicle-pricing-bottom" class="toc-h2 toc-link" data-title="vehicle-pricing-bottom">vehicle-pricing-bottom</a>
+                  </li>
+                  <li>
+                    <a href="#vehicle-media-container" class="toc-h2 toc-link" data-title="vehicle-media-container">vehicle-media-container</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#example-implementation" class="toc-h1 toc-link" data-title="Example Implementation">Example Implementation</a>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='mailto:Chris.Vargo@coxautoinc.com'>Sign Up for our Partner Program</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='overview'>Overview</h1>
+<p>Welcome to the Dealer.com Website Integration API! This API performs common actions on Dealer.com websites, such as loading scripts, adding CSS and injecting markup into common locations.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>As this is a browser based API, it is written in JavaScript and has simple data contracts and interfaces.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>You can view code examples in the dark area to the right with more details in this column.</p>
+<h1 id='requirements'>Requirements</h1><h2 id='integrated-partner-program'>Integrated Partner Program</h2>
+<p>The use of this API requires that you are enrolled in our Integrated Partner Program. To find out more information or to enroll, please contact Chris Vargo at <a href="mailto:Chris.Vargo@coxautoinc.com">Chris.Vargo@coxautoinc.com</a>.</p>
+
+<p>Once enrolled, you will be provided with an integration key to use when making API calls.</p>
+<h2 id='bootstrapping-your-script'>Bootstrapping Your Script</h2>
+<p>Once you have written a script to interface with the API and want to try it on specific sites, send us the URL to the script so we can include it when we enable your integration. The script should be as minimal as possible and perform only actions necessary to bootstrap your integration on to the site. See the <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.</p>
+<h2 id='technical-requirements'>Technical Requirements</h2>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>This is an example of an immediately executing function expression:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// API.subscribe(...);</span>
+    <span class="c1">// Your code here</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
+<ul>
+<li><p>Always wrap all of your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.</p></li>
+<li><p>Your bootstrap script and any other integration code or assets should be located on a highly available content delivery network and must work over an HTTPS connection.</p></li>
+<li><p>All code should be minified and served using gzip or better compression.</p></li>
+<li><p>Integrations should avoid loading excessive imagery, fonts and scripts.</p></li>
+<li><p>Please refrain from including large libraries such as jQuery or React (both are already available).</p></li>
+</ul>
+<h1 id='events'>Events</h1>
+<p>By subscribing to events we publish, you can easily obtain the data you need to integrate your solution into the website. These events provide site and page data as well as vehicle data for the current page view.</p>
+
+<p>At present, there are two types of events and each has a consistent data format.</p>
+<h1 id='event-types'>Event Types</h1><h2 id='page-event'>Page Event</h2>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Example Payload</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="nl">accountId</span><span class="p">:</span> <span class="s1">'futuredemodealer'</span><span class="p">,</span>
+  <span class="nx">siteId</span><span class="p">:</span> <span class="s1">'futuredemodealer'</span><span class="p">,</span>
+  <span class="nx">defaultDomain</span><span class="p">:</span> <span class="s1">'www.roimotors.com'</span><span class="p">,</span>
+  <span class="nx">dealershipName</span><span class="p">:</span> <span class="s1">'ROI Motors'</span><span class="p">,</span>
+  <span class="nx">dealershipAddress1</span><span class="p">:</span> <span class="s1">'1 Howard Street'</span><span class="p">,</span>
+  <span class="nx">dealershipAddress2</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="nx">dealershipCity</span><span class="p">:</span> <span class="s1">'Burlington'</span><span class="p">,</span>
+  <span class="nx">dealershipCountry</span><span class="p">:</span> <span class="s1">'US'</span><span class="p">,</span>
+  <span class="nx">dealershipName</span><span class="p">:</span> <span class="s1">'ROIMOTORS Honda'</span><span class="p">,</span>
+  <span class="nx">dealershipPostalCode</span><span class="p">:</span> <span class="s1">'05401'</span><span class="p">,</span>
+  <span class="nx">dealershipStateProvince</span><span class="p">:</span> <span class="s1">'VT'</span><span class="p">,</span>
+  <span class="nx">dealershipCountry</span><span class="p">:</span> <span class="s1">'US'</span><span class="p">,</span>
+  <span class="nx">indexPage</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">searchPage</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">detailPage</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">pageTitle</span><span class="p">:</span> <span class="s1">'Welcome to ROI Motors!'</span><span class="p">,</span>
+  <span class="nx">pageName</span><span class="p">:</span> <span class="s1">'INDEX'</span><span class="p">,</span>
+  <span class="nx">layoutType</span><span class="p">:</span> <span class="s1">'desktop'</span><span class="p">,</span>
+  <span class="nx">locale</span><span class="p">:</span> <span class="s1">'en_US'</span>
+<span class="p">}</span>
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>Field Key</th>
+<th>Example Value</th>
+<th>Field Format</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
+<td>accountId</td>
+<td>futuredemodealer</td>
+<td>String</td>
+</tr>
+<tr>
+<td>siteId</td>
+<td>futuredemodealer</td>
+<td>String</td>
+</tr>
+<tr>
+<td>defaultDomain</td>
+<td>www.roimotors.com</td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipName</td>
+<td>ROI Motors</td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipAddress1</td>
+<td>1 Howard Street</td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipAddress2</td>
+<td></td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipCity</td>
+<td>Burlington</td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipCountry</td>
+<td>US</td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipName</td>
+<td>ROIMOTORS Honda</td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipPostalCode</td>
+<td>05401</td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipStateProvince</td>
+<td>VT</td>
+<td>String</td>
+</tr>
+<tr>
+<td>dealershipCountry</td>
+<td>US</td>
+<td>String</td>
+</tr>
+<tr>
+<td>indexPage</td>
 <td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>Boolean</td>
 </tr>
 <tr>
-<td>available</td>
+<td>searchPage</td>
 <td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>detailPage</td>
+<td>false</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>pageTitle</td>
+<td>Welcome to ROI Motors!</td>
+<td>String</td>
+</tr>
+<tr>
+<td>pageName</td>
+<td>INDEX</td>
+<td>String</td>
+</tr>
+<tr>
+<td>layoutType</td>
+<td>desktop</td>
+<td>String</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>en_US</td>
+<td>String</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id='vehicle-event'>Vehicle Event</h2>
+<blockquote>
+<p>Example Payload</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="nl">accountId</span><span class="p">:</span> <span class="s2">"futuredemodealer"</span>
+  <span class="nl">bodyStyle</span><span class="p">:</span> <span class="s2">"Sedan"</span>
+  <span class="nl">certified</span><span class="p">:</span> <span class="s2">"false"</span>
+  <span class="nl">cityFuelEfficiency</span><span class="p">:</span> <span class="mi">30</span>
+  <span class="nl">classification</span><span class="p">:</span> <span class="s2">"primary"</span>
+  <span class="nl">doors</span><span class="p">:</span> <span class="s2">"4-door"</span>
+  <span class="nl">driveLine</span><span class="p">:</span> <span class="s2">"FWD"</span>
+  <span class="nl">engine</span><span class="p">:</span> <span class="s2">"I-4 cyl"</span>
+  <span class="nl">exteriorColor</span><span class="p">:</span> <span class="s2">"Platinum White Pearl"</span>
+  <span class="nl">finalPrice</span><span class="p">:</span> <span class="mi">28360</span>
+  <span class="nl">fuelType</span><span class="p">:</span> <span class="s2">"Regular Unleaded"</span>
+  <span class="nl">highwayFuelEfficiency</span><span class="p">:</span> <span class="mi">38</span>
+  <span class="nl">interiorColor</span><span class="p">:</span> <span class="s2">""</span>
+  <span class="nl">internetPrice</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="nl">inventoryType</span><span class="p">:</span> <span class="s2">"new"</span>
+  <span class="nl">make</span><span class="p">:</span> <span class="s2">"Honda"</span>
+  <span class="nl">model</span><span class="p">:</span> <span class="s2">"Accord"</span>
+  <span class="nl">modelYear</span><span class="p">:</span> <span class="s2">"2018"</span>
+  <span class="nl">msrp</span><span class="p">:</span> <span class="mi">28360</span>
+  <span class="nl">odometer</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="nl">status</span><span class="p">:</span> <span class="s2">"Live"</span>
+  <span class="nl">stockNumber</span><span class="p">:</span> <span class="s2">"00180772"</span>
+  <span class="nl">transmission</span><span class="p">:</span> <span class="s2">"Variable"</span>
+  <span class="nl">trim</span><span class="p">:</span> <span class="s2">"EX"</span>
+  <span class="nl">uuid</span><span class="p">:</span> <span class="s2">"ab119e0e0a0a00f944d6f3031cd34854"</span>
+  <span class="nl">vin</span><span class="p">:</span> <span class="s2">"1HGCV1F42JA141468"</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Field Key</th>
+<th>Example Value</th>
+<th>Field Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>futuredemodealer</td>
+<td>String</td>
+</tr>
+<tr>
+<td>bodyStyle</td>
+<td>Sedan</td>
+<td>String</td>
+</tr>
+<tr>
+<td>certified</td>
+<td>false</td>
+<td>String</td>
+</tr>
+<tr>
+<td>cityFuelEfficiency</td>
+<td>30</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>classification</td>
+<td>primary</td>
+<td>String</td>
+</tr>
+<tr>
+<td>doors</td>
+<td>4-door</td>
+<td>String</td>
+</tr>
+<tr>
+<td>driveLine</td>
+<td>FWD</td>
+<td>String</td>
+</tr>
+<tr>
+<td>engine</td>
+<td>I-4 cyl</td>
+<td>String</td>
+</tr>
+<tr>
+<td>exteriorColor</td>
+<td>Platinum White Pearl</td>
+<td>String</td>
+</tr>
+<tr>
+<td>finalPrice</td>
+<td>28360</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>fuelType</td>
+<td>Regular Unleaded</td>
+<td>String</td>
+</tr>
+<tr>
+<td>highwayFuelEfficiency</td>
+<td>38</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>interiorColor</td>
+<td>Black</td>
+<td>String</td>
+</tr>
+<tr>
+<td>internetPrice</td>
+<td>0</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>inventoryType</td>
+<td>new</td>
+<td>String</td>
+</tr>
+<tr>
+<td>make</td>
+<td>Honda</td>
+<td>String</td>
+</tr>
+<tr>
+<td>model</td>
+<td>Accord</td>
+<td>String</td>
+</tr>
+<tr>
+<td>modelYear</td>
+<td>2018</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>msrp</td>
+<td>28360</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>odometer</td>
+<td>5</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Live</td>
+<td>String</td>
+</tr>
+<tr>
+<td>stockNumber</td>
+<td>00180772</td>
+<td>String</td>
+</tr>
+<tr>
+<td>transmission</td>
+<td>Variable</td>
+<td>String</td>
+</tr>
+<tr>
+<td>trim</td>
+<td>EX</td>
+<td>String</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>ab119e0e0a0a00f944d6f3031cd34854</td>
+<td>String</td>
+</tr>
+<tr>
+<td>vin</td>
+<td>1HGCV1F42JA141468</td>
+<td>String</td>
+</tr>
+</tbody></table>
+<h1 id='event-subscriptions'>Event Subscriptions</h1>
+<p>To receive data for events, you must opt-in to event subscriptions. Each event is named and versioned to ensure it continues to operate in a consistent manner over time. As newer events supercede these, older events may be deprecated but will not be removed if still in use.</p>
+<h2 id='page-load-v1'>page-load-v1</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This event uses the standard <a href="#page-event">Page Event</a> format.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<p>The page load event is useful to determine the context of the current page. By mapping our siteId or domain field to a customer ID in your system, you can determine the site your code is executing on as well as relevant information about the current page type and user&#39;s device type. This approach eliminates the need for configuration in our system beyond simply enabling or disabling your integration for each site.</p>
+<h2 id='vehicle-clicked-v1'>vehicle-clicked-v1</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-clicked-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This event uses the standard <a href="#vehicle-event">Vehicle Event</a> format.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+
+<p>This event is fired when the user clicks on a vehicle to view more details. This typically occurs on website index pages and search results pages.</p>
+<h2 id='vehicle-shown-v1'>vehicle-shown-v1</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-shown-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>This event uses the standard <a href="#vehicle-event">Vehicle Event</a> format.</p>
+</blockquote>
+
+<p>This event is fired for each vehicle item present on the current page. For search results pages, a dozen or more such events may be fired. On a vehicle deals page, a single event is fired. This is useful for capturing details about the vehicles that a user has viewed, or to take a particular action for a certain type or class of vehicles.</p>
+<h1 id='api-methods'>API Methods</h1><h2 id='ddc-api-subscribe-key-name-callback-ev'>DDC.API.subscribe(key, name, callback(ev))</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.</p>
+<h2 id='ddc-api-inject-key-name-callback-elem-meta'>DDC.API.inject(key, name, callback(elem, meta))</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where the markup should be inserted.</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">meta</span><span class="p">);</span> <span class="c1">// The standard vehicle payload object for the current insertion point.</span>
+<span class="p">});</span>
+</code></pre>
+<p>The inject method allows you to append markup into specific set locations on some pages. These locations are commonly used areas you may want to target. If you find there are target areas outside of the currently available options, please let us know your use case and we will work to accommodate your needs.</p>
+
+<p>When activated, inject will call a callback function you define with the <code>elem</code> and <code>meta</code> parameters.</p>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Field Name</th>
+<th>Purpose</th>
+<th>Field Format</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>elem</td>
+<td>The DOM element where the markup should be inserted.</td>
+<td>Element</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>The standard vehicle payload object for the current insertion point.</td>
+<td>Object</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+<h2 id='ddc-api-create-key-type-data'>DDC.API.create(key, type, data)</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">text</span><span class="p">:</span> <span class="s1">'Visit Google'</span><span class="p">,</span>
+    <span class="na">src</span><span class="p">:</span> <span class="s1">'https://www.google.com/'</span><span class="p">,</span>
+    <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
+    <span class="na">style</span><span class="p">:</span> <span class="s1">'border: 2px solid #c00'</span>
+  <span class="p">});</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+  <span class="c1">// Output: &lt;a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);"&gt;Visit Google&lt;/a&gt;</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>The create method can be used to generate markup which adheres to our standard practices. This allows you to simply &quot;create a button&quot;, for example, without having to know the inner workings of how buttons should be created on sites.</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>Currently only the &quot;button&quot; type is supported, however other types will soon be added. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.</p>
+<h2 id='ddc-api-append-key-targetel-appendel'>DDC.API.append(key, targetEl, appendEl)</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="nx">targetEl</span><span class="p">,</span> <span class="nx">appendEl</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>For example, used in conjunction with the <code>inject</code> and the <code>create</code> methods your code might look similar to this:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'target-location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
+      <span class="na">src</span><span class="p">:</span> <span class="s1">'/new-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
+      <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
+      <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
+    <span class="p">})</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>When calling the inject method, the goal is to insert some markup into a location on the page. Once you have constructed the element(s) you wish to insert, you may call the <code>append</code> method to complete the process.</p>
+<h2 id='ddc-api-load-key-resourceurl'>DDC.API.load(key, resourceUrl)</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'https://www.company.com/script.js'</span><span class="p">)</span> <span class="c1">// Loads a JavaScript file</span>
+<span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'https://www.company.com/integration.css'</span><span class="p">)</span> <span class="c1">// Loads a CSS stylesheet</span>
+</code></pre>
+<p>The load method is an easy way to include additional scripts or stylesheets required for your integration.</p>
+<h1 id='inject-locations'>Inject Locations</h1>
+<p>Inject locations are areas of pages where you can safely insert markup. These exist in commonly used locations, such as below vehicle pricing on search and detail pages. This section details the current available locations. Please let us know if there are other locations you want to target beyond those listed here.</p>
 
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
+<p>See the <a href="#ddc-api-inject-key-name-callback-elem-meta">inject documentation</a> for more details on the inject method.</p>
+<h2 id='vehicle-media-bottom'>vehicle-media-bottom</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-media-bottom'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// This element is positioned below the vehicle image area on vehicle search pages.</span>
+<span class="p">});</span>
+</code></pre>
+<p>This element is positioned below the vehicle image area on vehicle search pages.</p>
+<h2 id='vehicle-badge-bottom'>vehicle-badge-bottom</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-badge-bottom'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// This element is positioned below the vehicle tech specs area on vehicle search and detail pages.</span>
+<span class="p">});</span>
+</code></pre>
+<p>This element is positioned below the vehicle tech specs area on vehicle search and detail pages.</p>
+<h2 id='vehicle-pricing-bottom'>vehicle-pricing-bottom</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-pricing-bottom'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// This element is positioned below the vehicle pricing area on vehicle search and detail pages.</span>
+<span class="p">});</span>
+</code></pre>
+<p>This element is positioned below the vehicle pricing area on vehicle search and detail pages.</p>
+<h2 id='vehicle-media-container'>vehicle-media-container</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// This element is the media gallery container on vehicle deals pages.</span>
+  <span class="c1">// Injecting into this location will replace the media gallery with the elements you insert.</span>
+<span class="p">});</span>
+</code></pre>
+<p>This element is the media gallery container on vehicle deals pages. Injecting into this location will replace the media gallery with the elements you insert.</p>
+<h1 id='example-implementation'>Example Implementation</h1><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationId</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"page-load-v1 event:"</span><span class="p">,</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-pricing-bottom'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"vehicle-pricing-bottom meta:"</span><span class="p">,</span> <span class="nx">meta</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
+          <span class="na">src</span><span class="p">:</span> <span class="s1">'/new-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
+          <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
+          <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
+        <span class="p">})</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>Some parts of the example to the right have been used in the above documentation. In its entirety, the 20 lines of code perform the following steps:</p>
+
+<ol>
+<li>Subscribe to the page-load-v1 event to get context for this page view.</li>
+<li>If this is the vehicle search page, subscribe to the <code>vehicle-pricing-bottom</code> location injector.</li>
+<li>For each vehicle pricing area on the current page, generate the button markup using the <code>create</code> method.</li>
+<li>Finally, use the <code>append</code> method to insert the new button into each pricing area.</li>
+</ol>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
