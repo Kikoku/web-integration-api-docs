@@ -36,25 +36,25 @@ At present, there are two types of events and each has a consistent data format.
 
 Field Key | Example Value | Field Format
 -------------- | -------------- | --------------
-accountId | futuredemodealer | String
-siteId | futuredemodealer | String
-defaultDomain | www.roimotors.com | String
-dealershipName | ROI Motors | String
-dealershipAddress1 | 1 Howard Street | String
-dealershipAddress2 |  | String
-dealershipCity | Burlington | String
-dealershipCountry | US | String
-dealershipName | ROIMOTORS Honda | String
-dealershipPostalCode | 05401 | String
-dealershipStateProvince | VT | String
-dealershipCountry | US | String
-indexPage | false | Boolean
-searchPage | true | Boolean
-detailPage | false | Boolean
-pageTitle | Welcome to ROI Motors! | String
-pageName | INDEX | String
-layoutType | desktop | String
-locale | en_US | String
+`accountId` | `futuredemodealer` | `String`
+`siteId` | `futuredemodealer` | `String`
+`defaultDomain` | `www.roimotors.com` | `String`
+`dealershipName` | `ROI Motors` | `String`
+`dealershipAddress1` | `1 Howard Street` | `String`
+`dealershipAddress2` | | `String`
+`dealershipCity` | `Burlington` | `String`
+`dealershipCountry` | `US` | `String`
+`dealershipName` | `ROIMOTORS Honda` | `String`
+`dealershipPostalCode` | `05401` | `String`
+`dealershipStateProvince` | `VT` | `String`
+`dealershipCountry` | `US` | `String`
+`indexPage` | `false` | `Boolean`
+`searchPage` | `true` | `Boolean`
+`detailPage` | `false` | `Boolean`
+`pageTitle` | `Welcome to ROI Motors!` | `String`
+`pageName` | `INDEX` | `String`
+`layoutType` | `desktop` | `String`
+`locale` | `en_US | String`
 
 
 ## Vehicle Event
@@ -94,40 +94,42 @@ locale | en_US | String
 
 Field Key | Example Value | Field Format
 -------------- | -------------- | --------------
-accountId | futuredemodealer | String
-bodyStyle | Sedan | String
-certified | false | String
-cityFuelEfficiency | 30 | Integer
-classification | primary | String
-doors | 4-door | String
-driveLine | FWD | String
-engine | I-4 cyl | String
-exteriorColor | Platinum White Pearl | String
-finalPrice | 28360 | Integer
-fuelType | Regular Unleaded | String
-highwayFuelEfficiency | 38 | Integer
-interiorColor | Black | String
-internetPrice | 0 | Integer
-inventoryType | new | String
-make | Honda | String
-model | Accord | String
-modelYear | 2018 | Integer
-msrp | 28360 | Integer
-odometer | 5 | Integer
-status | Live | String
-stockNumber | 00180772 | String
-transmission | Variable | String
-trim | EX | String
-uuid | ab119e0e0a0a00f944d6f3031cd34854 | String
-vin | 1HGCV1F42JA141468 | String
+`accountId` | `futuredemodealer` | `String`
+`bodyStyle` | `Sedan` | `String`
+`certified` | `false` | `String`
+`cityFuelEfficiency` | `30` | `Integer`
+`classification` | `primary` | `String`
+`doors` | `4-door` | `String`
+`driveLine` | `FWD` | `String`
+`engine` | `I-4 cyl` | `String`
+`exteriorColor` | `Platinum White Pearl` | `String`
+`finalPrice` | `28360` | `Integer`
+`fuelType` | `Regular Unleaded` | `String`
+`highwayFuelEfficiency` | `38` | `Integer`
+`interiorColor` | `Black` | `String`
+`internetPrice` | `0` | `Integer`
+`inventoryType` | `new` | `String`
+`make` | `Honda` | `String`
+`model` | `Accord` | `String`
+`modelYear` | `2018` | `Integer`
+`msrp` | `28360` | `Integer`
+`odometer` | `5` | `Integer`
+`status` | `Live` | `String`
+`stockNumber` | `00180772` | `String`
+`transmission` | `Variable` | `String`
+`trim` | `EX` | `String`
+`uuid` | `ab119e0e0a0a00f944d6f3031cd34854` | `String`
+`vin` | `1HGCV1F42JA141468` | `String`
 
 # Event Subscriptions
 
 To receive data for events, you must opt-in to event subscriptions. Each event is named and versioned to ensure it continues to operate in a consistent manner over time. As newer events supercede these, older events may be deprecated but will not be removed if still in use.
 
-## page-load-v1
+## Page Load V1
 
 > Usage
+
+> The event key is `page-load-v1`
 
 ```javascript
 DDC.API.subscribe('your-integration-key', 'page-load-v1', function(ev) {
@@ -135,11 +137,17 @@ DDC.API.subscribe('your-integration-key', 'page-load-v1', function(ev) {
 });
 ```
 
-> This event uses the standard <a href="#page-event">Page Event</a> format.
+Parameter Name | Example Value | Parameter Type
+-------------- | -------------- | --------------
+`key` | `your-integration-key` | `String`
+`event-id` | `page-load-v1` | `String`
+`callback` | `function(ev) { console.log(ev); }` | `function`
+
+> This event passes the standard <a href="#page-event">Page Event</a> object to your callback function.
 
 The page load event is useful to determine the context of the current page. By mapping our siteId or domain field to a customer ID in your system, you can determine the site your code is executing on as well as relevant information about the current page type and user's device type. This approach eliminates the need for configuration in our system beyond simply enabling or disabling your integration for each site.
 
-## vehicle-clicked-v1
+## Vehicle Clicked V1
 
 > Usage
 
@@ -149,11 +157,17 @@ DDC.API.subscribe('your-integration-key', 'vehicle-clicked-v1', function(ev) {
 });
 ```
 
-> This event uses the standard <a href="#vehicle-event">Vehicle Event</a> format.
+Parameter Name | Example Value | Parameter Type
+-------------- | -------------- | --------------
+`key` | `your-integration-key` | `String`
+`event-id` | `vehicle-clicked-v1` | `String`
+`callback` | `function(ev) { console.log(ev); }` | `function`
+
+> This event passes the standard <a href="#vehicle-event">Vehicle Event</a> object to your callback function.
 
 This event is fired when the user clicks on a vehicle to view more details. This typically occurs on website index pages and search results pages.
 
-## vehicle-shown-v1
+## Vehicle Shown V1
 
 > Usage
 
@@ -163,6 +177,14 @@ DDC.API.subscribe('your-integration-key', 'vehicle-shown-v1', function(ev) {
 });
 ```
 
-> This event uses the standard <a href="#vehicle-event">Vehicle Event</a> format.
+Parameter Name | Example Value | Parameter Type
+-------------- | -------------- | --------------
+`key` | `your-integration-key` | `String`
+`event-id` | `vehicle-shown-v1` | `String`
+`callback` | `function(ev) { console.log(ev); }` | `function`
 
-This event is fired for each vehicle item present on the current page. For search results pages, a dozen or more such events may be fired. On a vehicle deals page, a single event is fired. This is useful for capturing details about the vehicles that a user has viewed, or to take a particular action for a certain type or class of vehicles.
+> This event passes the standard <a href="#vehicle-event">Vehicle Event</a> object to your callback function.
+
+This event is sent for each vehicle present on the current page. For search results pages, a dozen or more such events may be fired. In the future, dynamic in-page updates to vehicle results will cause potentially hundreds of events to be fired on a single page view as new vehicles are displayed.
+
+On a vehicle deals page, a single event is fired because you are viewing a single vehicle. This is useful for capturing details about the vehicles that a user has viewed, or to take a particular action for a certain type or class of vehicles.

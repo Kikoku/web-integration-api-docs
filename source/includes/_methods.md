@@ -28,8 +28,8 @@ When activated, inject will call a callback function you define with the `elem` 
 
 Field Name | Purpose | Field Format
 -------------- | -------------- | --------------
-elem | The DOM element where the markup should be inserted. | Element
-meta | The standard vehicle payload object for the current insertion point. | Object
+`elem` | The DOM element where the markup should be inserted. | Element
+`meta` | The standard vehicle payload object for the current insertion point. | Object
 
 ## DDC.API.create(key, type, data)
 

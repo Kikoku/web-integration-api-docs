@@ -4,7 +4,7 @@ Inject locations are areas of pages where you can safely insert markup. These ex
 
 See the <a href="#ddc-api-inject-key-name-callback-elem-meta">inject documentation</a> for more details on the inject method.
 
-## vehicle-media-bottom
+## Vehicle Media - Bottom
 
 > Usage:
 
@@ -16,7 +16,7 @@ DDC.API.inject('your-integration-key', 'vehicle-media-bottom', function(elem, me
 
 This element is positioned below the vehicle image area on vehicle search pages.
 
-## vehicle-badge-bottom
+## Vehicle Badge - Bottom
 
 > Usage:
 
@@ -29,7 +29,7 @@ DDC.API.inject('your-integration-key', 'vehicle-badge-bottom', function(elem, me
 This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
 
 
-## vehicle-pricing-bottom
+## Vehicle Pricing - Bottom
 
 > Usage:
 
@@ -41,7 +41,7 @@ DDC.API.inject('your-integration-key', 'vehicle-pricing-bottom', function(elem, 
 
 This element is positioned below the vehicle pricing area on vehicle search and detail pages.
 
-## vehicle-media-container
+## Vehicle Media Container
 
 > Usage:
 
