@@ -2,7 +2,7 @@
 
 ## Integrated Partner Program
 
-The use of this API requires that you are enrolled in our Integrated Partner Program. To find out more information or to enroll, please contact Chris Vargo at <a href="mailto:Chris.Vargo@coxautoinc.com">Chris.Vargo@coxautoinc.com</a>.
+The use of this API requires that you are enrolled in our Integrated Partner Program. To find out more information or to enroll, please contact us at <a href="mailto: IntegratedPartners@coxautoinc.com"> IntegratedPartners@coxautoinc.com</a> or <a href="https://forms.dealer.com/integrated-partner-program.htm" target="_blank">fill out this form</a>.
 
 Once enrolled, you will be provided with an integration key to use when making API calls.
 

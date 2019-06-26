@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='mailto:Chris.Vargo@coxautoinc.com'>Sign Up for our Partner Program</a>
+  - <a href='https://forms.dealer.com/integrated-partner-program.htm' target='_blank'>Sign Up for our Partner Program</a>
 
 includes:
   - introduction

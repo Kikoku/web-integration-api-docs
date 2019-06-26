@@ -24,8 +24,8 @@ At present, there are two types of events and each has a consistent data format.
   dealershipPostalCode: '05401',
   dealershipStateProvince: 'VT',
   dealershipCountry: 'US',
-  indexPage: false,
-  searchPage: true,
+  indexPage: true,
+  searchPage: false,
   detailPage: false,
   pageTitle: 'Welcome to ROI Motors!',
   pageName: 'INDEX',
@@ -76,7 +76,7 @@ locale | en_US | String
   fuelType: "Regular Unleaded"
   highwayFuelEfficiency: 38
   interiorColor: ""
-  internetPrice: 0
+  internetPrice: 28360
   inventoryType: "new"
   make: "Honda"
   model: "Accord"
