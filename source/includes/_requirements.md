@@ -2,7 +2,7 @@
 
 ## Integrated Partner Program
 
-The use of this API requires that you are enrolled in our Integrated Partner Program. To find out more information or to enroll, please contact us at <a href="mailto: IntegratedPartners@coxautoinc.com"> IntegratedPartners@coxautoinc.com</a> or <a href="https://forms.dealer.com/integrated-partner-program.htm" target="_blank">fill out this form</a>.
+The use of this API requires that you are enrolled in our Integrated Partner Program. To find out more information or to enroll, please contact us at <a href="mailto:IntegratedPartners@coxautoinc.com"> IntegratedPartners@coxautoinc.com</a> or <a href="https://forms.dealer.com/integrated-partner-program.htm" target="_blank">fill out this form</a>.
 
 Once enrolled, you will be provided with an integration key to use when making API calls.
 
@@ -20,7 +20,7 @@ Once you have written a script to interface with the API and want to try it on s
 	// Your code here
 })(window.DDC.API);
 ```
-* Always wrap all of your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.
+* Always ecapsulate your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.
 
 * Your bootstrap script and any other integration code or assets should be located on a highly available content delivery network and must work over an HTTPS connection.
 
