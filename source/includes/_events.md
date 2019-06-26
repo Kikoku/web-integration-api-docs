@@ -129,8 +129,6 @@ To receive data for events, you must opt-in to event subscriptions. Each event i
 
 > Usage
 
-> The event key is `page-load-v1`
-
 ```javascript
 DDC.API.subscribe('your-integration-key', 'page-load-v1', function(ev) {
   console.log(ev.payload);
