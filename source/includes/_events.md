@@ -107,7 +107,7 @@ Field Key | Example Value | Field Format
 `fuelType` | `Regular Unleaded` | `String`
 `highwayFuelEfficiency` | `38` | `Integer`
 `interiorColor` | `Black` | `String`
-`internetPrice` | `0` | `Integer`
+`internetPrice` | `28360` | `Integer`
 `inventoryType` | `new` | `String`
 `make` | `Honda` | `String`
 `model` | `Accord` | `String`
