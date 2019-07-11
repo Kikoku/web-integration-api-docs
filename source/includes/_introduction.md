@@ -5,5 +5,5 @@ Welcome to the Dealer.com Website Integration API! This API performs common acti
 As this is a browser based API, it is written in JavaScript and has simple data contracts and interfaces.
 
 <aside class="notice">
-This API is currently in development and is subject to change.
+This API is currently in development and is subject to evolution.
 </aside>
