@@ -327,8 +327,16 @@ This API is currently in development and is subject to evolution.
 
 <p>Once enrolled, you will be provided with an integration key to use when making API calls.</p>
 <h2 id='bootstrapping-your-script'>Bootstrapping Your Script</h2>
-<p>Once you have written a script to interface with the API and want to try it on specific sites, send us the URL to the script so we can include it when we enable your integration. The script should be as minimal as possible and perform only actions necessary to bootstrap your integration on to the site. See the <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.</p>
-<h2 id='technical-requirements'>Technical Requirements</h2>
+<p>It&#39;s a good idea to start by creating a simple JavaScript file that registers with the API (subscribe) and potentially loads additional scripts if necessary. When you want to test a script on our platform, send us the URL to the script so we can include it on the page when we enable your integration. The script should be as minimal as possible and perform only actions necessary to bootstrap your integration on to the site. There is a minimal subscribe example here, and you can see a more detailed <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.</p>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">indexPage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'This is the index page'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre><h2 id='technical-requirements'>Technical Requirements</h2>
 <blockquote>
 <p>This is an example of an immediately executing function expression:</p>
 </blockquote>
@@ -900,19 +908,19 @@ This API is currently in development and is subject to evolution.
 </code></pre>
 <p>This element is the media gallery container on vehicle deals pages. Injecting into this location will replace the media gallery with the elements you insert.</p>
 <h1 id='example-implementation'>Example Implementation</h1><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integrationId</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
-        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
           <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
           <span class="na">src</span><span class="p">:</span> <span class="s1">'/new-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
           <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
           <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
         <span class="p">})</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
