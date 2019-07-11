@@ -8,7 +8,18 @@ Once enrolled, you will be provided with an integration key to use when making A
 
 ## Bootstrapping Your Script
 
-Once you have written a script to interface with the API and want to try it on specific sites, send us the URL to the script so we can include it when we enable your integration. The script should be as minimal as possible and perform only actions necessary to bootstrap your integration on to the site. See the <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.
+It's a good idea to start by creating a simple JavaScript file that registers with the API (subscribe) and potentially loads additional scripts if necessary. When you want to test a script on our platform, send us the URL to the script so we can include it on the page when we enable your integration. The script should be as minimal as possible and perform only actions necessary to bootstrap your integration on to the site. There is a minimal subscribe example here, and you can see a more detailed <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.
+
+```javascript
+(function(API) {
+  var integrationKey = 'your-integration-key';
+  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
+    if (ev.payload.indexPage) {
+        console.log('This is the index page');
+    }
+  });
+})(window.DDC.API);
+```
 
 ## Technical Requirements
 

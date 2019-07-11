@@ -2,19 +2,19 @@
 
 ```javascript
 (function(API) {
-  var integrationId = 'test-integration';
-  API.subscribe(integrationId, 'page-load-v1', function (ev) {
+  var integrationKey = 'your-integration-key';
+  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
     if (ev.payload.searchPage) {
-      API.insert(integrationId, 'vehicle-pricing', function (elem, meta) {
+      API.insert(integrationKey, 'vehicle-pricing', function (elem, meta) {
         var lowPrice = Math.round(meta.finalPrice - 1000);
         var highPrice = Math.round(meta.finalPrice + 1000);
-        var button = API.create(integrationId, 'button', {
+        var button = API.create(integrationKey, 'button', {
           text: 'Search This Price Range',
           src: '/new-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
           classes: 'btn btn-primary',
           style: 'margin-top: 12px;'
         })
-        API.append(integrationId, elem, button);
+        API.append(integrationKey, elem, button);
       });
     }
   });
