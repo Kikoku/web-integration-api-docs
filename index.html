@@ -245,6 +245,9 @@
                     <a href="#page-event" class="toc-h2 toc-link" data-title="Page Event">Page Event</a>
                   </li>
                   <li>
+                    <a href="#dealership-info-event" class="toc-h2 toc-link" data-title="Dealership Info Event">Dealership Info Event</a>
+                  </li>
+                  <li>
                     <a href="#vehicle-event" class="toc-h2 toc-link" data-title="Vehicle Event">Vehicle Event</a>
                   </li>
               </ul>
@@ -256,7 +259,7 @@
                     <a href="#page-load-v1" class="toc-h2 toc-link" data-title="Page Load V1">Page Load V1</a>
                   </li>
                   <li>
-                    <a href="#vehicle-clicked-v1" class="toc-h2 toc-link" data-title="Vehicle Clicked V1">Vehicle Clicked V1</a>
+                    <a href="#dealership-info-v1" class="toc-h2 toc-link" data-title="Dealership Info V1">Dealership Info V1</a>
                   </li>
                   <li>
                     <a href="#vehicle-shown-v1" class="toc-h2 toc-link" data-title="Vehicle Shown V1">Vehicle Shown V1</a>
@@ -270,7 +273,7 @@
                     <a href="#ddc-api-subscribe-key-name-callback-ev" class="toc-h2 toc-link" data-title="DDC.API.subscribe(key, name, callback(ev))">DDC.API.subscribe(key, name, callback(ev))</a>
                   </li>
                   <li>
-                    <a href="#ddc-api-inject-key-name-callback-elem-meta" class="toc-h2 toc-link" data-title="DDC.API.inject(key, name, callback(elem, meta))">DDC.API.inject(key, name, callback(elem, meta))</a>
+                    <a href="#ddc-api-insert-key-name-callback-elem-meta" class="toc-h2 toc-link" data-title="DDC.API.insert(key, name, callback(elem, meta))">DDC.API.insert(key, name, callback(elem, meta))</a>
                   </li>
                   <li>
                     <a href="#ddc-api-create-key-type-data" class="toc-h2 toc-link" data-title="DDC.API.create(key, type, data)">DDC.API.create(key, type, data)</a>
@@ -284,16 +287,16 @@
               </ul>
           </li>
           <li>
-            <a href="#inject-locations" class="toc-h1 toc-link" data-title="Inject Locations">Inject Locations</a>
+            <a href="#insert-locations" class="toc-h1 toc-link" data-title="Insert Locations">Insert Locations</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#vehicle-media-bottom" class="toc-h2 toc-link" data-title="Vehicle Media - Bottom">Vehicle Media - Bottom</a>
+                    <a href="#vehicle-media" class="toc-h2 toc-link" data-title="Vehicle Media">Vehicle Media</a>
                   </li>
                   <li>
-                    <a href="#vehicle-badge-bottom" class="toc-h2 toc-link" data-title="Vehicle Badge - Bottom">Vehicle Badge - Bottom</a>
+                    <a href="#vehicle-badge" class="toc-h2 toc-link" data-title="Vehicle Badge">Vehicle Badge</a>
                   </li>
                   <li>
-                    <a href="#vehicle-pricing-bottom" class="toc-h2 toc-link" data-title="Vehicle Pricing - Bottom">Vehicle Pricing - Bottom</a>
+                    <a href="#vehicle-pricing" class="toc-h2 toc-link" data-title="Vehicle Pricing">Vehicle Pricing</a>
                   </li>
                   <li>
                     <a href="#vehicle-media-container" class="toc-h2 toc-link" data-title="Vehicle Media Container">Vehicle Media Container</a>
@@ -312,11 +315,13 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='overview'>Overview</h1>
-<p>Welcome to the Dealer.com Website Integration API! This API performs common actions on Dealer.com websites, such as loading scripts, adding CSS and injecting markup into common locations.</p>
+<p>Welcome to the Dealer.com Website Integration API! This API performs common actions on Dealer.com websites, such as loading scripts, adding CSS and inserting markup into common locations.</p>
 
 <p>As this is a browser based API, it is written in JavaScript and has simple data contracts and interfaces.</p>
 
-<p>You can view code examples in the dark area to the right with more details in this column.</p>
+<aside class="notice">
+This API is currently in development and is subject to change.
+</aside>
 <h1 id='requirements'>Requirements</h1><h2 id='integrated-partner-program'>Integrated Partner Program</h2>
 <p>The use of this API requires that you are enrolled in our Integrated Partner Program. To find out more information or to enroll, please contact us at <a href="mailto:IntegratedPartners@coxautoinc.com"> IntegratedPartners@coxautoinc.com</a> or <a href="https://forms.dealer.com/integrated-partner-program.htm" target="_blank">fill out this form</a>.</p>
 
@@ -337,33 +342,23 @@
 <li><p>Your bootstrap script and any other integration code or assets should be located on a highly available content delivery network and must work over an HTTPS connection.</p></li>
 <li><p>All code should be minified and served using gzip or better compression.</p></li>
 <li><p>Integrations should avoid loading excessive imagery, fonts and scripts.</p></li>
-<li><p>Please refrain from including large libraries such as jQuery or React (both are already available).</p></li>
+<li><p>Please refrain from including large libraries such as jQuery.</p></li>
 </ul>
 <h1 id='events'>Events</h1>
-<p>By subscribing to events we publish, you can easily obtain the data you need to integrate your solution into the website. These events provide site and page data as well as vehicle data for the current page view.</p>
+<p>By subscribing to events we publish, you can easily obtain the data you need to integrate your solution into the website. These events provide data about the website your integration is loading on and the current page the user is viewing.</p>
 
-<p>At present, there are two types of events and each has a consistent data format.</p>
+<p>There are currently three types of events and each has a consistent data format.</p>
 <h1 id='event-types'>Event Types</h1><h2 id='page-event'>Page Event</h2>
 <blockquote>
 <p>Example Payload</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="nl">accountId</span><span class="p">:</span> <span class="s1">'futuredemodealer'</span><span class="p">,</span>
-  <span class="nx">siteId</span><span class="p">:</span> <span class="s1">'futuredemodealer'</span><span class="p">,</span>
+  <span class="nl">accountId</span><span class="p">:</span> <span class="s1">'roimotors'</span><span class="p">,</span>
+  <span class="nx">siteId</span><span class="p">:</span> <span class="s1">'roimotors'</span><span class="p">,</span>
   <span class="nx">defaultDomain</span><span class="p">:</span> <span class="s1">'www.roimotors.com'</span><span class="p">,</span>
-  <span class="nx">dealershipName</span><span class="p">:</span> <span class="s1">'ROI Motors'</span><span class="p">,</span>
-  <span class="nx">dealershipAddress1</span><span class="p">:</span> <span class="s1">'1 Howard Street'</span><span class="p">,</span>
-  <span class="nx">dealershipAddress2</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
-  <span class="nx">dealershipCity</span><span class="p">:</span> <span class="s1">'Burlington'</span><span class="p">,</span>
-  <span class="nx">dealershipCountry</span><span class="p">:</span> <span class="s1">'US'</span><span class="p">,</span>
-  <span class="nx">dealershipName</span><span class="p">:</span> <span class="s1">'ROIMOTORS Honda'</span><span class="p">,</span>
-  <span class="nx">dealershipPostalCode</span><span class="p">:</span> <span class="s1">'05401'</span><span class="p">,</span>
-  <span class="nx">dealershipStateProvince</span><span class="p">:</span> <span class="s1">'VT'</span><span class="p">,</span>
-  <span class="nx">dealershipCountry</span><span class="p">:</span> <span class="s1">'US'</span><span class="p">,</span>
   <span class="nx">indexPage</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">searchPage</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="nx">detailPage</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nx">pageTitle</span><span class="p">:</span> <span class="s1">'Welcome to ROI Motors!'</span><span class="p">,</span>
   <span class="nx">pageName</span><span class="p">:</span> <span class="s1">'INDEX'</span><span class="p">,</span>
   <span class="nx">layoutType</span><span class="p">:</span> <span class="s1">'desktop'</span><span class="p">,</span>
   <span class="nx">locale</span><span class="p">:</span> <span class="s1">'en_US'</span>
@@ -377,11 +372,6 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>accountId</code></td>
-<td><code>futuredemodealer</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
 <td><code>siteId</code></td>
 <td><code>futuredemodealer</code></td>
 <td><code>String</code></td>
@@ -391,6 +381,60 @@
 <td><code>www.roimotors.com</code></td>
 <td><code>String</code></td>
 </tr>
+<tr>
+<td><code>indexPage</code></td>
+<td><code>false</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>searchPage</code></td>
+<td><code>true</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>detailPage</code></td>
+<td><code>false</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>pageName</code></td>
+<td><code>INDEX</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>layoutType</code></td>
+<td><code>desktop</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td>`en_US</td>
+<td>String`</td>
+</tr>
+</tbody></table>
+<h2 id='dealership-info-event'>Dealership Info Event</h2>
+<blockquote>
+<p>Example Payload</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="nl">dealershipName</span><span class="p">:</span> <span class="s1">'ROI Motors'</span><span class="p">,</span>
+  <span class="nx">dealershipAddress1</span><span class="p">:</span> <span class="s1">'1 Howard Street'</span><span class="p">,</span>
+  <span class="nx">dealershipAddress2</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="nx">dealershipCity</span><span class="p">:</span> <span class="s1">'Burlington'</span><span class="p">,</span>
+  <span class="nx">dealershipCountry</span><span class="p">:</span> <span class="s1">'US'</span><span class="p">,</span>
+  <span class="nx">dealershipName</span><span class="p">:</span> <span class="s1">'ROIMOTORS Honda'</span><span class="p">,</span>
+  <span class="nx">dealershipPostalCode</span><span class="p">:</span> <span class="s1">'05401'</span><span class="p">,</span>
+  <span class="nx">dealershipStateProvince</span><span class="p">:</span> <span class="s1">'VT'</span><span class="p">,</span>
+  <span class="nx">dealershipCountry</span><span class="p">:</span> <span class="s1">'US'</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Field Key</th>
+<th>Example Value</th>
+<th>Field Format</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><code>dealershipName</code></td>
 <td><code>ROI Motors</code></td>
@@ -436,41 +480,6 @@
 <td><code>US</code></td>
 <td><code>String</code></td>
 </tr>
-<tr>
-<td><code>indexPage</code></td>
-<td><code>false</code></td>
-<td><code>Boolean</code></td>
-</tr>
-<tr>
-<td><code>searchPage</code></td>
-<td><code>true</code></td>
-<td><code>Boolean</code></td>
-</tr>
-<tr>
-<td><code>detailPage</code></td>
-<td><code>false</code></td>
-<td><code>Boolean</code></td>
-</tr>
-<tr>
-<td><code>pageTitle</code></td>
-<td><code>Welcome to ROI Motors!</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>pageName</code></td>
-<td><code>INDEX</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>layoutType</code></td>
-<td><code>desktop</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>locale</code></td>
-<td>`en_US</td>
-<td>String`</td>
-</tr>
 </tbody></table>
 <h2 id='vehicle-event'>Vehicle Event</h2>
 <blockquote>
@@ -489,7 +498,7 @@
   <span class="nl">finalPrice</span><span class="p">:</span> <span class="mi">28360</span>
   <span class="nl">fuelType</span><span class="p">:</span> <span class="s2">"Regular Unleaded"</span>
   <span class="nl">highwayFuelEfficiency</span><span class="p">:</span> <span class="mi">38</span>
-  <span class="nl">interiorColor</span><span class="p">:</span> <span class="s2">""</span>
+  <span class="nl">interiorColor</span><span class="p">:</span> <span class="s2">"Black"</span>
   <span class="nl">internetPrice</span><span class="p">:</span> <span class="mi">28360</span>
   <span class="nl">inventoryType</span><span class="p">:</span> <span class="s2">"new"</span>
   <span class="nl">make</span><span class="p">:</span> <span class="s2">"Honda"</span>
@@ -650,7 +659,7 @@
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <table><thead>
@@ -682,12 +691,12 @@
 </blockquote>
 
 <p>The page load event is useful to determine the context of the current page. By mapping our siteId or domain field to a customer ID in your system, you can determine the site your code is executing on as well as relevant information about the current page type and user&#39;s device type. This approach eliminates the need for configuration in our system beyond simply enabling or disabling your integration for each site.</p>
-<h2 id='vehicle-clicked-v1'>Vehicle Clicked V1</h2>
+<h2 id='dealership-info-v1'>Dealership Info V1</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-clicked-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'dealership-info-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <table><thead>
@@ -704,7 +713,7 @@
 </tr>
 <tr>
 <td><code>event-id</code></td>
-<td><code>vehicle-clicked-v1</code></td>
+<td><code>page-load-v1</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
@@ -715,16 +724,16 @@
 </tbody></table>
 
 <blockquote>
-<p>This event passes the standard <a href="#vehicle-event">Vehicle Event</a> object to your callback function.</p>
+<p>This event passes the standard <a href="#dealership-info-event">Dealership Info Event</a> object to your callback function.</p>
 </blockquote>
 
-<p>This event is fired when the user clicks on a vehicle to view more details. This typically occurs on website index pages and search results pages.</p>
+<p>The dealership info event is useful if you need to know the name and address of the dealership.</p>
 <h2 id='vehicle-shown-v1'>Vehicle Shown V1</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-shown-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <table><thead>
@@ -741,7 +750,7 @@
 </tr>
 <tr>
 <td><code>event-id</code></td>
-<td><code>vehicle-shown-v1</code></td>
+<td><code>vehicle-v1</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
@@ -763,22 +772,22 @@
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <p>Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.</p>
-<h2 id='ddc-api-inject-key-name-callback-elem-meta'>DDC.API.inject(key, name, callback(elem, meta))</h2>
+<h2 id='ddc-api-insert-key-name-callback-elem-meta'>DDC.API.insert(key, name, callback(elem, meta))</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where the markup should be inserted.</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">meta</span><span class="p">);</span> <span class="c1">// The standard vehicle payload object for the current insertion point.</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'insert-location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where markup may be inserted.</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">meta</span><span class="p">);</span> <span class="c1">// The payload object for the current insertion point.</span>
 <span class="p">});</span>
 </code></pre>
-<p>The inject method allows you to append markup into specific set locations on some pages. These locations are commonly used areas you may want to target. If you find there are target areas outside of the currently available options, please let us know your use case and we will work to accommodate your needs.</p>
+<p>The insert method allows you to append markup into specific set locations on some pages. These locations are commonly used areas you may want to target. If you find there are target areas outside of the currently available options, please let us know your use case and we will work to accommodate your needs.</p>
 
-<p>When activated, inject will call a callback function you define with the <code>elem</code> and <code>meta</code> parameters.</p>
+<p>When activated, <code>insert</code> will call a callback function you define with the <code>elem</code> and <code>meta</code> parameters.</p>
 
 <table><thead>
 <tr>
@@ -794,7 +803,7 @@
 </tr>
 <tr>
 <td><code>meta</code></td>
-<td>The standard vehicle payload object for the current insertion point.</td>
+<td>The payload object for the current insertion point.</td>
 <td>Object</td>
 </tr>
 </tbody></table>
@@ -813,7 +822,7 @@
   <span class="c1">// The above outputs: &lt;a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);"&gt;Visit Google&lt;/a&gt;</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
-<p>The create method can be used to generate markup which adheres to our standard practices. This allows you to simply &quot;create a button&quot;, for example, without having to know the inner workings of how buttons should be created on sites.</p>
+<p>The create method can be used to generate markup which adheres to our standard practices. This allows you to simply &quot;create a button&quot;, for example, without having to know the inner workings of how buttons should be created on different types of sites.</p>
 
 <p>Currently only the &quot;button&quot; type is supported, however other types will soon be added. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.</p>
 <h2 id='ddc-api-append-key-targetel-appendel'>DDC.API.append(key, targetEl, appendEl)</h2>
@@ -823,11 +832,11 @@
 <pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="nx">targetEl</span><span class="p">,</span> <span class="nx">appendEl</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>For example, used in conjunction with the <code>inject</code> and the <code>create</code> methods your code might look similar to this:</p>
+<p>For example, used in conjunction with the <code>insert</code> and the <code>create</code> methods your code might look similar to this:</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'target-location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'target-location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
@@ -840,7 +849,7 @@
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
-<p>When calling the inject method, the goal is to insert some markup into a location on the page. Once you have constructed the element(s) you wish to insert, you may call the <code>append</code> method to complete the process.</p>
+<p>When calling the insert method, the goal is to insert some markup into a location on the page. Once you have constructed the element(s) you wish to insert, you may call the <code>append</code> method to complete the process.</p>
 <h2 id='ddc-api-load-key-resourceurl'>DDC.API.load(key, resourceUrl)</h2>
 <blockquote>
 <p>Usage</p>
@@ -848,34 +857,34 @@
 <pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'https://www.company.com/script.js'</span><span class="p">)</span> <span class="c1">// Loads a JavaScript file</span>
 <span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'https://www.company.com/integration.css'</span><span class="p">)</span> <span class="c1">// Loads a CSS stylesheet</span>
 </code></pre>
-<p>The load method is an easy way to include additional scripts or stylesheets required for your integration.</p>
-<h1 id='inject-locations'>Inject Locations</h1>
-<p>Inject locations are areas of pages where you can safely insert markup. These exist in commonly used locations, such as below vehicle pricing on search and detail pages. This section details the current available locations. Please let us know if there are other locations you want to target beyond those listed here.</p>
+<p>The load method is an easy way to include additional scripts or stylesheets required for your integration. Stylesheets and JavaScript files are automatically loaded in an optimal way for each type of asset.</p>
+<h1 id='insert-locations'>Insert Locations</h1>
+<p>Insert locations are areas of pages where you can safely insert markup. These exist in commonly used areas, such as below vehicle pricing on search and detail pages. This section details the current available locations. Please let us know if there are other locations you want to target beyond those listed here.</p>
 
-<p>See the <a href="#ddc-api-inject-key-name-callback-elem-meta">inject documentation</a> for more details on the inject method.</p>
-<h2 id='vehicle-media-bottom'>Vehicle Media - Bottom</h2>
+<p>See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentation</a> for more details on the insert method.</p>
+<h2 id='vehicle-media'>Vehicle Media</h2>
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-media-bottom'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// This element is positioned below the vehicle image area on vehicle search pages.</span>
 <span class="p">});</span>
 </code></pre>
 <p>This element is positioned below the vehicle image area on vehicle search pages.</p>
-<h2 id='vehicle-badge-bottom'>Vehicle Badge - Bottom</h2>
+<h2 id='vehicle-badge'>Vehicle Badge</h2>
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-badge-bottom'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// This element is positioned below the vehicle tech specs area on vehicle search and detail pages.</span>
 <span class="p">});</span>
 </code></pre>
 <p>This element is positioned below the vehicle tech specs area on vehicle search and detail pages.</p>
-<h2 id='vehicle-pricing-bottom'>Vehicle Pricing - Bottom</h2>
+<h2 id='vehicle-pricing'>Vehicle Pricing</h2>
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-pricing-bottom'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// This element is positioned below the vehicle pricing area on vehicle search and detail pages.</span>
 <span class="p">});</span>
 </code></pre>
@@ -884,7 +893,7 @@
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// This element is the media gallery container on vehicle deals pages.</span>
   <span class="c1">// Injecting into this location will replace the media gallery with the elements you insert.</span>
 <span class="p">});</span>
@@ -894,7 +903,7 @@
   <span class="kd">var</span> <span class="nx">integrationId</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-pricing-bottom'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
@@ -913,7 +922,7 @@
 
 <ol>
 <li>Subscribe to the <code>page-load-v1</code> event to get context for this page view.</li>
-<li>If this is the vehicle search page, subscribe to the <code>vehicle-pricing-bottom</code> location injector.</li>
+<li>If this is the vehicle search page, subscribe to the <code>vehicle-pricing</code> location inserter.</li>
 <li>For each vehicle pricing area on the current page, generate the button markup using the <code>create</code> method.</li>
 <li>Finally, use the <code>append</code> method to insert the new button into each pricing area.</li>
 </ol>
