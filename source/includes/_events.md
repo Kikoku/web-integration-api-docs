@@ -1,8 +1,8 @@
 # Events
 
-By subscribing to events we publish, you can easily obtain the data you need to integrate your solution into the website. These events provide site and page data as well as vehicle data for the current page view.
+By subscribing to events we publish, you can easily obtain the data you need to integrate your solution into the website. These events provide data about the website your integration is loading on and the current page the user is viewing.
 
-At present, there are two types of events and each has a consistent data format.
+There are currently three types of events and each has a consistent data format.
 
 # Event Types
 
@@ -12,22 +12,12 @@ At present, there are two types of events and each has a consistent data format.
 
 ```javascript
 {
-  accountId: 'futuredemodealer',
-  siteId: 'futuredemodealer',
+  accountId: 'roimotors',
+  siteId: 'roimotors',
   defaultDomain: 'www.roimotors.com',
-  dealershipName: 'ROI Motors',
-  dealershipAddress1: '1 Howard Street',
-  dealershipAddress2: '',
-  dealershipCity: 'Burlington',
-  dealershipCountry: 'US',
-  dealershipName: 'ROIMOTORS Honda',
-  dealershipPostalCode: '05401',
-  dealershipStateProvince: 'VT',
-  dealershipCountry: 'US',
   indexPage: true,
   searchPage: false,
   detailPage: false,
-  pageTitle: 'Welcome to ROI Motors!',
   pageName: 'INDEX',
   layoutType: 'desktop',
   locale: 'en_US'
@@ -36,9 +26,35 @@ At present, there are two types of events and each has a consistent data format.
 
 Field Key | Example Value | Field Format
 -------------- | -------------- | --------------
-`accountId` | `futuredemodealer` | `String`
 `siteId` | `futuredemodealer` | `String`
 `defaultDomain` | `www.roimotors.com` | `String`
+`indexPage` | `false` | `Boolean`
+`searchPage` | `true` | `Boolean`
+`detailPage` | `false` | `Boolean`
+`pageName` | `INDEX` | `String`
+`layoutType` | `desktop` | `String`
+`locale` | `en_US | String`
+
+## Dealership Info Event
+
+> Example Payload
+
+```javascript
+{
+  dealershipName: 'ROI Motors',
+  dealershipAddress1: '1 Howard Street',
+  dealershipAddress2: '',
+  dealershipCity: 'Burlington',
+  dealershipCountry: 'US',
+  dealershipName: 'ROIMOTORS Honda',
+  dealershipPostalCode: '05401',
+  dealershipStateProvince: 'VT',
+  dealershipCountry: 'US'
+}
+```
+
+Field Key | Example Value | Field Format
+-------------- | -------------- | --------------
 `dealershipName` | `ROI Motors` | `String`
 `dealershipAddress1` | `1 Howard Street` | `String`
 `dealershipAddress2` | | `String`
@@ -48,14 +64,6 @@ Field Key | Example Value | Field Format
 `dealershipPostalCode` | `05401` | `String`
 `dealershipStateProvince` | `VT` | `String`
 `dealershipCountry` | `US` | `String`
-`indexPage` | `false` | `Boolean`
-`searchPage` | `true` | `Boolean`
-`detailPage` | `false` | `Boolean`
-`pageTitle` | `Welcome to ROI Motors!` | `String`
-`pageName` | `INDEX` | `String`
-`layoutType` | `desktop` | `String`
-`locale` | `en_US | String`
-
 
 ## Vehicle Event
 
@@ -75,7 +83,7 @@ Field Key | Example Value | Field Format
   finalPrice: 28360
   fuelType: "Regular Unleaded"
   highwayFuelEfficiency: 38
-  interiorColor: ""
+  interiorColor: "Black"
   internetPrice: 28360
   inventoryType: "new"
   make: "Honda"
@@ -131,7 +139,7 @@ To receive data for events, you must opt-in to event subscriptions. Each event i
 
 ```javascript
 DDC.API.subscribe('your-integration-key', 'page-load-v1', function(ev) {
-  console.log(ev.payload);
+  console.log(ev);
 });
 ```
 
@@ -145,40 +153,40 @@ Parameter Name | Example Value | Parameter Type
 
 The page load event is useful to determine the context of the current page. By mapping our siteId or domain field to a customer ID in your system, you can determine the site your code is executing on as well as relevant information about the current page type and user's device type. This approach eliminates the need for configuration in our system beyond simply enabling or disabling your integration for each site.
 
-## Vehicle Clicked V1
+## Dealership Info V1
 
 > Usage
 
 ```javascript
-DDC.API.subscribe('your-integration-key', 'vehicle-clicked-v1', function(ev) {
-  console.log(ev.payload);
+DDC.API.subscribe('your-integration-key', 'dealership-info-v1', function(ev) {
+  console.log(ev);
 });
 ```
 
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `key` | `your-integration-key` | `String`
-`event-id` | `vehicle-clicked-v1` | `String`
+`event-id` | `page-load-v1` | `String`
 `callback` | `function(ev) { console.log(ev); }` | `function`
 
-> This event passes the standard <a href="#vehicle-event">Vehicle Event</a> object to your callback function.
+> This event passes the standard <a href="#dealership-info-event">Dealership Info Event</a> object to your callback function.
 
-This event is fired when the user clicks on a vehicle to view more details. This typically occurs on website index pages and search results pages.
+The dealership info event is useful if you need to know the name and address of the dealership.
 
 ## Vehicle Shown V1
 
 > Usage
 
 ```javascript
-DDC.API.subscribe('your-integration-key', 'vehicle-shown-v1', function(ev) {
-  console.log(ev.payload);
+DDC.API.subscribe('your-integration-key', 'vehicle-v1', function(ev) {
+  console.log(ev);
 });
 ```
 
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `key` | `your-integration-key` | `String`
-`event-id` | `vehicle-shown-v1` | `String`
+`event-id` | `vehicle-v1` | `String`
 `callback` | `function(ev) { console.log(ev); }` | `function`
 
 > This event passes the standard <a href="#vehicle-event">Vehicle Event</a> object to your callback function.

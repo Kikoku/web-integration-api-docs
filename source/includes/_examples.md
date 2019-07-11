@@ -5,7 +5,7 @@
   var integrationId = 'test-integration';
   API.subscribe(integrationId, 'page-load-v1', function (ev) {
     if (ev.payload.searchPage) {
-      API.inject(integrationId, 'vehicle-pricing-bottom', function (elem, meta) {
+      API.insert(integrationId, 'vehicle-pricing', function (elem, meta) {
         var lowPrice = Math.round(meta.finalPrice - 1000);
         var highPrice = Math.round(meta.finalPrice + 1000);
         var button = API.create(integrationId, 'button', {
@@ -24,6 +24,6 @@
 Some parts of the example to the right have been used in the above documentation. In its entirety, the 20 lines of code perform the following steps:
 
 1. Subscribe to the `page-load-v1` event to get context for this page view.
-2. If this is the vehicle search page, subscribe to the `vehicle-pricing-bottom` location injector.
+2. If this is the vehicle search page, subscribe to the `vehicle-pricing` location inserter.
 3. For each vehicle pricing area on the current page, generate the button markup using the `create` method.
 4. Finally, use the `append` method to insert the new button into each pricing area.

@@ -28,4 +28,8 @@ Once you have written a script to interface with the API and want to try it on s
 
 * Integrations should avoid loading excessive imagery, fonts and scripts.
 
-* Please refrain from including large libraries such as jQuery or React (both are already available).
+* Please refrain from including large libraries such as jQuery.
+
+
+
+
