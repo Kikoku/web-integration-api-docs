@@ -144,3 +144,45 @@ DDC.API.insert('your-integration-key', 'vehicle-media-container', function(elem,
 ```
 
 This element is the media gallery container on vehicle deals pages. Injecting into this location will replace the media gallery with the elements you insert.
+
+## Top Banner
+
+> Usage:
+
+```javascript
+DDC.API.insert('your-integration-key', 'top-banner', function(elem, meta) {
+  // This element is positioned in a prominent location above the vehicle listings on the Search Results Page.
+  // On the Details page, it is near the top of the vehicle information, below the media gallery.
+});
+```
+
+> Example Implementation:
+
+```javascript
+(function(API) {
+  var integrationKey = 'your-integration-key';
+  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
+    if (ev.payload.searchPage) {
+      API.insert(integrationKey, 'top-banner', function (elem, meta) {
+        var img = document.createElement('img'),
+          a = document.createElement('a');
+
+        img.src = 'https://pictures.dealer.com/d/ddcdemohonda/0217/15bd9bd8ecf0b2a292a91cecb08c595bx.jpg';
+        img.alt = 'New 2015 Honda Pilot';
+        img.title = 'New 2015 Honda Pilot';
+
+        a.href = '/specials/new.htm';
+        a.innerHTML = img.outerHTML;
+
+        API.append(integrationId, elem, a);
+      });
+    }
+  });
+})(window.DDC.API);
+```
+
+This element is positioned in a prominent location above the vehicle listings on the Search Results Page.
+
+On the Details page, it is positioned at the top of the vehicle information, below the media gallery.
+
+You can target either the listings or details page by first subscribing to the page-load-v1 event, and using the event values of `payload.searchPage` and `payload.detailPage` to check the page type.
