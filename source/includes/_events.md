@@ -12,8 +12,8 @@ There are currently three types of events and each has a consistent data format.
 
 ```javascript
 {
-  accountId: 'roimotors',
-  siteId: 'roimotors',
+  accountId: 'futuredemodealer',
+  siteId: 'futuredemodealer',
   defaultDomain: 'www.roimotors.com',
   indexPage: true,
   searchPage: false,
@@ -26,10 +26,11 @@ There are currently three types of events and each has a consistent data format.
 
 Field Key | Example Value | Field Format
 -------------- | -------------- | --------------
+`accountId` | `futuredemodealer` | `String`
 `siteId` | `futuredemodealer` | `String`
 `defaultDomain` | `www.roimotors.com` | `String`
-`indexPage` | `false` | `Boolean`
-`searchPage` | `true` | `Boolean`
+`indexPage` | `true` | `Boolean`
+`searchPage` | `false` | `Boolean`
 `detailPage` | `false` | `Boolean`
 `pageName` | `INDEX` | `String`
 `layoutType` | `desktop` | `String`
@@ -45,8 +46,6 @@ Field Key | Example Value | Field Format
   dealershipAddress1: '1 Howard Street',
   dealershipAddress2: '',
   dealershipCity: 'Burlington',
-  dealershipCountry: 'US',
-  dealershipName: 'ROIMOTORS Honda',
   dealershipPostalCode: '05401',
   dealershipStateProvince: 'VT',
   dealershipCountry: 'US'
@@ -59,8 +58,6 @@ Field Key | Example Value | Field Format
 `dealershipAddress1` | `1 Howard Street` | `String`
 `dealershipAddress2` | | `String`
 `dealershipCity` | `Burlington` | `String`
-`dealershipCountry` | `US` | `String`
-`dealershipName` | `ROIMOTORS Honda` | `String`
 `dealershipPostalCode` | `05401` | `String`
 `dealershipStateProvince` | `VT` | `String`
 `dealershipCountry` | `US` | `String`
@@ -71,31 +68,31 @@ Field Key | Example Value | Field Format
 
 ```javascript
 {
-  accountId: "futuredemodealer"
-  bodyStyle: "Sedan"
-  certified: "false"
-  cityFuelEfficiency: 30
-  classification: "primary"
-  doors: "4-door"
-  driveLine: "FWD"
-  engine: "I-4 cyl"
-  exteriorColor: "Platinum White Pearl"
-  finalPrice: 28360
-  fuelType: "Regular Unleaded"
-  highwayFuelEfficiency: 38
-  interiorColor: "Black"
-  internetPrice: 28360
-  inventoryType: "new"
-  make: "Honda"
-  model: "Accord"
-  modelYear: "2018"
-  msrp: 28360
-  odometer: 5
-  status: "Live"
-  stockNumber: "00180772"
-  transmission: "Variable"
-  trim: "EX"
-  uuid: "ab119e0e0a0a00f944d6f3031cd34854"
+  accountId: "futuredemodealer",
+  bodyStyle: "Sedan",
+  certified: "false",
+  cityFuelEfficiency: 30,
+  classification: "primary",
+  doors: "4-door",
+  driveLine: "FWD",
+  engine: "I-4 cyl",
+  exteriorColor: "Platinum White Pearl",
+  finalPrice: 28360,
+  fuelType: "Regular Unleaded",
+  highwayFuelEfficiency: 38,
+  interiorColor: "Black",
+  internetPrice: 28360,
+  inventoryType: "new",
+  make: "Honda",
+  model: "Accord",
+  modelYear: 2018,
+  msrp: 28360,
+  odometer: 5,
+  status: "Live",
+  stockNumber: "00180772",
+  transmission: "Variable",
+  trim: "EX",
+  uuid: "ab119e0e0a0a00f944d6f3031cd34854",
   vin: "1HGCV1F42JA141468"
 }
 ```

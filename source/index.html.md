@@ -13,7 +13,6 @@ includes:
   - events
   - methods
   - locations
-  - examples
 
 search: true
 ---
