@@ -301,10 +301,10 @@
                   <li>
                     <a href="#vehicle-media-container" class="toc-h2 toc-link" data-title="Vehicle Media Container">Vehicle Media Container</a>
                   </li>
+                  <li>
+                    <a href="#top-banner" class="toc-h2 toc-link" data-title="Top Banner">Top Banner</a>
+                  </li>
               </ul>
-          </li>
-          <li>
-            <a href="#example-implementation" class="toc-h1 toc-link" data-title="Example Implementation">Example Implementation</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -361,8 +361,8 @@ This API is currently in development and is subject to evolution.
 <p>Example Payload</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="nl">accountId</span><span class="p">:</span> <span class="s1">'roimotors'</span><span class="p">,</span>
-  <span class="nx">siteId</span><span class="p">:</span> <span class="s1">'roimotors'</span><span class="p">,</span>
+  <span class="nl">accountId</span><span class="p">:</span> <span class="s1">'futuredemodealer'</span><span class="p">,</span>
+  <span class="nx">siteId</span><span class="p">:</span> <span class="s1">'futuredemodealer'</span><span class="p">,</span>
   <span class="nx">defaultDomain</span><span class="p">:</span> <span class="s1">'www.roimotors.com'</span><span class="p">,</span>
   <span class="nx">indexPage</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">searchPage</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -380,6 +380,11 @@ This API is currently in development and is subject to evolution.
 </tr>
 </thead><tbody>
 <tr>
+<td><code>accountId</code></td>
+<td><code>futuredemodealer</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
 <td><code>siteId</code></td>
 <td><code>futuredemodealer</code></td>
 <td><code>String</code></td>
@@ -391,12 +396,12 @@ This API is currently in development and is subject to evolution.
 </tr>
 <tr>
 <td><code>indexPage</code></td>
-<td><code>false</code></td>
+<td><code>true</code></td>
 <td><code>Boolean</code></td>
 </tr>
 <tr>
 <td><code>searchPage</code></td>
-<td><code>true</code></td>
+<td><code>false</code></td>
 <td><code>Boolean</code></td>
 </tr>
 <tr>
@@ -429,8 +434,6 @@ This API is currently in development and is subject to evolution.
   <span class="nx">dealershipAddress1</span><span class="p">:</span> <span class="s1">'1 Howard Street'</span><span class="p">,</span>
   <span class="nx">dealershipAddress2</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
   <span class="nx">dealershipCity</span><span class="p">:</span> <span class="s1">'Burlington'</span><span class="p">,</span>
-  <span class="nx">dealershipCountry</span><span class="p">:</span> <span class="s1">'US'</span><span class="p">,</span>
-  <span class="nx">dealershipName</span><span class="p">:</span> <span class="s1">'ROIMOTORS Honda'</span><span class="p">,</span>
   <span class="nx">dealershipPostalCode</span><span class="p">:</span> <span class="s1">'05401'</span><span class="p">,</span>
   <span class="nx">dealershipStateProvince</span><span class="p">:</span> <span class="s1">'VT'</span><span class="p">,</span>
   <span class="nx">dealershipCountry</span><span class="p">:</span> <span class="s1">'US'</span>
@@ -464,16 +467,6 @@ This API is currently in development and is subject to evolution.
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>dealershipCountry</code></td>
-<td><code>US</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>dealershipName</code></td>
-<td><code>ROIMOTORS Honda</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
 <td><code>dealershipPostalCode</code></td>
 <td><code>05401</code></td>
 <td><code>String</code></td>
@@ -494,32 +487,32 @@ This API is currently in development and is subject to evolution.
 <p>Example Payload</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="nl">accountId</span><span class="p">:</span> <span class="s2">"futuredemodealer"</span>
-  <span class="nl">bodyStyle</span><span class="p">:</span> <span class="s2">"Sedan"</span>
-  <span class="nl">certified</span><span class="p">:</span> <span class="s2">"false"</span>
-  <span class="nl">cityFuelEfficiency</span><span class="p">:</span> <span class="mi">30</span>
-  <span class="nl">classification</span><span class="p">:</span> <span class="s2">"primary"</span>
-  <span class="nl">doors</span><span class="p">:</span> <span class="s2">"4-door"</span>
-  <span class="nl">driveLine</span><span class="p">:</span> <span class="s2">"FWD"</span>
-  <span class="nl">engine</span><span class="p">:</span> <span class="s2">"I-4 cyl"</span>
-  <span class="nl">exteriorColor</span><span class="p">:</span> <span class="s2">"Platinum White Pearl"</span>
-  <span class="nl">finalPrice</span><span class="p">:</span> <span class="mi">28360</span>
-  <span class="nl">fuelType</span><span class="p">:</span> <span class="s2">"Regular Unleaded"</span>
-  <span class="nl">highwayFuelEfficiency</span><span class="p">:</span> <span class="mi">38</span>
-  <span class="nl">interiorColor</span><span class="p">:</span> <span class="s2">"Black"</span>
-  <span class="nl">internetPrice</span><span class="p">:</span> <span class="mi">28360</span>
-  <span class="nl">inventoryType</span><span class="p">:</span> <span class="s2">"new"</span>
-  <span class="nl">make</span><span class="p">:</span> <span class="s2">"Honda"</span>
-  <span class="nl">model</span><span class="p">:</span> <span class="s2">"Accord"</span>
-  <span class="nl">modelYear</span><span class="p">:</span> <span class="s2">"2018"</span>
-  <span class="nl">msrp</span><span class="p">:</span> <span class="mi">28360</span>
-  <span class="nl">odometer</span><span class="p">:</span> <span class="mi">5</span>
-  <span class="nl">status</span><span class="p">:</span> <span class="s2">"Live"</span>
-  <span class="nl">stockNumber</span><span class="p">:</span> <span class="s2">"00180772"</span>
-  <span class="nl">transmission</span><span class="p">:</span> <span class="s2">"Variable"</span>
-  <span class="nl">trim</span><span class="p">:</span> <span class="s2">"EX"</span>
-  <span class="nl">uuid</span><span class="p">:</span> <span class="s2">"ab119e0e0a0a00f944d6f3031cd34854"</span>
-  <span class="nl">vin</span><span class="p">:</span> <span class="s2">"1HGCV1F42JA141468"</span>
+  <span class="nl">accountId</span><span class="p">:</span> <span class="s2">"futuredemodealer"</span><span class="p">,</span>
+  <span class="nx">bodyStyle</span><span class="p">:</span> <span class="s2">"Sedan"</span><span class="p">,</span>
+  <span class="nx">certified</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
+  <span class="nx">cityFuelEfficiency</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">classification</span><span class="p">:</span> <span class="s2">"primary"</span><span class="p">,</span>
+  <span class="nx">doors</span><span class="p">:</span> <span class="s2">"4-door"</span><span class="p">,</span>
+  <span class="nx">driveLine</span><span class="p">:</span> <span class="s2">"FWD"</span><span class="p">,</span>
+  <span class="nx">engine</span><span class="p">:</span> <span class="s2">"I-4 cyl"</span><span class="p">,</span>
+  <span class="nx">exteriorColor</span><span class="p">:</span> <span class="s2">"Platinum White Pearl"</span><span class="p">,</span>
+  <span class="nx">finalPrice</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
+  <span class="nx">fuelType</span><span class="p">:</span> <span class="s2">"Regular Unleaded"</span><span class="p">,</span>
+  <span class="nx">highwayFuelEfficiency</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
+  <span class="nx">interiorColor</span><span class="p">:</span> <span class="s2">"Black"</span><span class="p">,</span>
+  <span class="nx">internetPrice</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
+  <span class="nx">inventoryType</span><span class="p">:</span> <span class="s2">"new"</span><span class="p">,</span>
+  <span class="nx">make</span><span class="p">:</span> <span class="s2">"Honda"</span><span class="p">,</span>
+  <span class="nx">model</span><span class="p">:</span> <span class="s2">"Accord"</span><span class="p">,</span>
+  <span class="nx">modelYear</span><span class="p">:</span> <span class="mi">2018</span><span class="p">,</span>
+  <span class="nx">msrp</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
+  <span class="nx">odometer</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="nx">status</span><span class="p">:</span> <span class="s2">"Live"</span><span class="p">,</span>
+  <span class="nx">stockNumber</span><span class="p">:</span> <span class="s2">"00180772"</span><span class="p">,</span>
+  <span class="nx">transmission</span><span class="p">:</span> <span class="s2">"Variable"</span><span class="p">,</span>
+  <span class="nx">trim</span><span class="p">:</span> <span class="s2">"EX"</span><span class="p">,</span>
+  <span class="nx">uuid</span><span class="p">:</span> <span class="s2">"ab119e0e0a0a00f944d6f3031cd34854"</span><span class="p">,</span>
+  <span class="nx">vin</span><span class="p">:</span> <span class="s2">"1HGCV1F42JA141468"</span>
 <span class="p">}</span>
 </code></pre>
 <table><thead>
@@ -878,6 +871,26 @@ This API is currently in development and is subject to evolution.
   <span class="c1">// This element is positioned below the vehicle image area on vehicle search pages.</span>
 <span class="p">});</span>
 </code></pre>
+<blockquote>
+<p>Example Implementation:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationId</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Watch Video'</span><span class="p">,</span>
+          <span class="na">src</span><span class="p">:</span> <span class="s1">'https://www.providerdomain.com/path/video-player.html?vin='</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
+          <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary dialog'</span><span class="p">,</span>
+          <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
+        <span class="p">});</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
 <p>This element is positioned below the vehicle image area on vehicle search pages.</p>
 <h2 id='vehicle-badge'>Vehicle Badge</h2>
 <blockquote>
@@ -887,6 +900,34 @@ This API is currently in development and is subject to evolution.
   <span class="c1">// This element is positioned below the vehicle tech specs area on vehicle search and detail pages.</span>
 <span class="p">});</span>
 </code></pre>
+<blockquote>
+<p>Example Implementation:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationId</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">inventoryType</span> <span class="o">!==</span> <span class="s1">'used'</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'img'</span><span class="p">),</span>
+          <span class="nx">a</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span>
+
+        <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'https://static.dealer.com/v8/global/images/franchise/white/logo-certified-carfax-free-lrg.png'</span><span class="p">;</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">alt</span> <span class="o">=</span> <span class="s1">'Carfax Free Report'</span><span class="p">;</span>
+
+        <span class="nx">a</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">'https://www.carfax.com/VehicleHistory/p/Report.cfx?partner=DLR_3&amp;vin='</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">;</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="s1">'_blank'</span><span class="p">;</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">outerHTML</span><span class="p">;</span>
+
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
 <p>This element is positioned below the vehicle tech specs area on vehicle search and detail pages.</p>
 <h2 id='vehicle-pricing'>Vehicle Pricing</h2>
 <blockquote>
@@ -895,6 +936,28 @@ This API is currently in development and is subject to evolution.
 <pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// This element is positioned below the vehicle pricing area on vehicle search and detail pages.</span>
 <span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Implementation:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
+          <span class="na">src</span><span class="p">:</span> <span class="s1">'/'</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">inventoryType</span> <span class="o">+</span> <span class="s1">'-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
+          <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
+          <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
+        <span class="p">})</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>This element is positioned below the vehicle pricing area on vehicle search and detail pages.</p>
 <h2 id='vehicle-media-container'>Vehicle Media Container</h2>
@@ -906,34 +969,62 @@ This API is currently in development and is subject to evolution.
   <span class="c1">// Injecting into this location will replace the media gallery with the elements you insert.</span>
 <span class="p">});</span>
 </code></pre>
-<p>This element is the media gallery container on vehicle deals pages. Injecting into this location will replace the media gallery with the elements you insert.</p>
-<h1 id='example-implementation'>Example Implementation</h1><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+<blockquote>
+<p>Example Implementation:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
-        <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
-        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
-          <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
-          <span class="na">src</span><span class="p">:</span> <span class="s1">'/new-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
-          <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
-          <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
-        <span class="p">})</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">containerEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">);</span>
+        <span class="nx">containerEl</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="s1">'background-color: #ff0000; font-size: 30px; width: 100%; height: 100%'</span><span class="p">;</span>
+        <span class="nx">containerEl</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s1">'Your media container goes here.'</span><span class="p">;</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">containerEl</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
-<p>Some parts of the example to the right have been used in the above documentation. In its entirety, the 20 lines of code perform the following steps:</p>
+<p>This element is the media gallery container on vehicle deals pages. Injecting into this location will replace the media gallery with the elements you insert.</p>
+<h2 id='top-banner'>Top Banner</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'top-banner'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// This element is positioned in a prominent location above the vehicle listings on the Search Results Page.</span>
+  <span class="c1">// On the Details page, it is near the top of the vehicle information, below the media gallery.</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Implementation:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'top-banner'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'img'</span><span class="p">),</span>
+          <span class="nx">a</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span>
 
-<ol>
-<li>Subscribe to the <code>page-load-v1</code> event to get context for this page view.</li>
-<li>If this is the vehicle search page, subscribe to the <code>vehicle-pricing</code> location inserter.</li>
-<li>For each vehicle pricing area on the current page, generate the button markup using the <code>create</code> method.</li>
-<li>Finally, use the <code>append</code> method to insert the new button into each pricing area.</li>
-</ol>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'https://pictures.dealer.com/d/ddcdemohonda/0217/15bd9bd8ecf0b2a292a91cecb08c595bx.jpg'</span><span class="p">;</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">alt</span> <span class="o">=</span> <span class="s1">'New 2015 Honda Pilot'</span><span class="p">;</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s1">'New 2015 Honda Pilot'</span><span class="p">;</span>
+
+        <span class="nx">a</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">'/specials/new.htm'</span><span class="p">;</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">outerHTML</span><span class="p">;</span>
+
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>This element is positioned in a prominent location above the vehicle listings on the Search Results Page.</p>
+
+<p>On the Details page, it is positioned at the top of the vehicle information, below the media gallery.</p>
+
+<p>You can target either the listings or details page by first subscribing to the page-load-v1 event, and using the event values of <code>payload.searchPage</code> and <code>payload.detailPage</code> to check the page type.</p>
 
       </div>
       <div class="dark-box">
