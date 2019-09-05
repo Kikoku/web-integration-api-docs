@@ -34,7 +34,7 @@ Field Key | Example Value | Field Format
 `detailPage` | `false` | `Boolean`
 `pageName` | `INDEX` | `String`
 `layoutType` | `desktop` | `String`
-`locale` | `en_US | String`
+`locale` | `en_US` | `String`
 
 ## Dealership Info Event
 
