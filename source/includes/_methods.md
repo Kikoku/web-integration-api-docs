@@ -1,22 +1,22 @@
 # API Methods
 
-## DDC.API.subscribe(key, name, callback(ev))
+## subscribe(key, name, callback(ev))
 
 > Usage
 
 ```javascript
-DDC.API.subscribe('your-integration-key', 'event-name-and-version', function(ev) {
+window.DDC.API.subscribe('your-integration-key', 'event-name-and-version', function(ev) {
   console.log(ev);
 });
 ```
 Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.
 
-## DDC.API.insert(key, name, callback(elem, meta))
+## insert(key, name, callback(elem, meta))
 
 > Usage
 
 ```javascript
-DDC.API.insert('your-integration-key', 'insert-location-name', function(elem, meta) {
+window.DDC.API.insert('your-integration-key', 'location-name', function(elem, meta) {
   console.log(elem); // The DOM element where markup may be inserted.
   console.log(meta); // The payload object for the current insertion point.
 });
@@ -31,7 +31,7 @@ Field Name | Purpose | Field Format
 `elem` | The DOM element where the markup should be inserted. | Element
 `meta` | The payload object for the current insertion point. | Object
 
-## DDC.API.create(key, type, data)
+## create(key, type, data)
 
 > Create a Button
 
@@ -52,12 +52,12 @@ The create method can be used to generate markup which adheres to our standard p
 
 Currently only the "button" type is supported, however other types will soon be added. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.
 
-## DDC.API.append(key, targetEl, appendEl)
+## append(key, targetEl, appendEl)
 
 > Usage
 
 ```javascript
-DDC.API.append('your-integration-key', targetEl, appendEl);
+window.DDC.API.append('your-integration-key', targetEl, appendEl);
 ```
 
 > For example, used in conjunction with the `insert` and the `create` methods your code might look similar to this:
@@ -81,13 +81,13 @@ DDC.API.append('your-integration-key', targetEl, appendEl);
 
 When calling the insert method, the goal is to insert some markup into a location on the page. Once you have constructed the element(s) you wish to insert, you may call the `append` method to complete the process.
 
-## DDC.API.load(key, resourceUrl)
+## load(key, resourceUrl)
 
 > Usage
 
 ```javascript
-DDC.API.load('your-integration-key', 'https://www.company.com/script.js') // Loads a JavaScript file
-DDC.API.load('your-integration-key', 'https://www.company.com/integration.css') // Loads a CSS stylesheet
+window.DDC.API.load('your-integration-key', 'https://www.company.com/script.js'); // Loads a JavaScript file
+window.DDC.API.load('your-integration-key', 'https://www.company.com/integration.css'); // Loads a CSS stylesheet
 ```
 
 The load method is an easy way to include additional scripts or stylesheets required for your integration. Stylesheets and JavaScript files are automatically loaded in an optimal way for each type of asset.

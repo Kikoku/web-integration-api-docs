@@ -9,7 +9,7 @@ See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentati
 > Usage:
 
 ```javascript
-DDC.API.insert('your-integration-key', 'vehicle-media', function(elem, meta) {
+window.DDC.API.insert('your-integration-key', 'vehicle-media', function(elem, meta) {
   // This element is positioned below the vehicle image area on vehicle search pages.
 });
 ```
@@ -150,8 +150,8 @@ This element is the media gallery container on vehicle deals pages. Injecting in
 > Usage:
 
 ```javascript
-DDC.API.insert('your-integration-key', 'top-banner', function(elem, meta) {
-  // This element is positioned in a prominent location above the vehicle listings on the Search Results Page.
+DDC.API.insert('your-integration-key', 'primary-banner', function(elem, meta) {
+  // This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.
   // On the Details page, it is near the top of the vehicle information, below the media gallery.
 });
 ```
@@ -163,7 +163,7 @@ DDC.API.insert('your-integration-key', 'top-banner', function(elem, meta) {
   var integrationKey = 'your-integration-key';
   API.subscribe(integrationKey, 'page-load-v1', function (ev) {
     if (ev.payload.searchPage) {
-      API.insert(integrationKey, 'top-banner', function (elem, meta) {
+      API.insert(integrationKey, 'primary-banner', function (elem, meta) {
         var img = document.createElement('img'),
           a = document.createElement('a');
 
