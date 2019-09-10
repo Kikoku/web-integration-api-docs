@@ -18,17 +18,17 @@ window.DDC.API.insert('your-integration-key', 'vehicle-media', function(elem, me
 
 ```javascript
 (function(API) {
-  var integrationId = 'test-integration';
-  API.subscribe(integrationId, 'page-load-v1', function (ev) {
+  var integrationKey = 'test-integration';
+  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
     if (ev.payload.searchPage) {
-      API.insert(integrationId, 'vehicle-media', function (elem, meta) {
+      API.insert(integrationKey, 'vehicle-media', function (elem, meta) {
         var button = API.create(integrationKey, 'button', {
           text: 'Watch Video',
           src: 'https://www.providerdomain.com/path/video-player.html?vin=' + meta.vin,
           classes: 'btn btn-primary dialog',
           style: 'margin-top: 12px;'
         });
-        API.append(integrationId, elem, a);
+        API.append(integrationKey, elem, a);
       });
     }
   });
@@ -51,10 +51,10 @@ DDC.API.insert('your-integration-key', 'vehicle-badge', function(elem, meta) {
 
 ```javascript
 (function(API) {
-  var integrationId = 'test-integration';
-  API.subscribe(integrationId, 'page-load-v1', function (ev) {
+  var integrationKey = 'test-integration';
+  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
     if (ev.payload.searchPage) {
-      API.insert(integrationId, 'vehicle-badge', function (elem, meta) {
+      API.insert(integrationKey, 'vehicle-badge', function (elem, meta) {
         if (meta.inventoryType !== 'used') {
           return;
         }
@@ -69,7 +69,7 @@ DDC.API.insert('your-integration-key', 'vehicle-badge', function(elem, meta) {
         a.target = '_blank';
         a.innerHTML = img.outerHTML;
 
-        API.append(integrationId, elem, a);
+        API.append(integrationKey, elem, a);
       });
     }
   });
@@ -174,7 +174,7 @@ DDC.API.insert('your-integration-key', 'primary-banner', function(elem, meta) {
         a.href = '/specials/new.htm';
         a.innerHTML = img.outerHTML;
 
-        API.append(integrationId, elem, a);
+        API.append(integrationKey, elem, a);
       });
     }
   });
