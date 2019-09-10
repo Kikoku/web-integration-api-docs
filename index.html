@@ -875,17 +875,17 @@ This API is currently in development and is subject to evolution.
 <p>Example Implementation:</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integrationId</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
           <span class="na">text</span><span class="p">:</span> <span class="s1">'Watch Video'</span><span class="p">,</span>
           <span class="na">src</span><span class="p">:</span> <span class="s1">'https://www.providerdomain.com/path/video-player.html?vin='</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
           <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary dialog'</span><span class="p">,</span>
           <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
         <span class="p">});</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
@@ -904,10 +904,10 @@ This API is currently in development and is subject to evolution.
 <p>Example Implementation:</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integrationId</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">inventoryType</span> <span class="o">!==</span> <span class="s1">'used'</span><span class="p">)</span> <span class="p">{</span>
           <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
@@ -922,7 +922,7 @@ This API is currently in development and is subject to evolution.
         <span class="nx">a</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="s1">'_blank'</span><span class="p">;</span>
         <span class="nx">a</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">outerHTML</span><span class="p">;</span>
 
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
@@ -1014,7 +1014,7 @@ This API is currently in development and is subject to evolution.
         <span class="nx">a</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">'/specials/new.htm'</span><span class="p">;</span>
         <span class="nx">a</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">outerHTML</span><span class="p">;</span>
 
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationId</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
