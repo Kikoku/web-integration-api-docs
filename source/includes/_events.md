@@ -175,7 +175,7 @@ The dealership info event is useful if you need to know the name and address of 
 > Usage
 
 ```javascript
-window.DDC.API.subscribe('your-integration-key', 'vehicle-v1', function(ev) {
+window.DDC.API.subscribe('your-integration-key', 'vehicle-shown-v1', function(ev) {
   console.log(ev);
 });
 ```
@@ -183,7 +183,7 @@ window.DDC.API.subscribe('your-integration-key', 'vehicle-v1', function(ev) {
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `key` | `your-integration-key` | `String`
-`event-id` | `vehicle-v1` | `String`
+`event-id` | `vehicle-shown-v1` | `String`
 `callback` | `function(ev) { console.log(ev); }` | `function`
 
 > This event passes the standard <a href="#vehicle-event">Vehicle Event</a> object to your callback function.

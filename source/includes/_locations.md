@@ -53,7 +53,7 @@ DDC.API.insert('your-integration-key', 'vehicle-badge', function(elem, meta) {
 (function(API) {
   var integrationKey = 'test-integration';
   API.subscribe(integrationKey, 'page-load-v1', function (ev) {
-    if (ev.payload.searchPage) {
+    if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert(integrationKey, 'vehicle-badge', function (elem, meta) {
         if (meta.inventoryType !== 'used') {
           return;
@@ -95,7 +95,7 @@ DDC.API.insert('your-integration-key', 'vehicle-pricing', function(elem, meta) {
 (function(API) {
   var integrationKey = 'your-integration-key';
   API.subscribe(integrationKey, 'page-load-v1', function (ev) {
-    if (ev.payload.searchPage) {
+    if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert(integrationKey, 'vehicle-pricing', function (elem, meta) {
         var lowPrice = Math.round(meta.finalPrice - 1000);
         var highPrice = Math.round(meta.finalPrice + 1000);
@@ -134,7 +134,7 @@ DDC.API.insert('your-integration-key', 'vehicle-media-container', function(elem,
     if (ev.payload.detailPage) {
       API.insert(integrationKey, 'vehicle-media-container', function (elem, meta) {
         var containerEl = document.createElement('div');
-        containerEl.style = 'background-color: #ff0000; font-size: 30px; width: 100%; height: 100%';
+        containerEl.style = 'background-color: #ff0000; font-size: 30px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;';
         containerEl.innerHTML = 'Your media container goes here.';
         API.append(integrationKey, elem, containerEl);
       });
@@ -162,7 +162,7 @@ DDC.API.insert('your-integration-key', 'primary-banner', function(elem, meta) {
 (function(API) {
   var integrationKey = 'your-integration-key';
   API.subscribe(integrationKey, 'page-load-v1', function (ev) {
-    if (ev.payload.searchPage) {
+    if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert(integrationKey, 'primary-banner', function (elem, meta) {
         var img = document.createElement('img'),
           a = document.createElement('a');
@@ -176,7 +176,7 @@ DDC.API.insert('your-integration-key', 'primary-banner', function(elem, meta) {
 
         API.append(integrationKey, elem, a);
       });
-    }
+    }f
   });
 })(window.DDC.API);
 ```
