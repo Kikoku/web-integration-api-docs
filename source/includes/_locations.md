@@ -28,7 +28,7 @@ window.DDC.API.insert('your-integration-key', 'vehicle-media', function(elem, me
           classes: 'btn btn-primary dialog',
           style: 'margin-top: 12px;'
         });
-        API.append(integrationKey, elem, a);
+        API.append(integrationKey, elem, button);
       });
     }
   });
