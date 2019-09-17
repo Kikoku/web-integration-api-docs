@@ -145,7 +145,7 @@ DDC.API.insert('your-integration-key', 'vehicle-media-container', function(elem,
 
 This element is the media gallery container on vehicle deals pages. Injecting into this location will replace the media gallery with the elements you insert.
 
-## Top Banner
+## Primary Banner
 
 > Usage:
 
