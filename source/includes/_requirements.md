@@ -18,7 +18,7 @@ When you begin development of your script, it's easy to test on any Dealer.com s
 
 `DDC.API.test('Your-Company-Name', 'https://www.yourdomain.com/your-javascript-file.js');	`
 
-This will set a cookie in your browser and instruct the site to load your defined script as if the integration was enabled. The code will only load for you in the current browser session so that you are able to iterate and test your code. When it is ready for activation on sites, we can set the integration up in our system and load your script for all users of the site(s) where it should be enabled. The set cookie expires when you close your browser.
+This will set a cookie in your browser and instruct the site to load your defined script as if the integration was enabled. The code will only load for you in the current browser session so that you are able to iterate and test your code. When it is ready for activation on sites, we can set the integration up in our system and load your script for all users of the site(s) where it should be enabled. The set cookie expires when your browser session expires or you clear your browser cookies.
 
 *3.)* Add the `?_integrationMode=debug` URL parameter to the page you are testing to activate the cookied script for your page view. This will also provide an additional benefit of any <a href="#debugging">logged messages</a> in your script being output to the browser console for troubleshooting and debugging purposes.
 
