@@ -143,7 +143,7 @@ To receive data for events, you must opt-in to event subscriptions. Each event i
 
 ```javascript
 window.DDC.API.subscribe('your-integration-key', 'page-load-v1', function(ev) {
-  console.log(ev);
+  API.log(ev);
 });
 ```
 
@@ -151,7 +151,7 @@ Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `key` | `your-integration-key` | `String`
 `event-id` | `page-load-v1` | `String`
-`callback` | `function(ev) { console.log(ev); }` | `function`
+`callback` | `function(ev) { API.log(ev); }` | `function`
 
 > This event passes the standard <a href="#page-event">Page Event</a> object to your callback function.
 
@@ -163,7 +163,7 @@ The page load event is useful to determine the context of the current page. By m
 
 ```javascript
 window.DDC.API.subscribe('your-integration-key', 'dealership-info-v1', function(ev) {
-  console.log(ev);
+  API.log(ev);
 });
 ```
 
@@ -171,7 +171,7 @@ Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `key` | `your-integration-key` | `String`
 `event-id` | `page-load-v1` | `String`
-`callback` | `function(ev) { console.log(ev); }` | `function`
+`callback` | `function(ev) { API.log(ev); }` | `function`
 
 > This event passes the standard <a href="#dealership-info-event">Dealership Info Event</a> object to your callback function.
 
@@ -183,7 +183,7 @@ The dealership info event is useful if you need to know the name and address of 
 
 ```javascript
 window.DDC.API.subscribe('your-integration-key', 'vehicle-shown-v1', function(ev) {
-  console.log(ev);
+  API.log(ev);
 });
 ```
 
@@ -191,7 +191,7 @@ Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `key` | `your-integration-key` | `String`
 `event-id` | `vehicle-shown-v1` | `String`
-`callback` | `function(ev) { console.log(ev); }` | `function`
+`callback` | `function(ev) { API.log(ev); }` | `function`
 
 > This event passes the standard <a href="#vehicle-event">Vehicle Event</a> object to your callback function.
 
