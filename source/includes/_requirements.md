@@ -8,7 +8,27 @@ Once enrolled, you will be provided with an integration key to use when making A
 
 ## Bootstrapping Your Script
 
-It's a good idea to start by creating a simple JavaScript file that registers with the API (subscribe) and potentially loads additional scripts if necessary. When you want to test a script on our platform, send us the URL to the script so we can include it on the page when we enable your integration. The script should be as minimal as possible and perform only actions necessary to bootstrap your integration on to the site. There is a minimal subscribe example here, and you can see a more detailed <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.
+Start by creating a simple JavaScript file that registers with the API and loads additional scripts or styling if necessary. You can leverage the available API capabilities in your script to place content on pages, or include existing integration code if necessary. Your script should eventually be hosted on a content delivery network such as Cloudfront or Akamai, but for development purposes you can host it anywhere.
+
+When you begin development of your script, it's easy to test on any Dealer.com site to see how it will function. To accomplish that, follow these steps:
+
+1.) Load any Dealer.com site where you want to test your integration. If you don't already have a site in mind, a good one to start with is <a href="https://www.roimotors.com/" target="_blank">https://www.roimotors.com/</a>.
+
+2.) Open the developer tools in your browser and enter this code in the Console window:
+
+```
+window.DDC.API.test('Your-Company-Name', 'https://www.yourdomain.com/your-javascript-file.js');
+```
+
+This will set a cookie in your browser and instruct the site to load your defined script as if the integration was enabled. The code will only load for you in the current browser session so that you are able to iterate and test your code. When it is ready for activation on sites, we can set the integration up in our system and load your script for all users of the site(s) where it should be enabled. The set cookie expires when you close your browser.
+
+3.) Add the `?_integrationMode=debug` URL parameter to the page you are testing to activate the cookied script for your page view. This will also provide an additional benefit of any <a href="#debugging">logged messages</a> in your script being output to the browser console for troubleshooting and debugging purposes.
+
+Other methods:
+
+* You can accomplish the same test setup as above by installing a browser extension such as <a href="https://chrome.google.com/webstore/detail/custom-javascript-for-web/poakhlngfciodnhlhhgnaaelnpjljija" target="_blank">Custom JavaScript for web sites</a> and loading your script using that mechanism. This will not require the `?_integrationMode=debug` parameter for the code to be executed on the site, however it's a good idea to use that parameter either way for better debugging output in your browser console.
+
+* Alternate to both of the above methods, we can create a test site for you and specify the script to include on the site. This will make your integrated code available for all viewers of the test site which is useful in a setting where multiple stakeholders or developers want to see the integration in development or for testing purposes.
 
 ```javascript
 (function(API) {
@@ -20,6 +40,8 @@ It's a good idea to start by creating a simple JavaScript file that registers wi
   });
 })(window.DDC.API);
 ```
+
+Your code should be minimal and perform only actions necessary to bootstrap your integration on to the site. There is a simple subscribe example here, and you can see a more detailed <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.
 
 ## Technical Requirements
 
@@ -37,10 +59,7 @@ It's a good idea to start by creating a simple JavaScript file that registers wi
 
 * All code should be minified and served using gzip or better compression.
 
-* Integrations should avoid loading excessive imagery, fonts and scripts.
+* Integrations should avoid loading excessive imagery, fonts and scripts. While some are often necessary, less is more and avoiding loading duplicate scripts will help reduce load time for your integration as well as improve overall website speed.
 
-* Please refrain from including large libraries such as jQuery.
-
-
-
+* Please refrain from including large libraries such as jQuery or React, as both are already available on all pages of all of our sites.
 

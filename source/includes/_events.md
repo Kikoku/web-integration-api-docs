@@ -18,6 +18,11 @@ There are currently three types of events and each has a consistent data format.
   indexPage: true,
   searchPage: false,
   detailPage: false,
+  franchises: ['honda'],
+  design: {
+    variationId: 'v9_GLOBAL_0011_V2',
+    themekit: 'BLUE_WHITE'
+  },
   pageName: 'INDEX',
   layoutType: 'desktop',
   locale: 'en_US'
@@ -32,6 +37,8 @@ Field Key | Example Value | Field Format
 `indexPage` | `true` | `Boolean`
 `searchPage` | `false` | `Boolean`
 `detailPage` | `false` | `Boolean`
+`design` | `{variationId: 'v9_GLOBAL_0011_V2', themekit: 'BLUE_WHITE'}` | `Object`
+`franchises` | `['honda']` | `Array`
 `pageName` | `INDEX` | `String`
 `layoutType` | `desktop` | `String`
 `locale` | `en_US` | `String`
