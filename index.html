@@ -334,30 +334,23 @@ This API is currently in development and is subject to evolution.
 
 <p>When you begin development of your script, it&#39;s easy to test on any Dealer.com site to see how it will function. To accomplish that, follow these steps:</p>
 
-<p>1.) Load any Dealer.com site where you want to test your integration. If you don&#39;t already have a site in mind, a good one to start with is <a href="https://www.roimotors.com/" target="_blank">https://www.roimotors.com/</a>.</p>
+<p><em>1.)</em> Load any Dealer.com site where you want to test your integration. If you don&#39;t already have a site in mind, a good one to start with is <a href="https://www.roimotors.com/" target="_blank">https://www.roimotors.com/</a>.</p>
 
-<p>2.) Open the developer tools in your browser and enter this code in the Console window:</p>
-<pre class="highlight plaintext"><code>window.DDC.API.test('Your-Company-Name', 'https://www.yourdomain.com/your-javascript-file.js');
-</code></pre>
+<p><em>2.)</em> Open the developer tools in your browser and enter this code in the Console window:</p>
+
+<p><code>DDC.API.test(&#39;Your-Company-Name&#39;, &#39;https://www.yourdomain.com/your-javascript-file.js&#39;);</code></p>
+
 <p>This will set a cookie in your browser and instruct the site to load your defined script as if the integration was enabled. The code will only load for you in the current browser session so that you are able to iterate and test your code. When it is ready for activation on sites, we can set the integration up in our system and load your script for all users of the site(s) where it should be enabled. The set cookie expires when you close your browser.</p>
 
-<p>3.) Add the <code>?_integrationMode=debug</code> URL parameter to the page you are testing to activate the cookied script for your page view. This will also provide an additional benefit of any <a href="#debugging">logged messages</a> in your script being output to the browser console for troubleshooting and debugging purposes.</p>
+<p><em>3.)</em> Add the <code>?_integrationMode=debug</code> URL parameter to the page you are testing to activate the cookied script for your page view. This will also provide an additional benefit of any <a href="#debugging">logged messages</a> in your script being output to the browser console for troubleshooting and debugging purposes.</p>
 
 <p>Other methods:</p>
 
 <ul>
-<li><p>You can accomplish the same test setup as above by installing a browser extension such as <a href="https://chrome.google.com/webstore/detail/custom-javascript-for-web/poakhlngfciodnhlhhgnaaelnpjljija" target="_blank">Custom JavaScript for web sites</a> and loading your script using that mechanism. This will not require the <code>?_integrationMode=debug</code> parameter for the code to be executed on the site, however it&#39;s a good idea to use that parameter either way for better debugging output in your browser console.</p></li>
+<li><p>You can accomplish the same test setup as above by installing a browser extension such as <a href="https://chrome.google.com/webstore/detail/custom-javascript-for-web/poakhlngfciodnhlhhgnaaelnpjljija" target="_blank">Custom JavaScript for web sites</a> and loading your script using that mechanism. This will not require the <code>?_integrationMode=debug</code> parameter for the code to be executed on the site, however it&#39;s a good idea to use that parameter either way for <a href="#debugging-troubleshooting">better debugging output</a> in your browser console.</p></li>
 <li><p>Alternate to both of the above methods, we can create a test site for you and specify the script to include on the site. This will make your integrated code available for all viewers of the test site which is useful in a setting where multiple stakeholders or developers want to see the integration in development or for testing purposes.</p></li>
 </ul>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">indexPage</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'This is the index page'</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
-</code></pre>
+
 <p>Your code should be minimal and perform only actions necessary to bootstrap your integration on to the site. There is a simple subscribe example here, and you can see a more detailed <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.</p>
 <h2 id='technical-requirements'>Technical Requirements</h2>
 <blockquote>
