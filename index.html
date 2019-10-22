@@ -306,6 +306,9 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#debugging-troubleshooting" class="toc-h1 toc-link" data-title="Debugging / Troubleshooting">Debugging / Troubleshooting</a>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://forms.dealer.com/integrated-partner-program.htm' target='_blank'>Sign Up for our Partner Program</a></li>
@@ -327,7 +330,25 @@ This API is currently in development and is subject to evolution.
 
 <p>Once enrolled, you will be provided with an integration key to use when making API calls.</p>
 <h2 id='bootstrapping-your-script'>Bootstrapping Your Script</h2>
-<p>It&#39;s a good idea to start by creating a simple JavaScript file that registers with the API (subscribe) and potentially loads additional scripts if necessary. When you want to test a script on our platform, send us the URL to the script so we can include it on the page when we enable your integration. The script should be as minimal as possible and perform only actions necessary to bootstrap your integration on to the site. There is a minimal subscribe example here, and you can see a more detailed <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.</p>
+<p>Start by creating a simple JavaScript file that registers with the API and loads additional scripts or styling if necessary. You can leverage the available API capabilities in your script to place content on pages, or include existing integration code if necessary. Your script should eventually be hosted on a content delivery network such as Cloudfront or Akamai, but for development purposes you can host it anywhere.</p>
+
+<p>When you begin development of your script, it&#39;s easy to test on any Dealer.com site to see how it will function. To accomplish that, follow these steps:</p>
+
+<p>1.) Load any Dealer.com site where you want to test your integration. If you don&#39;t already have a site in mind, a good one to start with is <a href="https://www.roimotors.com/" target="_blank">https://www.roimotors.com/</a>.</p>
+
+<p>2.) Open the developer tools in your browser and enter this code in the Console window:</p>
+<pre class="highlight plaintext"><code>window.DDC.API.test('Your-Company-Name', 'https://www.yourdomain.com/your-javascript-file.js');
+</code></pre>
+<p>This will set a cookie in your browser and instruct the site to load your defined script as if the integration was enabled. The code will only load for you in the current browser session so that you are able to iterate and test your code. When it is ready for activation on sites, we can set the integration up in our system and load your script for all users of the site(s) where it should be enabled. The set cookie expires when you close your browser.</p>
+
+<p>3.) Add the <code>?_integrationMode=debug</code> URL parameter to the page you are testing to activate the cookied script for your page view. This will also provide an additional benefit of any <a href="#debugging">logged messages</a> in your script being output to the browser console for troubleshooting and debugging purposes.</p>
+
+<p>Other methods:</p>
+
+<ul>
+<li><p>You can accomplish the same test setup as above by installing a browser extension such as <a href="https://chrome.google.com/webstore/detail/custom-javascript-for-web/poakhlngfciodnhlhhgnaaelnpjljija" target="_blank">Custom JavaScript for web sites</a> and loading your script using that mechanism. This will not require the <code>?_integrationMode=debug</code> parameter for the code to be executed on the site, however it&#39;s a good idea to use that parameter either way for better debugging output in your browser console.</p></li>
+<li><p>Alternate to both of the above methods, we can create a test site for you and specify the script to include on the site. This will make your integrated code available for all viewers of the test site which is useful in a setting where multiple stakeholders or developers want to see the integration in development or for testing purposes.</p></li>
+</ul>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
@@ -336,7 +357,9 @@ This API is currently in development and is subject to evolution.
     <span class="p">}</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
-</code></pre><h2 id='technical-requirements'>Technical Requirements</h2>
+</code></pre>
+<p>Your code should be minimal and perform only actions necessary to bootstrap your integration on to the site. There is a simple subscribe example here, and you can see a more detailed <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.</p>
+<h2 id='technical-requirements'>Technical Requirements</h2>
 <blockquote>
 <p>This is an example of an immediately executing function expression:</p>
 </blockquote>
@@ -349,8 +372,8 @@ This API is currently in development and is subject to evolution.
 <li><p>Always ecapsulate your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.</p></li>
 <li><p>Your bootstrap script and any other integration code or assets should be located on a highly available content delivery network and must work over an HTTPS connection.</p></li>
 <li><p>All code should be minified and served using gzip or better compression.</p></li>
-<li><p>Integrations should avoid loading excessive imagery, fonts and scripts.</p></li>
-<li><p>Please refrain from including large libraries such as jQuery.</p></li>
+<li><p>Integrations should avoid loading excessive imagery, fonts and scripts. While some are often necessary, less is more and avoiding loading duplicate scripts will help reduce load time for your integration as well as improve overall website speed.</p></li>
+<li><p>Please refrain from including large libraries such as jQuery or React, as both are already available on all pages of all of our sites.</p></li>
 </ul>
 <h1 id='events'>Events</h1>
 <p>By subscribing to events we publish, you can easily obtain the data you need to integrate your solution into the website. These events provide data about the website your integration is loading on and the current page the user is viewing.</p>
@@ -367,6 +390,11 @@ This API is currently in development and is subject to evolution.
   <span class="nx">indexPage</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">searchPage</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="nx">detailPage</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">franchises</span><span class="p">:</span> <span class="p">[</span><span class="s1">'honda'</span><span class="p">],</span>
+  <span class="nx">design</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">variationId</span><span class="p">:</span> <span class="s1">'v9_GLOBAL_0011_V2'</span><span class="p">,</span>
+    <span class="nx">themekit</span><span class="p">:</span> <span class="s1">'BLUE_WHITE'</span>
+  <span class="p">},</span>
   <span class="nx">pageName</span><span class="p">:</span> <span class="s1">'INDEX'</span><span class="p">,</span>
   <span class="nx">layoutType</span><span class="p">:</span> <span class="s1">'desktop'</span><span class="p">,</span>
   <span class="nx">locale</span><span class="p">:</span> <span class="s1">'en_US'</span>
@@ -408,6 +436,16 @@ This API is currently in development and is subject to evolution.
 <td><code>detailPage</code></td>
 <td><code>false</code></td>
 <td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>design</code></td>
+<td><code>{variationId: &#39;v9_GLOBAL_0011_V2&#39;, themekit: &#39;BLUE_WHITE&#39;}</code></td>
+<td><code>Object</code></td>
+</tr>
+<tr>
+<td><code>franchises</code></td>
+<td><code>[&#39;honda&#39;]</code></td>
+<td><code>Array</code></td>
 </tr>
 <tr>
 <td><code>pageName</code></td>
@@ -1025,7 +1063,27 @@ This API is currently in development and is subject to evolution.
 <p>On the Details page, it is positioned at the top of the vehicle information, below the media gallery.</p>
 
 <p>You can target either the listings or details page by first subscribing to the page-load-v1 event, and using the event values of <code>payload.searchPage</code> and <code>payload.detailPage</code> to check the page type.</p>
+<h1 id='debugging-troubleshooting'>Debugging / Troubleshooting</h1>
+<p>When developing an integration, it&#39;s helpful to know if the API is doing what you expect and if your code is running successfully. The API intentionally suppresses most errors in regular use cases, however you can opt to view the error messages and API events by adding the following URL parameter to any page of any Dealer.com web site:</p>
 
+<p><code>?_integrationMode=debug</code></p>
+
+<p>This will allow the API to output some log messages to your browser&#39;s console regarding the actions it is taking. Additionally, you can instrument your own integration with log messages to validate that the expected code is being executed and desired code paths are being followed.</p>
+
+<p>To log messages from within your integration code, simply use the <code>API.log</code> method the same way you would use <code>console.log</code>. Those messages will be output to your console when the above URL parameter is present and will be suppressed when it is not.</p>
+
+<blockquote>
+<p>Example Implementation:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s2">"My integration has loaded and this is a search page."</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
