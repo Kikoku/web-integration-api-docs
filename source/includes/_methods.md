@@ -6,7 +6,7 @@
 
 ```javascript
 window.DDC.API.subscribe('your-integration-key', 'event-name-and-version', function(ev) {
-  console.log(ev);
+  window.DDC.API.log(ev);
 });
 ```
 Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.
@@ -17,8 +17,8 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 
 ```javascript
 window.DDC.API.insert('your-integration-key', 'location-name', function(elem, meta) {
-  console.log(elem); // The DOM element where markup may be inserted.
-  console.log(meta); // The payload object for the current insertion point.
+  window.DDC.API.log(elem); // The DOM element where markup may be inserted.
+  window.DDC.API.log(meta); // The payload object for the current insertion point.
 });
 ```
 
@@ -43,7 +43,7 @@ Field Name | Purpose | Field Format
     classes: 'btn btn-primary',
     style: 'border: 2px solid #c00'
   });
-  console.log(button);
+  window.DDC.API.log(button);
   // The above outputs: <a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);">Visit Google</a>
 })(window.DDC.API);
 ```
