@@ -691,7 +691,7 @@ This API is currently in development and is subject to evolution.
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <table><thead>
@@ -728,7 +728,7 @@ This API is currently in development and is subject to evolution.
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'dealership-info-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <table><thead>
@@ -765,7 +765,7 @@ This API is currently in development and is subject to evolution.
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-shown-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <table><thead>
@@ -804,7 +804,7 @@ This API is currently in development and is subject to evolution.
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <p>Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.</p>
@@ -813,8 +813,8 @@ This API is currently in development and is subject to evolution.
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where markup may be inserted.</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">meta</span><span class="p">);</span> <span class="c1">// The payload object for the current insertion point.</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where markup may be inserted.</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">meta</span><span class="p">);</span> <span class="c1">// The payload object for the current insertion point.</span>
 <span class="p">});</span>
 </code></pre>
 <p>The insert method allows you to append markup into specific set locations on some pages. These locations are commonly used areas you may want to target. If you find there are target areas outside of the currently available options, please let us know your use case and we will work to accommodate your needs.</p>
@@ -850,7 +850,7 @@ This API is currently in development and is subject to evolution.
     <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
     <span class="na">style</span><span class="p">:</span> <span class="s1">'border: 2px solid #c00'</span>
   <span class="p">});</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
   <span class="c1">// The above outputs: &lt;a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);"&gt;Visit Google&lt;/a&gt;</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
