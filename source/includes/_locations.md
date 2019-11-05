@@ -9,26 +9,33 @@ See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentati
 > Usage:
 
 ```javascript
-window.DDC.API.insert('your-integration-key', 'vehicle-media', function(elem, meta) {
-  // This element is positioned below the vehicle image area on vehicle search pages.
-});
+(function(API) {
+  var key = 'your-integration-key';
+  var target = 'vehicle-media';
+  API.insert(key, target, function(elem, meta) {
+    // This element is positioned below the vehicle image area on vehicle search pages.
+  });
+})(window.DDC.API);
 ```
 
 > Example Implementation:
 
 ```javascript
 (function(API) {
-  var integrationKey = 'test-integration';
-  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
+  var key = 'test-integration';
+  API.subscribe(key, 'page-load-v1', function (ev) {
     if (ev.payload.searchPage) {
-      API.insert(integrationKey, 'vehicle-media', function (elem, meta) {
-        var button = API.create(integrationKey, 'button', {
+      API.insert(key, 'vehicle-media', function (elem, meta) {
+        var button = API.create(key, 'button', {
           text: 'Watch Video',
           src: 'https://www.providerdomain.com/path/video-player.html?vin=' + meta.vin,
           classes: 'btn btn-primary dialog',
-          style: 'margin-top: 12px;'
+          style: 'margin-top: 12px;',
+          attributes: {
+            'target': '_blank'
+          }
         });
-        API.append(integrationKey, elem, button);
+        API.append(key, elem, button);
       });
     }
   });
@@ -42,19 +49,23 @@ This element is positioned below the vehicle image area on vehicle search pages.
 > Usage:
 
 ```javascript
-DDC.API.insert('your-integration-key', 'vehicle-badge', function(elem, meta) {
-  // This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
-});
+(function(API) {
+  var key = 'your-integration-key';
+  var target = 'vehicle-media';
+  API.insert(key, target, function(elem, meta) {
+    // This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
+  });
+})(window.DDC.API);
 ```
 
 > Example Implementation:
 
 ```javascript
 (function(API) {
-  var integrationKey = 'test-integration';
-  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
+  var key = 'test-integration';
+  API.subscribe(key, 'page-load-v1', function (ev) {
     if (ev.payload.searchPage || ev.payload.detailPage) {
-      API.insert(integrationKey, 'vehicle-badge', function (elem, meta) {
+      API.insert(key, 'vehicle-badge', function (elem, meta) {
         if (meta.inventoryType !== 'used') {
           return;
         }
@@ -69,7 +80,7 @@ DDC.API.insert('your-integration-key', 'vehicle-badge', function(elem, meta) {
         a.target = '_blank';
         a.innerHTML = img.outerHTML;
 
-        API.append(integrationKey, elem, a);
+        API.append(key, elem, a);
       });
     }
   });

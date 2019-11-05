@@ -4,10 +4,13 @@
 
 > Usage
 
-```javascript
-window.DDC.API.subscribe('your-integration-key', 'event-name-and-version', function(ev) {
-  window.DDC.API.log(ev);
-});
+```JavaScript
+(function(API) {
+  var key = 'your-integration-key';
+  API.subscribe(key, 'event-name-and-version', function(ev) {
+    API.log(key, ev);
+  });
+})(window.DDC.API);
 ```
 Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.
 
@@ -16,10 +19,13 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 > Usage
 
 ```javascript
-window.DDC.API.insert('your-integration-key', 'location-name', function(elem, meta) {
-  window.DDC.API.log(elem); // The DOM element where markup may be inserted.
-  window.DDC.API.log(meta); // The payload object for the current insertion point.
-});
+(function(API) {
+  var key = 'your-integration-key';
+  API.insert(key, 'location-name', function(elem, meta) {
+    API.log(key, elem); // The DOM element where markup may be inserted.
+    API.log(key, meta); // The payload object for the current insertion point.
+  });
+})(window.DDC.API);
 ```
 
 The insert method allows you to append markup into specific set locations on some pages. These locations are commonly used areas you may want to target. If you find there are target areas outside of the currently available options, please let us know your use case and we will work to accommodate your needs.
@@ -37,13 +43,17 @@ Field Name | Purpose | Field Format
 
 ```javascript
 (function(API) {
-  var button = API.create('your-integration-key', 'button', {
+  var key = 'your-integration-key';
+  var button = API.create(key, 'button', {
     text: 'Visit Google',
     src: 'https://www.google.com/',
     classes: 'btn btn-primary',
-    style: 'border: 2px solid #c00'
+    style: 'border: 2px solid #c00',
+    attributes: {
+      'target': '_blank'
+    }
   });
-  window.DDC.API.log(button);
+  API.log(key, button);
   // The above outputs: <a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);">Visit Google</a>
 })(window.DDC.API);
 ```
@@ -72,7 +82,10 @@ window.DDC.API.append('your-integration-key', targetEl, appendEl);
       text: 'Search This Price Range',
       src: '/new-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
       classes: 'btn btn-primary',
-      style: 'margin-top: 12px;'
+      style: 'margin-top: 12px;',
+      attributes: {
+        'target': '_blank'
+      }
     })
     API.append(key, elem, button);
   });
