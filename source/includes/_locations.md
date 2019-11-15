@@ -51,7 +51,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
 ```javascript
 (function(API) {
   var key = 'your-integration-key';
-  var target = 'vehicle-media';
+  var target = 'vehicle-badge';
   API.insert(key, target, function(elem, meta) {
     // This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
   });
