@@ -521,7 +521,7 @@ This API is currently in development and is subject to evolution.
   <span class="nl">accountId</span><span class="p">:</span> <span class="s2">"futuredemodealer"</span><span class="p">,</span>
   <span class="nx">bodyStyle</span><span class="p">:</span> <span class="s2">"Sedan"</span><span class="p">,</span>
   <span class="nx">certified</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
-  <span class="nx">cityFuelEfficiency</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">cityFuelEconomy</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
   <span class="nx">classification</span><span class="p">:</span> <span class="s2">"primary"</span><span class="p">,</span>
   <span class="nx">doors</span><span class="p">:</span> <span class="s2">"4-door"</span><span class="p">,</span>
   <span class="nx">driveLine</span><span class="p">:</span> <span class="s2">"FWD"</span><span class="p">,</span>
@@ -529,13 +529,12 @@ This API is currently in development and is subject to evolution.
   <span class="nx">exteriorColor</span><span class="p">:</span> <span class="s2">"Platinum White Pearl"</span><span class="p">,</span>
   <span class="nx">finalPrice</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
   <span class="nx">fuelType</span><span class="p">:</span> <span class="s2">"Regular Unleaded"</span><span class="p">,</span>
-  <span class="nx">highwayFuelEfficiency</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
+  <span class="nx">highwayFuelEconomy</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
   <span class="nx">interiorColor</span><span class="p">:</span> <span class="s2">"Black"</span><span class="p">,</span>
   <span class="nx">internetPrice</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
   <span class="nx">inventoryType</span><span class="p">:</span> <span class="s2">"new"</span><span class="p">,</span>
   <span class="nx">make</span><span class="p">:</span> <span class="s2">"Honda"</span><span class="p">,</span>
   <span class="nx">model</span><span class="p">:</span> <span class="s2">"Accord"</span><span class="p">,</span>
-  <span class="nx">modelYear</span><span class="p">:</span> <span class="mi">2018</span><span class="p">,</span>
   <span class="nx">msrp</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
   <span class="nx">odometer</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
   <span class="nx">status</span><span class="p">:</span> <span class="s2">"Live"</span><span class="p">,</span>
@@ -543,7 +542,8 @@ This API is currently in development and is subject to evolution.
   <span class="nx">transmission</span><span class="p">:</span> <span class="s2">"Variable"</span><span class="p">,</span>
   <span class="nx">trim</span><span class="p">:</span> <span class="s2">"EX"</span><span class="p">,</span>
   <span class="nx">uuid</span><span class="p">:</span> <span class="s2">"ab119e0e0a0a00f944d6f3031cd34854"</span><span class="p">,</span>
-  <span class="nx">vin</span><span class="p">:</span> <span class="s2">"1HGCV1F42JA141468"</span>
+  <span class="nx">vin</span><span class="p">:</span> <span class="s2">"1HGCV1F42JA141468"</span><span class="p">,</span>
+  <span class="nx">year</span><span class="p">:</span> <span class="mi">2018</span>
 <span class="p">}</span>
 </code></pre>
 <table><thead>
@@ -569,7 +569,7 @@ This API is currently in development and is subject to evolution.
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>cityFuelEfficiency</code></td>
+<td><code>cityFuelEconomy</code></td>
 <td><code>30</code></td>
 <td><code>Integer</code></td>
 </tr>
@@ -609,7 +609,7 @@ This API is currently in development and is subject to evolution.
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>highwayFuelEfficiency</code></td>
+<td><code>highwayFuelEconomy</code></td>
 <td><code>38</code></td>
 <td><code>Integer</code></td>
 </tr>
@@ -637,11 +637,6 @@ This API is currently in development and is subject to evolution.
 <td><code>model</code></td>
 <td><code>Accord</code></td>
 <td><code>String</code></td>
-</tr>
-<tr>
-<td><code>modelYear</code></td>
-<td><code>2018</code></td>
-<td><code>Integer</code></td>
 </tr>
 <tr>
 <td><code>msrp</code></td>
@@ -682,6 +677,11 @@ This API is currently in development and is subject to evolution.
 <td><code>vin</code></td>
 <td><code>1HGCV1F42JA141468</code></td>
 <td><code>String</code></td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td><code>2018</code></td>
+<td><code>Integer</code></td>
 </tr>
 </tbody></table>
 <h1 id='event-subscriptions'>Event Subscriptions</h1>
