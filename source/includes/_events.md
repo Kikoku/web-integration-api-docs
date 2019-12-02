@@ -78,7 +78,7 @@ Field Key | Example Value | Field Format
   accountId: "futuredemodealer",
   bodyStyle: "Sedan",
   certified: "false",
-  cityFuelEfficiency: 30,
+  cityFuelEconomy: 30,
   classification: "primary",
   doors: "4-door",
   driveLine: "FWD",
@@ -86,13 +86,12 @@ Field Key | Example Value | Field Format
   exteriorColor: "Platinum White Pearl",
   finalPrice: 28360,
   fuelType: "Regular Unleaded",
-  highwayFuelEfficiency: 38,
+  highwayFuelEconomy: 38,
   interiorColor: "Black",
   internetPrice: 28360,
   inventoryType: "new",
   make: "Honda",
   model: "Accord",
-  modelYear: 2018,
   msrp: 28360,
   odometer: 5,
   status: "Live",
@@ -100,7 +99,8 @@ Field Key | Example Value | Field Format
   transmission: "Variable",
   trim: "EX",
   uuid: "ab119e0e0a0a00f944d6f3031cd34854",
-  vin: "1HGCV1F42JA141468"
+  vin: "1HGCV1F42JA141468",
+  year: 2018
 }
 ```
 
@@ -109,7 +109,7 @@ Field Key | Example Value | Field Format
 `accountId` | `futuredemodealer` | `String`
 `bodyStyle` | `Sedan` | `String`
 `certified` | `false` | `String`
-`cityFuelEfficiency` | `30` | `Integer`
+`cityFuelEconomy` | `30` | `Integer`
 `classification` | `primary` | `String`
 `doors` | `4-door` | `String`
 `driveLine` | `FWD` | `String`
@@ -117,13 +117,12 @@ Field Key | Example Value | Field Format
 `exteriorColor` | `Platinum White Pearl` | `String`
 `finalPrice` | `28360` | `Integer`
 `fuelType` | `Regular Unleaded` | `String`
-`highwayFuelEfficiency` | `38` | `Integer`
+`highwayFuelEconomy` | `38` | `Integer`
 `interiorColor` | `Black` | `String`
 `internetPrice` | `28360` | `Integer`
 `inventoryType` | `new` | `String`
 `make` | `Honda` | `String`
 `model` | `Accord` | `String`
-`modelYear` | `2018` | `Integer`
 `msrp` | `28360` | `Integer`
 `odometer` | `5` | `Integer`
 `status` | `Live` | `String`
@@ -132,6 +131,7 @@ Field Key | Example Value | Field Format
 `trim` | `EX` | `String`
 `uuid` | `ab119e0e0a0a00f944d6f3031cd34854` | `String`
 `vin` | `1HGCV1F42JA141468` | `String`
+`year` | `2018` | `Integer`
 
 # Event Subscriptions
 
