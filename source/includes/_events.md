@@ -170,7 +170,7 @@ window.DDC.API.subscribe('your-integration-key', 'dealership-info-v1', function(
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `key` | `your-integration-key` | `String`
-`event-id` | `page-load-v1` | `String`
+`event-id` | `dealership-info-v1` | `String`
 `callback` | `function(ev) { API.log(ev); }` | `function`
 
 > This event passes the standard <a href="#dealership-info-event">Dealership Info Event</a> object to your callback function.

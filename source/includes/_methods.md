@@ -4,7 +4,7 @@
 
 > Usage
 
-```JavaScript
+```javascript
 (function(API) {
   var key = 'your-integration-key';
   API.subscribe(key, 'event-name-and-version', function(ev) {
