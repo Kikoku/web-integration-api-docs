@@ -353,6 +353,12 @@
                   <li>
                     <a href="#example" class="toc-h2 toc-link" data-title="Example">Example</a>
                   </li>
+                  <li>
+                    <a href="#retrieving-a-jwt" class="toc-h2 toc-link" data-title="Retrieving a JWT">Retrieving a JWT</a>
+                  </li>
+                  <li>
+                    <a href="#validating-the-jwt" class="toc-h2 toc-link" data-title="Validating the JWT">Validating the JWT</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1351,8 +1357,8 @@ Consumers <em>SHOULD NOT</em> cache or store keys for an extended period of time
 - <code>domain</code>: The public hostname associated with the Dealer.com account ID
 - <code>VINs</code>: A list of VINs that Dealer.com believes the given subject has access to</p>
 <h2 id='example'>Example</h2>
-<p>The provided example is a spring-boot application that polls the JWK url to fetch public keys as they&#39;re published.  It has a single endpoint (<code>/jwt/validate/{jwt}</code>) that accepts a JWT as a path parameter and validates the signature and audience.</p>
-<h3 id='retrieving-a-jwt'>Retrieving a JWT</h3>
+<p>The <a href="downloads/ddc-ipp-auth-demo-master.zip">provided example</a> is a spring-boot application that polls the JWK url to fetch public keys as they&#39;re published.  It has a single endpoint (<code>/jwt/validate/{jwt}</code>) that accepts a JWT as a path parameter and validates the signature and audience.</p>
+<h2 id='retrieving-a-jwt'>Retrieving a JWT</h2>
 <p>A test JWT can be generated for any dealer.com site by calling <code>&lt;domain&gt;/api/jwt/vehicles?vins=</code> and providing a list of VINs that are valid for that site.</p>
 
 <p>A full example for <code>roimotors.com</code> would be:</p>
@@ -1362,7 +1368,7 @@ Consumers <em>SHOULD NOT</em> cache or store keys for an extended period of time
 If any VINs are missing, that means that Dealer.com believes the given account doesn&#39;t have access to display that inventory.</p>
 
 <p>The Web Integration API provides <a href="#api-utils-getjwtforvehicles">a convenience method</a> for obtaining the valid VINs and JWT for the current page where your code is executing. This accomplishes the step above and provides you with the JWT which can be passed to your system through a URL parameter on a request which then can be validated on your service with the following validation step.</p>
-<h3 id='validating-the-jwt'>Validating the JWT</h3>
+<h2 id='validating-the-jwt'>Validating the JWT</h2>
 <p>Once you have a valid JWT, you can validate it with the sample application. The JWT is guaranteed to be url-safe.</p>
 <pre class="highlight plaintext"><code>curl -v localhost:8080/jwt/validate/&lt;jwt&gt;
 </code></pre><h1 id='debugging-troubleshooting'>Debugging / Troubleshooting</h1>
