@@ -80,7 +80,7 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
 })(window.DDC.API);
 ```
 
-This fetches an object containing the array of VINs on the current page and a corresponding Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served up. For more details regarding how to use this with your service, please refer to our JWT documentation.
+This fetches an object containing the array of VINs on the current page and a corresponding Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served up. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.
 
 ## API.utils.getPageData()
 
