@@ -42,7 +42,9 @@ At the time of writing:
 **JWK Algorith**: 2048-bit RSA
 
 **JWK Usage**:
+
 - Private Key: Used to sign JWTs for up to 1 day
+
 - Public Key: Published 1 day before Private Key is used, removed from publishing after 30 days
 
 **JWK Consumer Cache Duration**: 0-15 minutes, recommend 1 minute.
@@ -50,10 +52,15 @@ At the time of writing:
 **JWA**: [RS256](https://tools.ietf.org/html/rfc7518#section-7.1.2)
 
 **JWT Claims**:
+
 - `iss`: (Issuer) Dealer.com
+
 - `aud`: (Audience) IPP
+
 - `sub`: (Subject) The Dealer.com account ID
+
 - `domain`: The public hostname associated with the Dealer.com account ID
+
 - `VINs`: A list of VINs that Dealer.com believes the given subject has access to
 
 ## Example
