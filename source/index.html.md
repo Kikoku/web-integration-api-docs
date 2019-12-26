@@ -14,6 +14,7 @@ includes:
   - methods
   - locations
   - utilities
+  - jwt
   - debugging
 
 search: true
