@@ -1342,20 +1342,26 @@ Consumers <em>SHOULD NOT</em> cache or store keys for an extended period of time
 
 <p><strong>JWK Algorith</strong>: 2048-bit RSA</p>
 
-<p><strong>JWK Usage</strong>:
-- Private Key: Used to sign JWTs for up to 1 day
-- Public Key: Published 1 day before Private Key is used, removed from publishing after 30 days</p>
+<p><strong>JWK Usage</strong>:</p>
+
+<ul>
+<li><p>Private Key: Used to sign JWTs for up to 1 day</p></li>
+<li><p>Public Key: Published 1 day before Private Key is used, removed from publishing after 30 days</p></li>
+</ul>
 
 <p><strong>JWK Consumer Cache Duration</strong>: 0-15 minutes, recommend 1 minute.</p>
 
 <p><strong>JWA</strong>: <a href="https://tools.ietf.org/html/rfc7518#section-7.1.2">RS256</a></p>
 
-<p><strong>JWT Claims</strong>:
-- <code>iss</code>: (Issuer) Dealer.com
-- <code>aud</code>: (Audience) IPP
-- <code>sub</code>: (Subject) The Dealer.com account ID
-- <code>domain</code>: The public hostname associated with the Dealer.com account ID
-- <code>VINs</code>: A list of VINs that Dealer.com believes the given subject has access to</p>
+<p><strong>JWT Claims</strong>:</p>
+
+<ul>
+<li><p><code>iss</code>: (Issuer) Dealer.com</p></li>
+<li><p><code>aud</code>: (Audience) IPP</p></li>
+<li><p><code>sub</code>: (Subject) The Dealer.com account ID</p></li>
+<li><p><code>domain</code>: The public hostname associated with the Dealer.com account ID</p></li>
+<li><p><code>VINs</code>: A list of VINs that Dealer.com believes the given subject has access to</p></li>
+</ul>
 <h2 id='example'>Example</h2>
 <p>The <a href="downloads/ddc-ipp-auth-demo-master.zip">provided example</a> is a spring-boot application that polls the JWK url to fetch public keys as they&#39;re published.  It has a single endpoint (<code>/jwt/validate/{jwt}</code>) that accepts a JWT as a path parameter and validates the signature and audience.</p>
 <h2 id='retrieving-a-jwt'>Retrieving a JWT</h2>
