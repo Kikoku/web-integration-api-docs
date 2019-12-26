@@ -33,7 +33,7 @@ Other methods:
 
 * Alternate to both of the above methods, we can create a test site for you and specify the script to include on the site. This will make your integrated code available for all viewers of the test site which is useful in a setting where multiple stakeholders or developers want to see the integration in development or for testing purposes.
 
-Your code should be minimal and perform only actions necessary to bootstrap your integration on to the site. There is a simple subscribe example here, and you can see a more detailed <a href="#example-implementation">Example Implementation</a> for an idea of how to accomplish some common tasks.
+Your code should be minimal and perform only actions necessary to bootstrap your integration on to the site.
 
 ## Technical Requirements
 
