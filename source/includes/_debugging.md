@@ -3,11 +3,11 @@
 > Example Implementation:
 
 ```javascript
-(function(API) {
-  var integrationKey = 'test-integration';
-  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('page-load-v1', function (ev) {
     if (ev.payload.searchPage) {
-      API.log(integrationKey, "My integration has loaded and this is a search page.");
+      API.log('My integration has loaded and this is a search results page.');
     }
   });
 })(window.DDC.API);

@@ -142,14 +142,17 @@ To receive data for events, you must opt-in to event subscriptions. Each event i
 > Usage
 
 ```javascript
-window.DDC.API.subscribe('your-integration-key', 'page-load-v1', function(ev) {
-  window.DDC.API.log(ev);
-});
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('page-load-v1', function(ev) {
+    API.log(ev);
+  });
+})(window.DDC.API);
+
 ```
 
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
-`key` | `your-integration-key` | `String`
 `event-id` | `page-load-v1` | `String`
 `callback` | `function(ev) { API.log(ev); }` | `function`
 
@@ -162,14 +165,17 @@ The page load event is useful to determine the context of the current page. By m
 > Usage
 
 ```javascript
-window.DDC.API.subscribe('your-integration-key', 'dealership-info-v1', function(ev) {
-  window.DDC.API.log(ev);
-});
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('dealership-info-v1', function(ev) {
+    API.log(ev);
+  });
+})(window.DDC.API);
+
 ```
 
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
-`key` | `your-integration-key` | `String`
 `event-id` | `dealership-info-v1` | `String`
 `callback` | `function(ev) { API.log(ev); }` | `function`
 
@@ -182,14 +188,16 @@ The dealership info event is useful if you need to know the name and address of 
 > Usage
 
 ```javascript
-window.DDC.API.subscribe('your-integration-key', 'vehicle-shown-v1', function(ev) {
-  window.DDC.API.log(ev);
-});
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('vehicle-shown-v1', function(ev) {
+    API.log(ev);
+  });
+})(window.DDC.API);
 ```
 
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
-`key` | `your-integration-key` | `String`
 `event-id` | `vehicle-shown-v1` | `String`
 `callback` | `function(ev) { API.log(ev); }` | `function`
 
@@ -198,3 +206,26 @@ Parameter Name | Example Value | Parameter Type
 This event is sent for each vehicle present on the current page. For search results pages, a dozen or more such events may be fired. In the future, dynamic in-page updates to vehicle results will cause potentially hundreds of events to be fired on a single page view as new vehicles are displayed.
 
 On a vehicle deals page, a single event is fired because you are viewing a single vehicle. This is useful for capturing details about the vehicles that a user has viewed, or to take a particular action for a certain type or class of vehicles.
+
+## Vehicle Data Updated V1
+
+> Usage
+
+```javascript
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('vehicle-data-updated-v1', function(ev) {
+    API.log(data.payload.pageData); // Outputs the Page Data object to the console.
+    API.log(data.payload.vehicleData); // Outputs the updated Vehicle Data object to the console.
+  });
+})(window.DDC.API);
+```
+
+Parameter Name | Example Value | Parameter Type
+-------------- | -------------- | --------------
+`event-id` | `vehicle-data-updated-v1` | `String`
+`callback` | `function(ev) { API.log(ev); }` | `function`
+
+> This event passes the standard <a href="#page-event">Page Event</a> object to your callback function as well as the full array of <a href="#vehicle-event">Vehicle Event</a> data objects.
+
+This is useful for coding your application to work with our modern Search Results Page which is a dynamic single page application. When the list of vehicles is refreshed/updated, this event is fired with the Page and Vehicle payload of data for you to use as needed. Any subsequent methods/subscriptions/insertions can occur within this event, to ensure that when vehicles are updated your code immediately executes to decorate those vehicle cards with your content.

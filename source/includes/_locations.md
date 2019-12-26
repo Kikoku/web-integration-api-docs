@@ -9,10 +9,9 @@ See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentati
 > Usage:
 
 ```javascript
-(function(API) {
-  var key = 'your-integration-key';
-  var target = 'vehicle-media';
-  API.insert(key, target, function(elem, meta) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.insert('vehicle-media', function(elem, meta) {
     // This element is positioned below the vehicle image area on vehicle search pages.
   });
 })(window.DDC.API);
@@ -21,12 +20,12 @@ See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentati
 > Example Implementation:
 
 ```javascript
-(function(API) {
-  var key = 'test-integration';
-  API.subscribe(key, 'page-load-v1', function (ev) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage) {
-      API.insert(key, 'vehicle-media', function (elem, meta) {
-        var button = API.create(key, 'button', {
+      API.insert('vehicle-media', function(elem, meta) {
+        var button = API.create('button', {
           text: 'Watch Video',
           src: 'https://www.providerdomain.com/path/video-player.html?vin=' + meta.vin,
           classes: 'btn btn-primary dialog',
@@ -35,7 +34,7 @@ See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentati
             'target': '_blank'
           }
         });
-        API.append(key, elem, button);
+        API.append(elem, button);
       });
     }
   });
@@ -49,10 +48,9 @@ This element is positioned below the vehicle image area on vehicle search pages.
 > Usage:
 
 ```javascript
-(function(API) {
-  var key = 'your-integration-key';
-  var target = 'vehicle-badge';
-  API.insert(key, target, function(elem, meta) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.insert('vehicle-badge', function(elem, meta) {
     // This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
   });
 })(window.DDC.API);
@@ -61,11 +59,11 @@ This element is positioned below the vehicle image area on vehicle search pages.
 > Example Implementation:
 
 ```javascript
-(function(API) {
-  var key = 'test-integration';
-  API.subscribe(key, 'page-load-v1', function (ev) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage || ev.payload.detailPage) {
-      API.insert(key, 'vehicle-badge', function (elem, meta) {
+      API.insert('vehicle-badge', function(elem, meta) {
         if (meta.inventoryType !== 'used') {
           return;
         }
@@ -80,7 +78,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
         a.target = '_blank';
         a.innerHTML = img.outerHTML;
 
-        API.append(key, elem, a);
+        API.append(elem, a);
       });
     }
   });
@@ -95,28 +93,32 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 > Usage:
 
 ```javascript
-DDC.API.insert('your-integration-key', 'vehicle-pricing', function(elem, meta) {
-  // This element is positioned below the vehicle pricing area on vehicle search and detail pages.
-});
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.insert('vehicle-pricing', function(elem, meta) {
+    // This element is positioned below the vehicle pricing area on vehicle search and detail pages.
+  });
+})(window.DDC.API);
 ```
 
 > Example Implementation:
 
 ```javascript
-(function(API) {
-  var integrationKey = 'your-integration-key';
-  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('page-load-v1', function(ev) {
+    // Only execute the code on search results and vehicle details pages.
     if (ev.payload.searchPage || ev.payload.detailPage) {
-      API.insert(integrationKey, 'vehicle-pricing', function (elem, meta) {
+      API.insert('vehicle-pricing', function (elem, meta) {
         var lowPrice = Math.round(meta.finalPrice - 1000);
         var highPrice = Math.round(meta.finalPrice + 1000);
-        var button = API.create(integrationKey, 'button', {
+        var button = API.create('button', {
           text: 'Search This Price Range',
           src: '/' + meta.inventoryType + '-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
           classes: 'btn btn-primary',
           style: 'margin-top: 12px;'
         })
-        API.append(integrationKey, elem, button);
+        API.append(elem, button);
       });
     }
   });
@@ -130,24 +132,27 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 > Usage:
 
 ```javascript
-DDC.API.insert('your-integration-key', 'vehicle-media-container', function(elem, meta) {
-  // This element is the media gallery container on vehicle deals pages.
-  // Injecting into this location will replace the media gallery with the elements you insert.
-});
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.insert('vehicle-media-container', function(elem, meta) {
+    // This element is the media gallery container on vehicle deals pages.
+    // Injecting into this location will replace the media gallery with the elements you insert.
+  });
+})(window.DDC.API);
 ```
 
 > Example Implementation:
 
 ```javascript
-(function(API) {
-  var integrationKey = 'your-integration-key';
-  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.detailPage) {
-      API.insert(integrationKey, 'vehicle-media-container', function (elem, meta) {
+      API.insert('vehicle-media-container', function(elem, meta) {
         var containerEl = document.createElement('div');
         containerEl.style = 'background-color: #ff0000; font-size: 30px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;';
         containerEl.innerHTML = 'Your media container goes here.';
-        API.append(integrationKey, elem, containerEl);
+        API.append(elem, containerEl);
       });
     }
   });
@@ -161,20 +166,23 @@ This element is the media gallery container on vehicle deals pages. Injecting in
 > Usage:
 
 ```javascript
-DDC.API.insert('your-integration-key', 'primary-banner', function(elem, meta) {
-  // This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.
-  // On the Details page, it is near the top of the vehicle information, below the media gallery.
-});
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.insert('primary-banner', function(elem, meta) {
+    // This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.
+    // On the Details page, it is near the top of the vehicle information, below the media gallery.
+  });
+})(window.DDC.API);
 ```
 
 > Example Implementation:
 
 ```javascript
-(function(API) {
-  var integrationKey = 'your-integration-key';
-  API.subscribe(integrationKey, 'page-load-v1', function (ev) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage || ev.payload.detailPage) {
-      API.insert(integrationKey, 'primary-banner', function (elem, meta) {
+      API.insert('primary-banner', function(elem, meta) {
         var img = document.createElement('img'),
           a = document.createElement('a');
 
@@ -185,9 +193,9 @@ DDC.API.insert('your-integration-key', 'primary-banner', function(elem, meta) {
         a.href = '/specials/new.htm';
         a.innerHTML = img.outerHTML;
 
-        API.append(integrationKey, elem, a);
+        API.append(elem, a);
       });
-    }f
+    }
   });
 })(window.DDC.API);
 ```

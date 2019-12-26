@@ -16,7 +16,12 @@ When you begin development of your script, it's easy to test on any Dealer.com s
 
 *2.)* Open the developer tools in your browser and enter this code in the Console window:
 
-`DDC.API.test('Your-Company-Name', 'https://www.yourdomain.com/your-javascript-file.js');	`
+```javascript
+(function(WPAPI) {
+  var API = new WPAPI('test-integration');
+  API.test('https://www.yourdomain.com/your-javascript-file.js');
+})(window.DDC.API);
+```
 
 This will set a cookie in your browser and instruct the site to load your defined script as if the integration was enabled. The code will only load for you in the current browser session so that you are able to iterate and test your code. When it is ready for activation on sites, we can set the integration up in our system and load your script for all users of the site(s) where it should be enabled. The set cookie expires when your browser session expires or you clear your browser cookies.
 
@@ -35,7 +40,8 @@ Your code should be minimal and perform only actions necessary to bootstrap your
 > This is an example of an immediately executing function expression:
 
 ```javascript
-(function(API) {
+(function(WPAPI) {
+	var API = new WPAPI();
 	// API.subscribe(...);
 	// Your code here
 })(window.DDC.API);

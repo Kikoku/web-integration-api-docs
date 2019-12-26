@@ -13,6 +13,7 @@ includes:
   - events
   - methods
   - locations
+  - utilities
   - debugging
 
 search: true

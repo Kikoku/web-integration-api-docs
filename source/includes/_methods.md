@@ -1,29 +1,29 @@
 # API Methods
 
-## subscribe(key, name, callback(ev))
+## subscribe(name, callback(event))
 
 > Usage
 
 ```javascript
-(function(API) {
-  var key = 'your-integration-key';
-  API.subscribe(key, 'event-name-and-version', function(ev) {
-    API.log(key, ev);
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.subscribe('event-name-and-version', function(event) {
+    API.log(event);
   });
 })(window.DDC.API);
 ```
 Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.
 
-## insert(key, name, callback(elem, meta))
+## insert(name, callback(elem, meta))
 
 > Usage
 
 ```javascript
-(function(API) {
-  var key = 'your-integration-key';
-  API.insert(key, 'location-name', function(elem, meta) {
-    API.log(key, elem); // The DOM element where markup may be inserted.
-    API.log(key, meta); // The payload object for the current insertion point.
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.insert('location-name', function(elem, meta) {
+    API.log(elem); // The DOM element where markup may be inserted.
+    API.log(meta); // The payload object for the current insertion point.
   });
 })(window.DDC.API);
 ```
@@ -37,14 +37,14 @@ Field Name | Purpose | Field Format
 `elem` | The DOM element where the markup should be inserted. | Element
 `meta` | The payload object for the current insertion point. | Object
 
-## create(key, type, data)
+## create(type, data)
 
 > Create a Button
 
 ```javascript
-(function(API) {
-  var key = 'your-integration-key';
-  var button = API.create(key, 'button', {
+(function(WPAPI) {
+  var API = new WPAPI();
+  var button = API.create('button', {
     text: 'Visit Google',
     src: 'https://www.google.com/',
     classes: 'btn btn-primary',
@@ -53,8 +53,8 @@ Field Name | Purpose | Field Format
       'target': '_blank'
     }
   });
-  API.log(key, button);
-  // The above outputs: <a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);">Visit Google</a>
+  API.log(button);
+  // The above outputs: <a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);" target="_blank">Visit Google</a>
 })(window.DDC.API);
 ```
 
@@ -62,23 +62,26 @@ The create method can be used to generate markup which adheres to our standard p
 
 Currently only the "button" type is supported, however other types will soon be added. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.
 
-## append(key, targetEl, appendEl)
+## append(targetEl, appendEl)
 
 > Usage
 
 ```javascript
-window.DDC.API.append('your-integration-key', targetEl, appendEl);
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.append(targetEl, appendEl);
+})(window.DDC.API);
 ```
 
 > For example, used in conjunction with the `insert` and the `create` methods your code might look similar to this:
 
 ```javascript
-(function(API) {
-  var key = 'your-integration-key';
-  API.insert(key, 'target-location-name', function(elem, meta) {
+(function(WPAPI) {
+  var API = new WPAPI();
+  API.insert('target-location-name', function(elem, meta) {
     var lowPrice = Math.round(meta.finalPrice - 1000);
     var highPrice = Math.round(meta.finalPrice + 1000);
-    var button = API.create(key, 'button', {
+    var button = API.create('button', {
       text: 'Search This Price Range',
       src: '/new-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
       classes: 'btn btn-primary',
@@ -87,20 +90,43 @@ window.DDC.API.append('your-integration-key', targetEl, appendEl);
         'target': '_blank'
       }
     })
-    API.append(key, elem, button);
+    API.append(elem, button);
   });
 })(window.DDC.API);
 ```
 
 When calling the insert method, the goal is to insert some markup into a location on the page. Once you have constructed the element(s) you wish to insert, you may call the `append` method to complete the process.
 
-## load(key, resourceUrl)
+## loadJS(resourceUrl)
 
 > Usage
 
 ```javascript
-window.DDC.API.load('your-integration-key', 'https://www.company.com/script.js'); // Loads a JavaScript file
-window.DDC.API.load('your-integration-key', 'https://www.company.com/integration.css'); // Loads a CSS stylesheet
+(function(WPAPI) {
+  var API = new WPAPI();
+  // Loads a JavaScript file
+  API.loadJS('https://www.company.com/script.js')
+    .then(function() {
+      // Code to execute after your JavaScript file has loaded.
+    });
+})(window.DDC.API);
 ```
 
-The load method is an easy way to include additional scripts or stylesheets required for your integration. Stylesheets and JavaScript files are automatically loaded in an optimal way for each type of asset.
+The loadJS method is a simple way to include additional JavaScript files required for your integration. The method returns a JavaScript Promise which you can use to know when file loading is complete, to then run any necessary initialization functions, etc.
+
+## loadCSS(resourceUrl)
+
+> Usage
+
+```javascript
+(function(WPAPI) {
+  var API = new WPAPI();
+  // Loads a CSS stylesheet
+  API.loadCSS('https://www.company.com/integration.css');
+    .then(function() {
+      // Code to execute after your stylesheet has loaded.
+    });
+})(window.DDC.API);
+```
+
+The loadCSS method is a simple way to include an additional CSS stylesheet file required for your integration. The method returns a JavaScript Promise which you can use to know when stylesheet loading is complete, to then insert markup that depends on that styling to avoid display a flash of unstyled content.
