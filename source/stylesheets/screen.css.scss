@@ -74,8 +74,8 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
-    margin-bottom: $logo-margin;
+    max-width: 200px;
+    margin: 15px 15px 0 15px;
   }
 
   &>.search {
