@@ -58,9 +58,9 @@ At the time of writing:
 
 ## Example
 
-The provided example is a spring-boot application that polls the JWK url to fetch public keys as they're published.  It has a single endpoint (`/jwt/validate/{jwt}`) that accepts a JWT as a path parameter and validates the signature and audience.
+The <a href="downloads/ddc-ipp-auth-demo-master.zip">provided example</a> is a spring-boot application that polls the JWK url to fetch public keys as they're published.  It has a single endpoint (`/jwt/validate/{jwt}`) that accepts a JWT as a path parameter and validates the signature and audience.
 
-### Retrieving a JWT
+## Retrieving a JWT
 
 A test JWT can be generated for any dealer.com site by calling `<domain>/api/jwt/vehicles?vins=` and providing a list of VINs that are valid for that site.
 
@@ -75,7 +75,7 @@ If any VINs are missing, that means that Dealer.com believes the given account d
 
 The Web Integration API provides <a href="#api-utils-getjwtforvehicles">a convenience method</a> for obtaining the valid VINs and JWT for the current page where your code is executing. This accomplishes the step above and provides you with the JWT which can be passed to your system through a URL parameter on a request which then can be validated on your service with the following validation step.
 
-### Validating the JWT
+## Validating the JWT
 
 Once you have a valid JWT, you can validate it with the sample application. The JWT is guaranteed to be url-safe.
 
