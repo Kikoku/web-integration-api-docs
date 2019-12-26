@@ -214,7 +214,7 @@ On a vehicle deals page, a single event is fired because you are viewing a singl
 ```javascript
 (function(WPAPI) {
   var API = new WPAPI();
-  API.subscribe('vehicle-data-updated-v1', function(ev) {
+  API.subscribe('vehicle-data-updated-v1', function(data) {
     API.log(data.payload.pageData); // Outputs the Page Data object to the console.
     API.log(data.payload.vehicleData); // Outputs the updated Vehicle Data object to the console.
   });
