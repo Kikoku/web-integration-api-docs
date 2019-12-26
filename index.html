@@ -356,9 +356,6 @@
               </ul>
           </li>
           <li>
-            <a href="#the-jwt-is-guaranteed-to-be-url-safe" class="toc-h1 toc-link" data-title="The JWT is guaranteed to be url-safe">The JWT is guaranteed to be url-safe</a>
-          </li>
-          <li>
             <a href="#debugging-troubleshooting" class="toc-h1 toc-link" data-title="Debugging / Troubleshooting">Debugging / Troubleshooting</a>
           </li>
       </ul>
@@ -1359,11 +1356,10 @@ If any VINs are missing, that means that Dealer.com believes the given account d
 
 <p>The Web Integration API provides <a href="#api-utils-getjwtforvehicles">a convenience method</a> for obtaining the valid VINs and JWT for the current page where your code is executing. This accomplishes the step above and provides you with the JWT which can be passed to your system through a URL parameter on a request which then can be validated on your service with the following validation step.</p>
 <h3 id='validating-the-jwt'>Validating the JWT</h3>
-<p>Once you have a valid JWT, you can validate it with the sample application:
-```</p>
-<h1 id='the-jwt-is-guaranteed-to-be-url-safe'>The JWT is guaranteed to be url-safe</h1>
-<p>curl -v localhost:8080/jwt/validate/<jwt>
-```</p>
+<p>Once you have a valid JWT, you can validate it with the sample application. The JWT is guaranteed to be url-safe.
+<code>
+curl -v localhost:8080/jwt/validate/&lt;jwt&gt;
+</code></p>
 <h1 id='debugging-troubleshooting'>Debugging / Troubleshooting</h1>
 <blockquote>
 <p>Example Implementation:</p>
