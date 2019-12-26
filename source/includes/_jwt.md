@@ -67,8 +67,7 @@ The Web Integration API provides <a href="#api-utils-getjwtforvehicles">a conven
 
 ### Validating the JWT
 
-Once you have a valid JWT, you can validate it with the sample application:
+Once you have a valid JWT, you can validate it with the sample application. The JWT is guaranteed to be url-safe.
 ```
-# The JWT is guaranteed to be url-safe
 curl -v localhost:8080/jwt/validate/<jwt>
 ```
