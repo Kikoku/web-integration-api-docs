@@ -264,25 +264,31 @@
                   <li>
                     <a href="#vehicle-shown-v1" class="toc-h2 toc-link" data-title="Vehicle Shown V1">Vehicle Shown V1</a>
                   </li>
+                  <li>
+                    <a href="#vehicle-data-updated-v1" class="toc-h2 toc-link" data-title="Vehicle Data Updated V1">Vehicle Data Updated V1</a>
+                  </li>
               </ul>
           </li>
           <li>
             <a href="#api-methods" class="toc-h1 toc-link" data-title="API Methods">API Methods</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#subscribe-key-name-callback-ev" class="toc-h2 toc-link" data-title="subscribe(key, name, callback(ev))">subscribe(key, name, callback(ev))</a>
+                    <a href="#subscribe-name-callback-event" class="toc-h2 toc-link" data-title="subscribe(name, callback(event))">subscribe(name, callback(event))</a>
                   </li>
                   <li>
-                    <a href="#insert-key-name-callback-elem-meta" class="toc-h2 toc-link" data-title="insert(key, name, callback(elem, meta))">insert(key, name, callback(elem, meta))</a>
+                    <a href="#insert-name-callback-elem-meta" class="toc-h2 toc-link" data-title="insert(name, callback(elem, meta))">insert(name, callback(elem, meta))</a>
                   </li>
                   <li>
-                    <a href="#create-key-type-data" class="toc-h2 toc-link" data-title="create(key, type, data)">create(key, type, data)</a>
+                    <a href="#create-type-data" class="toc-h2 toc-link" data-title="create(type, data)">create(type, data)</a>
                   </li>
                   <li>
-                    <a href="#append-key-targetel-appendel" class="toc-h2 toc-link" data-title="append(key, targetEl, appendEl)">append(key, targetEl, appendEl)</a>
+                    <a href="#append-targetel-appendel" class="toc-h2 toc-link" data-title="append(targetEl, appendEl)">append(targetEl, appendEl)</a>
                   </li>
                   <li>
-                    <a href="#load-key-resourceurl" class="toc-h2 toc-link" data-title="load(key, resourceUrl)">load(key, resourceUrl)</a>
+                    <a href="#loadjs-resourceurl" class="toc-h2 toc-link" data-title="loadJS(resourceUrl)">loadJS(resourceUrl)</a>
+                  </li>
+                  <li>
+                    <a href="#loadcss-resourceurl" class="toc-h2 toc-link" data-title="loadCSS(resourceUrl)">loadCSS(resourceUrl)</a>
                   </li>
               </ul>
           </li>
@@ -303,6 +309,32 @@
                   </li>
                   <li>
                     <a href="#primary-banner" class="toc-h2 toc-link" data-title="Primary Banner">Primary Banner</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#utility-methods" class="toc-h1 toc-link" data-title="Utility Methods">Utility Methods</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-utils-getattributeforvehicles-attribute" class="toc-h2 toc-link" data-title="API.utils.getAttributeForVehicles(attribute)">API.utils.getAttributeForVehicles(attribute)</a>
+                  </li>
+                  <li>
+                    <a href="#api-utils-getconfig" class="toc-h2 toc-link" data-title="API.utils.getConfig()">API.utils.getConfig()</a>
+                  </li>
+                  <li>
+                    <a href="#api-utils-getdealerdata" class="toc-h2 toc-link" data-title="API.utils.getDealerData()">API.utils.getDealerData()</a>
+                  </li>
+                  <li>
+                    <a href="#api-utils-getjwtforvehicles" class="toc-h2 toc-link" data-title="API.utils.getJwtForVehicles()">API.utils.getJwtForVehicles()</a>
+                  </li>
+                  <li>
+                    <a href="#api-utils-getpagedata" class="toc-h2 toc-link" data-title="API.utils.getPageData()">API.utils.getPageData()</a>
+                  </li>
+                  <li>
+                    <a href="#api-utils-geturlparams" class="toc-h2 toc-link" data-title="API.utils.getUrlParams()">API.utils.getUrlParams()</a>
+                  </li>
+                  <li>
+                    <a href="#api-utils-getvehicledata" class="toc-h2 toc-link" data-title="API.utils.getVehicleData()">API.utils.getVehicleData()</a>
                   </li>
               </ul>
           </li>
@@ -337,9 +369,11 @@ This API is currently in development and is subject to evolution.
 <p><em>1.)</em> Load any Dealer.com site where you want to test your integration. If you don&#39;t already have a site in mind, a good one to start with is <a href="https://www.roimotors.com/" target="_blank">https://www.roimotors.com/</a>.</p>
 
 <p><em>2.)</em> Open the developer tools in your browser and enter this code in the Console window:</p>
-
-<p><code>DDC.API.test(&#39;Your-Company-Name&#39;, &#39;https://www.yourdomain.com/your-javascript-file.js&#39;);</code></p>
-
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s1">'https://www.yourdomain.com/your-javascript-file.js'</span><span class="p">);</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
 <p>This will set a cookie in your browser and instruct the site to load your defined script as if the integration was enabled. The code will only load for you in the current browser session so that you are able to iterate and test your code. When it is ready for activation on sites, we can set the integration up in our system and load your script for all users of the site(s) where it should be enabled. The set cookie expires when your browser session expires or you clear your browser cookies.</p>
 
 <p><em>3.)</em> Add the <code>?_integrationMode=debug</code> URL parameter to the page you are testing to activate the cookied script for your page view. This will also provide an additional benefit of any <a href="#debugging">logged messages</a> in your script being output to the browser console for troubleshooting and debugging purposes.</p>
@@ -356,7 +390,8 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>This is an example of an immediately executing function expression:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
     <span class="c1">// API.subscribe(...);</span>
     <span class="c1">// Your code here</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
@@ -690,9 +725,13 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
-<span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+
 </code></pre>
 <table><thead>
 <tr>
@@ -701,11 +740,6 @@ This API is currently in development and is subject to evolution.
 <th>Parameter Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code>key</code></td>
-<td><code>your-integration-key</code></td>
-<td><code>String</code></td>
-</tr>
 <tr>
 <td><code>event-id</code></td>
 <td><code>page-load-v1</code></td>
@@ -727,9 +761,13 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'dealership-info-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
-<span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'dealership-info-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+
 </code></pre>
 <table><thead>
 <tr>
@@ -738,11 +776,6 @@ This API is currently in development and is subject to evolution.
 <th>Parameter Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code>key</code></td>
-<td><code>your-integration-key</code></td>
-<td><code>String</code></td>
-</tr>
 <tr>
 <td><code>event-id</code></td>
 <td><code>dealership-info-v1</code></td>
@@ -764,9 +797,12 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-shown-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
-<span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-shown-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <table><thead>
 <tr>
@@ -775,11 +811,6 @@ This API is currently in development and is subject to evolution.
 <th>Parameter Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code>key</code></td>
-<td><code>your-integration-key</code></td>
-<td><code>String</code></td>
-</tr>
 <tr>
 <td><code>event-id</code></td>
 <td><code>vehicle-shown-v1</code></td>
@@ -799,27 +830,63 @@ This API is currently in development and is subject to evolution.
 <p>This event is sent for each vehicle present on the current page. For search results pages, a dozen or more such events may be fired. In the future, dynamic in-page updates to vehicle results will cause potentially hundreds of events to be fired on a single page view as new vehicles are displayed.</p>
 
 <p>On a vehicle deals page, a single event is fired because you are viewing a single vehicle. This is useful for capturing details about the vehicles that a user has viewed, or to take a particular action for a certain type or class of vehicles.</p>
-<h1 id='api-methods'>API Methods</h1><h2 id='subscribe-key-name-callback-ev'>subscribe(key, name, callback(ev))</h2>
+<h2 id='vehicle-data-updated-v1'>Vehicle Data Updated V1</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">ev</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">pageData</span><span class="p">);</span> <span class="c1">// Outputs the Page Data object to the console.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">vehicleData</span><span class="p">);</span> <span class="c1">// Outputs the updated Vehicle Data object to the console.</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter Name</th>
+<th>Example Value</th>
+<th>Parameter Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event-id</code></td>
+<td><code>vehicle-data-updated-v1</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td><code>function(ev) { API.log(ev); }</code></td>
+<td><code>function</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>This event passes the standard <a href="#page-event">Page Event</a> object to your callback function as well as the full array of <a href="#vehicle-event">Vehicle Event</a> data objects.</p>
+</blockquote>
+
+<p>This is useful for coding your application to work with our modern Search Results Page which is a dynamic single page application. When the list of vehicles is refreshed/updated, this event is fired with the Page and Vehicle payload of data for you to use as needed. Any subsequent methods/subscriptions/insertions can occur within this event, to ensure that when vehicles are updated your code immediately executes to decorate those vehicle cards with your content.</p>
+<h1 id='api-methods'>API Methods</h1><h2 id='subscribe-name-callback-event'>subscribe(name, callback(event))</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.</p>
-<h2 id='insert-key-name-callback-elem-meta'>insert(key, name, callback(elem, meta))</h2>
+<h2 id='insert-name-callback-elem-meta'>insert(name, callback(elem, meta))</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where markup may be inserted.</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">meta</span><span class="p">);</span> <span class="c1">// The payload object for the current insertion point.</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where markup may be inserted.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">meta</span><span class="p">);</span> <span class="c1">// The payload object for the current insertion point.</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
@@ -845,13 +912,13 @@ This API is currently in development and is subject to evolution.
 <td>Object</td>
 </tr>
 </tbody></table>
-<h2 id='create-key-type-data'>create(key, type, data)</h2>
+<h2 id='create-type-data'>create(type, data)</h2>
 <blockquote>
 <p>Create a Button</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">text</span><span class="p">:</span> <span class="s1">'Visit Google'</span><span class="p">,</span>
     <span class="na">src</span><span class="p">:</span> <span class="s1">'https://www.google.com/'</span><span class="p">,</span>
     <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
@@ -860,28 +927,31 @@ This API is currently in development and is subject to evolution.
       <span class="s1">'target'</span><span class="p">:</span> <span class="s1">'_blank'</span>
     <span class="p">}</span>
   <span class="p">});</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
-  <span class="c1">// The above outputs: &lt;a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);"&gt;Visit Google&lt;/a&gt;</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+  <span class="c1">// The above outputs: &lt;a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);" target="_blank"&gt;Visit Google&lt;/a&gt;</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>The create method can be used to generate markup which adheres to our standard practices. This allows you to simply &quot;create a button&quot;, for example, without having to know the inner workings of how buttons should be created on different types of sites.</p>
 
 <p>Currently only the &quot;button&quot; type is supported, however other types will soon be added. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.</p>
-<h2 id='append-key-targetel-appendel'>append(key, targetEl, appendEl)</h2>
+<h2 id='append-targetel-appendel'>append(targetEl, appendEl)</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="nx">targetEl</span><span class="p">,</span> <span class="nx">appendEl</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">targetEl</span><span class="p">,</span> <span class="nx">appendEl</span><span class="p">);</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>For example, used in conjunction with the <code>insert</code> and the <code>create</code> methods your code might look similar to this:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'target-location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'target-location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
       <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
       <span class="na">src</span><span class="p">:</span> <span class="s1">'/new-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
       <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
@@ -890,19 +960,39 @@ This API is currently in development and is subject to evolution.
         <span class="s1">'target'</span><span class="p">:</span> <span class="s1">'_blank'</span>
       <span class="p">}</span>
     <span class="p">})</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>When calling the insert method, the goal is to insert some markup into a location on the page. Once you have constructed the element(s) you wish to insert, you may call the <code>append</code> method to complete the process.</p>
-<h2 id='load-key-resourceurl'>load(key, resourceUrl)</h2>
+<h2 id='loadjs-resourceurl'>loadJS(resourceUrl)</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'https://www.company.com/script.js'</span><span class="p">);</span> <span class="c1">// Loads a JavaScript file</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'https://www.company.com/integration.css'</span><span class="p">);</span> <span class="c1">// Loads a CSS stylesheet</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="c1">// Loads a JavaScript file</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">loadJS</span><span class="p">(</span><span class="s1">'https://www.company.com/script.js'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// Code to execute after your JavaScript file has loaded.</span>
+    <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
-<p>The load method is an easy way to include additional scripts or stylesheets required for your integration. Stylesheets and JavaScript files are automatically loaded in an optimal way for each type of asset.</p>
+<p>The loadJS method is a simple way to include additional JavaScript files required for your integration. The method returns a JavaScript Promise which you can use to know when file loading is complete, to then run any necessary initialization functions, etc.</p>
+<h2 id='loadcss-resourceurl'>loadCSS(resourceUrl)</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="c1">// Loads a CSS stylesheet</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">loadCSS</span><span class="p">(</span><span class="s1">'https://www.company.com/integration.css'</span><span class="p">);</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// Code to execute after your stylesheet has loaded.</span>
+    <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>The loadCSS method is a simple way to include an additional CSS stylesheet file required for your integration. The method returns a JavaScript Promise which you can use to know when stylesheet loading is complete, to then insert markup that depends on that styling to avoid display a flash of unstyled content.</p>
 <h1 id='insert-locations'>Insert Locations</h1>
 <p>Insert locations are areas of pages where you can safely insert markup. These exist in commonly used areas, such as below vehicle pricing on search and detail pages. This section details the current available locations. Please let us know if there are other locations you want to target beyond those listed here.</p>
 
@@ -911,10 +1001,9 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="s1">'vehicle-media'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">target</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// This element is positioned below the vehicle image area on vehicle search pages.</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
@@ -922,12 +1011,12 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Example Implementation:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
           <span class="na">text</span><span class="p">:</span> <span class="s1">'Watch Video'</span><span class="p">,</span>
           <span class="na">src</span><span class="p">:</span> <span class="s1">'https://www.providerdomain.com/path/video-player.html?vin='</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
           <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary dialog'</span><span class="p">,</span>
@@ -936,7 +1025,7 @@ This API is currently in development and is subject to evolution.
             <span class="s1">'target'</span><span class="p">:</span> <span class="s1">'_blank'</span>
           <span class="p">}</span>
         <span class="p">});</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
@@ -947,10 +1036,9 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="s1">'vehicle-badge'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">target</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// This element is positioned below the vehicle tech specs area on vehicle search and detail pages.</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
@@ -958,11 +1046,11 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Example Implementation:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span> <span class="o">||</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">inventoryType</span> <span class="o">!==</span> <span class="s1">'used'</span><span class="p">)</span> <span class="p">{</span>
           <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
@@ -977,7 +1065,7 @@ This API is currently in development and is subject to evolution.
         <span class="nx">a</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="s1">'_blank'</span><span class="p">;</span>
         <span class="nx">a</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">outerHTML</span><span class="p">;</span>
 
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
@@ -988,27 +1076,31 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// This element is positioned below the vehicle pricing area on vehicle search and detail pages.</span>
-<span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This element is positioned below the vehicle pricing area on vehicle search and detail pages.</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>Example Implementation:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Only execute the code on search results and vehicle details pages.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span> <span class="o">||</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
-        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
           <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
           <span class="na">src</span><span class="p">:</span> <span class="s1">'/'</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">inventoryType</span> <span class="o">+</span> <span class="s1">'-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
           <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
           <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
         <span class="p">})</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
@@ -1019,23 +1111,26 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// This element is the media gallery container on vehicle deals pages.</span>
-  <span class="c1">// Injecting into this location will replace the media gallery with the elements you insert.</span>
-<span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This element is the media gallery container on vehicle deals pages.</span>
+    <span class="c1">// Injecting into this location will replace the media gallery with the elements you insert.</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>Example Implementation:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">containerEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">);</span>
         <span class="nx">containerEl</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="s1">'background-color: #ff0000; font-size: 30px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;'</span><span class="p">;</span>
         <span class="nx">containerEl</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s1">'Your media container goes here.'</span><span class="p">;</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">containerEl</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">containerEl</span><span class="p">);</span>
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
@@ -1046,19 +1141,22 @@ This API is currently in development and is subject to evolution.
 <blockquote>
 <p>Usage:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'your-integration-key'</span><span class="p">,</span> <span class="s1">'primary-banner'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.</span>
-  <span class="c1">// On the Details page, it is near the top of the vehicle information, below the media gallery.</span>
-<span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'primary-banner'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.</span>
+    <span class="c1">// On the Details page, it is near the top of the vehicle information, below the media gallery.</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>Example Implementation:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'your-integration-key'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span> <span class="o">||</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'primary-banner'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'primary-banner'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'img'</span><span class="p">),</span>
           <span class="nx">a</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span>
 
@@ -1069,9 +1167,9 @@ This API is currently in development and is subject to evolution.
         <span class="nx">a</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">'/specials/new.htm'</span><span class="p">;</span>
         <span class="nx">a</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">outerHTML</span><span class="p">;</span>
 
-        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
       <span class="p">});</span>
-    <span class="p">}</span><span class="nx">f</span>
+    <span class="p">}</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
@@ -1080,15 +1178,120 @@ This API is currently in development and is subject to evolution.
 <p>On the Details page, it is positioned at the top of the vehicle information, below the media gallery.</p>
 
 <p>You can target either the listings or details page by first subscribing to the page-load-v1 event, and using the event values of <code>payload.searchPage</code> and <code>payload.detailPage</code> to check the page type.</p>
-<h1 id='debugging-troubleshooting'>Debugging / Troubleshooting</h1>
+<h1 id='utility-methods'>Utility Methods</h1>
+<p>In addition to the event based system for working with sites, some utility methods are available to directly access data needed to make decisions in your code. Rather than waiting for a particular event to fire, you can query the information directly at any point in your code to ensure it is in context at the point where you need it. All utility methods return a JavaScript Promise so you can ensure the data is available before proceeding with the rest of your code.</p>
+<h2 id='api-utils-getattributeforvehicles-attribute'>API.utils.getAttributeForVehicles(attribute)</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">pageData</span><span class="p">);</span> <span class="c1">// Logs the Page Data object</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">vehicleData</span><span class="p">);</span> <span class="c1">// Logs the updated Vehicle Data object</span>
+
+    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">vins</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// With the updated list of VINs, you could query your service</span>
+      <span class="c1">// to determine which VINs are supported by your service before</span>
+      <span class="c1">// placing relevant content such as buttons or iframes.</span>
+
+      <span class="c1">// Code to query your service goes here.</span>
+
+      <span class="c1">// Output an array of VINs for vehicles currently displayed on the page.</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">vins</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">})</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>This can be used to obtain an array of attributes for the currently displayed vehicles on a page. For example, passing the attribute &#39;finalPrice&#39; would return an array of all of the final prices on the page. Passing &#39;vin&#39; would return an array of vehicle vins. You can pass any of the attributes that are present on the <a href="#vehicle-event">Vehicle Event object</a> and have this return an array.</p>
+<h2 id='api-utils-getconfig'>API.utils.getConfig()</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getConfig</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Output the configuration object for your integration (if defined).</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>This fetches a JavaScript object of your integration&#39;s configuration for the current website and page. Not all integrations have configuration options in our system (aside from enabled/disabled), but if your integration does, you can use this to obtain the configuration data.</p>
+<h2 id='api-utils-getdealerdata'>API.utils.getDealerData()</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getDealerData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">dealerData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Logs the Dealership Info Event object for the current website.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dealerData</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>This fetches the <a href="#dealership-info-event">Dealership Info Event object</a> for the current website.</p>
+<h2 id='api-utils-getjwtforvehicles'>API.utils.getJwtForVehicles()</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getJwtForVehicles</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jwtObject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jwtObject</span><span class="p">);</span>
+    <span class="c1">// Returns a data structure like this:</span>
+    <span class="c1">// {</span>
+    <span class="c1">//   vins: ["1HGCV1F51LA013850", "1HGCV1F16LA029720", "1HGCV1F32LA011829"], // Array</span>
+    <span class="c1">//   jwt: "eyJraWQiOiIya0k0XzIyZoLUUi...KpSUf6vJ8b9Z1NDRcIgv0GrZoiqPhTunw" // String</span>
+    <span class="c1">// }</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>This fetches an object containing the array of VINs on the current page and a corresponding Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served up. For more details regarding how to use this with your service, please refer to our JWT documentation.</p>
+<h2 id='api-utils-getpagedata'>API.utils.getPageData()</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getPageData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">pageData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Outputs the Page Data Object for the current page.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pageData</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>This fetches the <a href="#page-event">Page Event object</a> for the current website and page.</p>
+<h2 id='api-utils-geturlparams'>API.utils.getUrlParams()</h2>
+<p>NOTE: This method does not return a promise as the URL Params are immediately available and do not require Promise behavior.</p>
+
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getUrlParams</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urlParams</span><span class="p">);</span> <span class="c1">// Logs the configuration object for your integration (if there is one).</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre><h2 id='api-utils-getvehicledata'>API.utils.getVehicleData()</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getVehicleData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">vehicleData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Outputs the current set of vehicle data.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">vehicleData</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre><h1 id='debugging-troubleshooting'>Debugging / Troubleshooting</h1>
 <blockquote>
 <p>Example Implementation:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">API</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integrationKey</span> <span class="o">=</span> <span class="s1">'test-integration'</span><span class="p">;</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">integrationKey</span><span class="p">,</span> <span class="s2">"My integration has loaded and this is a search page."</span><span class="p">);</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'My integration has loaded and this is a search results page.'</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
