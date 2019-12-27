@@ -122,7 +122,7 @@ The loadJS method is a simple way to include additional JavaScript files require
 (function(WPAPI) {
   var API = new WPAPI();
   // Loads a CSS stylesheet
-  API.loadCSS('https://www.company.com/integration.css');
+  API.loadCSS('https://www.company.com/integration.css')
     .then(function() {
       // Code to execute after your stylesheet has loaded.
     });
