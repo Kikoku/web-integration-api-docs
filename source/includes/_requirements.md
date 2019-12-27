@@ -17,8 +17,8 @@ When you begin development of your script, it's easy to test on any Dealer.com s
 *2.)* Open the developer tools in your browser and enter this code in the Console window:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI('test-integration');
+(function(WIAPI) {
+  var API = new WIAPI('test-integration');
   API.test('https://www.yourdomain.com/your-javascript-file.js');
 })(window.DDC.API);
 ```
@@ -40,8 +40,8 @@ Your code should be minimal and perform only actions necessary to bootstrap your
 > This is an example of an immediately executing function expression:
 
 ```javascript
-(function(WPAPI) {
-	var API = new WPAPI();
+(function(WIAPI) {
+	var API = new WIAPI();
 	// API.subscribe(...);
 	// Your code here
 })(window.DDC.API);

@@ -5,8 +5,8 @@
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.subscribe('event-name-and-version', function(event) {
     API.log(event);
   });
@@ -19,8 +19,8 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.insert('location-name', function(elem, meta) {
     API.log(elem); // The DOM element where markup may be inserted.
     API.log(meta); // The payload object for the current insertion point.
@@ -42,8 +42,8 @@ Field Name | Purpose | Field Format
 > Create a Button
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   var button = API.create('button', {
     text: 'Visit Google',
     src: 'https://www.google.com/',
@@ -67,8 +67,8 @@ Currently only the "button" type is supported, however other types will soon be 
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.append(targetEl, appendEl);
 })(window.DDC.API);
 ```
@@ -76,8 +76,8 @@ Currently only the "button" type is supported, however other types will soon be 
 > For example, used in conjunction with the `insert` and the `create` methods your code might look similar to this:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.insert('target-location-name', function(elem, meta) {
     var lowPrice = Math.round(meta.finalPrice - 1000);
     var highPrice = Math.round(meta.finalPrice + 1000);
@@ -102,8 +102,8 @@ When calling the insert method, the goal is to insert some markup into a locatio
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   // Loads a JavaScript file
   API.loadJS('https://www.company.com/script.js')
     .then(function() {
@@ -119,8 +119,8 @@ The loadJS method is a simple way to include additional JavaScript files require
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   // Loads a CSS stylesheet
   API.loadCSS('https://www.company.com/integration.css')
     .then(function() {

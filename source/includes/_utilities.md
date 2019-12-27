@@ -7,8 +7,8 @@ In addition to the event based system for working with sites, some utility metho
 > Usage:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.subscribe('vehicle-data-updated-v1', function(data) {
 
     API.log(data.payload.pageData); // Logs the Page Data object
@@ -35,8 +35,8 @@ This can be used to obtain an array of attributes for the currently displayed ve
 > Usage:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI('test-integration');
+(function(WIAPI) {
+  var API = new WIAPI('test-integration');
   API.utils.getConfig().then(function(config) {
     // Output the configuration object for your integration (if defined).
     API.log(config);
@@ -51,8 +51,8 @@ This fetches a JavaScript object of your integration's configuration for the cur
 > Usage:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.utils.getDealerData().then(function(dealerData) {
     // Logs the Dealership Info Event object for the current website.
     API.log(dealerData);
@@ -67,8 +67,8 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
 > Usage:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.utils.getJwtForVehicles().then(function(jwtObject) {
     API.log(jwtObject);
     // Returns a data structure like this:
@@ -87,8 +87,8 @@ This fetches an object containing the array of VINs on the current page and a co
 > Usage:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.utils.getPageData().then(function(pageData) {
     // Outputs the Page Data Object for the current page.
     API.log(pageData);
@@ -105,8 +105,8 @@ NOTE: This method does not return a promise as the URL Params are immediately av
 > Usage:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   var urlParams = API.utils.getUrlParams();
   API.log(urlParams); // Logs the configuration object for your integration (if there is one).
 })(window.DDC.API);
@@ -117,8 +117,8 @@ NOTE: This method does not return a promise as the URL Params are immediately av
 > Usage:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   var config = API.utils.getVehicleData().then(function(vehicleData) {
     // Outputs the current set of vehicle data.
     API.log(vehicleData);

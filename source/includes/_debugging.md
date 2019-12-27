@@ -3,8 +3,8 @@
 > Example Implementation:
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.subscribe('page-load-v1', function (ev) {
     if (ev.payload.searchPage) {
       API.log('My integration has loaded and this is a search results page.');

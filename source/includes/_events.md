@@ -142,8 +142,8 @@ To receive data for events, you must opt-in to event subscriptions. Each event i
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.subscribe('page-load-v1', function(ev) {
     API.log(ev);
   });
@@ -165,8 +165,8 @@ The page load event is useful to determine the context of the current page. By m
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.subscribe('dealership-info-v1', function(ev) {
     API.log(ev);
   });
@@ -188,8 +188,8 @@ The dealership info event is useful if you need to know the name and address of 
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.subscribe('vehicle-shown-v1', function(ev) {
     API.log(ev);
   });
@@ -212,8 +212,8 @@ On a vehicle deals page, a single event is fired because you are viewing a singl
 > Usage
 
 ```javascript
-(function(WPAPI) {
-  var API = new WPAPI();
+(function(WIAPI) {
+  var API = new WIAPI();
   API.subscribe('vehicle-data-updated-v1', function(data) {
     API.log(data.payload.pageData); // Outputs the Page Data object to the console.
     API.log(data.payload.vehicleData); // Outputs the updated Vehicle Data object to the console.
