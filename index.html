@@ -909,15 +909,9 @@
   <span class="p">},</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// Set `subscribe` to false if you do not want this to behave as a subscription.</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
-<p>The insert method allows you to append markup to specific locations on some pages of Dealer sites. These locations are commonly targeted areas where you may want to place content.</p>
-
-<p>When activated, <code>API.insert</code> will call the callback function you define with the <code>elem</code> and <code>meta</code> parameters. It will call this for each relevant location on the page. For example, if you specify <code>vehicle-media</code> as the location and you are viewing a search results page with 30 vehicles, <code>API.insert</code> will be called 30 times, once per vehicle, with the relevant location and vehicle data in the payload.</p>
-
-<p>This acts as an event subscription, so when the page updates dynamically (a single page application) and new vehicle items are presented, new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item with that location, or every item matching specific criteria available in the callback payload.</p>
-
-<p>You may prefer to only call <code>API.insert</code> when you are ready, after performing other functions. For example, if you need to make a service call to your system with a list of vehicles to determine which ones have data on your side, and only then decorate specific vehicles with appropriate content, you can include a third parameter (<code>false</code>) on your <code>API.insert</code> call to disable the subscription behavior. With the subscription disabled, you&#39;ll need to invoke <code>API.insert</code> inside of a <code>vehicle-data-updated-v1</code> subscription so that your code is triggered each time the list of vehicles is changed on a page (and on initial page load) rather than only once.</p>
-
+<blockquote>
 <p>Here is an example of how you could use <code>API.insert</code> with <code>subcription</code> set to <code>false</code>:</p>
+</blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WPAPI</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WPAPI</span><span class="p">();</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
@@ -950,6 +944,14 @@
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
+<p>The insert method allows you to append markup to specific locations on some pages of Dealer sites. These locations are commonly targeted areas where you may want to place content.</p>
+
+<p>When activated, <code>API.insert</code> will call the callback function you define with the <code>elem</code> and <code>meta</code> parameters. It will call this for each relevant location on the page. For example, if you specify <code>vehicle-media</code> as the location and you are viewing a search results page with 30 vehicles, <code>API.insert</code> will be called 30 times, once per vehicle, with the relevant location and vehicle data in the payload.</p>
+
+<p>This acts as an event subscription, so when the page updates dynamically (a single page application) and new vehicle items are presented, new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item with that location, or every item matching specific criteria available in the callback payload.</p>
+
+<p>You may prefer to only call <code>API.insert</code> when you are ready, after performing other functions. For example, if you need to make a service call to your system with a list of vehicles to determine which ones have data on your side, and only then decorate specific vehicles with appropriate content, you can include a third parameter (<code>false</code>) on your <code>API.insert</code> call to disable the subscription behavior. With the subscription disabled, you&#39;ll need to invoke <code>API.insert</code> inside of a <code>vehicle-data-updated-v1</code> subscription so that your code is triggered each time the list of vehicles is changed on a page (and on initial page load) rather than only once.</p>
+
 <table><thead>
 <tr>
 <th>Field Name</th>
