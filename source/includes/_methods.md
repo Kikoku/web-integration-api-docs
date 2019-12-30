@@ -28,15 +28,7 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 })(window.DDC.API);
 ```
 
-The insert method allows you to append markup to specific locations on some pages of Dealer sites. These locations are commonly targeted areas where you may want to place content.
-
-When activated, `API.insert` will call the callback function you define with the `elem` and `meta` parameters. It will call this for each relevant location on the page. For example, if you specify `vehicle-media` as the location and you are viewing a search results page with 30 vehicles, `API.insert` will be called 30 times, once per vehicle, with the relevant location and vehicle data in the payload.
-
-This acts as an event subscription, so when the page updates dynamically (a single page application) and new vehicle items are presented, new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item with that location, or every item matching specific criteria available in the callback payload.
-
-You may prefer to only call `API.insert` when you are ready, after performing other functions. For example, if you need to make a service call to your system with a list of vehicles to determine which ones have data on your side, and only then decorate specific vehicles with appropriate content, you can include a third parameter (`false`) on your `API.insert` call to disable the subscription behavior. With the subscription disabled, you'll need to invoke `API.insert` inside of a `vehicle-data-updated-v1` subscription so that your code is triggered each time the list of vehicles is changed on a page (and on initial page load) rather than only once.
-
-Here is an example of how you could use `API.insert` with `subcription` set to `false`:
+> Here is an example of how you could use `API.insert` with `subcription` set to `false`:
 
 ```javascript
 (function(WPAPI) {
@@ -71,6 +63,15 @@ Here is an example of how you could use `API.insert` with `subcription` set to `
   });
 })(window.DDC.API);
 ```
+
+The insert method allows you to append markup to specific locations on some pages of Dealer sites. These locations are commonly targeted areas where you may want to place content.
+
+When activated, `API.insert` will call the callback function you define with the `elem` and `meta` parameters. It will call this for each relevant location on the page. For example, if you specify `vehicle-media` as the location and you are viewing a search results page with 30 vehicles, `API.insert` will be called 30 times, once per vehicle, with the relevant location and vehicle data in the payload.
+
+This acts as an event subscription, so when the page updates dynamically (a single page application) and new vehicle items are presented, new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item with that location, or every item matching specific criteria available in the callback payload.
+
+You may prefer to only call `API.insert` when you are ready, after performing other functions. For example, if you need to make a service call to your system with a list of vehicles to determine which ones have data on your side, and only then decorate specific vehicles with appropriate content, you can include a third parameter (`false`) on your `API.insert` call to disable the subscription behavior. With the subscription disabled, you'll need to invoke `API.insert` inside of a `vehicle-data-updated-v1` subscription so that your code is triggered each time the list of vehicles is changed on a page (and on initial page load) rather than only once.
+
 
 Field Name | Purpose | Field Format
 -------------- | -------------- | --------------
