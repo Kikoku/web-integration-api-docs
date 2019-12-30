@@ -28,7 +28,7 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 })(window.DDC.API);
 ```
 
-> Here is an example of how you could use `API.insert` with `subcription` set to `false`:
+> Here is an example of how to use `API.insert` with `subcription` set to `false`:
 
 ```javascript
 (function(WPAPI) {
