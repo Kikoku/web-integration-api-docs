@@ -950,7 +950,7 @@
       <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">serviceData</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Data returned from service!"</span><span class="p">);</span>
         <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">serviceData</span><span class="p">);</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">insertOnce</span><span class="p">(</span><span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
           <span class="c1">// Verify my service has data for this vehicle</span>
           <span class="k">if</span> <span class="p">(</span><span class="nx">serviceData</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">))</span> <span class="p">{</span>
             <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
@@ -964,7 +964,7 @@
           <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Skipping vehicle "</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span> <span class="o">+</span> <span class="s2">" because it does not have service data."</span><span class="p">);</span>
           <span class="p">}</span>
-        <span class="p">},</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// Add this 'false' parameter after you define your callback function.</span>
+        <span class="p">});</span>
       <span class="p">});</span>
     <span class="p">});</span>
   <span class="p">});</span>
