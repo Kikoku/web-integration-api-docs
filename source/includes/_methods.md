@@ -63,7 +63,7 @@ This acts as an event subscription, so as the application displays new vehicles 
       .then(function(serviceData) {
         API.log("Data returned from service!");
         API.log(serviceData);
-        API.insert('vehicle-pricing', function (elem, meta) {
+        API.insertOnce('vehicle-pricing', function (elem, meta) {
           // Verify my service has data for this vehicle
           if (serviceData.hasOwnProperty(meta.vin)) {
             var button = API.create('button', {
@@ -77,7 +77,7 @@ This acts as an event subscription, so as the application displays new vehicles 
           } else {
             API.log("Skipping vehicle " + meta.vin + " because it does not have service data.");
           }
-        }, false); // Add this 'false' parameter after you define your callback function.
+        });
       });
     });
   });
