@@ -69,9 +69,9 @@ The <a href="downloads/ddc-ipp-auth-demo-master.zip">provided example</a> is a s
 
 ## Retrieving a JWT
 
-A test JWT can be generated for any dealer.com site by calling `<domain>/api/jwt/vehicles?vins=` and providing a list of VINs that are valid for that site.
+A test JWT can be generated for any dealer.com site by calling `<domain>/api/ipp/jwt/vehicles?vins=` and providing a list of VINs that are valid for that site.
 
-A full example for `roimotors.com` would be:
+> A full example for `roimotors.com` would be:
 
 ```
 curl -Lv https://roimotors.com/api/ipp/jwt/vehicles?vins=1HGCV1F46LA013527,1HGCV1F51LA013850,1HGCV1F52LA011170,1HGCV1F57LA003078
