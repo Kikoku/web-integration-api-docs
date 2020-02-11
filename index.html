@@ -1469,9 +1469,11 @@ Consumers <em>SHOULD NOT</em> cache or store keys for an extended period of time
 <h2 id='example'>Example</h2>
 <p>The <a href="downloads/ddc-ipp-auth-demo-master.zip">provided example</a> is a spring-boot application that polls the JWK url to fetch public keys as they&#39;re published.  It has a single endpoint (<code>/jwt/validate/{jwt}</code>) that accepts a JWT as a path parameter and validates the signature and audience.</p>
 <h2 id='retrieving-a-jwt'>Retrieving a JWT</h2>
-<p>A test JWT can be generated for any dealer.com site by calling <code>&lt;domain&gt;/api/jwt/vehicles?vins=</code> and providing a list of VINs that are valid for that site.</p>
+<p>A test JWT can be generated for any dealer.com site by calling <code>&lt;domain&gt;/api/ipp/jwt/vehicles?vins=</code> and providing a list of VINs that are valid for that site.</p>
 
+<blockquote>
 <p>A full example for <code>roimotors.com</code> would be:</p>
+</blockquote>
 <pre class="highlight plaintext"><code>curl -Lv https://roimotors.com/api/ipp/jwt/vehicles?vins=1HGCV1F46LA013527,1HGCV1F51LA013850,1HGCV1F52LA011170,1HGCV1F57LA003078
 </code></pre>
 <p>Decode the token at https://jwt.io/ to check that all of the requested VINs were returned.
