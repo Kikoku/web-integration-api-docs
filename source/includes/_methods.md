@@ -92,47 +92,6 @@ Field Name | Purpose | Field Format
 `callback(elem, meta)` | The DOM element where the markup should be inserted, and the payload object for the current insertion point. | Element, Object
 
 
-## API.update(name, callback(elem, meta))
-
-> Usage
-
-```javascript
-(function(WIAPI) {
-  var API = new WIAPI();
-  API.update('location-name', function(elem, meta) {
-    API.log(elem); // The existing DOM element containing the target.
-    API.log(meta); // The payload object for the current target.
-  });
-})(window.DDC.API);
-```
-
-The update method allows you to modify existing locations (primarily buttons) on some pages of Dealer sites. These locations are commonly targeted areas where you may want to modify content.
-
-When activated, an `API.update` subscription will call the callback function you define with the `elem` and `meta` parameters for each relevant location on the page. For example, if you specify `vehicle-eprice-button` as the location and you are viewing a search results page with 30 vehicles having eprice buttons, the callback function you define on `API.update` will be called 30 times, once per vehicle, with the relevant element to update as `elem` and the current vehicle's metadata as `meta`.
-
-As noted, `API.update` acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to modify content on every item having the target location, or every item matching specific criteria available to you in the callback payload. If you need to execute additional code before determining if you want to modify content, such as calling an external service, you should use the `updateOnce` method instead.
-
-## API.updateOnce(name, callback(elem, meta))
-
-> Usage
-
-```javascript
-(function(WIAPI) {
-  var API = new WIAPI();
-  API.updateOnce('location-name', function(elem, meta) {
-    API.log(elem); // The existing DOM element containing the target.
-    API.log(meta); // The payload object for the current target.
-  });
-})(window.DDC.API);
-```
-
-You may prefer to only update content when you are ready, after performing other functions. For example, if you need to make a service call to your system with a list of vehicles to determine which ones have data on your side, and only then decorate specific vehicles with appropriate content. With `updateOnce`, the method behaves as a functional insert which can be chained with other functions, and does not behave as a subscription. Using this method, you will need to invoke it inside of a <a href="#vehicle-data-updated-v1">`vehicle-data-updated-v1`</a> subscription so that your code is triggered each time the list of vehicles is loaded on a page rather than only the first time.
-
-Field Name | Purpose | Field Format
--------------- | -------------- | --------------
-`location` | The DOM element where the markup should be inserted. | Element
-`callback(elem, meta)` | The DOM element where the markup should be inserted, and the payload object for the current insertion point. | Element, Object
-
 ## API.create(type, data)
 
 > Create a Button
