@@ -276,6 +276,12 @@
                     <a href="#api-subscribe-name-callback-event" class="toc-h2 toc-link" data-title="API.subscribe(name, callback(event))">API.subscribe(name, callback(event))</a>
                   </li>
                   <li>
+                    <a href="#api-insertcalltoaction-type-intent-callback-meta" class="toc-h2 toc-link" data-title="API.insertCallToAction(type, intent, callback(meta))">API.insertCallToAction(type, intent, callback(meta))</a>
+                  </li>
+                  <li>
+                    <a href="#api-insertcalltoactiononce-type-intent-settingsfunction-meta" class="toc-h2 toc-link" data-title="API.insertCallToActionOnce(type, intent, settingsFunction(meta))">API.insertCallToActionOnce(type, intent, settingsFunction(meta))</a>
+                  </li>
+                  <li>
                     <a href="#api-insert-name-callback-elem-meta" class="toc-h2 toc-link" data-title="API.insert(name, callback(elem, meta))">API.insert(name, callback(elem, meta))</a>
                   </li>
                   <li>
@@ -900,6 +906,154 @@
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.</p>
+<h2 id='api-insertcalltoaction-type-intent-callback-meta'>API.insertCallToAction(type, intent, callback(meta))</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insertCallToAction</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="s1">'value-a-trade'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
+      <span class="s2">"href"</span><span class="p">:</span> <span class="s2">"https://www.yourdomain.com/value-a-trade/?vin="</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
+      <span class="s2">"target"</span><span class="p">:</span> <span class="s2">"_blank"</span><span class="p">,</span>
+      <span class="s2">"text"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"en_US"</span><span class="p">:</span> <span class="s2">"Value My Trade"</span><span class="p">,</span>
+        <span class="s2">"fr_CA"</span><span class="p">:</span> <span class="s2">"Valeur mon commerce"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>The <code>insertCallToAction</code> method is used to create a call to action (CTA) button for placement on web site inventory items. Rather than generating markup and inserting it into a location, using this method you specify the CTA type (&#39;button&#39; is the current supported type), an intent (more on this below), and a data object describing the element&#39;s attributes. </p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Purpose</th>
+<th>Field Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>The type of CTA that should be inserted.</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>intent</code></td>
+<td>The intention of the CTA you are inserting.</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>callback(meta)</code></td>
+<td>The payload object for the current vehicle.</td>
+<td>Object</td>
+</tr>
+</tbody></table>
+
+<p>The <code>callback</code> function is called for each inventory item presented on the page. The <code>meta</code> field provided is the <a href="#vehicle-event">Vehicle Event</a> payload. You can use the vehicle data to construct a data object describing your CTA&#39;s attributes, then return it back to the API. With the data returned from the callback function, the API creates the markup for your button and places it into the CTA area on each vehicle card on the search results page and/or the CTA area on the vehicle details page, depending on how your set up your code and the integration&#39;s configuration options for the given site.</p>
+
+<p>This method acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the callback payload. If you need to execute additional code before determining if you wish to insert content, such as calling an external service, you should use the <code>insertCallToActionOnce</code> method instead.</p>
+
+<p>The default location for a CTA is the bottom of the existing CTA area on vehicle search results and details pages. However, by using this method it enables Dealer.com to specify the location of your CTA in the list and even map it to &quot;take over&quot; an existing CTA. For example, if a dealer has a custom styled E-Price button and wants your CTA to replace the standard functionality for that feature on their site, we can map your CTA to replace the default functionality. If your code fails to load for some reason, the default behavior of that button still takes effect and ensures that site users can still submit leads, etc.</p>
+<h3 id='cta-type'>CTA Type</h3>
+<p>The current supported type is <code>button</code>, though other types may be added in the future. We currently only support text-based buttons.</p>
+<h3 id='cta-intent'>CTA Intent</h3>
+<p>Button Intent is a concept used in the API as a way to categorize the type of functionality your CTA provides. The current supported intent types are:</p>
+<pre class="highlight plaintext"><code>  check-availability
+  eprice
+  payment-calculator
+  pre-approval
+  request-a-quote
+  reserve-it-now
+  send-to-phone
+  test-drive
+  text-us
+  value-a-trade
+  window-sticker
+</code></pre>
+<p>If you have a CTA that does not align with one of these types, please contact us and we can consider adding it to the API.</p>
+<h3 id='callback-format'>Callback Format</h3>
+<p>The callback function for this method is used to create a data object describing the CTA you want to place on the page. The format of this object is described below.</p>
+
+<p>Field Name | Purpose | Example Value(s) | Field Format
+-------------- | -------------- | --------------
+<code>type</code> | The style of CTA that should be inserted. | <code>default</code>, <code>primary</code> | String
+<code>href</code> | The URL to access when the CTA is clicked. | <code>https://www.yourdomain.com/</code> | String
+<code>target</code> | The link target. | <code>_blank</code>, <code>_self</code> | String
+<code>onclick</code> | A function to attach as a click handler to the CTA. | <code>window.MyIntegation.clickFunction</code> | Function
+<code>text</code> | An object supplying text for the CTA in one or more languages. <code>en_US</code> is required at minimum. <code>fr_CA</code> is highly recommended. | See code example | Object
+<code>attributes</code> | An object of <code>data-</code> attributes to add to the CTA. |  | String</p>
+
+<p>After creating the callback object, you must then return it for the API to create your CTA. If you do not return anything or return <code>null</code>, no CTA will be inserted for that vehicle item.</p>
+<h2 id='api-insertcalltoactiononce-type-intent-settingsfunction-meta'>API.insertCallToActionOnce(type, intent, settingsFunction(meta))</h2>
+<blockquote>
+<p>Functional example</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1">// Initialize an instance of the API</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
+
+  <span class="c1">// Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Collect the VIN for each vehicle on the page in an array.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">vins</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Calling service with these VINs: "</span> <span class="o">+</span> <span class="nx">vins</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">));</span>
+
+      <span class="c1">// Fetch data from your endpoint by supplying the list of VINs.</span>
+      <span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://www.yourdomain.com/api/endpoint-that-returns-json?vins='</span> <span class="o">+</span> <span class="nx">vins</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">serviceData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Now that you have your service data, you can determine whether or not to place a CTA for this vehicle on the page.</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">insertCallToActionOnce</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="s1">'value-a-trade'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">serviceData</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
+              <span class="s2">"href"</span><span class="p">:</span> <span class="s2">"https://www.yourdomain.com/value-a-trade/?vin="</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
+              <span class="s2">"target"</span><span class="p">:</span> <span class="s2">"_blank"</span><span class="p">,</span>
+              <span class="s2">"text"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"en_US"</span><span class="p">:</span> <span class="s2">"Value My Trade"</span><span class="p">,</span>
+                <span class="s2">"fr_CA"</span><span class="p">:</span> <span class="s2">"Valeur mon commerce"</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Skipping vehicle "</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span> <span class="o">+</span> <span class="s2">" because it does not have service data."</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>You may prefer to only insert a CTA when you are ready, after performing other functions. For example, if you need to make a service call to your system with a list of vehicles to determine which ones have data on your side, and only then add CTAs to supported vehicles. With <code>insertCallToActionOnce</code>, the method behaves as a functional insert which can be chained with other functions, and does not behave as a subscription. With <code>API.insertCallToActionOnce</code>, you will need to invoke it inside of a <a href="#vehicle-data-updated-v1"><code>vehicle-data-updated-v1</code></a> subscription so that your code is triggered each time the list of vehicles is loaded on a page rather than only the first time.</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Purpose</th>
+<th>Field Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>The type of CTA that should be inserted.</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>intent</code></td>
+<td>The intention of the CTA you are inserting.</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>callback(meta)</code></td>
+<td>The payload object for the current vehicle.</td>
+<td>Object</td>
+</tr>
+</tbody></table>
 <h2 id='api-insert-name-callback-elem-meta'>API.insert(name, callback(elem, meta))</h2>
 <blockquote>
 <p>Usage</p>
@@ -933,7 +1087,7 @@
 <p>Functional example</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'lesa'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">vins</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Calling service with these VINs: "</span> <span class="o">+</span> <span class="nx">vins</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">));</span>
