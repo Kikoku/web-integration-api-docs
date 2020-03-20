@@ -47,11 +47,11 @@ Parameter Name | Purpose | Field Format
 
 This method acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and `setupFunction` is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the `setupFunction` payload. If you need to execute intermediary code before determining if you need to insert content, such as calling an external service, you should use the <a href="#api-insertcalltoactiononce-type-intent-settingsfunction-meta">`insertCallToActionOnce`</a> method instead.
 
-The default location for a CTA is the bottom of the existing CTA area on vehicle search results and details pages.
+The default location for a CTA is the bottom of the existing CTA list on vehicle search results and details pages.
 
+<p><img src="images/srp-cta-location.jpg" alt="SRP CTA Location" /></p>
 
-
-However, by using this method it enables Dealer.com to specify the location of your CTA in the list and even map it to "take over" an existing CTA. For example, if a dealer has a custom styled E-Price button and wants your CTA to replace the standard functionality for that feature on their site, we can map your CTA to replace the default functionality. If your code fails to load for some reason, the default behavior of that button still takes effect and ensures that site users can still submit leads, etc.
+However, by using this method it enables Dealer.com to reorder the location of your CTA in the list and even map it to "take over" an existing CTA. For example, if a dealer has a custom styled E-Price button and wants your CTA to replace the standard functionality for that feature on their site, we can map your CTA to replace the default functionality. If your code fails to load for some reason, the default behavior of that button still takes effect and ensures that site users can still submit leads, etc.
 
 ### CTA Type
 
@@ -192,28 +192,34 @@ This acts as an event subscription, so as the application displays new vehicles 
 
 ```javascript
 (function(WIAPI) {
+
+  // Initialize an instance of the API
   var API = new WIAPI('test-integration');
+
+  // Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', function(ev) {
+
+    // Collect the VIN for each vehicle on the page in an array.
     API.utils.getAttributeForVehicles('vin').then(function(vins) {
       API.log("Calling service with these VINs: " + vins.join(','));
+
+      // Fetch data from your endpoint by supplying the list of VINs.
       fetch('https://www.yourdomain.com/api/endpoint-that-returns-json?vins=' + vins.join(','))
       .then(function(response) {
         return response.json();
       })
       .then(function(serviceData) {
-        API.log("Data returned from service!");
-        API.log(serviceData);
-        API.insertOnce('vehicle-pricing', function (elem, meta) {
+        // Now that you have your service data, you can determine whether or not to place content for this location on to the page.
+        API.insertOnce('vehicle-badge', function (elem, meta) {
           // Verify my service has data for this vehicle
           if (serviceData.hasOwnProperty(meta.vin)) {
-            var button = API.create('button', {
-              'text': 'My Custom Button',
-              'classes': 'btn btn-primary btn-sm btn-block',
-              'style': 'margin-top: 12px;',
-              'src': 'https://www.yourdomain.com/search?q=' + meta.vin
-            })
-            API.log("Adding a button to vehicle: " + meta.vin);
-            API.append(elem, button);
+
+            // Create your markup here
+            var div = document.createElement('div');
+            div.innerText = "Hello World!";
+
+            // Insert your markup into the parent element.
+            API.append(elem, div);
           } else {
             API.log("Skipping vehicle " + meta.vin + " because it does not have service data.");
           }
@@ -222,6 +228,7 @@ This acts as an event subscription, so as the application displays new vehicles 
     });
   });
 })(window.DDC.API);
+
 ```
 
 You may prefer to only insert content when you are ready, after performing other functions. For example, if you need to make a service call to your system with a list of vehicles to determine which ones have data on your side, and only then decorate specific vehicles with appropriate content. With `insertOnce`, the method behaves as a functional insert which can be chained with other functions, and does not behave as a subscription. With `API.insertOnce`, you will need to invoke it inside of a <a href="#vehicle-data-updated-v1">`vehicle-data-updated-v1`</a> subscription so that your code is triggered each time the list of vehicles is loaded on a page rather than only the first time.
