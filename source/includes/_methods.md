@@ -14,7 +14,7 @@
 ```
 Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.
 
-## API.insertCallToAction(type, intent, callback(meta))
+## API.insertCallToAction(type, intent, setupFunction(meta))
 
 > Usage
 
@@ -35,19 +35,23 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 })(window.DDC.API);
 ```
 
-The `insertCallToAction` method is used to create a call to action (CTA) button for placement on web site inventory items. Rather than generating markup and inserting it into a location, using this method you specify the CTA type ('button' is the current supported type), an intent (more on this below), and a data object describing the element's attributes. 
+The `insertCallToAction` method is used to create a call to action (CTA) button for placement on web site inventory items. Rather than generating markup and inserting it into a predefined location, when using this method you specify the CTA type (`button` is currently the only supported type), an intent (more on this below), and a data object describing the CTA's attributes.
 
-Field Name | Purpose | Field Format
+Parameter Name | Purpose | Field Format
 -------------- | -------------- | --------------
 `type` | The type of CTA that should be inserted. | String
 `intent` | The intention of the CTA you are inserting. | String
-`callback(meta)` | The payload object for the current vehicle. | Object
+`setupFunction(meta)` | The payload object for the current vehicle. You return a data object from this method. | Object
 
-The `callback` function is called for each inventory item presented on the page. The `meta` field provided is the <a href="#vehicle-event">Vehicle Event</a> payload. You can use the vehicle data to construct a data object describing your CTA's attributes, then return it back to the API. With the data returned from the callback function, the API creates the markup for your button and places it into the CTA area on each vehicle card on the search results page and/or the CTA area on the vehicle details page, depending on how your set up your code and the integration's configuration options for the given site.
+`setupFunction` is called for each inventory item presented on the page. The `meta` field provided is the <a href="#vehicle-event">Vehicle Event</a> payload. You can use the vehicle data to construct an object describing your CTA's attributes, then return it back to the API. With the data returned from `setupFunction`, the API creates the markup for your button and places it into the CTA area on each vehicle card on the search results page and/or the CTA area on the vehicle details page. The placement depends on how you set up your code and the integration's configuration options for the given site.
 
-This method acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the callback payload. If you need to execute additional code before determining if you wish to insert content, such as calling an external service, you should use the `insertCallToActionOnce` method instead.
+This method acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and `setupFunction` is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the `setupFunction` payload. If you need to execute intermediary code before determining if you need to insert content, such as calling an external service, you should use the <a href="#api-insertcalltoactiononce-type-intent-settingsfunction-meta">`insertCallToActionOnce`</a> method instead.
 
-The default location for a CTA is the bottom of the existing CTA area on vehicle search results and details pages. However, by using this method it enables Dealer.com to specify the location of your CTA in the list and even map it to "take over" an existing CTA. For example, if a dealer has a custom styled E-Price button and wants your CTA to replace the standard functionality for that feature on their site, we can map your CTA to replace the default functionality. If your code fails to load for some reason, the default behavior of that button still takes effect and ensures that site users can still submit leads, etc.
+The default location for a CTA is the bottom of the existing CTA area on vehicle search results and details pages.
+
+
+
+However, by using this method it enables Dealer.com to specify the location of your CTA in the list and even map it to "take over" an existing CTA. For example, if a dealer has a custom styled E-Price button and wants your CTA to replace the standard functionality for that feature on their site, we can map your CTA to replace the default functionality. If your code fails to load for some reason, the default behavior of that button still takes effect and ensures that site users can still submit leads, etc.
 
 ### CTA Type
 
@@ -79,7 +83,7 @@ Button Intent is a concept used in the API as a way to categorize the type of fu
 
 `window-sticker`
 
-If you have a CTA that does not align with one of these types, please contact us and we can consider adding it to the API.
+If you have a CTA that does not align with one of these types, please let us know and we will consider adding it to the API.
 
 ### Callback Format
 
@@ -91,12 +95,12 @@ Field Name | Purpose | Example Value(s) | Field Format
 `href` | The URL to access when the CTA is clicked. | `https://www.yourdomain.com/` | String
 `target` | The link target. | `_blank`, `_self` | String
 `onclick` | A function to attach as a click handler to the CTA. | `window.MyIntegation.clickFunction` | Function
-`text` | An object supplying text for the CTA in one or more languages. `en_US` is required at minimum. `fr_CA` is highly recommended. | See code example | Object
+`text` | An object supplying text for the CTA in one or more languages. `en_US` is required at minimum. `fr_CA` is highly recommended. | See usage example | Object
 `attributes` | An object of `data-` attributes to add to the CTA. |  | String
 
 After creating the callback object, you must then return it for the API to create your CTA. If you do not return anything or return `null`, no CTA will be inserted for that vehicle item.
 
-## API.insertCallToActionOnce(type, intent, settingsFunction(meta))
+## API.insertCallToActionOnce(type, intent, setupFunction(meta))
 
 > Functional example
 
@@ -147,7 +151,7 @@ Field Name | Purpose | Field Format
 -------------- | -------------- | --------------
 `type` | The type of CTA that should be inserted. | String
 `intent` | The intention of the CTA you are inserting. | String
-`callback(meta)` | The payload object for the current vehicle. | Object
+`setupFunction(meta)` | The payload object for the current vehicle. | Object
 
 
 ## API.insert(name, callback(elem, meta))
