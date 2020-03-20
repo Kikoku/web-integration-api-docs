@@ -276,10 +276,10 @@
                     <a href="#api-subscribe-name-callback-event" class="toc-h2 toc-link" data-title="API.subscribe(name, callback(event))">API.subscribe(name, callback(event))</a>
                   </li>
                   <li>
-                    <a href="#api-insertcalltoaction-type-intent-callback-meta" class="toc-h2 toc-link" data-title="API.insertCallToAction(type, intent, callback(meta))">API.insertCallToAction(type, intent, callback(meta))</a>
+                    <a href="#api-insertcalltoaction-type-intent-setupfunction-meta" class="toc-h2 toc-link" data-title="API.insertCallToAction(type, intent, setupFunction(meta))">API.insertCallToAction(type, intent, setupFunction(meta))</a>
                   </li>
                   <li>
-                    <a href="#api-insertcalltoactiononce-type-intent-settingsfunction-meta" class="toc-h2 toc-link" data-title="API.insertCallToActionOnce(type, intent, settingsFunction(meta))">API.insertCallToActionOnce(type, intent, settingsFunction(meta))</a>
+                    <a href="#api-insertcalltoactiononce-type-intent-setupfunction-meta" class="toc-h2 toc-link" data-title="API.insertCallToActionOnce(type, intent, setupFunction(meta))">API.insertCallToActionOnce(type, intent, setupFunction(meta))</a>
                   </li>
                   <li>
                     <a href="#api-insert-name-callback-elem-meta" class="toc-h2 toc-link" data-title="API.insert(name, callback(elem, meta))">API.insert(name, callback(elem, meta))</a>
@@ -906,7 +906,7 @@
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.</p>
-<h2 id='api-insertcalltoaction-type-intent-callback-meta'>API.insertCallToAction(type, intent, callback(meta))</h2>
+<h2 id='api-insertcalltoaction-type-intent-setupfunction-meta'>API.insertCallToAction(type, intent, setupFunction(meta))</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
@@ -925,11 +925,11 @@
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
-<p>The <code>insertCallToAction</code> method is used to create a call to action (CTA) button for placement on web site inventory items. Rather than generating markup and inserting it into a location, using this method you specify the CTA type (&#39;button&#39; is the current supported type), an intent (more on this below), and a data object describing the element&#39;s attributes. </p>
+<p>The <code>insertCallToAction</code> method is used to create a call to action (CTA) button for placement on web site inventory items. Rather than generating markup and inserting it into a predefined location, when using this method you specify the CTA type (<code>button</code> is currently the only supported type), an intent (more on this below), and a data object describing the CTA&#39;s attributes.</p>
 
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Parameter Name</th>
 <th>Purpose</th>
 <th>Field Format</th>
 </tr>
@@ -945,17 +945,19 @@
 <td>String</td>
 </tr>
 <tr>
-<td><code>callback(meta)</code></td>
-<td>The payload object for the current vehicle.</td>
+<td><code>setupFunction(meta)</code></td>
+<td>The payload object for the current vehicle. You return a data object from this method.</td>
 <td>Object</td>
 </tr>
 </tbody></table>
 
-<p>The <code>callback</code> function is called for each inventory item presented on the page. The <code>meta</code> field provided is the <a href="#vehicle-event">Vehicle Event</a> payload. You can use the vehicle data to construct a data object describing your CTA&#39;s attributes, then return it back to the API. With the data returned from the callback function, the API creates the markup for your button and places it into the CTA area on each vehicle card on the search results page and/or the CTA area on the vehicle details page, depending on how your set up your code and the integration&#39;s configuration options for the given site.</p>
+<p><code>setupFunction</code> is called for each inventory item presented on the page. The <code>meta</code> field provided is the <a href="#vehicle-event">Vehicle Event</a> payload. You can use the vehicle data to construct an object describing your CTA&#39;s attributes, then return it back to the API. With the data returned from <code>setupFunction</code>, the API creates the markup for your button and places it into the CTA area on each vehicle card on the search results page and/or the CTA area on the vehicle details page. The placement depends on how you set up your code and the integration&#39;s configuration options for the given site.</p>
 
-<p>This method acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the callback payload. If you need to execute additional code before determining if you wish to insert content, such as calling an external service, you should use the <code>insertCallToActionOnce</code> method instead.</p>
+<p>This method acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and <code>setupFunction</code> is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the <code>setupFunction</code> payload. If you need to execute intermediary code before determining if you need to insert content, such as calling an external service, you should use the <a href="#api-insertcalltoactiononce-type-intent-settingsfunction-meta"><code>insertCallToActionOnce</code></a> method instead.</p>
 
-<p>The default location for a CTA is the bottom of the existing CTA area on vehicle search results and details pages. However, by using this method it enables Dealer.com to specify the location of your CTA in the list and even map it to &quot;take over&quot; an existing CTA. For example, if a dealer has a custom styled E-Price button and wants your CTA to replace the standard functionality for that feature on their site, we can map your CTA to replace the default functionality. If your code fails to load for some reason, the default behavior of that button still takes effect and ensures that site users can still submit leads, etc.</p>
+<p>The default location for a CTA is the bottom of the existing CTA area on vehicle search results and details pages.</p>
+
+<p>However, by using this method it enables Dealer.com to specify the location of your CTA in the list and even map it to &quot;take over&quot; an existing CTA. For example, if a dealer has a custom styled E-Price button and wants your CTA to replace the standard functionality for that feature on their site, we can map your CTA to replace the default functionality. If your code fails to load for some reason, the default behavior of that button still takes effect and ensures that site users can still submit leads, etc.</p>
 <h3 id='cta-type'>CTA Type</h3>
 <p>The current supported type is <code>button</code>, though other types may be added in the future. We currently only support text-based buttons.</p>
 <h3 id='cta-intent'>CTA Intent</h3>
@@ -983,7 +985,7 @@
 
 <p><code>window-sticker</code></p>
 
-<p>If you have a CTA that does not align with one of these types, please contact us and we can consider adding it to the API.</p>
+<p>If you have a CTA that does not align with one of these types, please let us know and we will consider adding it to the API.</p>
 <h3 id='callback-format'>Callback Format</h3>
 <p>The callback function for this method is used to create a data object describing the CTA you want to place on the page. The format of this object is described below.</p>
 
@@ -1022,7 +1024,7 @@
 <tr>
 <td><code>text</code></td>
 <td>An object supplying text for the CTA in one or more languages. <code>en_US</code> is required at minimum. <code>fr_CA</code> is highly recommended.</td>
-<td>See code example</td>
+<td>See usage example</td>
 <td>Object</td>
 </tr>
 <tr>
@@ -1034,7 +1036,7 @@
 </tbody></table>
 
 <p>After creating the callback object, you must then return it for the API to create your CTA. If you do not return anything or return <code>null</code>, no CTA will be inserted for that vehicle item.</p>
-<h2 id='api-insertcalltoactiononce-type-intent-settingsfunction-meta'>API.insertCallToActionOnce(type, intent, settingsFunction(meta))</h2>
+<h2 id='api-insertcalltoactiononce-type-intent-setupfunction-meta'>API.insertCallToActionOnce(type, intent, setupFunction(meta))</h2>
 <blockquote>
 <p>Functional example</p>
 </blockquote>
@@ -1097,7 +1099,7 @@
 <td>String</td>
 </tr>
 <tr>
-<td><code>callback(meta)</code></td>
+<td><code>setupFunction(meta)</code></td>
 <td>The payload object for the current vehicle.</td>
 <td>Object</td>
 </tr>
