@@ -976,14 +976,51 @@
 <h3 id='callback-format'>Callback Format</h3>
 <p>The callback function for this method is used to create a data object describing the CTA you want to place on the page. The format of this object is described below.</p>
 
-<p>Field Name | Purpose | Example Value(s) | Field Format
--------------- | -------------- | --------------
-<code>type</code> | The style of CTA that should be inserted. | <code>default</code>, <code>primary</code> | String
-<code>href</code> | The URL to access when the CTA is clicked. | <code>https://www.yourdomain.com/</code> | String
-<code>target</code> | The link target. | <code>_blank</code>, <code>_self</code> | String
-<code>onclick</code> | A function to attach as a click handler to the CTA. | <code>window.MyIntegation.clickFunction</code> | Function
-<code>text</code> | An object supplying text for the CTA in one or more languages. <code>en_US</code> is required at minimum. <code>fr_CA</code> is highly recommended. | See code example | Object
-<code>attributes</code> | An object of <code>data-</code> attributes to add to the CTA. |  | String</p>
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Purpose</th>
+<th>Example Value(s)</th>
+<th>Field Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>The style of CTA that should be inserted.</td>
+<td><code>default</code>, <code>primary</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>href</code></td>
+<td>The URL to access when the CTA is clicked.</td>
+<td><code>https://www.yourdomain.com/</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td>The link target.</td>
+<td><code>_blank</code>, <code>_self</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>onclick</code></td>
+<td>A function to attach as a click handler to the CTA.</td>
+<td><code>window.MyIntegation.clickFunction</code></td>
+<td>Function</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>An object supplying text for the CTA in one or more languages. <code>en_US</code> is required at minimum. <code>fr_CA</code> is highly recommended.</td>
+<td>See code example</td>
+<td>Object</td>
+</tr>
+<tr>
+<td><code>attributes</code></td>
+<td>An object of <code>data-</code> attributes to add to the CTA.</td>
+<td></td>
+<td>String</td>
+</tr>
+</tbody></table>
 
 <p>After creating the callback object, you must then return it for the API to create your CTA. If you do not return anything or return <code>null</code>, no CTA will be inserted for that vehicle item.</p>
 <h2 id='api-insertcalltoactiononce-type-intent-settingsfunction-meta'>API.insertCallToActionOnce(type, intent, settingsFunction(meta))</h2>
