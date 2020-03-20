@@ -78,7 +78,7 @@ If you have a CTA that does not align with one of these types, please contact us
 The callback function for this method is used to create a data object describing the CTA you want to place on the page. The format of this object is described below.
 
 Field Name | Purpose | Example Value(s) | Field Format
--------------- | -------------- | --------------
+-------------- | -------------- | -------------- | --------------
 `type` | The style of CTA that should be inserted. | `default`, `primary` | String
 `href` | The URL to access when the CTA is clicked. | `https://www.yourdomain.com/` | String
 `target` | The link target. | `_blank`, `_self` | String
