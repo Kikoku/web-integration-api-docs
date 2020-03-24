@@ -1006,6 +1006,12 @@
 <td>String</td>
 </tr>
 <tr>
+<td><code>classes</code></td>
+<td>A space delimited list of class names to add to the CTA.</td>
+<td><code>custom-class1 custom-class2</code></td>
+<td>String</td>
+</tr>
+<tr>
 <td><code>href</code></td>
 <td>The URL to access when the CTA is clicked.</td>
 <td><code>https://www.yourdomain.com/</code></td>
@@ -1065,6 +1071,7 @@
           <span class="k">if</span> <span class="p">(</span><span class="nx">serviceData</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">return</span> <span class="p">{</span>
               <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
+              <span class="s2">"classes"</span><span class="p">:</span> <span class="s2">"custom-class1 custom-class2"</span><span class="p">,</span>
               <span class="s2">"href"</span><span class="p">:</span> <span class="s2">"https://www.yourdomain.com/value-a-trade/?vin="</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
               <span class="s2">"target"</span><span class="p">:</span> <span class="s2">"_blank"</span><span class="p">,</span>
               <span class="s2">"text"</span><span class="p">:</span> <span class="p">{</span>
