@@ -92,6 +92,7 @@ The callback function for this method is used to create a data object describing
 Field Name | Purpose | Example Value(s) | Field Format
 -------------- | -------------- | -------------- | --------------
 `type` | The style of CTA that should be inserted. | `default`, `primary` | String
+`classes` | A space delimited list of class names to add to the CTA. | `custom-class1 custom-class2` | String
 `href` | The URL to access when the CTA is clicked. | `https://www.yourdomain.com/` | String
 `target` | The link target. | `_blank`, `_self` | String
 `onclick` | A function to attach as a click handler to the CTA. | `window.MyIntegation.clickFunction` | Function
@@ -128,6 +129,7 @@ After creating the callback object, you must then return it for the API to creat
           if (serviceData.hasOwnProperty(meta.vin)) {
             return {
               "type": "default",
+              "classes": "custom-class1 custom-class2",
               "href": "https://www.yourdomain.com/value-a-trade/?vin=" + meta.vin,
               "target": "_blank",
               "text": {
