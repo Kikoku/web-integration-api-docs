@@ -108,6 +108,7 @@ Field Key | Example Value | Field Format
     "https://pictures.dealer.com/f/futuredemodealer/1509/beaa11b53bdfdaf7ecff5bb82368a71fx.jpg",
     "https://pictures.dealer.com/f/futuredemodealer/1745/ce8b19151d15eb1bd2570e15f9d388efx.jpg"
   ],
+  internetPrice: 34345,
   interiorColor: "White",
   inventoryType: "new",
   make: "Honda",
