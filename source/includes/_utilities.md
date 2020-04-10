@@ -30,14 +30,20 @@ In addition to the event based system for working with sites, some utility metho
 
 This can be used to obtain an array of attributes for the currently displayed vehicles on a page. For example, passing the attribute 'finalPrice' would return an array of all of the final prices on the page. Passing 'vin' would return an array of vehicle vins. You can pass any of the attributes that are present on the <a href="#vehicle-event">Vehicle Event object</a> and have this return an array.
 
-## API.utils.getConfig()
+## API.utils.getConfig(testConfig)
 
 > Usage:
 
 ```javascript
 (function(WIAPI) {
   var API = new WIAPI('test-integration');
-  API.utils.getConfig().then(function(config) {
+  var testConfig = {
+    dealerId: "12345",
+    showOnSRP: true,
+    showOnVDP: false,
+    apiKey: "abcd12349876zyxw"
+  }
+  API.utils.getConfig(testConfig).then(function(config) {
     // Output the configuration object for your integration (if defined).
     API.log(config);
   });
@@ -45,6 +51,8 @@ This can be used to obtain an array of attributes for the currently displayed ve
 ```
 
 This fetches a JavaScript object of your integration's configuration for the current website and page. Not all integrations have configuration options in our system (aside from enabled/disabled), but if your integration does, you can use this to obtain the configuration data.
+
+`testConfig` is an optional parameter you can send into the `getConfig` method. The format should be a JavaScript object. Using the `testConfig`, you can specify any key/value pairs you need for configuration data for your integration to test various scenarios. The `testConfig` is only applied when `?_integrationMode=debug` is in the URL of the site you are testing, and that site does not already have your integration configured. If the site does have your integration configured, you can override the config specified on our side by also including `&_integrationConfig=override` in the URL.
 
 ## API.utils.getDealerData()
 
