@@ -328,7 +328,7 @@
                     <a href="#api-utils-getattributeforvehicles-attribute" class="toc-h2 toc-link" data-title="API.utils.getAttributeForVehicles(attribute)">API.utils.getAttributeForVehicles(attribute)</a>
                   </li>
                   <li>
-                    <a href="#api-utils-getconfig" class="toc-h2 toc-link" data-title="API.utils.getConfig()">API.utils.getConfig()</a>
+                    <a href="#api-utils-getconfig-testconfig" class="toc-h2 toc-link" data-title="API.utils.getConfig(testConfig)">API.utils.getConfig(testConfig)</a>
                   </li>
                   <li>
                     <a href="#api-utils-getdealerdata" class="toc-h2 toc-link" data-title="API.utils.getDealerData()">API.utils.getDealerData()</a>
@@ -582,31 +582,56 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="nl">accountId</span><span class="p">:</span> <span class="s2">"futuredemodealer"</span><span class="p">,</span>
-  <span class="nx">bodyStyle</span><span class="p">:</span> <span class="s2">"Sedan"</span><span class="p">,</span>
-  <span class="nx">certified</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
-  <span class="nx">cityFuelEconomy</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">address</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">accountName</span><span class="p">:</span> <span class="s2">"ROI Motors"</span><span class="p">,</span>
+    <span class="nx">city</span><span class="p">:</span> <span class="s2">"Burlington"</span><span class="p">,</span>
+    <span class="nx">state</span><span class="p">:</span> <span class="s2">"VT"</span><span class="p">,</span>
+    <span class="nx">postalCode</span><span class="p">:</span> <span class="s2">"05401"</span><span class="p">,</span>
+    <span class="nx">country</span><span class="p">:</span> <span class="s2">"US"</span>
+  <span class="p">},</span>
+  <span class="nx">autodataCaId</span><span class="p">:</span> <span class="s2">"1234567"</span><span class="p">,</span>
+  <span class="nx">bodyStyle</span><span class="p">:</span> <span class="s2">"SUV"</span><span class="p">,</span>
+  <span class="nx">certified</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">chromeId</span><span class="p">:</span> <span class="s2">"411601"</span><span class="p">,</span>
+  <span class="nx">cityFuelEconomy</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
   <span class="nx">classification</span><span class="p">:</span> <span class="s2">"primary"</span><span class="p">,</span>
-  <span class="nx">doors</span><span class="p">:</span> <span class="s2">"4-door"</span><span class="p">,</span>
-  <span class="nx">driveLine</span><span class="p">:</span> <span class="s2">"FWD"</span><span class="p">,</span>
+  <span class="nx">dealerCodes</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"dealertrack-post"</span><span class="p">:</span> <span class="s2">"futuredemodealer"</span><span class="p">,</span>
+    <span class="nx">dtid</span><span class="p">:</span> <span class="s2">"12345"</span><span class="p">,</span>
+    <span class="s2">"dt-dr-profile"</span><span class="p">:</span> <span class="s2">"futuredemodealer"</span><span class="p">,</span>
+    <span class="nx">affiliate_promotions</span><span class="p">:</span> <span class="s2">"avis"</span><span class="p">,</span>
+    <span class="s2">"at-kbb"</span><span class="p">:</span> <span class="s2">"12345678"</span>
+  <span class="p">},</span>
+  <span class="nx">driveLine</span><span class="p">:</span> <span class="s2">"Front-wheel Drive"</span><span class="p">,</span>
   <span class="nx">engine</span><span class="p">:</span> <span class="s2">"I-4 cyl"</span><span class="p">,</span>
-  <span class="nx">exteriorColor</span><span class="p">:</span> <span class="s2">"Platinum White Pearl"</span><span class="p">,</span>
-  <span class="nx">finalPrice</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
+  <span class="nx">engineSize</span><span class="p">:</span> <span class="s2">"1.5L"</span><span class="p">,</span>
+  <span class="nx">exteriorColor</span><span class="p">:</span> <span class="s2">"Crystal Black Pearl"</span><span class="p">,</span>
+  <span class="nx">finalPrice</span><span class="p">:</span> <span class="mi">34345</span><span class="p">,</span>
   <span class="nx">fuelType</span><span class="p">:</span> <span class="s2">"Regular Unleaded"</span><span class="p">,</span>
-  <span class="nx">highwayFuelEconomy</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
-  <span class="nx">interiorColor</span><span class="p">:</span> <span class="s2">"Black"</span><span class="p">,</span>
-  <span class="nx">internetPrice</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
+  <span class="nx">highwayFuelEconomy</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+  <span class="nx">images</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg"</span><span class="p">,</span>
+    <span class="s2">"https://pictures.dealer.com/f/futuredemodealer/1509/beaa11b53bdfdaf7ecff5bb82368a71fx.jpg"</span><span class="p">,</span>
+    <span class="s2">"https://pictures.dealer.com/f/futuredemodealer/1745/ce8b19151d15eb1bd2570e15f9d388efx.jpg"</span>
+  <span class="p">],</span>
+  <span class="nx">interiorColor</span><span class="p">:</span> <span class="s2">"White"</span><span class="p">,</span>
   <span class="nx">inventoryType</span><span class="p">:</span> <span class="s2">"new"</span><span class="p">,</span>
   <span class="nx">make</span><span class="p">:</span> <span class="s2">"Honda"</span><span class="p">,</span>
-  <span class="nx">model</span><span class="p">:</span> <span class="s2">"Accord"</span><span class="p">,</span>
-  <span class="nx">msrp</span><span class="p">:</span> <span class="mi">28360</span><span class="p">,</span>
-  <span class="nx">odometer</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="nx">status</span><span class="p">:</span> <span class="s2">"Live"</span><span class="p">,</span>
-  <span class="nx">stockNumber</span><span class="p">:</span> <span class="s2">"00180772"</span><span class="p">,</span>
+  <span class="nx">model</span><span class="p">:</span> <span class="s2">"CR-V"</span><span class="p">,</span>
+  <span class="nx">modelCode</span><span class="p">:</span> <span class="s2">"RW1H9LKNW"</span><span class="p">,</span>
+  <span class="nx">msrp</span><span class="p">:</span> <span class="mi">34345</span><span class="p">,</span>
+  <span class="nx">odometer</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="nx">optionCodes</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"ABC"</span><span class="p">,</span>
+    <span class="s2">"123"</span><span class="p">,</span>
+    <span class="s2">"321"</span>
+  <span class="p">],</span>
+  <span class="nx">stockNumber</span><span class="p">:</span> <span class="s2">"00100060"</span><span class="p">,</span>
   <span class="nx">transmission</span><span class="p">:</span> <span class="s2">"Variable"</span><span class="p">,</span>
-  <span class="nx">trim</span><span class="p">:</span> <span class="s2">"EX"</span><span class="p">,</span>
-  <span class="nx">uuid</span><span class="p">:</span> <span class="s2">"ab119e0e0a0a00f944d6f3031cd34854"</span><span class="p">,</span>
-  <span class="nx">vin</span><span class="p">:</span> <span class="s2">"1HGCV1F42JA141468"</span><span class="p">,</span>
-  <span class="nx">year</span><span class="p">:</span> <span class="mi">2018</span>
+  <span class="nx">trim</span><span class="p">:</span> <span class="s2">"Touring 2WD"</span><span class="p">,</span>
+  <span class="nx">uuid</span><span class="p">:</span> <span class="s2">"a897d95c0a0a00f95adba92bfd388557"</span><span class="p">,</span>
+  <span class="nx">vin</span><span class="p">:</span> <span class="s2">"7FARW1H9XLE000953"</span><span class="p">,</span>
+  <span class="nx">year</span><span class="p">:</span> <span class="mi">2020</span>
 <span class="p">}</span>
 </code></pre>
 <table><thead>
@@ -622,6 +647,16 @@
 <td><code>String</code></td>
 </tr>
 <tr>
+<td><code>address</code></td>
+<td><code>{&quot;accountName&quot;: &quot;ROI Motors&quot;, &quot;city&quot;: &quot;Burlington&quot;, &quot;state&quot;: &quot;VT&quot;, &quot;postalCode&quot;: &quot;05401&quot;, &quot;country&quot;: &quot;US&quot;}</code></td>
+<td><code>Object</code></td>
+</tr>
+<tr>
+<td><code>autodataCaId</code></td>
+<td><code>CAD00CHT27CG0</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
 <td><code>bodyStyle</code></td>
 <td><code>Sedan</code></td>
 <td><code>String</code></td>
@@ -629,6 +664,11 @@
 <tr>
 <td><code>certified</code></td>
 <td><code>false</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>chromeId</code></td>
+<td><code>407123</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
@@ -640,6 +680,11 @@
 <td><code>classification</code></td>
 <td><code>primary</code></td>
 <td><code>String</code></td>
+</tr>
+<tr>
+<td><code>dealerCodes</code></td>
+<td><code>{&quot;dealertrack-post&quot;: &quot;futuredemodealer&quot;, &quot;dtid&quot;: &quot;12345&quot;, &quot;dt-dr-profile&quot;: &quot;futuredemodealer&quot;}</code></td>
+<td><code>Object</code></td>
 </tr>
 <tr>
 <td><code>doors</code></td>
@@ -654,6 +699,11 @@
 <tr>
 <td><code>engine</code></td>
 <td><code>I-4 cyl</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>engineSize</code></td>
+<td><code>1.5L</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
@@ -675,6 +725,11 @@
 <td><code>highwayFuelEconomy</code></td>
 <td><code>38</code></td>
 <td><code>Integer</code></td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td><code>[&quot;https://pictures.dealer.com/1.jpg&quot;, &quot;https://pictures.dealer.com/2.jpg&quot;]</code></td>
+<td><code>Array</code></td>
 </tr>
 <tr>
 <td><code>interiorColor</code></td>
@@ -702,6 +757,11 @@
 <td><code>String</code></td>
 </tr>
 <tr>
+<td><code>modelCode</code></td>
+<td><code>RW1H9LKNW</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
 <td><code>msrp</code></td>
 <td><code>28360</code></td>
 <td><code>Integer</code></td>
@@ -710,6 +770,11 @@
 <td><code>odometer</code></td>
 <td><code>5</code></td>
 <td><code>Integer</code></td>
+</tr>
+<tr>
+<td><code>optionCodes</code></td>
+<td><code>[&quot;ABC&quot;, &quot;123&quot;, &quot;321&quot;]</code></td>
+<td><code>Array</code></td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -1497,19 +1562,27 @@
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>This can be used to obtain an array of attributes for the currently displayed vehicles on a page. For example, passing the attribute &#39;finalPrice&#39; would return an array of all of the final prices on the page. Passing &#39;vin&#39; would return an array of vehicle vins. You can pass any of the attributes that are present on the <a href="#vehicle-event">Vehicle Event object</a> and have this return an array.</p>
-<h2 id='api-utils-getconfig'>API.utils.getConfig()</h2>
+<h2 id='api-utils-getconfig-testconfig'>API.utils.getConfig(testConfig)</h2>
 <blockquote>
 <p>Usage:</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getConfig</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">testConfig</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">dealerId</span><span class="p">:</span> <span class="s2">"12345"</span><span class="p">,</span>
+    <span class="na">showOnSRP</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">showOnVDP</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">apiKey</span><span class="p">:</span> <span class="s2">"abcd12349876zyxw"</span>
+  <span class="p">}</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getConfig</span><span class="p">(</span><span class="nx">testConfig</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Output the configuration object for your integration (if defined).</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>This fetches a JavaScript object of your integration&#39;s configuration for the current website and page. Not all integrations have configuration options in our system (aside from enabled/disabled), but if your integration does, you can use this to obtain the configuration data.</p>
+
+<p><code>testConfig</code> is an optional parameter you can send into the <code>getConfig</code> method. The format should be a JavaScript object. Using the <code>testConfig</code>, you can specify any key/value pairs you need for configuration data for your integration to test various scenarios. The <code>testConfig</code> is only applied when <code>?_integrationMode=debug</code> is in the URL of the site you are testing, and that site does not already have your integration configured. If the site does have your integration configured, you can override the config specified on our side by also including <code>&amp;_integrationConfig=override</code> in the URL.</p>
 <h2 id='api-utils-getdealerdata'>API.utils.getDealerData()</h2>
 <blockquote>
 <p>Usage:</p>
