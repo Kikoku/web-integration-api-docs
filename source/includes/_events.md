@@ -76,55 +76,88 @@ Field Key | Example Value | Field Format
 ```javascript
 {
   accountId: "futuredemodealer",
-  bodyStyle: "Sedan",
-  certified: "false",
-  cityFuelEconomy: 30,
+  address: {
+    accountName: "ROI Motors",
+    city: "Burlington",
+    state: "VT",
+    postalCode: "05401",
+    country: "US"
+  },
+  autodataCaId: "1234567",
+  bodyStyle: "SUV",
+  certified: false,
+  chromeId: "411601",
+  cityFuelEconomy: 28,
   classification: "primary",
-  doors: "4-door",
-  driveLine: "FWD",
+  dealerCodes: {
+    "dealertrack-post": "futuredemodealer",
+    dtid: "12345",
+    "dt-dr-profile": "futuredemodealer",
+    affiliate_promotions: "avis",
+    "at-kbb": "12345678"
+  },
+  driveLine: "Front-wheel Drive",
   engine: "I-4 cyl",
-  exteriorColor: "Platinum White Pearl",
-  finalPrice: 28360,
+  engineSize: "1.5L",
+  exteriorColor: "Crystal Black Pearl",
+  finalPrice: 34345,
   fuelType: "Regular Unleaded",
-  highwayFuelEconomy: 38,
-  interiorColor: "Black",
-  internetPrice: 28360,
+  highwayFuelEconomy: 34,
+  images: [
+    "https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg",
+    "https://pictures.dealer.com/f/futuredemodealer/1509/beaa11b53bdfdaf7ecff5bb82368a71fx.jpg",
+    "https://pictures.dealer.com/f/futuredemodealer/1745/ce8b19151d15eb1bd2570e15f9d388efx.jpg"
+  ],
+  interiorColor: "White",
   inventoryType: "new",
   make: "Honda",
-  model: "Accord",
-  msrp: 28360,
-  odometer: 5,
-  status: "Live",
-  stockNumber: "00180772",
+  model: "CR-V",
+  modelCode: "RW1H9LKNW",
+  msrp: 34345,
+  odometer: 3,
+  optionCodes: [
+    "ABC",
+    "123",
+    "321"
+  ],
+  stockNumber: "00100060",
   transmission: "Variable",
-  trim: "EX",
-  uuid: "ab119e0e0a0a00f944d6f3031cd34854",
-  vin: "1HGCV1F42JA141468",
-  year: 2018
+  trim: "Touring 2WD",
+  uuid: "a897d95c0a0a00f95adba92bfd388557",
+  vin: "7FARW1H9XLE000953",
+  year: 2020
 }
 ```
 
 Field Key | Example Value | Field Format
 -------------- | -------------- | --------------
 `accountId` | `futuredemodealer` | `String`
+`address` | `{"accountName": "ROI Motors", "city": "Burlington", "state": "VT", "postalCode": "05401", "country": "US"}` | `Object`
+`autodataCaId` | `CAD00CHT27CG0` | `String`
 `bodyStyle` | `Sedan` | `String`
-`certified` | `false` | `String`
+`certified` | `false` | `Boolean`
+`chromeId` | `407123` | `String`
 `cityFuelEconomy` | `30` | `Integer`
 `classification` | `primary` | `String`
+`dealerCodes` | `{"dealertrack-post": "futuredemodealer", "dtid": "12345", "dt-dr-profile": "futuredemodealer"}` | `Object`
 `doors` | `4-door` | `String`
 `driveLine` | `FWD` | `String`
 `engine` | `I-4 cyl` | `String`
+`engineSize` | `1.5L` | `String`
 `exteriorColor` | `Platinum White Pearl` | `String`
 `finalPrice` | `28360` | `Integer`
 `fuelType` | `Regular Unleaded` | `String`
 `highwayFuelEconomy` | `38` | `Integer`
+`images` | `["https://pictures.dealer.com/1.jpg", "https://pictures.dealer.com/2.jpg"]` | `Array`
 `interiorColor` | `Black` | `String`
 `internetPrice` | `28360` | `Integer`
 `inventoryType` | `new` | `String`
 `make` | `Honda` | `String`
 `model` | `Accord` | `String`
+`modelCode` | `RW1H9LKNW` | `String`
 `msrp` | `28360` | `Integer`
 `odometer` | `5` | `Integer`
+`optionCodes` | `["ABC", "123", "321"]` | `Array`
 `status` | `Live` | `String`
 `stockNumber` | `00180772` | `String`
 `transmission` | `Variable` | `String`
