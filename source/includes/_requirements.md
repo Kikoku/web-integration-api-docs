@@ -46,13 +46,18 @@ Your code should be minimal and perform only actions necessary to bootstrap your
 	// Your code here
 })(window.DDC.API);
 ```
-* Always ecapsulate your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.
+* **Avoid Global Scope Pollution** - Always ecapsulate your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.
 
-* Your bootstrap script and any other integration code or assets should be located on a highly available content delivery network and must work over an HTTPS connection.
+* **Use a CDN** - Your bootstrap script and any other integration code or assets should be located on a highly available content delivery network and must work over an HTTPS connection.
 
-* All code should be minified and served using gzip or better compression.
+* **Minification and Compression** - All code should be minified and served using gzip or better compression.
 
-* Integrations should avoid loading excessive imagery, fonts and scripts. While some are often necessary, less is more and avoiding loading duplicate scripts will help reduce load time for your integration as well as improve overall website speed.
+* **Minimize Asset Size** - Integrations should avoid loading excessive imagery, fonts and scripts. While some are often necessary, less is more and avoiding loading duplicate scripts will help reduce load time for your integration as well as improve overall website speed.
 
-* Please refrain from including large libraries such as jQuery or React, as both are already available on all pages of all of our sites.
+* **Avoid Duplicate Code** - Please refrain from including large libraries such as jQuery or React, as both are already available on all pages of all of our sites. Avoid polyfilling items that DDC already polyfills.
 
+* **Browser Support** - Your code must support IE11, Edge, Firefox, Chrome, Safari, and iOS Safari.
+
+* **Minimize Files** - Serve content from as few files as possible to allow for optimal downloads.
+
+* **Minimize Domains** - Serve content from as few domains as possible to reduce the number of https connections the browser must make.
