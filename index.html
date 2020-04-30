@@ -373,6 +373,14 @@
           <li>
             <a href="#debugging-troubleshooting" class="toc-h1 toc-link" data-title="Debugging / Troubleshooting">Debugging / Troubleshooting</a>
           </li>
+          <li>
+            <a href="#sample-code" class="toc-h1 toc-link" data-title="Sample Code">Sample Code</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#resizing-an-iframe-based-on-content-changes" class="toc-h2 toc-link" data-title="Resizing an iframe Based on Content Changes">Resizing an <code>iframe</code> Based on Content Changes</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://forms.dealer.com/integrated-partner-program.htm' target='_blank'>Sign Up for our Partner Program</a></li>
@@ -425,11 +433,14 @@
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <ul>
-<li><p>Always ecapsulate your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.</p></li>
-<li><p>Your bootstrap script and any other integration code or assets should be located on a highly available content delivery network and must work over an HTTPS connection.</p></li>
-<li><p>All code should be minified and served using gzip or better compression.</p></li>
-<li><p>Integrations should avoid loading excessive imagery, fonts and scripts. While some are often necessary, less is more and avoiding loading duplicate scripts will help reduce load time for your integration as well as improve overall website speed.</p></li>
-<li><p>Please refrain from including large libraries such as jQuery or React, as both are already available on all pages of all of our sites.</p></li>
+<li><p><strong>Avoid Global Scope Pollution</strong> - Always ecapsulate your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.</p></li>
+<li><p><strong>Use a CDN</strong> - Your bootstrap script and any other integration code or assets should be located on a highly available content delivery network and must work over an HTTPS connection.</p></li>
+<li><p><strong>Minification and Compression</strong> - All code should be minified and served using gzip or better compression.</p></li>
+<li><p><strong>Minimize Asset Size</strong> - Integrations should avoid loading excessive imagery, fonts and scripts. While some are often necessary, less is more and avoiding loading duplicate scripts will help reduce load time for your integration as well as improve overall website speed.</p></li>
+<li><p><strong>Avoid Duplicate Code</strong> - Please refrain from including large libraries such as jQuery or React, as both are already available on all pages of all of our sites. Avoid polyfilling items that DDC already polyfills.</p></li>
+<li><p><strong>Browser Support</strong> - Your code must support IE11, Edge, Firefox, Chrome, Safari, and iOS Safari.</p></li>
+<li><p><strong>Minimize Files</strong> - Serve content from as few files as possible to allow for optimal downloads.</p></li>
+<li><p><strong>Minimize Domains</strong> - Serve content from as few domains as possible to reduce the number of https connections the browser must make.</p></li>
 </ul>
 <h1 id='events'>Events</h1>
 <p>By subscribing to events we publish, you can easily obtain the data you need to integrate your solution into the website. These events provide data about the website your integration is loading on and the current page the user is viewing.</p>
@@ -1742,6 +1753,84 @@ If any VINs are missing, that means that Dealer.com believes the given account d
 <p>This will allow the API to output some log messages to your browser&#39;s console regarding the actions it is taking. Additionally, you can instrument your own integration with log messages to validate that the expected code is being executed and desired code paths are being followed.</p>
 
 <p>To log messages from within your integration code, simply use the <code>API.log</code> method the same way you would use <code>console.log</code>. Those messages will be output to your console when the above URL parameter is present and will be suppressed when it is not.</p>
+<h1 id='sample-code'>Sample Code</h1>
+<p>The sample code here is provided as a starting point for how to accomplish tasks that are related to integrations but that may not fit squarely in the responsibility of the Integration API. Code may need to be modified to fit your integration&#39;s use case.</p>
+<h2 id='resizing-an-iframe-based-on-content-changes'>Resizing an <code>iframe</code> Based on Content Changes</h2>
+<blockquote>
+<p>iframe Code:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="s1">'hidden'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">sendResizeMessage</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s1">'IFRAME_HEIGHT_RESIZE'</span><span class="p">,</span>
+    <span class="na">target</span><span class="p">:</span> <span class="s1">'growing-iframe'</span><span class="p">,</span>
+    <span class="na">frameHeight</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">offsetHeight</span> <span class="o">+</span> <span class="mi">10</span> <span class="cm">/* a little extra for good measure */</span>
+  <span class="p">},</span> <span class="s1">'*'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ResizeObserver</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">heightObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sendResizeMessage</span><span class="p">();</span>
+  <span class="p">});</span>
+  <span class="nx">heightObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// IE 11</span>
+  <span class="nx">setInterval</span><span class="p">(</span>
+    <span class="nx">sendResizeMessage</span><span class="p">,</span>
+    <span class="mi">500</span> <span class="cm">/* ms */</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Integration Code:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">();</span>
+
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'content'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">iframeElem</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'iframe'</span><span class="p">);</span>
+    <span class="nx">iframeElem</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'https://www.yourdomain.com/path-to-iframe.htm'</span><span class="p">;</span>
+    <span class="nx">iframeElem</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'my-integration-name-iframe'</span><span class="p">);</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">iframeElem</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="kd">function</span> <span class="nx">setIframeHeight</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">origin</span> <span class="o">!==</span> <span class="s1">'https://www.yourdomain.com'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// You should ALWAYS verify the origin matches the third party domain</span>
+      <span class="c1">// the iframe is loaded from. For more information, see:</span>
+      <span class="c1">// https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#Security_concerns</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'IFRAME_HEIGHT_RESIZE'</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">frameHeight</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">iframes</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">iframes</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">iframes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">frameHeight</span> <span class="o">+</span> <span class="s1">'px'</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="nx">setIframeHeight</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>An integration may want to insert an iframe that resizes as its contents change. One possible way to accomplish this is for the iframe and the integration to work together as shown in the sample code from the pane on the right side of this page. You can see the sample code running <a href="https://webapitestddc.cms.dealer.com/growing-iframe-example.htm">here</a>.</p>
+<h3 id='iframe-responsibilities'>iframe Responsibilities:</h3>
+<ul>
+<li><strong>Determine when content dimensions change</strong> - One way to do this is using <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"><code>ResizeObserver</code></a>. <code>ResizeObserver</code> is not supported in IE11, so one possible solution is to fallback to polling. Polling is not ideal, but it will work for this small percentage of our traffic.</li>
+<li><strong>Communicate the new dimension to the outer page</strong> - iframes can communicate with the parent page using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage"><code>postMessage</code></a>.</li>
+<li><strong>Ensure a scrollbar never shows up within the iframe</strong> - Styling may be used to ensure a scrollbar never appears in the iframe.</li>
+</ul>
+<h3 id='integration-responsibilities-on-the-outer-page'>Integration Responsibilities(on the outer page):</h3>
+<ul>
+<li><strong>Insert the iframe into the page</strong> - You can use the API methods to insert an iframe into a location.</li>
+<li><strong>Listen for resize messages and resize the iframe</strong></li>
+</ul>
+<h3 id='considerations'>Considerations</h3>
+<ul>
+<li>If you use <code>postMessage</code>, ensure that you check the event&#39;s origin to alleviate <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#Security_concerns">security concerns</a>.</li>
+<li>The integration resizing code supports multiple iframes from the same vendor. You may need to modify the code to target your iframes differently.</li>
+</ul>
 
       </div>
       <div class="dark-box">
