@@ -10,7 +10,7 @@ See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentati
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-media', function(elem, meta) {
     // This element is positioned below the vehicle image area on vehicle search pages.
   });
@@ -21,7 +21,7 @@ See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentati
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage) {
       API.insert('vehicle-media', function(elem, meta) {
@@ -49,7 +49,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-badge', function(elem, meta) {
     // This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
   });
@@ -60,7 +60,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('vehicle-badge', function(elem, meta) {
@@ -94,7 +94,7 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-pricing', function(elem, meta) {
     // This element is positioned below the vehicle pricing area on vehicle search and detail pages.
   });
@@ -105,7 +105,7 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     // Only execute the code on search results and vehicle details pages.
     if (ev.payload.searchPage || ev.payload.detailPage) {
@@ -133,7 +133,7 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-media-container', function(elem, meta) {
     // This element is the media gallery container on vehicle deals pages.
     // Injecting into this location will replace the media gallery with the elements you insert.
@@ -145,7 +145,7 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.detailPage) {
       API.insert('vehicle-media-container', function(elem, meta) {
@@ -167,7 +167,7 @@ This element is the media gallery container on vehicle deals pages. Injecting in
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('primary-banner', function(elem, meta) {
     // This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.
     // On the Details page, it is near the top of the vehicle information, below the media gallery.
@@ -179,7 +179,7 @@ This element is the media gallery container on vehicle deals pages. Injecting in
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('primary-banner', function(elem, meta) {

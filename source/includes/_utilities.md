@@ -8,7 +8,7 @@ In addition to the event based system for working with sites, some utility metho
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('vehicle-data-updated-v1', function(data) {
 
     API.log(data.payload.pageData); // Logs the Page Data object
@@ -36,7 +36,7 @@ This can be used to obtain an array of attributes for the currently displayed ve
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI('test-integration');
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier to obtain the correct configuration data.
   var testConfig = {
     dealerId: "12345",
     showOnSRP: true,
@@ -60,7 +60,7 @@ This fetches a JavaScript object of your integration's configuration for the cur
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.utils.getDealerData().then(function(dealerData) {
     // Logs the Dealership Info Event object for the current website.
     API.log(dealerData);
@@ -76,7 +76,7 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.utils.getJwtForVehicles().then(function(jwtObject) {
     API.log(jwtObject);
     // Returns a data structure like this:
@@ -96,7 +96,7 @@ This fetches an object containing the array of VINs on the current page and a co
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.utils.getPageData().then(function(pageData) {
     // Outputs the Page Data Object for the current page.
     API.log(pageData);
@@ -108,15 +108,29 @@ This fetches the <a href="#page-event">Page Event object</a> for the current web
 
 ## API.utils.getUrlParams()
 
-NOTE: This method does not return a promise as the URL Params are immediately available and do not require Promise behavior.
+NOTE: This method returns immediately, not as a Promise, because the URL Params are already available and do not require asynchronous behavior.
+
+Running this function at a URL such as this:
+
+[https://www.roimotors.com/?query=This%20is%20the%20query&hello=world&foo=bar](https://www.roimotors.com/?query=This%20is%20the%20query&hello=world&foo=bar)
+
+Will return the following object:
+
+```{
+  query: "This is the query",
+  hello: "world",
+  foo: "bar"
+}```
+
 
 > Usage:
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
-  var urlParams = API.utils.getUrlParams();
-  API.log(urlParams); // Logs the configuration object for your integration (if there is one).
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  var urlParams = API.utils.getUrlParams(); // Returns the current URL parameters as object attributes, so you can easily access the values.
+  API.log(urlParams); // Log the entire object.
+  API.log(urlParams.query); // Access just the `query` parameter, for example.
 })(window.DDC.API);
 ```
 
@@ -126,7 +140,7 @@ NOTE: This method does not return a promise as the URL Params are immediately av
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   var config = API.utils.getVehicleData().then(function(vehicleData) {
     // Outputs the current set of vehicle data.
     API.log(vehicleData);

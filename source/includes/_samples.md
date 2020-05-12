@@ -12,7 +12,7 @@ document.body.style.overflow = 'hidden';
 function sendResizeMessage() {
   window.parent.postMessage({
     type: 'IFRAME_HEIGHT_RESIZE',
-    target: 'growing-iframe',
+    target: 'test-integration-iframe', // Note: Replace 'test-integration-frame' with your actual iframe identifier.
     frameHeight: document.body.offsetHeight + 10 /* a little extra for good measure */
   }, '*');
 }
@@ -35,12 +35,12 @@ if (window.ResizeObserver) {
 
 ```javascript
 (function (WIAPI) {
-  API = new WIAPI();
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   API.insert('content', function (elem, meta) {
     var iframeElem = document.createElement('iframe');
     iframeElem.src = 'https://www.yourdomain.com/path-to-iframe.htm';
-    iframeElem.classList.add('my-integration-name-iframe');
+    iframeElem.classList.add('test-integration-iframe'); // Note: Replace 'test-integration-frame' with your actual iframe identifier.
     API.append(elem, iframeElem);
   });
 
@@ -66,7 +66,7 @@ if (window.ResizeObserver) {
 
 An integration may want to insert an iframe that resizes as its contents change. One possible way to accomplish this is for the iframe and the integration to work together as shown in the sample code from the pane on the right side of this page. You can see the sample code running [here](https://webapitestddc.cms.dealer.com/growing-iframe-example.htm).
 
-### iframe Responsibilities:
+### IFrame Responsibilities:
 
 * **Determine when content dimensions change** - One way to do this is using [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver). `ResizeObserver` is not supported in IE11, so one possible solution is to fallback to polling. Polling is not ideal, but it will work for this small percentage of our traffic.
 * **Communicate the new dimension to the outer page** - iframes can communicate with the parent page using [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage).

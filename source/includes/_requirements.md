@@ -41,7 +41,7 @@ Your code should be minimal and perform only actions necessary to bootstrap your
 
 ```javascript
 (function(WIAPI) {
-	var API = new WIAPI();
+	var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 	// API.subscribe(...);
 	// Your code here
 })(window.DDC.API);
