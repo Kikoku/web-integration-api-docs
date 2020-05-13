@@ -406,7 +406,7 @@
 
 <p><em>2.)</em> Open the developer tools in your browser and enter this code in the Console window:</p>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s1">'https://www.yourdomain.com/your-javascript-file.js'</span><span class="p">);</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
@@ -988,7 +988,7 @@
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">insertCallToAction</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="s1">'value-a-trade'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
       <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
@@ -1128,7 +1128,7 @@
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
 
   <span class="c1">// Initialize an instance of the API</span>
-  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
 
   <span class="c1">// Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
@@ -1225,7 +1225,7 @@
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
 
   <span class="c1">// Initialize an instance of the API</span>
-  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
 
   <span class="c1">// Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
