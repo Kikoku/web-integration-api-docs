@@ -127,7 +127,7 @@ Running this function at a URL such as this:
 
 Will return the following object:
 
-```javascript
+```
 {
   query: "This is the query",
   hello: "world",
