@@ -108,21 +108,6 @@ This fetches the <a href="#page-event">Page Event object</a> for the current web
 
 ## API.utils.getUrlParams()
 
-NOTE: This method returns immediately, not as a Promise, because the URL Params are already available and do not require asynchronous behavior.
-
-Running this function at a URL such as this:
-
-[https://www.roimotors.com/?query=This%20is%20the%20query&hello=world&foo=bar](https://www.roimotors.com/?query=This%20is%20the%20query&hello=world&foo=bar)
-
-Will return the following object:
-
-```{
-  query: "This is the query",
-  hello: "world",
-  foo: "bar"
-}```
-
-
 > Usage:
 
 ```javascript
@@ -132,6 +117,22 @@ Will return the following object:
   API.log(urlParams); // Log the entire object.
   API.log(urlParams.query); // Access just the `query` parameter, for example.
 })(window.DDC.API);
+```
+
+NOTE: This method returns synchronously, not as a Promise, because the URL Params are already available and do not require asynchronous behavior for performance.
+
+Running this function at a URL such as this:
+
+[https://www.roimotors.com/?query=This%20is%20the%20query&hello=world&foo=bar](https://www.roimotors.com/?query=This%20is%20the%20query&hello=world&foo=bar)
+
+Will return the following object:
+
+```javascript
+{
+  query: "This is the query",
+  hello: "world",
+  foo: "bar"
+}
 ```
 
 ## API.utils.getVehicleData()
