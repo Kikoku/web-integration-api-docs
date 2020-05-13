@@ -127,13 +127,13 @@ Running this function at a URL such as this:
 
 Will return the following object:
 
-```
+`
 {
   query: "This is the query",
   hello: "world",
   foo: "bar"
 }
-```
+`
 
 ## API.utils.getVehicleData()
 
