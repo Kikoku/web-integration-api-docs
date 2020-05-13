@@ -18,7 +18,7 @@ When you begin development of your script, it's easy to test on any Dealer.com s
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI('test-integration');
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.test('https://www.yourdomain.com/your-javascript-file.js');
 })(window.DDC.API);
 ```

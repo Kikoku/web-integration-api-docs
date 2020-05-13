@@ -20,7 +20,7 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 
 ```javascript
 (function(WIAPI) {
-  var API = new WIAPI('test-integration');
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insertCallToAction('button', 'value-a-trade', function(meta) {
     return {
       "type": "default",
@@ -109,7 +109,7 @@ After creating the callback object, you must then return it for the API to creat
 (function(WIAPI) {
 
   // Initialize an instance of the API
-  var API = new WIAPI('test-integration');
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   // Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', function(ev) {
@@ -196,7 +196,7 @@ This acts as an event subscription, so as the application displays new vehicles 
 (function(WIAPI) {
 
   // Initialize an instance of the API
-  var API = new WIAPI('test-integration');
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   // Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', function(ev) {
