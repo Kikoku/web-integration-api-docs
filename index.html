@@ -1639,20 +1639,6 @@
 </code></pre>
 <p>This fetches the <a href="#page-event">Page Event object</a> for the current website and page.</p>
 <h2 id='api-utils-geturlparams'>API.utils.getUrlParams()</h2>
-<p>NOTE: This method returns immediately, not as a Promise, because the URL Params are already available and do not require asynchronous behavior.</p>
-
-<p>Running this function at a URL such as this:</p>
-
-<p><a href="https://www.roimotors.com/?query=This%20is%20the%20query&amp;hello=world&amp;foo=bar">https://www.roimotors.com/?query=This%20is%20the%20query&amp;hello=world&amp;foo=bar</a></p>
-
-<p>Will return the following object:</p>
-
-<p><code>{
-  query: &quot;This is the query&quot;,
-  hello: &quot;world&quot;,
-  foo: &quot;bar&quot;
-}</code></p>
-
 <blockquote>
 <p>Usage:</p>
 </blockquote>
@@ -1662,6 +1648,19 @@
   <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urlParams</span><span class="p">);</span> <span class="c1">// Log the entire object.</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urlParams</span><span class="p">.</span><span class="nx">query</span><span class="p">);</span> <span class="c1">// Access just the `query` parameter, for example.</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>NOTE: This method returns synchronously, not as a Promise, because the URL Params are already available and do not require asynchronous behavior for performance.</p>
+
+<p>Running this function at a URL such as this:</p>
+
+<p><a href="https://www.roimotors.com/?query=This%20is%20the%20query&amp;hello=world&amp;foo=bar">https://www.roimotors.com/?query=This%20is%20the%20query&amp;hello=world&amp;foo=bar</a></p>
+
+<p>Will return the following object:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="nl">query</span><span class="p">:</span> <span class="s2">"This is the query"</span><span class="p">,</span>
+  <span class="nx">hello</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">,</span>
+  <span class="nx">foo</span><span class="p">:</span> <span class="s2">"bar"</span>
+<span class="p">}</span>
 </code></pre><h2 id='api-utils-getvehicledata'>API.utils.getVehicleData()</h2>
 <blockquote>
 <p>Usage:</p>
