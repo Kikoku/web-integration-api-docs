@@ -17,6 +17,14 @@ When developing an integration, it's helpful to know if the API is doing what yo
 
 `?_integrationMode=debug`
 
-This will allow the API to output some log messages to your browser's console regarding the actions it is taking. Additionally, you can instrument your own integration with log messages to validate that the expected code is being executed and desired code paths are being followed.
+This will allow the API to output some log messages to your browser's console regarding the actions it is taking.
+
+For more verbose logging, use this combination of URL parameters:
+
+`?_integrationMode=debug&_integrationLogLevel=trace`
+
+This will output more information about the actions being taken in your script to the browser console so you can more easily see what actions are happening. You can easily filter the browser console to show only these messages by typing `Web Integration API` into the `filter` field in your browser.
+
+Additionally, you can instrument your own integration with log messages to validate that the expected code is being executed and desired code paths are being followed.
 
 To log messages from within your integration code, simply use the `API.log` method the same way you would use `console.log`. Those messages will be output to your console when the above URL parameter is present and will be suppressed when it is not.
