@@ -1765,7 +1765,15 @@ If any VINs are missing, that means that Dealer.com believes the given account d
 
 <p><code>?_integrationMode=debug</code></p>
 
-<p>This will allow the API to output some log messages to your browser&#39;s console regarding the actions it is taking. Additionally, you can instrument your own integration with log messages to validate that the expected code is being executed and desired code paths are being followed.</p>
+<p>This will allow the API to output some log messages to your browser&#39;s console regarding the actions it is taking.</p>
+
+<p>For more verbose logging, use this combination of URL parameters:</p>
+
+<p><code>?_integrationMode=debug&amp;_integrationLogLevel=trace</code></p>
+
+<p>This will output more information about the actions being taken in your script to the browser console so you can more easily see what actions are happening. You can easily filter the browser console to show only these messages by typing <code>Web Integration API</code> into the <code>filter</code> field in your browser.</p>
+
+<p>Additionally, you can instrument your own integration with log messages to validate that the expected code is being executed and desired code paths are being followed.</p>
 
 <p>To log messages from within your integration code, simply use the <code>API.log</code> method the same way you would use <code>console.log</code>. Those messages will be output to your console when the above URL parameter is present and will be suppressed when it is not.</p>
 <h1 id='sample-code'>Sample Code</h1>
