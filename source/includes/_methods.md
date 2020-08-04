@@ -61,6 +61,8 @@ The current supported type is `button`, though other types may be added in the f
 
 Button Intent is a concept used in the API as a way to categorize the type of functionality your CTA provides. The current supported intent types are:
 
+`chat`
+
 `check-availability`
 
 `eprice`
@@ -74,6 +76,8 @@ Button Intent is a concept used in the API as a way to categorize the type of fu
 `reserve-it-now`
 
 `send-to-phone`
+
+`social`
 
 `test-drive`
 
