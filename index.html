@@ -282,6 +282,9 @@
                     <a href="#api-insertcalltoactiononce-type-intent-setupfunction-meta" class="toc-h2 toc-link" data-title="API.insertCallToActionOnce(type, intent, setupFunction(meta))">API.insertCallToActionOnce(type, intent, setupFunction(meta))</a>
                   </li>
                   <li>
+                    <a href="#api-insertgallerycontent-target-objorarray" class="toc-h2 toc-link" data-title="API.insertGalleryContent(target, objOrArray)">API.insertGalleryContent(target, objOrArray)</a>
+                  </li>
+                  <li>
                     <a href="#api-insert-name-callback-elem-meta" class="toc-h2 toc-link" data-title="API.insert(name, callback(elem, meta))">API.insert(name, callback(elem, meta))</a>
                   </li>
                   <li>
@@ -438,7 +441,7 @@
 <li><p><strong>Minification and Compression</strong> - All code should be minified and served using gzip or better compression.</p></li>
 <li><p><strong>Minimize Asset Size</strong> - Integrations should avoid loading excessive imagery, fonts and scripts. While some are often necessary, less is more and avoiding loading duplicate scripts will help reduce load time for your integration as well as improve overall website speed.</p></li>
 <li><p><strong>Avoid Duplicate Code</strong> - Please refrain from including large libraries such as jQuery or React, as both are already available on all pages of all of our sites. Avoid polyfilling items that DDC already polyfills.</p></li>
-<li><p><strong>Browser Support</strong> - We strive to support IE11, Edge, Firefox, Chrome, Safari, and iOS Safari, however, you may choose your own level of support.</p></li>
+<li><p><strong>Browser Support</strong> - We strive to support Edge, Firefox, Chrome, Safari, and iOS Safari, however, you may choose your own level of support.</p></li>
 <li><p><strong>Minimize Files</strong> - Serve content from as few files as possible to allow for optimal downloads.</p></li>
 <li><p><strong>Minimize Domains</strong> - Serve content from as few domains as possible to reduce the number of https connections the browser must make.</p></li>
 </ul>
@@ -1192,6 +1195,59 @@
 <td><code>setupFunction(meta)</code></td>
 <td>The payload object for the current vehicle.</td>
 <td>Object</td>
+</tr>
+</tbody></table>
+<h2 id='api-insertgallerycontent-target-objorarray'>API.insertGalleryContent(target, objOrArray)</h2>
+<blockquote>
+<p>Usage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insertGalleryContent</span><span class="p">(</span><span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'image'</span><span class="p">,</span>
+      <span class="na">position</span><span class="p">:</span> <span class="s1">'primary'</span><span class="p">,</span>
+      <span class="na">src</span><span class="p">:</span> <span class="s1">'https://yourdomain.com/primary.jpg'</span><span class="p">,</span>
+      <span class="na">thumbnail</span><span class="p">:</span> <span class="s1">'https://yourdomain.com/primary-thumb.jpg'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'image'</span><span class="p">,</span>
+      <span class="na">position</span><span class="p">:</span> <span class="s1">'secondary'</span><span class="p">,</span>
+      <span class="na">src</span><span class="p">:</span> <span class="s1">'https://yourdomain.com/secondary.jpg'</span><span class="p">,</span>
+      <span class="na">thumbnail</span><span class="p">:</span> <span class="s1">'https://yourdomain.com/secondary-thumb.jpg'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'image'</span><span class="p">,</span>
+      <span class="na">position</span><span class="p">:</span> <span class="s1">'last'</span><span class="p">,</span>
+      <span class="na">src</span><span class="p">:</span> <span class="s1">'https://yourdomain.com/last.jpg'</span><span class="p">,</span>
+      <span class="na">thumbnail</span><span class="p">:</span> <span class="s1">'https://yourdomain.com/last-thumb.jpg'</span>
+    <span class="p">}</span>
+  <span class="p">]);</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>The <code>insertGalleryContent</code> method allows you to add media to media galleries across various pages of Dealer.com sites. The only currently supported target is <code>vehicle-media</code>, which will insert media into the media carousel of Vehicle Details Pages.</p>
+
+<p><code>objOrArray</code> is an array of objects describing the media to be inserted. If you have a single image, you can pass a single object instead. Each object has a <code>type</code> field to specify the type of media to be inserted. The only currently supported media type is <code>image</code>.</p>
+
+<p>The <code>image</code> type supports the following additional attributes:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>position</code></td>
+<td>Where to insert the image. <code>primary</code> is used for content that should be displayed to the user as soon as it loads -- as long as the user has not explicitly performed an action to look at pre-existing media. <code>secondary</code> is used for content that should be displayed soon, but not replace the pre-existing main image. <code>last</code> is used to append content to the end of an existing gallery.</td>
+</tr>
+<tr>
+<td><code>src</code></td>
+<td>HTTPS url to the image to be inserted.</td>
+</tr>
+<tr>
+<td><code>thumbnail</code></td>
+<td>HTTPS url to a thumbnail of the image to be inserted. For performance, it is ideal to provide a low resolution thumbnail that can be used for a preview of the inserted image, however, <code>src</code> will be used if <code>thumbnail</code> is not provided.</td>
 </tr>
 </tbody></table>
 <h2 id='api-insert-name-callback-elem-meta'>API.insert(name, callback(elem, meta))</h2>
