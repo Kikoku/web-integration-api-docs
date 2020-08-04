@@ -56,7 +56,7 @@ Your code should be minimal and perform only actions necessary to bootstrap your
 
 * **Avoid Duplicate Code** - Please refrain from including large libraries such as jQuery or React, as both are already available on all pages of all of our sites. Avoid polyfilling items that DDC already polyfills.
 
-* **Browser Support** - We strive to support IE11, Edge, Firefox, Chrome, Safari, and iOS Safari, however, you may choose your own level of support.
+* **Browser Support** - We strive to support Edge, Firefox, Chrome, Safari, and iOS Safari, however, you may choose your own level of support.
 
 * **Minimize Files** - Serve content from as few files as possible to allow for optimal downloads.
 

@@ -159,6 +159,47 @@ Field Name | Purpose | Field Format
 `intent` | The intention of the CTA you are inserting. | String
 `setupFunction(meta)` | The payload object for the current vehicle. | Object
 
+## API.insertGalleryContent(target, objOrArray)
+
+> Usage
+
+```javascript
+(function(WIAPI) {
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  API.insertGalleryContent('vehicle-media', [
+    {
+      type: 'image',
+      position: 'primary',
+      src: 'https://yourdomain.com/primary.jpg',
+      thumbnail: 'https://yourdomain.com/primary-thumb.jpg'
+    },
+    {
+      type: 'image',
+      position: 'secondary',
+      src: 'https://yourdomain.com/secondary.jpg',
+      thumbnail: 'https://yourdomain.com/secondary-thumb.jpg'
+    },
+    {
+      type: 'image',
+      position: 'last',
+      src: 'https://yourdomain.com/last.jpg',
+      thumbnail: 'https://yourdomain.com/last-thumb.jpg'
+    }
+  ]);
+})(window.DDC.API);
+```
+
+The `insertGalleryContent` method allows you to add media to media galleries across various pages of Dealer.com sites. The only currently supported target is `vehicle-media`, which will insert media into the media carousel of Vehicle Details Pages.
+
+`objOrArray` is an array of objects describing the media to be inserted. If you have a single image, you can pass a single object instead. Each object has a `type` field to specify the type of media to be inserted. The only currently supported media type is `image`.
+
+The `image` type supports the following additional attributes:
+
+Name | Description
+-------------- | --------------
+`position` | Where to insert the image. `primary` is used for content that should be displayed to the user as soon as it loads -- as long as the user has not explicitly performed an action to look at pre-existing media. `secondary` is used for content that should be displayed soon, but not replace the pre-existing main image. `last` is used to append content to the end of an existing gallery.
+`src` | HTTPS url to the image to be inserted.
+`thumbnail` | HTTPS url to a thumbnail of the image to be inserted. For performance, it is ideal to provide a low resolution thumbnail that can be used for a preview of the inserted image, however, `src` will be used if `thumbnail` is not provided.
 
 ## API.insert(name, callback(elem, meta))
 
