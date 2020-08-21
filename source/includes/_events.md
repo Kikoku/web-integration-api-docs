@@ -100,22 +100,22 @@ Field Key | Example Value | Field Format
   engine: "I-4 cyl",
   engineSize: "1.5L",
   exteriorColor: "Crystal Black Pearl",
-  finalPrice: 34345,
+  finalPrice: 32000,
   fuelType: "Regular Unleaded",
-  highestPrice: 35970,
+  highestPrice: 34000,
   highwayFuelEconomy: 34,
   images: [
     "https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg",
     "https://pictures.dealer.com/f/futuredemodealer/1509/beaa11b53bdfdaf7ecff5bb82368a71fx.jpg",
     "https://pictures.dealer.com/f/futuredemodealer/1745/ce8b19151d15eb1bd2570e15f9d388efx.jpg"
   ],
-  internetPrice: 34345,
+  internetPrice: 33000,
   interiorColor: "White",
   inventoryType: "new",
   make: "Honda",
   model: "CR-V",
   modelCode: "RW1H9LKNW",
-  msrp: 34345,
+  msrp: 34000,
   odometer: 3,
   optionCodes: [
     "ABC",
@@ -147,18 +147,18 @@ Field Key | Example Value | Field Format
 `engine` | `I-4 cyl` | `String`
 `engineSize` | `1.5L` | `String`
 `exteriorColor` | `Platinum White Pearl` | `String`
-`finalPrice` | `28360` | `Integer`
+`finalPrice` | `32000` | `Integer`
 `fuelType` | `Regular Unleaded` | `String`
-`highestPrice` | `35970` | `Integer`
+`highestPrice` | `34000` | `Integer`
 `highwayFuelEconomy` | `38` | `Integer`
 `images` | `["https://pictures.dealer.com/1.jpg"]` | `Array`
 `interiorColor` | `Black` | `String`
-`internetPrice` | `28360` | `Integer`
+`internetPrice` | `33000` | `Integer`
 `inventoryType` | `new` | `String`
 `make` | `Honda` | `String`
 `model` | `Accord` | `String`
 `modelCode` | `RW1H9LKNW` | `String`
-`msrp` | `28360` | `Integer`
+`msrp` | `34000` | `Integer`
 `odometer` | `5` | `Integer`
 `optionCodes` | `["ABC", "123", "321"]` | `Array`
 `status` | `Live` | `String`
