@@ -102,6 +102,7 @@ Field Key | Example Value | Field Format
   exteriorColor: "Crystal Black Pearl",
   finalPrice: 34345,
   fuelType: "Regular Unleaded",
+  highestPrice: 35970,
   highwayFuelEconomy: 34,
   images: [
     "https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg",
@@ -148,8 +149,9 @@ Field Key | Example Value | Field Format
 `exteriorColor` | `Platinum White Pearl` | `String`
 `finalPrice` | `28360` | `Integer`
 `fuelType` | `Regular Unleaded` | `String`
+`highestPrice` | `35970` | `Integer`
 `highwayFuelEconomy` | `38` | `Integer`
-`images` | `["https://pictures.dealer.com/1.jpg", "https://pictures.dealer.com/2.jpg"]` | `Array`
+`images` | `["https://pictures.dealer.com/1.jpg"]` | `Array`
 `interiorColor` | `Black` | `String`
 `internetPrice` | `28360` | `Integer`
 `inventoryType` | `new` | `String`
