@@ -105,9 +105,7 @@ Field Key | Example Value | Field Format
   highestPrice: 34000,
   highwayFuelEconomy: 34,
   images: [
-    "https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg",
-    "https://pictures.dealer.com/f/futuredemodealer/1509/beaa11b53bdfdaf7ecff5bb82368a71fx.jpg",
-    "https://pictures.dealer.com/f/futuredemodealer/1745/ce8b19151d15eb1bd2570e15f9d388efx.jpg"
+    "https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg"
   ],
   internetPrice: 33000,
   interiorColor: "White",
