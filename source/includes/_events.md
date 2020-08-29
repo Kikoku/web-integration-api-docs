@@ -143,10 +143,15 @@ It is recommended that you use `startingPrice` for the most expensive price disp
 You may notice one or more of these fields available in the vehicle object on some sites:
 
 `askingPrice`
+
 `internetPrice`
+
 `msrp`
+
 `retailValue`
+
 `salePrice`
+
 `wholesalePrice`
 
 All of the above fields are `deprecated`, meaning they may be removed from the API at a later date. New integrations should not use any of the above fields and should instead rely on `startingPrice` or `finalPrice` for the correct vehicle pricing information.
