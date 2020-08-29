@@ -102,7 +102,7 @@ Field Key | Example Value | Field Format
   exteriorColor: "Crystal Black Pearl",
   finalPrice: 32000,
   fuelType: "Regular Unleaded",
-  highestPrice: 34000,
+  highestPrice: 34500,
   highwayFuelEconomy: 34,
   images: [
     "https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg"
@@ -120,6 +120,7 @@ Field Key | Example Value | Field Format
     "123",
     "321"
   ],
+  startingPrice: 34000,
   stockNumber: "00100060",
   transmission: "Variable",
   trim: "Touring 2WD",
@@ -129,10 +130,33 @@ Field Key | Example Value | Field Format
 }
 ```
 
-Field Key | Example Value | Field Format
--------------- | -------------- | --------------
+Vehicle pricing is a particularly flexible piece of our system. With flexibility often comes complexity, so we provide several fields on the vehicle object to simplify and standardize the pricing information for the API consumer.
+
+`startingPrice` is the first pricing value displayed on the vehicle. It is often the highest price displayed to the user. In some cases a dealer fee can increase the price later in the pricing stack.
+
+`finalPrice` is the lowest price displayed on the vehicle not including conditional incentives. This is intended to be the price that the dealership is willing to sell the vehicle at, less any special offers that are only applicable to some customers.
+
+`highestPrice` is the greater of all of the available pricing field values. It is typically the highest price shown to the user on the page, but in some cases can be higher than what is displayed to the user. This field is `deprecated` and may be removed at a later date with sufficient notice.
+
+It is recommended that you use `startingPrice` for the most expensive price displayed to the user and `finalPrice` for the least expensive price displayed to the user.
+
+You may notice one or more of these fields available in the vehicle object on some sites:
+
+`askingPrice`
+`internetPrice`
+`msrp`
+`retailValue`
+`salePrice`
+`wholesalePrice`
+
+All of the above fields are `deprecated`, meaning they may be removed from the API at a later date. New integrations should not use any of the above fields and should instead rely on `startingPrice` or `finalPrice` for the correct vehicle pricing information.
+
+
+Field Key | Example Value | Field Format | Status
+-------------- | -------------- | -------------- | --------------
 `accountId` | `futuredemodealer` | `String`
 `address` | `{"accountName": "ROI Motors", "city": "Burlington", "state": "VT", "postalCode": "05401", "country": "US"}` | `Object`
+`askingPrice` | `32000` | `Integer` | `Deprecated`
 `autodataCaId` | `CAD00CHT27CG0` | `String`
 `bodyStyle` | `Sedan` | `String`
 `certified` | `false` | `Boolean`
@@ -147,23 +171,26 @@ Field Key | Example Value | Field Format
 `exteriorColor` | `Platinum White Pearl` | `String`
 `finalPrice` | `32000` | `Integer`
 `fuelType` | `Regular Unleaded` | `String`
-`highestPrice` | `34000` | `Integer`
+`highestPrice` | `34500` | `Integer` | `Deprecated`
 `highwayFuelEconomy` | `38` | `Integer`
 `images` | `["https://pictures.dealer.com/1.jpg"]` | `Array`
 `interiorColor` | `Black` | `String`
-`internetPrice` | `33000` | `Integer`
+`internetPrice` | `33000` | `Integer` | `Deprecated`
 `inventoryType` | `new` | `String`
 `make` | `Honda` | `String`
 `model` | `Accord` | `String`
 `modelCode` | `RW1H9LKNW` | `String`
-`msrp` | `34000` | `Integer`
+`msrp` | `34000` | `Integer` | `Deprecated`
 `odometer` | `5` | `Integer`
 `optionCodes` | `["ABC", "123", "321"]` | `Array`
-`status` | `Live` | `String`
+`retailValue` | `32000` | `Integer` | `Deprecated`
+`salePrice` | `32000` | `Integer` | `Deprecated`
+`startingPrice` | `34000` | `Integer`
 `stockNumber` | `00180772` | `String`
 `transmission` | `Variable` | `String`
 `trim` | `EX` | `String`
 `uuid` | `ab119e0e0a0a00f944d6f3031cd34854` | `String`
+`wholesalePrice` | `32000` | `Integer` | `Deprecated`
 `vin` | `1HGCV1F42JA141468` | `String`
 `year` | `2018` | `Integer`
 
