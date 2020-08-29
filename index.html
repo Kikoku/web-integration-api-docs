@@ -622,7 +622,7 @@
   <span class="nx">exteriorColor</span><span class="p">:</span> <span class="s2">"Crystal Black Pearl"</span><span class="p">,</span>
   <span class="nx">finalPrice</span><span class="p">:</span> <span class="mi">32000</span><span class="p">,</span>
   <span class="nx">fuelType</span><span class="p">:</span> <span class="s2">"Regular Unleaded"</span><span class="p">,</span>
-  <span class="nx">highestPrice</span><span class="p">:</span> <span class="mi">34000</span><span class="p">,</span>
+  <span class="nx">highestPrice</span><span class="p">:</span> <span class="mi">34500</span><span class="p">,</span>
   <span class="nx">highwayFuelEconomy</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
   <span class="nx">images</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">"https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg"</span>
@@ -640,6 +640,7 @@
     <span class="s2">"123"</span><span class="p">,</span>
     <span class="s2">"321"</span>
   <span class="p">],</span>
+  <span class="nx">startingPrice</span><span class="p">:</span> <span class="mi">34000</span><span class="p">,</span>
   <span class="nx">stockNumber</span><span class="p">:</span> <span class="s2">"00100060"</span><span class="p">,</span>
   <span class="nx">transmission</span><span class="p">:</span> <span class="s2">"Variable"</span><span class="p">,</span>
   <span class="nx">trim</span><span class="p">:</span> <span class="s2">"Touring 2WD"</span><span class="p">,</span>
@@ -648,187 +649,268 @@
   <span class="nx">year</span><span class="p">:</span> <span class="mi">2020</span>
 <span class="p">}</span>
 </code></pre>
+<p>Vehicle pricing is a particularly flexible piece of our system. With flexibility often comes complexity, so we provide several fields on the vehicle object to simplify and standardize the pricing information for the API consumer.</p>
+
+<p><code>startingPrice</code> is the first pricing value displayed on the vehicle. It is often the highest price displayed to the user. In some cases a dealer fee can increase the price later in the pricing stack.</p>
+
+<p><code>finalPrice</code> is the lowest price displayed on the vehicle not including conditional incentives. This is intended to be the price that the dealership is willing to sell the vehicle at, less any special offers that are only applicable to some customers.</p>
+
+<p><code>highestPrice</code> is the greater of all of the available pricing field values. It is typically the highest price shown to the user on the page, but in some cases can be higher than what is displayed to the user. This field is <code>deprecated</code> and may be removed at a later date with sufficient notice.</p>
+
+<p>It is recommended that you use <code>startingPrice</code> for the most expensive price displayed to the user and <code>finalPrice</code> for the least expensive price displayed to the user.</p>
+
+<p>You may notice one or more of these fields available in the vehicle object on some sites:</p>
+
+<p><code>askingPrice</code>
+<code>internetPrice</code>
+<code>msrp</code>
+<code>retailValue</code>
+<code>salePrice</code>
+<code>wholesalePrice</code></p>
+
+<p>All of the above fields are <code>deprecated</code>, meaning they may be removed from the API at a later date. New integrations should not use any of the above fields and should instead rely on <code>startingPrice</code> or <code>finalPrice</code> for the correct vehicle pricing information.</p>
+
 <table><thead>
 <tr>
 <th>Field Key</th>
 <th>Example Value</th>
 <th>Field Format</th>
+<th>Status</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>accountId</code></td>
 <td><code>futuredemodealer</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>address</code></td>
 <td><code>{&quot;accountName&quot;: &quot;ROI Motors&quot;, &quot;city&quot;: &quot;Burlington&quot;, &quot;state&quot;: &quot;VT&quot;, &quot;postalCode&quot;: &quot;05401&quot;, &quot;country&quot;: &quot;US&quot;}</code></td>
 <td><code>Object</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>askingPrice</code></td>
+<td><code>32000</code></td>
+<td><code>Integer</code></td>
+<td><code>Deprecated</code></td>
 </tr>
 <tr>
 <td><code>autodataCaId</code></td>
 <td><code>CAD00CHT27CG0</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>bodyStyle</code></td>
 <td><code>Sedan</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>certified</code></td>
 <td><code>false</code></td>
 <td><code>Boolean</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>chromeId</code></td>
 <td><code>407123</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>cityFuelEconomy</code></td>
 <td><code>30</code></td>
 <td><code>Integer</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>classification</code></td>
 <td><code>primary</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>dealerCodes</code></td>
 <td><code>{&quot;dealertrack-post&quot;: &quot;futuredemodealer&quot;, &quot;dtid&quot;: &quot;12345&quot;, &quot;dt-dr-profile&quot;: &quot;futuredemodealer&quot;}</code></td>
 <td><code>Object</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>doors</code></td>
 <td><code>4-door</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>driveLine</code></td>
 <td><code>FWD</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>engine</code></td>
 <td><code>I-4 cyl</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>engineSize</code></td>
 <td><code>1.5L</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>exteriorColor</code></td>
 <td><code>Platinum White Pearl</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>finalPrice</code></td>
 <td><code>32000</code></td>
 <td><code>Integer</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>fuelType</code></td>
 <td><code>Regular Unleaded</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>highestPrice</code></td>
-<td><code>34000</code></td>
+<td><code>34500</code></td>
 <td><code>Integer</code></td>
+<td><code>Deprecated</code></td>
 </tr>
 <tr>
 <td><code>highwayFuelEconomy</code></td>
 <td><code>38</code></td>
 <td><code>Integer</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>images</code></td>
 <td><code>[&quot;https://pictures.dealer.com/1.jpg&quot;]</code></td>
 <td><code>Array</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>interiorColor</code></td>
 <td><code>Black</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>internetPrice</code></td>
 <td><code>33000</code></td>
 <td><code>Integer</code></td>
+<td><code>Deprecated</code></td>
 </tr>
 <tr>
 <td><code>inventoryType</code></td>
 <td><code>new</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>make</code></td>
 <td><code>Honda</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>model</code></td>
 <td><code>Accord</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>modelCode</code></td>
 <td><code>RW1H9LKNW</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>msrp</code></td>
 <td><code>34000</code></td>
 <td><code>Integer</code></td>
+<td><code>Deprecated</code></td>
 </tr>
 <tr>
 <td><code>odometer</code></td>
 <td><code>5</code></td>
 <td><code>Integer</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>optionCodes</code></td>
 <td><code>[&quot;ABC&quot;, &quot;123&quot;, &quot;321&quot;]</code></td>
 <td><code>Array</code></td>
+<td></td>
 </tr>
 <tr>
-<td><code>status</code></td>
-<td><code>Live</code></td>
-<td><code>String</code></td>
+<td><code>retailValue</code></td>
+<td><code>32000</code></td>
+<td><code>Integer</code></td>
+<td><code>Deprecated</code></td>
+</tr>
+<tr>
+<td><code>salePrice</code></td>
+<td><code>32000</code></td>
+<td><code>Integer</code></td>
+<td><code>Deprecated</code></td>
+</tr>
+<tr>
+<td><code>startingPrice</code></td>
+<td><code>34000</code></td>
+<td><code>Integer</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>stockNumber</code></td>
 <td><code>00180772</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>transmission</code></td>
 <td><code>Variable</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>trim</code></td>
 <td><code>EX</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>uuid</code></td>
 <td><code>ab119e0e0a0a00f944d6f3031cd34854</code></td>
 <td><code>String</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>wholesalePrice</code></td>
+<td><code>32000</code></td>
+<td><code>Integer</code></td>
+<td><code>Deprecated</code></td>
 </tr>
 <tr>
 <td><code>vin</code></td>
 <td><code>1HGCV1F42JA141468</code></td>
 <td><code>String</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>year</code></td>
 <td><code>2018</code></td>
 <td><code>Integer</code></td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='event-subscriptions'>Event Subscriptions</h1>
