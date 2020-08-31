@@ -154,6 +154,7 @@ You may notice one or more of these fields available in the vehicle object on so
 
 All of the above fields are `deprecated`, meaning they may be removed from the API at a later date. New integrations should not use any of the above fields and should instead rely on `startingPrice` or `finalPrice` for the correct vehicle pricing information.
 
+Please note that all of our prices are based on the available marketing context for the current vehicle. The same vehicle can be marketed in multiple contexts and display unique prices in those contexts.  The API will always return the contextually appropriate price for the current vehicle.
 
 Field Key | Example Value | Field Format | Status
 -------------- | -------------- | -------------- | --------------
