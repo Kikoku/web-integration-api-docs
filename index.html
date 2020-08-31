@@ -291,7 +291,7 @@
                     <a href="#api-insertonce-name-callback-elem-meta" class="toc-h2 toc-link" data-title="API.insertOnce(name, callback(elem, meta))">API.insertOnce(name, callback(elem, meta))</a>
                   </li>
                   <li>
-                    <a href="#api-create-type-data" class="toc-h2 toc-link" data-title="API.create(type, data)">API.create(type, data)</a>
+                    <a href="#api-create-type-options" class="toc-h2 toc-link" data-title="API.create(type, options)">API.create(type, options)</a>
                   </li>
                   <li>
                     <a href="#api-append-targetel-appendel" class="toc-h2 toc-link" data-title="API.append(targetEl, appendEl)">API.append(targetEl, appendEl)</a>
@@ -1426,28 +1426,124 @@
 <td>Element, Object</td>
 </tr>
 </tbody></table>
-<h2 id='api-create-type-data'>API.create(type, data)</h2>
+<h2 id='api-create-type-options'>API.create(type, options)</h2>
 <blockquote>
 <p>Create a Button</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
   <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">text</span><span class="p">:</span> <span class="s1">'Visit Google'</span><span class="p">,</span>
-    <span class="na">src</span><span class="p">:</span> <span class="s1">'https://www.google.com/'</span><span class="p">,</span>
+    <span class="na">href</span><span class="p">:</span> <span class="s1">'https://www.google.com/'</span><span class="p">,</span>
+    <span class="na">text</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">'en_US'</span><span class="p">:</span> <span class="s1">'Visit Google'</span><span class="p">,</span> <span class="c1">// English</span>
+      <span class="s1">'fr_CA'</span><span class="p">:</span> <span class="s1">'Visitez Google'</span><span class="p">,</span> <span class="c1">// French</span>
+      <span class="s1">'es_MX'</span><span class="p">:</span> <span class="s1">'Visite Google'</span> <span class="c1">// Spanish</span>
+    <span class="p">},</span>
     <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
     <span class="na">style</span><span class="p">:</span> <span class="s1">'border: 2px solid #c00'</span><span class="p">,</span>
     <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">'data-custom-attribute'</span><span class="p">:</span> <span class="s1">'attribute-value'</span><span class="p">,</span>
       <span class="s1">'target'</span><span class="p">:</span> <span class="s1">'_blank'</span>
+    <span class="p">},</span>
+    <span class="na">imgSrc</span><span class="p">:</span> <span class="s1">'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'</span><span class="p">,</span>
+    <span class="na">imgAlt</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">'en_US'</span><span class="p">:</span> <span class="s1">'Visit Google'</span><span class="p">,</span> <span class="c1">// English</span>
+      <span class="s1">'fr_CA'</span><span class="p">:</span> <span class="s1">'Visitez Google'</span><span class="p">,</span> <span class="c1">// French</span>
+      <span class="s1">'es_MX'</span><span class="p">:</span> <span class="s1">'Visite Google'</span> <span class="c1">// Spanish</span>
+    <span class="p">},</span>
+    <span class="na">imgClasses</span><span class="p">:</span> <span class="s1">'custom-image-class another-class'</span><span class="p">,</span>
+    <span class="na">imgAttributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">'data-image-attribute'</span><span class="p">:</span> <span class="s1">'image-attribute-value'</span>
+    <span class="p">},</span>
+    <span class="na">onclick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">MyIntegration</span><span class="p">.</span><span class="nx">activateModalOverlay</span><span class="p">();</span>
     <span class="p">}</span>
   <span class="p">});</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
-  <span class="c1">// The above outputs: &lt;a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);" target="_blank"&gt;Visit Google&lt;/a&gt;</span>
+  <span class="k">return</span> <span class="nx">button</span><span class="p">;</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>The above example generates this markup:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.google.com/"</span> <span class="na">class=</span><span class="s">"btn btn-primary mb-3"</span> <span class="na">data-custom-attribute=</span><span class="s">"attribute-value"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">style=</span><span class="s">"border: 2px solid rgb(204, 0, 0);"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"</span> <span class="na">alt=</span><span class="s">"Visit Google"</span> <span class="na">class=</span><span class="s">"custom-image-class another-class"</span> <span class="na">data-image-attribute=</span><span class="s">"image-attribute-value"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
 </code></pre>
 <p>The create method can be used to generate markup which adheres to our standard practices. This allows you to simply &quot;create a button&quot;, for example, without having to know the inner workings of how buttons should be created on different types of sites.</p>
 
-<p>Currently only the &quot;button&quot; type is supported, however other types will soon be added. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.</p>
+<p>Currently only the &quot;button&quot; type is supported, however other types may be added in the future. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.</p>
+
+<p>The available options for the <code>button</code> type are as follows:</p>
+
+<table><thead>
+<tr>
+<th>Field Key</th>
+<th>Example Value</th>
+<th>Field Format</th>
+<th>Purpose</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>href</code></td>
+<td><code>https://www.google.com/</code></td>
+<td><code>String</code></td>
+<td>The link URL.</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>See functional example.</code></td>
+<td><code>Object</code></td>
+<td>The localized button text object.</td>
+</tr>
+<tr>
+<td><code>classes</code></td>
+<td><code>btn btn-primary</code></td>
+<td><code>String</code></td>
+<td>Classes to place on the link element.</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td><code>border: 2px solid #c00</code></td>
+<td><code>String</code></td>
+<td>Inline styles to place on the link element.</td>
+</tr>
+<tr>
+<td><code>attributes</code></td>
+<td><code>See functional example.</code></td>
+<td><code>Object</code></td>
+<td>An object of key/value pairs to add to the link element as attributes.</td>
+</tr>
+<tr>
+<td><code>imgSrc</code></td>
+<td><code>https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png</code></td>
+<td><code>String</code></td>
+<td>The URL to the button image.</td>
+</tr>
+<tr>
+<td><code>imgAlt</code></td>
+<td><code>See functional example.</code></td>
+<td><code>Object</code></td>
+<td>The localized image alt text object.</td>
+</tr>
+<tr>
+<td><code>imgClasses</code></td>
+<td><code>custom-image-class another-class</code></td>
+<td><code>String</code></td>
+<td>Classes to place on the image.</td>
+</tr>
+<tr>
+<td><code>imgAttributes</code></td>
+<td><code>See functional example.</code></td>
+<td><code>Object</code></td>
+<td>An object of key/value pairs to add to the image element as attributes.</td>
+</tr>
+<tr>
+<td><code>onclick</code></td>
+<td><code>See functional example.</code></td>
+<td><code>Function</code></td>
+<td>The onclick handler to attach to the button.</td>
+</tr>
+</tbody></table>
 <h2 id='api-append-targetel-appendel'>API.append(targetEl, appendEl)</h2>
 <blockquote>
 <p>Usage</p>
@@ -1467,7 +1563,7 @@
     <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
       <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
-      <span class="na">src</span><span class="p">:</span> <span class="s1">'/new-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
+      <span class="na">href</span><span class="p">:</span> <span class="s1">'/new-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
       <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
       <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span><span class="p">,</span>
       <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
@@ -1532,7 +1628,7 @@
       <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
           <span class="na">text</span><span class="p">:</span> <span class="s1">'Watch Video'</span><span class="p">,</span>
-          <span class="na">src</span><span class="p">:</span> <span class="s1">'https://www.providerdomain.com/path/video-player.html?vin='</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
+          <span class="na">href</span><span class="p">:</span> <span class="s1">'https://www.providerdomain.com/path/video-player.html?vin='</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
           <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary dialog'</span><span class="p">,</span>
           <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span><span class="p">,</span>
           <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
@@ -1610,7 +1706,7 @@
         <span class="kd">var</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
           <span class="na">text</span><span class="p">:</span> <span class="s1">'Search This Price Range'</span><span class="p">,</span>
-          <span class="na">src</span><span class="p">:</span> <span class="s1">'/'</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">inventoryType</span> <span class="o">+</span> <span class="s1">'-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
+          <span class="na">href</span><span class="p">:</span> <span class="s1">'/'</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">inventoryType</span> <span class="o">+</span> <span class="s1">'-inventory/index.htm?internetPrice='</span> <span class="o">+</span> <span class="nx">lowPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">highPrice</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
           <span class="na">classes</span><span class="p">:</span> <span class="s1">'btn btn-primary'</span><span class="p">,</span>
           <span class="na">style</span><span class="p">:</span> <span class="s1">'margin-top: 12px;'</span>
         <span class="p">})</span>
