@@ -27,7 +27,7 @@ See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentati
       API.insert('vehicle-media', function(elem, meta) {
         var button = API.create('button', {
           text: 'Watch Video',
-          src: 'https://www.providerdomain.com/path/video-player.html?vin=' + meta.vin,
+          href: 'https://www.providerdomain.com/path/video-player.html?vin=' + meta.vin,
           classes: 'btn btn-primary dialog',
           style: 'margin-top: 12px;',
           attributes: {
@@ -114,7 +114,7 @@ This element is positioned below the vehicle tech specs area on vehicle search a
         var highPrice = Math.round(meta.finalPrice + 1000);
         var button = API.create('button', {
           text: 'Search This Price Range',
-          src: '/' + meta.inventoryType + '-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
+          href: '/' + meta.inventoryType + '-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
           classes: 'btn btn-primary',
           style: 'margin-top: 12px;'
         })

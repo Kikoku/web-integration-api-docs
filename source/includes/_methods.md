@@ -286,7 +286,7 @@ Field Name | Purpose | Field Format
 `callback(elem, meta)` | The DOM element where the markup should be inserted, and the payload object for the current insertion point. | Element, Object
 
 
-## API.create(type, data)
+## API.create(type, options)
 
 > Create a Button
 
@@ -294,22 +294,63 @@ Field Name | Purpose | Field Format
 (function(WIAPI) {
   var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   var button = API.create('button', {
-    text: 'Visit Google',
-    src: 'https://www.google.com/',
+    href: 'https://www.google.com/',
+    text: {
+      'en_US': 'Visit Google', // English
+      'fr_CA': 'Visitez Google', // French
+      'es_MX': 'Visite Google' // Spanish
+    },
     classes: 'btn btn-primary',
     style: 'border: 2px solid #c00',
     attributes: {
+      'data-custom-attribute': 'attribute-value',
       'target': '_blank'
+    },
+    imgSrc: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+    imgAlt: {
+      'en_US': 'Visit Google', // English
+      'fr_CA': 'Visitez Google', // French
+      'es_MX': 'Visite Google' // Spanish
+    },
+    imgClasses: 'custom-image-class another-class',
+    imgAttributes: {
+      'data-image-attribute': 'image-attribute-value'
+    },
+    onclick: function() {
+      window.MyIntegration.activateModalOverlay();
     }
   });
-  API.log(button);
-  // The above outputs: <a href="https://www.google.com/" class="btn btn-primary" style="border: 2px solid rgb(204, 0, 0);" target="_blank">Visit Google</a>
+  return button;
 })(window.DDC.API);
+```
+
+> The above example generates this markup:
+
+```html
+<a href="https://www.google.com/" class="btn btn-primary mb-3" data-custom-attribute="attribute-value" target="_blank" style="border: 2px solid rgb(204, 0, 0);">
+  <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Visit Google" class="custom-image-class another-class" data-image-attribute="image-attribute-value">
+</a>
 ```
 
 The create method can be used to generate markup which adheres to our standard practices. This allows you to simply "create a button", for example, without having to know the inner workings of how buttons should be created on different types of sites.
 
-Currently only the "button" type is supported, however other types will soon be added. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.
+Currently only the "button" type is supported, however other types may be added in the future. Please let us know if there are particular types of elements you want to create so we can work to incorporate your feedback into this API.
+
+The available options for the `button` type are as follows:
+
+Field Key | Example Value | Field Format | Purpose
+-------------- | -------------- | -------------- | --------------
+`href` | `https://www.google.com/` | `String` | The link URL.
+`text` | `See functional example.` | `Object` | The localized button text object.
+`classes` | `btn btn-primary` | `String` | Classes to place on the link element.
+`style` | `border: 2px solid #c00` | `String` | Inline styles to place on the link element.
+`attributes` | `See functional example.` | `Object` | An object of key/value pairs to add to the link element as attributes.
+`imgSrc` | `https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png` | `String` | The URL to the button image.
+`imgAlt` | `See functional example.` | `Object` | The localized image alt text object.
+`imgClasses` | `custom-image-class another-class` | `String` | Classes to place on the image.
+`imgAttributes` | `See functional example.` | `Object` | An object of key/value pairs to add to the image element as attributes.
+`onclick` | `See functional example.` | `Function` | The onclick handler to attach to the button.
+
 
 ## API.append(targetEl, appendEl)
 
@@ -332,7 +373,7 @@ Currently only the "button" type is supported, however other types will soon be 
     var highPrice = Math.round(meta.finalPrice + 1000);
     var button = API.create('button', {
       text: 'Search This Price Range',
-      src: '/new-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
+      href: '/new-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
       classes: 'btn btn-primary',
       style: 'margin-top: 12px;',
       attributes: {
