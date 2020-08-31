@@ -152,8 +152,6 @@ You may notice one or more of these fields available in the vehicle object on so
 
 `salePrice`
 
-`wholesalePrice`
-
 All of the above fields are `deprecated`, meaning they may be removed from the API at a later date. New integrations should not use any of the above fields and should instead rely on `startingPrice` or `finalPrice` for the correct vehicle pricing information.
 
 
@@ -195,7 +193,6 @@ Field Key | Example Value | Field Format | Status
 `transmission` | `Variable` | `String`
 `trim` | `EX` | `String`
 `uuid` | `ab119e0e0a0a00f944d6f3031cd34854` | `String`
-`wholesalePrice` | `32000` | `Integer` | `Deprecated`
 `vin` | `1HGCV1F42JA141468` | `String`
 `year` | `2018` | `Integer`
 
