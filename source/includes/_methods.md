@@ -35,7 +35,7 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 })(window.DDC.API);
 ```
 
-The `insertCallToAction` method is used to create a call to action (CTA) button for placement on web site inventory items. Rather than generating markup and inserting it into a predefined location, when using this method you specify the CTA type (`button` is currently the only supported type), an intent (more on this below), and a data object describing the CTA's attributes.
+The `insertCallToAction` method is used to create a call to action (CTA) button for placement on web site inventory items. Rather than generating markup and inserting it into a predefined location, when using this method you specify the CTA type (`button` is currently the only supported type), an intent (more on this below), and a data object describing the CTA's attributes. The data object follows the same pattern as the object passed into the <a href="#api-create-type-options">API.create method</a> which you can use as a reference to see all available config options.
 
 Parameter Name | Purpose | Field Format
 -------------- | -------------- | --------------
