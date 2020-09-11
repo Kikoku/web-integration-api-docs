@@ -70,6 +70,26 @@ This fetches a JavaScript object of your integration's configuration for the cur
 
 This fetches the <a href="#dealership-info-event">Dealership Info Event object</a> for the current website.
 
+## API.utils.getJwtForSite()
+
+> Usage:
+
+```javascript
+(function(WIAPI) {
+  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  API.utils.getJwtForSite().then(function(jwtObject) {
+    API.log(jwtObject);
+    // Returns a data structure like this:
+    // {
+    //   jwt: "eyJraWQiOiIya0k0XzIyZoLUUi...KpSUf6vJ8b9Z1NDRcIgv0GrZoiqPhTunw" // String
+    // }
+  });
+})(window.DDC.API);
+```
+
+This fetches an object containing a Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.
+
+
 ## API.utils.getJwtForVehicles()
 
 > Usage:
@@ -88,7 +108,7 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
 })(window.DDC.API);
 ```
 
-This fetches an object containing the array of VINs on the current page and a corresponding Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served up. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.
+This fetches an object containing the array of VINs on the current page and a corresponding Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.
 
 ## API.utils.getPageData()
 
