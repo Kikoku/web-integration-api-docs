@@ -337,6 +337,9 @@
                     <a href="#api-utils-getdealerdata" class="toc-h2 toc-link" data-title="API.utils.getDealerData()">API.utils.getDealerData()</a>
                   </li>
                   <li>
+                    <a href="#api-utils-getjwtforsite" class="toc-h2 toc-link" data-title="API.utils.getJwtForSite()">API.utils.getJwtForSite()</a>
+                  </li>
+                  <li>
                     <a href="#api-utils-getjwtforvehicles" class="toc-h2 toc-link" data-title="API.utils.getJwtForVehicles()">API.utils.getJwtForVehicles()</a>
                   </li>
                   <li>
@@ -1849,6 +1852,22 @@
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
 <p>This fetches the <a href="#dealership-info-event">Dealership Info Event object</a> for the current website.</p>
+<h2 id='api-utils-getjwtforsite'>API.utils.getJwtForSite()</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getJwtForSite</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jwtObject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jwtObject</span><span class="p">);</span>
+    <span class="c1">// Returns a data structure like this:</span>
+    <span class="c1">// {</span>
+    <span class="c1">//   jwt: "eyJraWQiOiIya0k0XzIyZoLUUi...KpSUf6vJ8b9Z1NDRcIgv0GrZoiqPhTunw" // String</span>
+    <span class="c1">// }</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
+</code></pre>
+<p>This fetches an object containing a Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.</p>
 <h2 id='api-utils-getjwtforvehicles'>API.utils.getJwtForVehicles()</h2>
 <blockquote>
 <p>Usage:</p>
@@ -1865,7 +1884,7 @@
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
-<p>This fetches an object containing the array of VINs on the current page and a corresponding Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served up. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.</p>
+<p>This fetches an object containing the array of VINs on the current page and a corresponding Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.</p>
 <h2 id='api-utils-getpagedata'>API.utils.getPageData()</h2>
 <blockquote>
 <p>Usage:</p>
