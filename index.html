@@ -2057,12 +2057,6 @@ If any VINs are missing, that means that Dealer.com believes the given account d
     <span class="nx">sendResizeMessage</span><span class="p">();</span>
   <span class="p">});</span>
   <span class="nx">heightObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="c1">// IE 11</span>
-  <span class="nx">setInterval</span><span class="p">(</span>
-    <span class="nx">sendResizeMessage</span><span class="p">,</span>
-    <span class="mi">500</span> <span class="cm">/* ms */</span>
-  <span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
 <blockquote>
@@ -2100,7 +2094,7 @@ If any VINs are missing, that means that Dealer.com believes the given account d
 <p>An integration may want to insert an iframe that resizes as its contents change. One possible way to accomplish this is for the iframe and the integration to work together as shown in the sample code from the pane on the right side of this page. You can see the sample code running <a href="https://webapitestddc.cms.dealer.com/growing-iframe-example.htm">here</a>.</p>
 <h3 id='iframe-responsibilities'>IFrame Responsibilities:</h3>
 <ul>
-<li><strong>Determine when content dimensions change</strong> - One way to do this is using <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"><code>ResizeObserver</code></a>. <code>ResizeObserver</code> is not supported in IE11, so one possible solution is to fallback to polling. Polling is not ideal, but it will work for this small percentage of our traffic.</li>
+<li><strong>Determine when content dimensions change</strong> - One way to do this is using <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"><code>ResizeObserver</code></a>.</li>
 <li><strong>Communicate the new dimension to the outer page</strong> - iframes can communicate with the parent page using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage"><code>postMessage</code></a>.</li>
 <li><strong>Ensure a scrollbar never shows up within the iframe</strong> - Styling may be used to ensure a scrollbar never appears in the iframe.</li>
 </ul>
