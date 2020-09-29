@@ -22,12 +22,6 @@ if (window.ResizeObserver) {
     sendResizeMessage();
   });
   heightObserver.observe(document.body);
-} else {
-  // IE 11
-  setInterval(
-    sendResizeMessage,
-    500 /* ms */
-  );
 }
 ```
 
@@ -68,7 +62,7 @@ An integration may want to insert an iframe that resizes as its contents change.
 
 ### IFrame Responsibilities:
 
-* **Determine when content dimensions change** - One way to do this is using [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver). `ResizeObserver` is not supported in IE11, so one possible solution is to fallback to polling. Polling is not ideal, but it will work for this small percentage of our traffic.
+* **Determine when content dimensions change** - One way to do this is using [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
 * **Communicate the new dimension to the outer page** - iframes can communicate with the parent page using [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage).
 * **Ensure a scrollbar never shows up within the iframe** - Styling may be used to ensure a scrollbar never appears in the iframe.
 
