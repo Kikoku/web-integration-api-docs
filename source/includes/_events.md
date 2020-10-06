@@ -110,6 +110,7 @@ Field Key | Example Value | Field Format
   internetPrice: 33000,
   interiorColor: "White",
   inventoryType: "new",
+  link: "https://www.roimotors.com/new/Honda/2020-Honda-Accord-burlington-ab119e0e0a0a00f944d6f3031cd34854.htm",
   make: "Honda",
   model: "CR-V",
   modelCode: "RW1H9LKNW",
@@ -121,11 +122,12 @@ Field Key | Example Value | Field Format
     "321"
   ],
   startingPrice: 34000,
+  status: "live",
   stockNumber: "00100060",
   transmission: "Variable",
   trim: "Touring 2WD",
-  uuid: "a897d95c0a0a00f95adba92bfd388557",
-  vin: "7FARW1H9XLE000953",
+  uuid: "ab119e0e0a0a00f944d6f3031cd34854",
+  vin: "1HGCV1F42JA141468",
   year: 2020
 }
 ```
@@ -181,6 +183,7 @@ Field Key | Example Value | Field Format | Status
 `interiorColor` | `Black` | `String`
 `internetPrice` | `33000` | `Integer` | `Deprecated`
 `inventoryType` | `new` | `String`
+`link` | `https://www.roimotors.com/new/Honda/2020-Honda-Accord-burlington-ab119e0e0a0a00f944d6f3031cd34854.htm` | `String`
 `make` | `Honda` | `String`
 `model` | `Accord` | `String`
 `modelCode` | `RW1H9LKNW` | `String`
@@ -190,12 +193,13 @@ Field Key | Example Value | Field Format | Status
 `retailValue` | `32000` | `Integer` | `Deprecated`
 `salePrice` | `32000` | `Integer` | `Deprecated`
 `startingPrice` | `34000` | `Integer`
+`status` | `live` | `String`
 `stockNumber` | `00180772` | `String`
 `transmission` | `Variable` | `String`
 `trim` | `EX` | `String`
 `uuid` | `ab119e0e0a0a00f944d6f3031cd34854` | `String`
 `vin` | `1HGCV1F42JA141468` | `String`
-`year` | `2018` | `Integer`
+`year` | `2020` | `Integer`
 
 # Event Subscriptions
 
