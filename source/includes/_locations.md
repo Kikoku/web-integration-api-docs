@@ -2,7 +2,7 @@
 
 Insert locations are areas of pages where you can safely insert markup. These exist in commonly used areas, such as below vehicle pricing on search and detail pages. This section details the current available locations. Please let us know if there are other locations you want to target beyond those listed here.
 
-See the <a href="#ddc-api-insert-key-name-callback-elem-meta">insert documentation</a> for more details on the insert method.
+See the <a href="#api-insert-name-callback-elem-meta">insert documentation</a> for more details on the insert method.
 
 ## Vehicle Media
 
