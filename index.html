@@ -1239,7 +1239,7 @@
   <span class="c1">// Initialize an instance of the API</span>
   <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
 
-  <span class="c1">// Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).</span>
+  <span class="c1">// Receive a notification each time vehicle data is updated on the page (or a new page is loaded).</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// Collect the VIN for each vehicle on the page in an array.</span>
@@ -1368,16 +1368,22 @@
 
 <p>When activated, <code>API.insert</code> will call the callback function you define with the <code>elem</code> and <code>meta</code> parameters. It will call this for each relevant location on the page. For example, if you specify <code>vehicle-media</code> as the location and you are viewing a search results page with 30 vehicles, the callback function you define on <code>API.insert</code> will be called 30 times, once per vehicle, with the relevant location and vehicle data in the payload.</p>
 
-<p>This acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the callback payload. If you need to execute additional code before determining if you wish to insert content, such as calling an external service, you should use the <code>insertOnce</code> method instead.</p>
+<p>This acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and your callback is immediately called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the callback payload.</p>
+
+<p>If you need to execute additional code before determining if you wish to insert content, such as calling an external service, you should use the <code>insertOnce</code> method instead in combination with the <code>vehicle-data-updated-v1</code> event as shown in the example here.</p>
 <h2 id='api-insertonce-name-callback-elem-meta'>API.insertOnce(name, callback(elem, meta))</h2>
 <blockquote>
 <p>Usage</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">insertOnce</span><span class="p">(</span><span class="s1">'location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where markup may be inserted.</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">meta</span><span class="p">);</span> <span class="c1">// The payload object for the current insertion point.</span>
+  <span class="c1">// Receive a notification each time vehicle data is updated on the page (or a new page is loaded).</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Insert content into each vehicle location now present on the page.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">insertOnce</span><span class="p">(</span><span class="s1">'location-name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where markup may be inserted.</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">meta</span><span class="p">);</span> <span class="c1">// The payload object for the current insertion point.</span>
+    <span class="p">});</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
@@ -1389,7 +1395,7 @@
   <span class="c1">// Initialize an instance of the API</span>
   <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
 
-  <span class="c1">// Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).</span>
+  <span class="c1">// Receive a notification each time vehicle data is updated on the page (or a new page is loaded).</span>
   <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// Collect the VIN for each vehicle on the page in an array.</span>
