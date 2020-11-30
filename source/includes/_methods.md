@@ -115,7 +115,7 @@ After creating the callback object, you must then return it for the API to creat
   // Initialize an instance of the API
   var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
-  // Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).
+  // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', function(ev) {
 
     // Collect the VIN for each vehicle on the page in an array.
@@ -219,7 +219,9 @@ The insert method allows you to append markup to specific locations on some page
 
 When activated, `API.insert` will call the callback function you define with the `elem` and `meta` parameters. It will call this for each relevant location on the page. For example, if you specify `vehicle-media` as the location and you are viewing a search results page with 30 vehicles, the callback function you define on `API.insert` will be called 30 times, once per vehicle, with the relevant location and vehicle data in the payload.
 
-This acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and your callback is automatically called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the callback payload. If you need to execute additional code before determining if you wish to insert content, such as calling an external service, you should use the `insertOnce` method instead.
+This acts as an event subscription, so as the application displays new vehicles dynamically (a single page application), new events are fired and your callback is immediately called for each of those new items. This works well for a basic use case where you want to place content on every item having the target location, or every item matching specific criteria available to you in the callback payload.
+
+If you need to execute additional code before determining if you wish to insert content, such as calling an external service, you should use the `insertOnce` method instead in combination with the `vehicle-data-updated-v1` event as shown in the example here.
 
 ## API.insertOnce(name, callback(elem, meta))
 
@@ -228,9 +230,13 @@ This acts as an event subscription, so as the application displays new vehicles 
 ```javascript
 (function(WIAPI) {
   var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.insertOnce('location-name', function(elem, meta) {
-    API.log(elem); // The DOM element where markup may be inserted.
-    API.log(meta); // The payload object for the current insertion point.
+  // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
+  API.subscribe('vehicle-data-updated-v1', function(ev) {
+    // Insert content into each vehicle location now present on the page.
+    API.insertOnce('location-name', function(elem, meta) {
+      API.log(elem); // The DOM element where markup may be inserted.
+      API.log(meta); // The payload object for the current insertion point.
+    });
   });
 })(window.DDC.API);
 ```
@@ -243,7 +249,7 @@ This acts as an event subscription, so as the application displays new vehicles 
   // Initialize an instance of the API
   var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
-  // Receive a notification whenever vehicle data is updated on the page (or a new page is loaded).
+  // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', function(ev) {
 
     // Collect the VIN for each vehicle on the page in an array.
