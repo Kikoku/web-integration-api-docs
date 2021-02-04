@@ -7,7 +7,7 @@
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('event-name-and-version', function(event) {
+  API.subscribe('event-name-and-version', event => {
     API.log(event);
   });
 })(window.DDC.API);
@@ -21,7 +21,7 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.insertCallToAction('button', 'value-a-trade', function(meta) {
+  API.insertCallToAction('button', 'value-a-trade', meta => {
     return {
       "type": "default",
       "href": "https://www.yourdomain.com/value-a-trade/?vin=" + meta.vin,
@@ -116,20 +116,20 @@ After creating the callback object, you must then return it for the API to creat
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
-  API.subscribe('vehicle-data-updated-v1', function(ev) {
+  API.subscribe('vehicle-data-updated-v1', ev => {
 
     // Collect the VIN for each vehicle on the page in an array.
-    API.utils.getAttributeForVehicles('vin').then(function(vins) {
+    API.utils.getAttributeForVehicles('vin').then(vins => {
       API.log("Calling service with these VINs: " + vins.join(','));
 
       // Fetch data from your endpoint by supplying the list of VINs.
       fetch('https://www.yourdomain.com/api/endpoint-that-returns-json?vins=' + vins.join(','))
-      .then(function(response) {
+      .then(response => {
         return response.json();
       })
-      .then(function(serviceData) {
+      .then(serviceData => {
         // Now that you have your service data, you can determine whether or not to place a CTA for this vehicle on the page.
-        API.insertCallToActionOnce('button', 'value-a-trade', function(meta) {
+        API.insertCallToActionOnce('button', 'value-a-trade', meta => {
           if (serviceData.hasOwnProperty(meta.vin)) {
             return {
               "type": "default",
@@ -208,7 +208,7 @@ Name | Description
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.insert('location-name', function(elem, meta) {
+  API.insert('location-name', (elem, meta) => {
     API.log(elem); // The DOM element where markup may be inserted.
     API.log(meta); // The payload object for the current insertion point.
   });
@@ -231,9 +231,9 @@ If you need to execute additional code before determining if you wish to insert 
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
-  API.subscribe('vehicle-data-updated-v1', function(ev) {
+  API.subscribe('vehicle-data-updated-v1', ev => {
     // Insert content into each vehicle location now present on the page.
-    API.insertOnce('location-name', function(elem, meta) {
+    API.insertOnce('location-name', (elem, meta) => {
       API.log(elem); // The DOM element where markup may be inserted.
       API.log(meta); // The payload object for the current insertion point.
     });
@@ -250,18 +250,18 @@ If you need to execute additional code before determining if you wish to insert 
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
-  API.subscribe('vehicle-data-updated-v1', function(ev) {
+  API.subscribe('vehicle-data-updated-v1', ev => {
 
     // Collect the VIN for each vehicle on the page in an array.
-    API.utils.getAttributeForVehicles('vin').then(function(vins) {
+    API.utils.getAttributeForVehicles('vin').then(vins => {
       API.log("Calling service with these VINs: " + vins.join(','));
 
       // Fetch data from your endpoint by supplying the list of VINs.
       fetch('https://www.yourdomain.com/api/endpoint-that-returns-json?vins=' + vins.join(','))
-      .then(function(response) {
+      .then(response => {
         return response.json();
       })
-      .then(function(serviceData) {
+      .then(serviceData => {
         // Now that you have your service data, you can determine whether or not to place content for this location on to the page.
         API.insertOnce('vehicle-badge', function (elem, meta) {
           // Verify my service has data for this vehicle
@@ -322,7 +322,7 @@ Field Name | Purpose | Field Format
     imgAttributes: {
       'data-image-attribute': 'image-attribute-value'
     },
-    onclick: function() {
+    onclick: () => {
       window.MyIntegration.activateModalOverlay();
     }
   });
@@ -374,7 +374,7 @@ Field Key | Example Value | Field Format | Purpose
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.insert('target-location-name', function(elem, meta) {
+  API.insert('target-location-name', (elem, meta) => {
     let lowPrice = Math.round(meta.finalPrice - 1000);
     let highPrice = Math.round(meta.finalPrice + 1000);
     const button = API.create('button', {
@@ -402,7 +402,7 @@ When calling the insert method, the goal is to insert some markup into a locatio
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   // Loads a JavaScript file
   API.loadJS('https://www.company.com/script.js')
-    .then(function() {
+    .then(() => {
       // Code to execute after your JavaScript file has loaded.
     });
 })(window.DDC.API);
@@ -419,7 +419,7 @@ The loadJS method is a simple way to include additional JavaScript files require
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   // Loads a CSS stylesheet
   API.loadCSS('https://www.company.com/integration.css')
-    .then(function() {
+    .then(() => {
       // Code to execute after your stylesheet has loaded.
     });
 })(window.DDC.API);

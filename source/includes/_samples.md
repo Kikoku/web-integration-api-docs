@@ -18,7 +18,7 @@ function sendResizeMessage() {
 }
 
 if (window.ResizeObserver) {
-  const heightObserver = new ResizeObserver(function() {
+  const heightObserver = new ResizeObserver(() => {
     sendResizeMessage();
   });
   heightObserver.observe(document.body);
