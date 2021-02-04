@@ -5,7 +5,7 @@
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('page-load-v1', ev => {
+  API.subscribe('page-load-v1', (ev) => {
     if (ev.payload.searchPage) {
       API.log('My integration has loaded and this is a search results page.');
     }

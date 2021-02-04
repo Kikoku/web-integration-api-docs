@@ -22,7 +22,7 @@ See the <a href="#api-insert-name-callback-elem-meta">insert documentation</a> f
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('page-load-v1', ev => {
+  API.subscribe('page-load-v1', (ev) => {
     if (ev.payload.searchPage) {
       API.insert('vehicle-media', (elem, meta) => {
         const button = API.create('button', {
@@ -61,7 +61,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('page-load-v1', ev => {
+  API.subscribe('page-load-v1', (ev) => {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('vehicle-badge', (elem, meta) => {
         if (meta.inventoryType !== 'used') {
@@ -106,7 +106,7 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('page-load-v1', ev => {
+  API.subscribe('page-load-v1', (ev) => {
     // Only execute the code on search results and vehicle details pages.
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('vehicle-pricing', function (elem, meta) {
@@ -146,7 +146,7 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('page-load-v1', ev => {
+  API.subscribe('page-load-v1', (ev) => {
     if (ev.payload.detailPage) {
       API.insert('vehicle-media-container', (elem, meta) => {
         const containerEl = document.createElement('div');
@@ -180,7 +180,7 @@ This element is the media gallery container on vehicle deals pages. Injecting in
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('page-load-v1', ev => {
+  API.subscribe('page-load-v1', (ev) => {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('primary-banner', (elem, meta) => {
         const img = document.createElement('img'),
