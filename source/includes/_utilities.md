@@ -7,8 +7,8 @@ In addition to the event based system for working with sites, some utility metho
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('vehicle-data-updated-v1', function(data) {
 
     API.log(data.payload.pageData); // Logs the Page Data object
@@ -35,9 +35,9 @@ This can be used to obtain an array of attributes for the currently displayed ve
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier to obtain the correct configuration data.
-  var testConfig = {
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier to obtain the correct configuration data.
+  const testConfig = {
     dealerId: "12345",
     showOnSRP: true,
     showOnVDP: false,
@@ -59,8 +59,8 @@ This fetches a JavaScript object of your integration's configuration for the cur
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.utils.getDealerData().then(function(dealerData) {
     // Logs the Dealership Info Event object for the current website.
     API.log(dealerData);
@@ -75,8 +75,8 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.utils.getJwtForSite().then(function(jwtObject) {
     API.log(jwtObject);
     // Returns a data structure like this:
@@ -95,8 +95,8 @@ This fetches an object containing a Java Web Token which can be used to secure/v
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.utils.getJwtForVehicles().then(function(jwtObject) {
     API.log(jwtObject);
     // Returns a data structure like this:
@@ -115,8 +115,8 @@ This fetches an object containing the array of VINs on the current page and a co
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.utils.getPageData().then(function(pageData) {
     // Outputs the Page Data Object for the current page.
     API.log(pageData);
@@ -131,9 +131,9 @@ This fetches the <a href="#page-event">Page Event object</a> for the current web
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  var urlParams = API.utils.getUrlParams(); // Returns the current URL parameters as object attributes, so you can easily access the values.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  const urlParams = API.utils.getUrlParams(); // Returns the current URL parameters as object attributes, so you can easily access the values.
   API.log(urlParams); // Log the entire object.
   API.log(urlParams.query); // Access just the `query` parameter, for example.
 })(window.DDC.API);
@@ -160,9 +160,9 @@ Will return the following object:
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  var config = API.utils.getVehicleData().then(function(vehicleData) {
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  const config = API.utils.getVehicleData().then(function(vehicleData) {
     // Outputs the current set of vehicle data.
     API.log(vehicleData);
   });

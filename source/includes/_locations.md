@@ -9,8 +9,8 @@ See the <a href="#api-insert-name-callback-elem-meta">insert documentation</a> f
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-media', function(elem, meta) {
     // This element is positioned below the vehicle image area on vehicle search pages.
   });
@@ -20,12 +20,12 @@ See the <a href="#api-insert-name-callback-elem-meta">insert documentation</a> f
 > Example Implementation:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage) {
       API.insert('vehicle-media', function(elem, meta) {
-        var button = API.create('button', {
+        const button = API.create('button', {
           text: 'Watch Video',
           href: 'https://www.providerdomain.com/path/video-player.html?vin=' + meta.vin,
           classes: 'btn btn-primary dialog',
@@ -48,8 +48,8 @@ This element is positioned below the vehicle image area on vehicle search pages.
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-badge', function(elem, meta) {
     // This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
   });
@@ -59,8 +59,8 @@ This element is positioned below the vehicle image area on vehicle search pages.
 > Example Implementation:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('vehicle-badge', function(elem, meta) {
@@ -68,7 +68,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
           return;
         }
 
-        var img = document.createElement('img'),
+        const img = document.createElement('img'),
           a = document.createElement('a');
 
         img.src = 'https://static.dealer.com/v8/global/images/franchise/white/logo-certified-carfax-free-lrg.png';
@@ -93,8 +93,8 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-pricing', function(elem, meta) {
     // This element is positioned below the vehicle pricing area on vehicle search and detail pages.
   });
@@ -104,15 +104,15 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 > Example Implementation:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     // Only execute the code on search results and vehicle details pages.
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('vehicle-pricing', function (elem, meta) {
-        var lowPrice = Math.round(meta.finalPrice - 1000);
-        var highPrice = Math.round(meta.finalPrice + 1000);
-        var button = API.create('button', {
+        let lowPrice = Math.round(meta.finalPrice - 1000);
+        let highPrice = Math.round(meta.finalPrice + 1000);
+        const button = API.create('button', {
           text: 'Search This Price Range',
           href: '/' + meta.inventoryType + '-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
           classes: 'btn btn-primary',
@@ -132,8 +132,8 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-media-container', function(elem, meta) {
     // This element is the media gallery container on vehicle deals pages.
     // Injecting into this location will replace the media gallery with the elements you insert.
@@ -144,12 +144,12 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 > Example Implementation:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.detailPage) {
       API.insert('vehicle-media-container', function(elem, meta) {
-        var containerEl = document.createElement('div');
+        const containerEl = document.createElement('div');
         containerEl.style = 'background-color: #ff0000; font-size: 30px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;';
         containerEl.innerHTML = 'Your media container goes here.';
         API.append(elem, containerEl);
@@ -166,8 +166,8 @@ This element is the media gallery container on vehicle deals pages. Injecting in
 > Usage:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('primary-banner', function(elem, meta) {
     // This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.
     // On the Details page, it is near the top of the vehicle information, below the media gallery.
@@ -178,12 +178,12 @@ This element is the media gallery container on vehicle deals pages. Injecting in
 > Example Implementation:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', function(ev) {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('primary-banner', function(elem, meta) {
-        var img = document.createElement('img'),
+        const img = document.createElement('img'),
           a = document.createElement('a');
 
         img.src = 'https://pictures.dealer.com/d/ddcdemohonda/0217/15bd9bd8ecf0b2a292a91cecb08c595bx.jpg';

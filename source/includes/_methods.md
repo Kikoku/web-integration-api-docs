@@ -5,8 +5,8 @@
 > Usage
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('event-name-and-version', function(event) {
     API.log(event);
   });
@@ -19,8 +19,8 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 > Usage
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insertCallToAction('button', 'value-a-trade', function(meta) {
     return {
       "type": "default",
@@ -110,10 +110,10 @@ After creating the callback object, you must then return it for the API to creat
 > Functional example
 
 ```javascript
-(function(WIAPI) {
+(WIAPI => {
 
   // Initialize an instance of the API
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', function(ev) {
@@ -164,8 +164,8 @@ Field Name | Purpose | Field Format
 > Usage
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insertGalleryContent('vehicle-media', [
     {
       type: 'image',
@@ -206,8 +206,8 @@ Name | Description
 > Usage
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('location-name', function(elem, meta) {
     API.log(elem); // The DOM element where markup may be inserted.
     API.log(meta); // The payload object for the current insertion point.
@@ -228,8 +228,8 @@ If you need to execute additional code before determining if you wish to insert 
 > Usage
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', function(ev) {
     // Insert content into each vehicle location now present on the page.
@@ -244,10 +244,10 @@ If you need to execute additional code before determining if you wish to insert 
 > Functional example
 
 ```javascript
-(function(WIAPI) {
+(WIAPI => {
 
   // Initialize an instance of the API
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', function(ev) {
@@ -268,7 +268,7 @@ If you need to execute additional code before determining if you wish to insert 
           if (serviceData.hasOwnProperty(meta.vin)) {
 
             // Create your markup here
-            var div = document.createElement('div');
+            const div = document.createElement('div');
             div.innerText = "Hello World!";
 
             // Insert your markup into the parent element.
@@ -297,9 +297,9 @@ Field Name | Purpose | Field Format
 > Create a Button
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  var button = API.create('button', {
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  const button = API.create('button', {
     href: 'https://www.google.com/',
     text: {
       'en_US': 'Visit Google', // English
@@ -363,8 +363,8 @@ Field Key | Example Value | Field Format | Purpose
 > Usage
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.append(targetEl, appendEl);
 })(window.DDC.API);
 ```
@@ -372,12 +372,12 @@ Field Key | Example Value | Field Format | Purpose
 > For example, used in conjunction with the `insert` and the `create` methods your code might look similar to this:
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('target-location-name', function(elem, meta) {
-    var lowPrice = Math.round(meta.finalPrice - 1000);
-    var highPrice = Math.round(meta.finalPrice + 1000);
-    var button = API.create('button', {
+    let lowPrice = Math.round(meta.finalPrice - 1000);
+    let highPrice = Math.round(meta.finalPrice + 1000);
+    const button = API.create('button', {
       text: 'Search This Price Range',
       href: '/new-inventory/index.htm?internetPrice=' + lowPrice.toString() + '-' + highPrice.toString(),
       classes: 'btn btn-primary',
@@ -398,8 +398,8 @@ When calling the insert method, the goal is to insert some markup into a locatio
 > Usage
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   // Loads a JavaScript file
   API.loadJS('https://www.company.com/script.js')
     .then(function() {
@@ -415,8 +415,8 @@ The loadJS method is a simple way to include additional JavaScript files require
 > Usage
 
 ```javascript
-(function(WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   // Loads a CSS stylesheet
   API.loadCSS('https://www.company.com/integration.css')
     .then(function() {

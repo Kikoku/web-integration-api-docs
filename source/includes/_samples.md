@@ -18,7 +18,7 @@ function sendResizeMessage() {
 }
 
 if (window.ResizeObserver) {
-  var heightObserver = new ResizeObserver(function() {
+  const heightObserver = new ResizeObserver(function() {
     sendResizeMessage();
   });
   heightObserver.observe(document.body);
@@ -29,10 +29,10 @@ if (window.ResizeObserver) {
 
 ```javascript
 (function (WIAPI) {
-  var API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   API.insert('content', function (elem, meta) {
-    var iframeElem = document.createElement('iframe');
+    const iframeElem = document.createElement('iframe');
     iframeElem.src = 'https://www.yourdomain.com/path-to-iframe.htm';
     iframeElem.classList.add('test-integration-iframe'); // Note: Replace 'test-integration-frame' with your actual iframe identifier.
     API.append(elem, iframeElem);
@@ -47,7 +47,7 @@ if (window.ResizeObserver) {
     }
 
     if (e.data.type === 'IFRAME_HEIGHT_RESIZE' && e.data.frameHeight && e.data.target) {
-      var iframes = document.getElementsByClassName(e.data.target);
+      const iframes = document.getElementsByClassName(e.data.target);
       if (iframes.length === 1) {
         iframes[0].style.height = e.data.frameHeight + 'px';
       }
