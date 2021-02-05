@@ -7,8 +7,8 @@
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('event-name-and-version', (event) => {
-    API.log(event);
+  API.subscribe('event-name-and-version', ev => {
+    API.log(ev);
   });
 })(window.DDC.API);
 ```
@@ -21,7 +21,7 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.insertCallToAction('button', 'value-a-trade', (meta) => {
+  API.insertCallToAction('button', 'value-a-trade', meta => {
     return {
       "type": "default",
       "href": "https://www.yourdomain.com/value-a-trade/?vin=" + meta.vin,
@@ -116,20 +116,20 @@ After creating the callback object, you must then return it for the API to creat
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
-  API.subscribe('vehicle-data-updated-v1', (ev) => {
+  API.subscribe('vehicle-data-updated-v1', ev => {
 
     // Collect the VIN for each vehicle on the page in an array.
-    API.utils.getAttributeForVehicles('vin').then((vins) => {
+    API.utils.getAttributeForVehicles('vin').then(vins => {
       API.log("Calling service with these VINs: " + vins.join(','));
 
       // Fetch data from your endpoint by supplying the list of VINs.
       fetch('https://www.yourdomain.com/api/endpoint-that-returns-json?vins=' + vins.join(','))
-      .then((response) => {
+      .then(response => {
         return response.json();
       })
-      .then((serviceData) => {
+      .then(serviceData => {
         // Now that you have your service data, you can determine whether or not to place a CTA for this vehicle on the page.
-        API.insertCallToActionOnce('button', 'value-a-trade', (meta) => {
+        API.insertCallToActionOnce('button', 'value-a-trade', meta => {
           if (serviceData.hasOwnProperty(meta.vin)) {
             return {
               "type": "default",
@@ -231,7 +231,7 @@ If you need to execute additional code before determining if you wish to insert 
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
-  API.subscribe('vehicle-data-updated-v1', (ev) => {
+  API.subscribe('vehicle-data-updated-v1', ev => {
     // Insert content into each vehicle location now present on the page.
     API.insertOnce('location-name', (elem, meta) => {
       API.log(elem); // The DOM element where markup may be inserted.
@@ -250,20 +250,20 @@ If you need to execute additional code before determining if you wish to insert 
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
-  API.subscribe('vehicle-data-updated-v1', (ev) => {
+  API.subscribe('vehicle-data-updated-v1', ev => {
 
     // Collect the VIN for each vehicle on the page in an array.
-    API.utils.getAttributeForVehicles('vin').then((vins) => {
+    API.utils.getAttributeForVehicles('vin').then(vins => {
       API.log("Calling service with these VINs: " + vins.join(','));
 
       // Fetch data from your endpoint by supplying the list of VINs.
       fetch('https://www.yourdomain.com/api/endpoint-that-returns-json?vins=' + vins.join(','))
-      .then((response) => {
+      .then(response => {
         return response.json();
       })
-      .then((serviceData) => {
+      .then(serviceData => {
         // Now that you have your service data, you can determine whether or not to place content for this location on to the page.
-        API.insertOnce('vehicle-badge', function (elem, meta) {
+        API.insertOnce('vehicle-badge', (elem, meta) => {
           // Verify my service has data for this vehicle
           if (serviceData.hasOwnProperty(meta.vin)) {
 

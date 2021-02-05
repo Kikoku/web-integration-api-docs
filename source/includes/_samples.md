@@ -31,7 +31,7 @@ if (window.ResizeObserver) {
 (function (WIAPI) {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
-  API.insert('content', function (elem, meta) {
+  API.insert('content', (elem, meta) => {
     const iframeElem = document.createElement('iframe');
     iframeElem.src = 'https://www.yourdomain.com/path-to-iframe.htm';
     iframeElem.classList.add('test-integration-iframe'); // Note: Replace 'test-integration-frame' with your actual iframe identifier.
