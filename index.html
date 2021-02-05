@@ -940,7 +940,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
@@ -960,7 +960,7 @@
 </tr>
 <tr>
 <td><code>callback</code></td>
-<td><code>(ev) =&gt; { API.log(ev); }</code></td>
+<td><code>ev =&gt; { API.log(ev); }</code></td>
 <td><code>function</code></td>
 </tr>
 </tbody></table>
@@ -976,7 +976,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'dealership-info-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'dealership-info-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
@@ -996,7 +996,7 @@
 </tr>
 <tr>
 <td><code>callback</code></td>
-<td><code>(ev) =&gt; { API.log(ev); }</code></td>
+<td><code>ev =&gt; { API.log(ev); }</code></td>
 <td><code>function</code></td>
 </tr>
 </tbody></table>
@@ -1012,7 +1012,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-shown-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-shown-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
@@ -1031,7 +1031,7 @@
 </tr>
 <tr>
 <td><code>callback</code></td>
-<td><code>(ev) =&gt; { API.log(ev); }</code></td>
+<td><code>ev =&gt; { API.log(ev); }</code></td>
 <td><code>function</code></td>
 </tr>
 </tbody></table>
@@ -1049,7 +1049,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">pageData</span><span class="p">);</span> <span class="c1">// Outputs the Page Data object to the console.</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">vehicleData</span><span class="p">);</span> <span class="c1">// Outputs the updated Vehicle Data object to the console.</span>
   <span class="p">});</span>
@@ -1069,7 +1069,7 @@
 </tr>
 <tr>
 <td><code>callback</code></td>
-<td><code>(ev) =&gt; { API.log(ev); }</code></td>
+<td><code>ev =&gt; { API.log(ev); }</code></td>
 <td><code>function</code></td>
 </tr>
 </tbody></table>
@@ -1085,8 +1085,8 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'event-name-and-version'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">API</span><span class="p">);</span>
 </code></pre>
@@ -1097,7 +1097,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">insertCallToAction</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="s1">'value-a-trade'</span><span class="p">,</span> <span class="p">(</span><span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insertCallToAction</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="s1">'value-a-trade'</span><span class="p">,</span> <span class="nx">meta</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
       <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
       <span class="s2">"href"</span><span class="p">:</span> <span class="s2">"https://www.yourdomain.com/value-a-trade/?vin="</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">,</span>
@@ -1243,20 +1243,20 @@
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
 
   <span class="c1">// Receive a notification each time vehicle data is updated on the page (or a new page is loaded).</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
     <span class="c1">// Collect the VIN for each vehicle on the page in an array.</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">vins</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">vins</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Calling service with these VINs: "</span> <span class="o">+</span> <span class="nx">vins</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">));</span>
 
       <span class="c1">// Fetch data from your endpoint by supplying the list of VINs.</span>
       <span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://www.yourdomain.com/api/endpoint-that-returns-json?vins='</span> <span class="o">+</span> <span class="nx">vins</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">))</span>
-      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
       <span class="p">})</span>
-      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">serviceData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">serviceData</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="c1">// Now that you have your service data, you can determine whether or not to place a CTA for this vehicle on the page.</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">insertCallToActionOnce</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="s1">'value-a-trade'</span><span class="p">,</span> <span class="p">(</span><span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">insertCallToActionOnce</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="s1">'value-a-trade'</span><span class="p">,</span> <span class="nx">meta</span> <span class="o">=&gt;</span> <span class="p">{</span>
           <span class="k">if</span> <span class="p">(</span><span class="nx">serviceData</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">return</span> <span class="p">{</span>
               <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
@@ -1381,7 +1381,7 @@
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
   <span class="c1">// Receive a notification each time vehicle data is updated on the page (or a new page is loaded).</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// Insert content into each vehicle location now present on the page.</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">insertOnce</span><span class="p">(</span><span class="s1">'location-name'</span><span class="p">,</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span> <span class="c1">// The DOM element where markup may be inserted.</span>
@@ -1399,20 +1399,20 @@
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
 
   <span class="c1">// Receive a notification each time vehicle data is updated on the page (or a new page is loaded).</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
     <span class="c1">// Collect the VIN for each vehicle on the page in an array.</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">vins</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">vins</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Calling service with these VINs: "</span> <span class="o">+</span> <span class="nx">vins</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">));</span>
 
       <span class="c1">// Fetch data from your endpoint by supplying the list of VINs.</span>
       <span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://www.yourdomain.com/api/endpoint-that-returns-json?vins='</span> <span class="o">+</span> <span class="nx">vins</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">))</span>
-      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
       <span class="p">})</span>
-      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">serviceData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">serviceData</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="c1">// Now that you have your service data, you can determine whether or not to place content for this location on to the page.</span>
-        <span class="nx">API</span><span class="p">.</span><span class="nx">insertOnce</span><span class="p">(</span><span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">API</span><span class="p">.</span><span class="nx">insertOnce</span><span class="p">(</span><span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
           <span class="c1">// Verify my service has data for this vehicle</span>
           <span class="k">if</span> <span class="p">(</span><span class="nx">serviceData</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">vin</span><span class="p">))</span> <span class="p">{</span>
 
@@ -1649,7 +1649,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-media'</span><span class="p">,</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="kr">const</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
@@ -1684,7 +1684,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span> <span class="o">||</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-badge'</span><span class="p">,</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">inventoryType</span> <span class="o">!==</span> <span class="s1">'used'</span><span class="p">)</span> <span class="p">{</span>
@@ -1724,10 +1724,10 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// Only execute the code on search results and vehicle details pages.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span> <span class="o">||</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-pricing'</span><span class="p">,</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nx">lowPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kd">let</span> <span class="nx">highPrice</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">finalPrice</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">);</span>
         <span class="kr">const</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="p">{</span>
@@ -1760,7 +1760,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'vehicle-media-container'</span><span class="p">,</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="kr">const</span> <span class="nx">containerEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">);</span>
@@ -1790,7 +1790,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span> <span class="o">||</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detailPage</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'primary-banner'</span><span class="p">,</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="kr">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'img'</span><span class="p">),</span>
@@ -1822,12 +1822,12 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'vehicle-data-updated-v1'</span><span class="p">,</span> <span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">pageData</span><span class="p">);</span> <span class="c1">// Logs the Page Data object</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">vehicleData</span><span class="p">);</span> <span class="c1">// Logs the updated Vehicle Data object</span>
 
-    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">vins</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="s1">'vin'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">vins</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="c1">// With the updated list of VINs, you could query your service</span>
       <span class="c1">// to determine which VINs are supported by your service before</span>
       <span class="c1">// placing relevant content such as buttons or iframes.</span>
@@ -1853,7 +1853,7 @@
     <span class="na">showOnVDP</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="na">apiKey</span><span class="p">:</span> <span class="s2">"abcd12349876zyxw"</span>
   <span class="p">}</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getConfig</span><span class="p">(</span><span class="nx">testConfig</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">config</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getConfig</span><span class="p">(</span><span class="nx">testConfig</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">config</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// Output the configuration object for your integration (if defined).</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
   <span class="p">});</span>
@@ -1868,7 +1868,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getDealerData</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">dealerData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getDealerData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">dealerData</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// Logs the Dealership Info Event object for the current website.</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dealerData</span><span class="p">);</span>
   <span class="p">});</span>
@@ -1881,7 +1881,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getJwtForSite</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">jwtObject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getJwtForSite</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">jwtObject</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jwtObject</span><span class="p">);</span>
     <span class="c1">// Returns a data structure like this:</span>
     <span class="c1">// {</span>
@@ -1897,7 +1897,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getJwtForVehicles</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">jwtObject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getJwtForVehicles</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">jwtObject</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jwtObject</span><span class="p">);</span>
     <span class="c1">// Returns a data structure like this:</span>
     <span class="c1">// {</span>
@@ -1914,7 +1914,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getPageData</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">pageData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getPageData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">pageData</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// Outputs the Page Data Object for the current page.</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pageData</span><span class="p">);</span>
   <span class="p">});</span>
@@ -1953,7 +1953,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getVehicleData</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">vehicleData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getVehicleData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicleData</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// Outputs the current set of vehicle data.</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">vehicleData</span><span class="p">);</span>
   <span class="p">});</span>
@@ -2037,7 +2037,7 @@ If any VINs are missing, that means that Dealer.com believes the given account d
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="nx">WIAPI</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'page-load-v1'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">searchPage</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'My integration has loaded and this is a search results page.'</span><span class="p">);</span>
     <span class="p">}</span>
@@ -2088,7 +2088,7 @@ If any VINs are missing, that means that Dealer.com believes the given account d
 <pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">WIAPI</span><span class="p">)</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WIAPI</span><span class="p">(</span><span class="s1">'test-integration'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration' with your actual integration identifier.</span>
 
-  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'content'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s1">'content'</span><span class="p">,</span> <span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kr">const</span> <span class="nx">iframeElem</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'iframe'</span><span class="p">);</span>
     <span class="nx">iframeElem</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'https://www.yourdomain.com/path-to-iframe.htm'</span><span class="p">;</span>
     <span class="nx">iframeElem</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'test-integration-iframe'</span><span class="p">);</span> <span class="c1">// Note: Replace 'test-integration-frame' with your actual iframe identifier.</span>
