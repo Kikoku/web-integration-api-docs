@@ -212,7 +212,7 @@ To receive data for events, you must opt-in to event subscriptions. Each event i
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('page-load-v1', (ev) => {
+  API.subscribe('page-load-v1', ev => {
     API.log(ev);
   });
 })(window.DDC.API);
@@ -222,7 +222,7 @@ To receive data for events, you must opt-in to event subscriptions. Each event i
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `event-id` | `page-load-v1` | `String`
-`callback` | `(ev) => { API.log(ev); }` | `function`
+`callback` | `ev => { API.log(ev); }` | `function`
 
 > This event passes the standard <a href="#page-event">Page Event</a> object to your callback function.
 
@@ -235,7 +235,7 @@ The page load event is useful to determine the context of the current page. By m
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('dealership-info-v1', (ev) => {
+  API.subscribe('dealership-info-v1', ev => {
     API.log(ev);
   });
 })(window.DDC.API);
@@ -245,7 +245,7 @@ The page load event is useful to determine the context of the current page. By m
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `event-id` | `dealership-info-v1` | `String`
-`callback` | `(ev) => { API.log(ev); }` | `function`
+`callback` | `ev => { API.log(ev); }` | `function`
 
 > This event passes the standard <a href="#dealership-info-event">Dealership Info Event</a> object to your callback function.
 
@@ -258,7 +258,7 @@ The dealership info event is useful if you need to know the name and address of 
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('vehicle-shown-v1', (ev) => {
+  API.subscribe('vehicle-shown-v1', ev => {
     API.log(ev);
   });
 })(window.DDC.API);
@@ -267,7 +267,7 @@ The dealership info event is useful if you need to know the name and address of 
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `event-id` | `vehicle-shown-v1` | `String`
-`callback` | `(ev) => { API.log(ev); }` | `function`
+`callback` | `ev => { API.log(ev); }` | `function`
 
 > This event passes the standard <a href="#vehicle-event">Vehicle Event</a> object to your callback function.
 
@@ -282,7 +282,7 @@ On a vehicle deals page, a single event is fired because you are viewing a singl
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('vehicle-data-updated-v1', (data) => {
+  API.subscribe('vehicle-data-updated-v1', data => {
     API.log(data.payload.pageData); // Outputs the Page Data object to the console.
     API.log(data.payload.vehicleData); // Outputs the updated Vehicle Data object to the console.
   });
@@ -292,7 +292,7 @@ On a vehicle deals page, a single event is fired because you are viewing a singl
 Parameter Name | Example Value | Parameter Type
 -------------- | -------------- | --------------
 `event-id` | `vehicle-data-updated-v1` | `String`
-`callback` | `(ev) => { API.log(ev); }` | `function`
+`callback` | `ev => { API.log(ev); }` | `function`
 
 > This event passes the standard <a href="#page-event">Page Event</a> object to your callback function as well as the full array of <a href="#vehicle-event">Vehicle Event</a> data objects.
 

@@ -9,12 +9,12 @@ In addition to the event based system for working with sites, some utility metho
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('vehicle-data-updated-v1', (data) => {
+  API.subscribe('vehicle-data-updated-v1', data => {
 
     API.log(data.payload.pageData); // Logs the Page Data object
     API.log(data.payload.vehicleData); // Logs the updated Vehicle Data object
 
-    API.utils.getAttributeForVehicles('vin').then((vins) => {
+    API.utils.getAttributeForVehicles('vin').then(vins => {
       // With the updated list of VINs, you could query your service
       // to determine which VINs are supported by your service before
       // placing relevant content such as buttons or iframes.
@@ -43,7 +43,7 @@ This can be used to obtain an array of attributes for the currently displayed ve
     showOnVDP: false,
     apiKey: "abcd12349876zyxw"
   }
-  API.utils.getConfig(testConfig).then((config) => {
+  API.utils.getConfig(testConfig).then(config => {
     // Output the configuration object for your integration (if defined).
     API.log(config);
   });
@@ -61,7 +61,7 @@ This fetches a JavaScript object of your integration's configuration for the cur
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.utils.getDealerData().then((dealerData) => {
+  API.utils.getDealerData().then(dealerData => {
     // Logs the Dealership Info Event object for the current website.
     API.log(dealerData);
   });
@@ -77,7 +77,7 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.utils.getJwtForSite().then((jwtObject) => {
+  API.utils.getJwtForSite().then(jwtObject => {
     API.log(jwtObject);
     // Returns a data structure like this:
     // {
@@ -97,7 +97,7 @@ This fetches an object containing a Java Web Token which can be used to secure/v
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.utils.getJwtForVehicles().then((jwtObject) => {
+  API.utils.getJwtForVehicles().then(jwtObject => {
     API.log(jwtObject);
     // Returns a data structure like this:
     // {
@@ -117,7 +117,7 @@ This fetches an object containing the array of VINs on the current page and a co
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.utils.getPageData().then((pageData) => {
+  API.utils.getPageData().then(pageData => {
     // Outputs the Page Data Object for the current page.
     API.log(pageData);
   });
@@ -162,7 +162,7 @@ Will return the following object:
 ```javascript
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  const config = API.utils.getVehicleData().then((vehicleData) => {
+  const config = API.utils.getVehicleData().then(vehicleData => {
     // Outputs the current set of vehicle data.
     API.log(vehicleData);
   });
