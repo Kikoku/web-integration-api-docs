@@ -9,7 +9,7 @@ The sample code here is provided as a starting point for how to accomplish tasks
 ```javascript
 document.body.style.overflow = 'hidden';
 
-function sendResizeMessage() {
+let sendResizeMessage = () => {
   window.parent.postMessage({
     type: 'IFRAME_HEIGHT_RESIZE',
     target: 'test-integration-iframe', // Note: Replace 'test-integration-frame' with your actual iframe identifier.
@@ -28,17 +28,17 @@ if (window.ResizeObserver) {
 > Integration Code:
 
 ```javascript
-(function (WIAPI) {
+(WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
 
-  API.insert('content', function (elem, meta) {
+  API.insert('content', (elem, meta) => {
     const iframeElem = document.createElement('iframe');
     iframeElem.src = 'https://www.yourdomain.com/path-to-iframe.htm';
     iframeElem.classList.add('test-integration-iframe'); // Note: Replace 'test-integration-frame' with your actual iframe identifier.
     API.append(elem, iframeElem);
   });
 
-  function setIframeHeight(e) {
+  let setIframeHeight = (e) => {
     if (e.origin !== 'https://www.yourdomain.com') {
       // You should ALWAYS verify the origin matches the third party domain
       // the iframe is loaded from. For more information, see:
