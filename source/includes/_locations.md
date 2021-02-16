@@ -135,7 +135,7 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('vehicle-media-container', (elem, meta) => {
-    // This element is the media gallery container on vehicle deals pages.
+    // This element is the media gallery container on vehicle details pages.
     // Injecting into this location will replace the media gallery with the elements you insert.
   });
 })(window.DDC.API);
@@ -159,7 +159,43 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 })(window.DDC.API);
 ```
 
-This element is the media gallery container on vehicle deals pages. Injecting into this location will replace the media gallery with the elements you insert.
+This element is the media gallery container on vehicle details pages. Injecting into this location will replace the media gallery with the elements you insert.
+
+## Secondary Content
+
+> Usage:
+
+```javascript
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  API.insert('secondary-content', (elem, meta) => {
+    // This element is the a secondairy content container on vehicle details pages roughly 2/3 of the way down.
+    // It may also be added custom two one or two stand-alone pages on the website.
+  });
+})(window.DDC.API);
+```
+
+> Example Implementation:
+
+```javascript
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  API.subscribe('page-load-v1', ev => {
+    if (ev.payload.detailPage) {
+      API.insert('secondary-content', (elem, meta) => {
+        const containerEl = document.createElement('div');
+        containerEl.style = 'background-color: #ff0000; font-size: 30px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;';
+        containerEl.innerHTML = 'Your secondary content container goes here.';
+        API.append(elem, containerEl);
+      });
+    }
+  });
+})(window.DDC.API);
+```
+
+By default, this element is roughly 2/3 of the way down on vehicle details pages.
+
+Since this may also be present on one or two standalone pages as custom additions, it is likely you will want to target just details pages by first subscribing to the <a href="#page-load-v1">`page-load-v1`</a> event, then using the <a href="#page-event">event</a> value of `payload.detailPage` to check the page type.
 
 ## Primary Banner
 
@@ -204,4 +240,47 @@ This element is positioned in a prominent location above the vehicle listings on
 
 On the Details page, it is positioned at the top of the vehicle information, below the media gallery.
 
-You can target either the listings or details page by first subscribing to the page-load-v1 event, and using the event values of `payload.searchPage` and `payload.detailPage` to check the page type.
+You can target either the listings or details page by first subscribing to the <a href="#page-load-v1">`page-load-v1`</a> event, then using the <a href="#page-event">event</a> values of `payload.searchPage` and `payload.detailPage` to check the page type.
+
+## Content
+
+> Usage:
+
+```javascript
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  API.insert('content', (elem, meta) => {
+    // This element is will only insert on to Dealer.com pages created for your purposes.
+    // It may also be present on pages created for another integration.
+  });
+})(window.DDC.API);
+```
+
+> Example Implementation:
+
+```javascript
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  API.subscribe('page-load-v1', ev => {
+    if (ev.payload.pageName === 'PROMOTIONS_LANDING') {
+      API.insert('content', (elem, meta) => {
+        const containerEl = document.createElement('div');
+        containerEl.classList = 'bg-neutral-950 text-light';
+        containerEl.style = 'font-size: 35px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;';
+        containerEl.innerHTML = 'Your secondary content container goes here.';
+        API.append(elem, containerEl);
+      });
+    }
+  });
+})(window.DDC.API);
+```
+
+On a custom landing page created for the purpose of this target, it will represent the entirety of the space between the header and footer.
+
+The example implementation can be tested here:
+<a href="https://www.roimotors.com/promotions/index.htm?ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1">https://www.roimotors.com/promotions/index.htm?ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1</a>
+
+
+Because this will rely on the creation of a custom landing page, you will need to work with us to ensure you have a blank page with this target.
+
+Once this is done, you will need to subscribe to the <a href="#page-load-v1">`page-load-v1`</a> event, then use the <a href="#page-event">event</a> value of `payload.pageName` to ensure you only target your dedicated landing page.
