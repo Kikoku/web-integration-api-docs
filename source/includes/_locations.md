@@ -161,42 +161,6 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 
 This element is the media gallery container on vehicle details pages. Injecting into this location will replace the media gallery with the elements you insert.
 
-## Secondary Content
-
-> Usage:
-
-```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.insert('secondary-content', (elem, meta) => {
-    // This element is the a secondary content container on vehicle details pages roughly 2/3 of the way down.
-    // It may also be added custom to one or more standalone pages on the website.
-  });
-})(window.DDC.API);
-```
-
-> Example Implementation:
-
-```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
-  API.subscribe('page-load-v1', ev => {
-    if (ev.payload.detailPage) {
-      API.insert('secondary-content', (elem, meta) => {
-        const containerEl = document.createElement('div');
-        containerEl.style = 'background-color: #ff0000; font-size: 30px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;';
-        containerEl.innerHTML = 'Your secondary content container goes here.';
-        API.append(elem, containerEl);
-      });
-    }
-  });
-})(window.DDC.API);
-```
-
-By default, this element is roughly 2/3 of the way down on vehicle details pages.
-
-Since this may also be present on one or two standalone pages as custom additions, it is likely you will want to target just details pages by first subscribing to the <a href="#page-load-v1">`page-load-v1`</a> event, then using the <a href="#page-event">event</a> value of `payload.detailPage` to check the page type.
-
 ## Primary Banner
 
 > Usage:
@@ -241,6 +205,42 @@ This element is positioned in a prominent location above the vehicle listings on
 On the Details page, it is positioned at the top of the vehicle information, below the media gallery.
 
 You can target either the listings or details page by first subscribing to the <a href="#page-load-v1">`page-load-v1`</a> event, then using the <a href="#page-event">event</a> values of `payload.searchPage` and `payload.detailPage` to check the page type.
+
+## Secondary Content
+
+> Usage:
+
+```javascript
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  API.insert('secondary-content', (elem, meta) => {
+    // This element is the a secondary content container on vehicle details pages roughly 2/3 of the way down.
+    // It may also be added custom to one or more standalone pages on the website.
+  });
+})(window.DDC.API);
+```
+
+> Example Implementation:
+
+```javascript
+(WIAPI => {
+  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  API.subscribe('page-load-v1', ev => {
+    if (ev.payload.detailPage) {
+      API.insert('secondary-content', (elem, meta) => {
+        const containerEl = document.createElement('div');
+        containerEl.style = 'background-color: #ff0000; font-size: 30px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;';
+        containerEl.innerHTML = 'Your secondary content container goes here.';
+        API.append(elem, containerEl);
+      });
+    }
+  });
+})(window.DDC.API);
+```
+
+By default, this element is roughly 2/3 of the way down on vehicle details pages.
+
+Since this may also be present on one or two standalone pages as custom additions, it is likely you will want to target just details pages by first subscribing to the <a href="#page-load-v1">`page-load-v1`</a> event, then using the <a href="#page-event">event</a> value of `payload.detailPage` to check the page type.
 
 ## Content
 
