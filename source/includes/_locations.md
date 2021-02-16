@@ -169,8 +169,8 @@ This element is the media gallery container on vehicle details pages. Injecting 
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('secondary-content', (elem, meta) => {
-    // This element is the a secondairy content container on vehicle details pages roughly 2/3 of the way down.
-    // It may also be added custom two one or two stand-alone pages on the website.
+    // This element is the a secondary content container on vehicle details pages roughly 2/3 of the way down.
+    // It may also be added custom to one or more standalone pages on the website.
   });
 })(window.DDC.API);
 ```
@@ -250,7 +250,7 @@ You can target either the listings or details page by first subscribing to the <
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.insert('content', (elem, meta) => {
-    // This element is will only insert on to Dealer.com pages created for your purposes.
+    // This element is will only insert on pages created by us for your purposes.
     // It may also be present on pages created for another integration.
   });
 })(window.DDC.API);
@@ -267,7 +267,7 @@ You can target either the listings or details page by first subscribing to the <
         const containerEl = document.createElement('div');
         containerEl.classList = 'bg-neutral-950 text-light';
         containerEl.style = 'font-size: 35px; width: 100%; height: 540px; margin: 0 auto; padding: 100px; text-align: center;';
-        containerEl.innerHTML = 'Your secondary content container goes here.';
+        containerEl.innerHTML = 'Your content container goes here.';
         API.append(elem, containerEl);
       });
     }
@@ -275,7 +275,7 @@ You can target either the listings or details page by first subscribing to the <
 })(window.DDC.API);
 ```
 
-On a custom landing page created for the purpose of this target, it will represent the entirety of the space between the header and footer.
+On a custom landing page created for the purpose of this target, it will represent the entirety of the empty space between the header and footer.
 
 The example implementation can be tested here:
 <a href="https://www.roimotors.com/promotions/index.htm?ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1">https://www.roimotors.com/promotions/index.htm?ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1</a>
