@@ -278,9 +278,10 @@ Since this may also be present on one or two standalone pages as custom addition
 On a custom landing page created for the purpose of this target, it will represent the entirety of the empty space between the header and footer.
 
 The example implementation can be tested here:
-<a href="https://www.roimotors.com/promotions/index.htm?ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1">https://www.roimotors.com/promotions/index.htm?ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1</a>
+<a href="https://www.roimotors.com/tools/your-landing-page.htm">https://www.roimotors.com/tools/your-landing-page.htm</a>
 
+Alternatively, you can add this URL parameter to any Dealer.com website URL: `ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1`
 
-Because this will rely on the creation of a custom landing page, you will need to work with us to ensure you have a blank page with this target.
+You will need to subscribe to the <a href="#page-load-v1">`page-load-v1`</a> event, then use the <a href="#page-event">event</a> value of `payload.pageName` to ensure you only target your dedicated landing page.
 
-Once this is done, you will need to subscribe to the <a href="#page-load-v1">`page-load-v1`</a> event, then use the <a href="#page-event">event</a> value of `payload.pageName` to ensure you only target your dedicated landing page.
+Once ready for production, you will need to work with us to ensure we provide a landing page with this target.
