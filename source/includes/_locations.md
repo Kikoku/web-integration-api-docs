@@ -262,7 +262,7 @@ Since this may also be present on one or two standalone pages as custom addition
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', ev => {
-    if (ev.payload.pageName === 'PROMOTIONS_LANDING') {
+    if (ev.payload.pageName === 'YOUR_LANDING_PAGE') {
       API.insert('content', (elem, meta) => {
         const containerEl = document.createElement('div');
         containerEl.classList = 'bg-neutral-950 text-light';
