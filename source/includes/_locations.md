@@ -262,7 +262,7 @@ Since this may also be present on one or two standalone pages as custom addition
 (WIAPI => {
   const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
   API.subscribe('page-load-v1', ev => {
-    if (ev.payload.pageName === 'YOUR_LANDING_PAGE') {
+    if (ev.payload.pageName === 'YOUR_LANDING_PAGE') { // Note: Replace 'pageName' with the one we provide at page creation.
       API.insert('content', (elem, meta) => {
         const containerEl = document.createElement('div');
         containerEl.classList = 'bg-neutral-950 text-light';
@@ -275,12 +275,10 @@ Since this may also be present on one or two standalone pages as custom addition
 })(window.DDC.API);
 ```
 
-On a custom landing page created for the purpose of this target, it will represent the entirety of the empty space between the header and footer.
+This element will represent the entirety of the empty space between the header and footer on a custom landing page.
 
 The example implementation can be tested here:
 <a href="https://www.roimotors.com/tools/your-landing-page.htm">https://www.roimotors.com/tools/your-landing-page.htm</a>
-
-Alternatively, you can add this URL parameter to any Dealer.com website URL: `ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1`
 
 You will need to subscribe to the <a href="#page-load-v1">`page-load-v1`</a> event, then use the <a href="#page-event">event</a> value of `payload.pageName` to ensure you only target your dedicated landing page.
 
