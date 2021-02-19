@@ -1885,11 +1885,13 @@
 <p>On a custom landing page created for the purpose of this target, it will represent the entirety of the empty space between the header and footer.</p>
 
 <p>The example implementation can be tested here:
-<a href="https://www.roimotors.com/promotions/index.htm?ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1">https://www.roimotors.com/promotions/index.htm?ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1</a></p>
+<a href="https://www.roimotors.com/tools/your-landing-page.htm">https://www.roimotors.com/tools/your-landing-page.htm</a></p>
 
-<p>Because this will rely on the creation of a custom landing page, you will need to work with us to ensure you have a blank page with this target.</p>
+<p>Alternatively, you can add this URL parameter to any Dealer.com website URL: <code>ssePageId=v9_WEB_INTEGRATION_GENERIC_FULL_WIDTH_V1_1</code></p>
 
-<p>Once this is done, you will need to subscribe to the <a href="#page-load-v1"><code>page-load-v1</code></a> event, then use the <a href="#page-event">event</a> value of <code>payload.pageName</code> to ensure you only target your dedicated landing page.</p>
+<p>You will need to subscribe to the <a href="#page-load-v1"><code>page-load-v1</code></a> event, then use the <a href="#page-event">event</a> value of <code>payload.pageName</code> to ensure you only target your dedicated landing page.</p>
+
+<p>Once ready for production, you will need to work with us to ensure we provide a landing page with this target.</p>
 <h1 id='utility-methods'>Utility Methods</h1>
 <p>In addition to the event based system for working with sites, some utility methods are available to directly access data needed to make decisions in your code. Rather than waiting for a particular event to fire, you can query the information directly at any point in your code to ensure it is in context at the point where you need it. All utility methods return a JavaScript Promise so you can ensure the data is available before proceeding with the rest of your code.</p>
 <h2 id='api-utils-getattributeforvehicles-attribute'>API.utils.getAttributeForVehicles(attribute)</h2>
