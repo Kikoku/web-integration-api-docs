@@ -5,12 +5,12 @@
 > Usage
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('event-name-and-version', ev => {
     API.log(ev);
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 Please see the <a href="#event-subscriptions">specific event documentation</a> for more detail on the available events and the data payload sent to your callback function.
 
@@ -19,8 +19,8 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 > Usage
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insertCallToAction('button', 'value-a-trade', meta => {
     return {
       "type": "default",
@@ -32,7 +32,7 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
       }
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 The `insertCallToAction` method is used to create a call to action (CTA) button for placement on web site inventory items. Rather than generating markup and inserting it into a predefined location, when using this method you specify the CTA type (`button` is currently the only supported type), an intent (more on this below), and a data object describing the CTA's attributes. The data object follows the same pattern as the object passed into the <a href="#api-create-type-options">API.create method</a> which you can use as a reference to see all available config options.
@@ -110,10 +110,10 @@ After creating the callback object, you must then return it for the API to creat
 > Functional example
 
 ```javascript
-(WIAPI => {
+(async APILoader => {
 
   // Initialize an instance of the API
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  const API = await APILoader.create();
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', ev => {
@@ -148,7 +148,7 @@ After creating the callback object, you must then return it for the API to creat
       });
     });
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 You may prefer to only insert a CTA when you are ready, after performing other functions. For example, if you need to make a service call to your system with a list of vehicles to determine which ones have data on your side, and only then add CTAs to supported vehicles. With `insertCallToActionOnce`, the method behaves as a functional insert which can be chained with other functions, and does not behave as a subscription. With `API.insertCallToActionOnce`, you will need to invoke it inside of a <a href="#vehicle-data-updated-v1">`vehicle-data-updated-v1`</a> subscription so that your code is triggered each time the list of vehicles is loaded on a page rather than only the first time.
@@ -164,8 +164,8 @@ Field Name | Purpose | Field Format
 > Usage
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insertGalleryContent('vehicle-media', [
     {
       type: 'image',
@@ -186,7 +186,7 @@ Field Name | Purpose | Field Format
       thumbnail: 'https://yourdomain.com/last-thumb.jpg'
     }
   ]);
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 The `insertGalleryContent` method allows you to add media to media galleries across various pages of Dealer.com sites. The only currently supported target is `vehicle-media`, which will insert media into the media carousel of Vehicle Details Pages.
@@ -206,13 +206,13 @@ Name | Description
 > Usage
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('location-name', (elem, meta) => {
     API.log(elem); // The DOM element where markup may be inserted.
     API.log(meta); // The payload object for the current insertion point.
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 The insert method allows you to append markup to specific locations on some pages of Dealer sites. These locations are commonly targeted areas where you may want to place content.
@@ -228,8 +228,8 @@ If you need to execute additional code before determining if you wish to insert 
 > Usage
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', ev => {
     // Insert content into each vehicle location now present on the page.
@@ -238,16 +238,16 @@ If you need to execute additional code before determining if you wish to insert 
       API.log(meta); // The payload object for the current insertion point.
     });
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > Functional example
 
 ```javascript
-(WIAPI => {
+(async APILoader => {
 
   // Initialize an instance of the API
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+  const API = await APILoader.create();
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', ev => {
@@ -280,7 +280,7 @@ If you need to execute additional code before determining if you wish to insert 
       });
     });
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 
 ```
 
@@ -297,8 +297,8 @@ Field Name | Purpose | Field Format
 > Create a Button
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   const button = API.create('button', {
     href: 'https://www.google.com/',
     text: {
@@ -327,7 +327,7 @@ Field Name | Purpose | Field Format
     }
   });
   return button;
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > The above example generates this markup:
@@ -363,17 +363,17 @@ Field Key | Example Value | Field Format | Purpose
 > Usage
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.append(targetEl, appendEl);
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > For example, used in conjunction with the `insert` and the `create` methods your code might look similar to this:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('target-location-name', (elem, meta) => {
     let lowPrice = Math.round(meta.finalPrice - 1000);
     let highPrice = Math.round(meta.finalPrice + 1000);
@@ -388,7 +388,7 @@ Field Key | Example Value | Field Format | Purpose
     })
     API.append(elem, button);
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 When calling the insert method, the goal is to insert some markup into a location on the page. Once you have constructed the element(s) you wish to insert, you may call the `append` method to complete the process.
@@ -398,14 +398,14 @@ When calling the insert method, the goal is to insert some markup into a locatio
 > Usage
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   // Loads a JavaScript file
   API.loadJS('https://www.company.com/script.js')
     .then(() => {
       // Code to execute after your JavaScript file has loaded.
     });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 The loadJS method is a simple way to include additional JavaScript files required for your integration. The method returns a JavaScript Promise which you can use to know when file loading is complete, to then run any necessary initialization functions, etc.
@@ -415,14 +415,14 @@ The loadJS method is a simple way to include additional JavaScript files require
 > Usage
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   // Loads a CSS stylesheet
   API.loadCSS('https://www.company.com/integration.css')
     .then(() => {
       // Code to execute after your stylesheet has loaded.
     });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 The loadCSS method is a simple way to include an additional CSS stylesheet file required for your integration. The method returns a JavaScript Promise which you can use to know when stylesheet loading is complete, to then insert markup that depends on that styling to avoid display a flash of unstyled content.

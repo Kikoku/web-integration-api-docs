@@ -28,8 +28,8 @@ if (window.ResizeObserver) {
 > Integration Code:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
 
   API.insert('content', (elem, meta) => {
     const iframeElem = document.createElement('iframe');
@@ -55,7 +55,7 @@ if (window.ResizeObserver) {
   }
 
   window.addEventListener('message', setIframeHeight, false);
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 An integration may want to insert an iframe that resizes as its contents change. One possible way to accomplish this is for the iframe and the integration to work together as shown in the sample code from the pane on the right side of this page. You can see the sample code running [here](https://webapitestddc.cms.dealer.com/growing-iframe-example.htm).

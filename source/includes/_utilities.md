@@ -7,8 +7,8 @@ In addition to the event based system for working with sites, some utility metho
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('vehicle-data-updated-v1', data => {
 
     API.log(data.payload.pageData); // Logs the Page Data object
@@ -25,7 +25,7 @@ In addition to the event based system for working with sites, some utility metho
       API.log(vins);
     });
   })
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This can be used to obtain an array of attributes for the currently displayed vehicles on a page. For example, passing the attribute 'finalPrice' would return an array of all of the final prices on the page. Passing 'vin' would return an array of vehicle vins. You can pass any of the attributes that are present on the <a href="#vehicle-event">Vehicle Event object</a> and have this return an array.
@@ -35,8 +35,8 @@ This can be used to obtain an array of attributes for the currently displayed ve
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier to obtain the correct configuration data.
+(async APILoader => {
+  const API = await APILoader.create();
   const testConfig = {
     dealerId: "12345",
     showOnSRP: true,
@@ -47,7 +47,7 @@ This can be used to obtain an array of attributes for the currently displayed ve
     // Output the configuration object for your integration (if defined).
     API.log(config);
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This fetches a JavaScript object of your integration's configuration for the current website and page. Not all integrations have configuration options in our system (aside from enabled/disabled), but if your integration does, you can use this to obtain the configuration data.
@@ -59,13 +59,13 @@ This fetches a JavaScript object of your integration's configuration for the cur
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.utils.getDealerData().then(dealerData => {
     // Logs the Dealership Info Event object for the current website.
     API.log(dealerData);
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This fetches the <a href="#dealership-info-event">Dealership Info Event object</a> for the current website.
@@ -75,8 +75,8 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.utils.getJwtForSite().then(jwtObject => {
     API.log(jwtObject);
     // Returns a data structure like this:
@@ -84,7 +84,7 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
     //   jwt: "eyJraWQiOiIya0k0XzIyZoLUUi...KpSUf6vJ8b9Z1NDRcIgv0GrZoiqPhTunw" // String
     // }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This fetches an object containing a Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.
@@ -95,8 +95,8 @@ This fetches an object containing a Java Web Token which can be used to secure/v
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.utils.getJwtForVehicles().then(jwtObject => {
     API.log(jwtObject);
     // Returns a data structure like this:
@@ -105,7 +105,7 @@ This fetches an object containing a Java Web Token which can be used to secure/v
     //   jwt: "eyJraWQiOiIya0k0XzIyZoLUUi...KpSUf6vJ8b9Z1NDRcIgv0GrZoiqPhTunw" // String
     // }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This fetches an object containing the array of VINs on the current page and a corresponding Java Web Token which can be used to secure/verify the request from our site to your service. This tool offers the capability for you to validate that the request for content from your service originated from our platform and enables you to determine whether or not the content should be served. For more details regarding how to use this with your service, please refer to the <a href="#jwt-usage-documentation">JWT usage documentation</a>.
@@ -115,13 +115,13 @@ This fetches an object containing the array of VINs on the current page and a co
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.utils.getPageData().then(pageData => {
     // Outputs the Page Data Object for the current page.
     API.log(pageData);
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This fetches the <a href="#page-event">Page Event object</a> for the current website and page.
@@ -131,12 +131,12 @@ This fetches the <a href="#page-event">Page Event object</a> for the current web
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   const urlParams = API.utils.getUrlParams(); // Returns the current URL parameters as object attributes, so you can easily access the values.
   API.log(urlParams); // Log the entire object.
   API.log(urlParams.query); // Access just the `query` parameter, for example.
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 NOTE: This method returns synchronously, not as a Promise, because the URL Params are already available and do not require asynchronous behavior for performance.
@@ -160,11 +160,11 @@ Will return the following object:
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   const config = API.utils.getVehicleData().then(vehicleData => {
     // Outputs the current set of vehicle data.
     API.log(vehicleData);
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
