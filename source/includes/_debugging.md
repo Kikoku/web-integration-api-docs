@@ -3,14 +3,14 @@
 > Example Implementation:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.searchPage) {
       API.log('My integration has loaded and this is a search results page.');
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 When developing an integration, it's helpful to know if the API is doing what you expect and if your code is running successfully. The API intentionally suppresses most errors in regular use cases, however you can opt to view the error messages and API events by adding the following URL parameter to any page of any Dealer.com web site:

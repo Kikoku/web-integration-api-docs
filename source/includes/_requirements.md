@@ -17,10 +17,10 @@ When you begin development of your script, it's easy to test on any Dealer.com s
 *2.)* Open the developer tools in your browser and enter this code in the Console window:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.test('https://www.yourdomain.com/your-javascript-file.js');
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This will set a cookie in your browser and instruct the site to load your defined script as if the integration was enabled. The code will only load for you in the current browser session so that you are able to iterate and test your code. When it is ready for activation on sites, we can set the integration up in our system and load your script for all users of the site(s) where it should be enabled. The set cookie expires when your browser session expires or you clear your browser cookies.
@@ -40,11 +40,11 @@ Your code should be minimal and perform only actions necessary to bootstrap your
 > This is an example of an immediately executing function expression:
 
 ```javascript
-(WIAPI => {
-	const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+	const API = await APILoader.create();
 	// API.subscribe(...);
 	// Your code here
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 * **Avoid Global Scope Pollution** - Always ecapsulate your code in an immediately executing function expression to avoid polluting the global namespace. See sidebar for example of such a function.
 

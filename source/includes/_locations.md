@@ -9,19 +9,19 @@ See the <a href="#api-insert-name-callback-elem-meta">insert documentation</a> f
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('vehicle-media', (elem, meta) => {
     // This element is positioned below the vehicle image area on vehicle search pages.
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > Example Implementation:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.searchPage) {
       API.insert('vehicle-media', (elem, meta) => {
@@ -38,7 +38,7 @@ See the <a href="#api-insert-name-callback-elem-meta">insert documentation</a> f
       });
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This element is positioned below the vehicle image area on vehicle search pages.
@@ -48,19 +48,19 @@ This element is positioned below the vehicle image area on vehicle search pages.
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('vehicle-badge', (elem, meta) => {
     // This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > Example Implementation:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('vehicle-badge', (elem, meta) => {
@@ -82,7 +82,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
       });
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
@@ -93,19 +93,19 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('vehicle-pricing', (elem, meta) => {
     // This element is positioned below the vehicle pricing area on vehicle search and detail pages.
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > Example Implementation:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('page-load-v1', ev => {
     // Only execute the code on search results and vehicle details pages.
     if (ev.payload.searchPage || ev.payload.detailPage) {
@@ -122,7 +122,7 @@ This element is positioned below the vehicle tech specs area on vehicle search a
       });
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This element is positioned below the vehicle pricing area on vehicle search and detail pages.
@@ -132,20 +132,20 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('vehicle-media-container', (elem, meta) => {
     // This element is the media gallery container on vehicle details pages.
     // Injecting into this location will replace the media gallery with the elements you insert.
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > Example Implementation:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.detailPage) {
       API.insert('vehicle-media-container', (elem, meta) => {
@@ -156,7 +156,7 @@ This element is positioned below the vehicle pricing area on vehicle search and 
       });
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This element is the media gallery container on vehicle details pages. Injecting into this location will replace the media gallery with the elements you insert.
@@ -166,20 +166,20 @@ This element is the media gallery container on vehicle details pages. Injecting 
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('primary-banner', (elem, meta) => {
     // This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.
     // On the Details page, it is near the top of the vehicle information, below the media gallery.
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > Example Implementation:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('primary-banner', (elem, meta) => {
@@ -197,7 +197,7 @@ This element is the media gallery container on vehicle details pages. Injecting 
       });
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This element is positioned in a prominent location above the vehicle listings on the Search Results Page.
@@ -211,20 +211,20 @@ You can target either the listings or details page by first subscribing to the <
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('secondary-content', (elem, meta) => {
     // This element is the a secondary content container on vehicle details pages roughly 2/3 of the way down.
     // It may also be added custom to one or more standalone pages on the website.
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > Example Implementation:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.detailPage) {
       API.insert('secondary-content', (elem, meta) => {
@@ -235,7 +235,7 @@ You can target either the listings or details page by first subscribing to the <
       });
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 By default, this element is roughly 2/3 of the way down on vehicle details pages.
@@ -247,20 +247,20 @@ Since this may also be present on one or two standalone pages as custom addition
 > Usage:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.insert('content', (elem, meta) => {
     // This element is will only insert on pages created by us for your purposes.
     // It may also be present on pages created for another integration.
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 > Example Implementation:
 
 ```javascript
-(WIAPI => {
-  const API = new WIAPI('test-integration'); // Note: Replace 'test-integration' with your actual integration identifier.
+(async APILoader => {
+  const API = await APILoader.create();
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.pageName === 'YOUR_LANDING_PAGE') { // Note: Replace 'pageName' with the one we provide at page creation.
       API.insert('content', (elem, meta) => {
@@ -272,7 +272,7 @@ Since this may also be present on one or two standalone pages as custom addition
       });
     }
   });
-})(window.DDC.API);
+})(window.DDC.APILoader);
 ```
 
 This element will represent the entirety of the empty space between the header and footer on a custom landing page.
