@@ -211,7 +211,7 @@ To receive data for events, you must opt-in to event subscriptions. Each event i
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('page-load-v1', ev => {
     API.log(ev);
   });
@@ -234,7 +234,7 @@ The page load event is useful to determine the context of the current page. By m
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('dealership-info-v1', ev => {
     API.log(ev);
   });
@@ -257,7 +257,7 @@ The dealership info event is useful if you need to know the name and address of 
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('vehicle-shown-v1', ev => {
     API.log(ev);
   });
@@ -281,7 +281,7 @@ On a vehicle deals page, a single event is fired because you are viewing a singl
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('vehicle-data-updated-v1', data => {
     API.log(data.payload.pageData); // Outputs the Page Data object to the console.
     API.log(data.payload.vehicleData); // Outputs the updated Vehicle Data object to the console.

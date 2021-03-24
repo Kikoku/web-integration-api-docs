@@ -29,7 +29,7 @@ if (window.ResizeObserver) {
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
 
   API.insert('content', (elem, meta) => {
     const iframeElem = document.createElement('iframe');
