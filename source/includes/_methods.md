@@ -6,7 +6,7 @@
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('event-name-and-version', ev => {
     API.log(ev);
   });
@@ -20,7 +20,7 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insertCallToAction('button', 'value-a-trade', meta => {
     return {
       "type": "default",
@@ -113,7 +113,7 @@ After creating the callback object, you must then return it for the API to creat
 (async APILoader => {
 
   // Initialize an instance of the API
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', ev => {
@@ -165,7 +165,7 @@ Field Name | Purpose | Field Format
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insertGalleryContent('vehicle-media', [
     {
       type: 'image',
@@ -207,7 +207,7 @@ Name | Description
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('location-name', (elem, meta) => {
     API.log(elem); // The DOM element where markup may be inserted.
     API.log(meta); // The payload object for the current insertion point.
@@ -229,7 +229,7 @@ If you need to execute additional code before determining if you wish to insert 
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', ev => {
     // Insert content into each vehicle location now present on the page.
@@ -247,7 +247,7 @@ If you need to execute additional code before determining if you wish to insert 
 (async APILoader => {
 
   // Initialize an instance of the API
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
 
   // Receive a notification each time vehicle data is updated on the page (or a new page is loaded).
   API.subscribe('vehicle-data-updated-v1', ev => {
@@ -298,7 +298,7 @@ Field Name | Purpose | Field Format
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   const button = API.create('button', {
     href: 'https://www.google.com/',
     text: {
@@ -364,7 +364,7 @@ Field Key | Example Value | Field Format | Purpose
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.append(targetEl, appendEl);
 })(window.DDC.APILoader);
 ```
@@ -373,7 +373,7 @@ Field Key | Example Value | Field Format | Purpose
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('target-location-name', (elem, meta) => {
     let lowPrice = Math.round(meta.finalPrice - 1000);
     let highPrice = Math.round(meta.finalPrice + 1000);
@@ -399,7 +399,7 @@ When calling the insert method, the goal is to insert some markup into a locatio
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   // Loads a JavaScript file
   API.loadJS('https://www.company.com/script.js')
     .then(() => {
@@ -416,7 +416,7 @@ The loadJS method is a simple way to include additional JavaScript files require
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   // Loads a CSS stylesheet
   API.loadCSS('https://www.company.com/integration.css')
     .then(() => {

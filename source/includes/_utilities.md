@@ -8,7 +8,7 @@ In addition to the event based system for working with sites, some utility metho
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('vehicle-data-updated-v1', data => {
 
     API.log(data.payload.pageData); // Logs the Page Data object
@@ -36,7 +36,7 @@ This can be used to obtain an array of attributes for the currently displayed ve
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   const testConfig = {
     dealerId: "12345",
     showOnSRP: true,
@@ -60,7 +60,7 @@ This fetches a JavaScript object of your integration's configuration for the cur
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.utils.getDealerData().then(dealerData => {
     // Logs the Dealership Info Event object for the current website.
     API.log(dealerData);
@@ -76,7 +76,7 @@ This fetches the <a href="#dealership-info-event">Dealership Info Event object</
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.utils.getJwtForSite().then(jwtObject => {
     API.log(jwtObject);
     // Returns a data structure like this:
@@ -96,7 +96,7 @@ This fetches an object containing a Java Web Token which can be used to secure/v
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.utils.getJwtForVehicles().then(jwtObject => {
     API.log(jwtObject);
     // Returns a data structure like this:
@@ -116,7 +116,7 @@ This fetches an object containing the array of VINs on the current page and a co
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.utils.getPageData().then(pageData => {
     // Outputs the Page Data Object for the current page.
     API.log(pageData);
@@ -132,7 +132,7 @@ This fetches the <a href="#page-event">Page Event object</a> for the current web
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   const urlParams = API.utils.getUrlParams(); // Returns the current URL parameters as object attributes, so you can easily access the values.
   API.log(urlParams); // Log the entire object.
   API.log(urlParams.query); // Access just the `query` parameter, for example.
@@ -161,7 +161,7 @@ Will return the following object:
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   const config = API.utils.getVehicleData().then(vehicleData => {
     // Outputs the current set of vehicle data.
     API.log(vehicleData);

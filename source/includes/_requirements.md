@@ -18,7 +18,7 @@ When you begin development of your script, it's easy to test on any Dealer.com s
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.test('https://www.yourdomain.com/your-javascript-file.js');
 })(window.DDC.APILoader);
 ```
@@ -41,7 +41,7 @@ Your code should be minimal and perform only actions necessary to bootstrap your
 
 ```javascript
 (async APILoader => {
-	const API = await APILoader.create();
+	const API = await APILoader.create(document.currentScript);
 	// API.subscribe(...);
 	// Your code here
 })(window.DDC.APILoader);

@@ -10,7 +10,7 @@ See the <a href="#api-insert-name-callback-elem-meta">insert documentation</a> f
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('vehicle-media', (elem, meta) => {
     // This element is positioned below the vehicle image area on vehicle search pages.
   });
@@ -21,7 +21,7 @@ See the <a href="#api-insert-name-callback-elem-meta">insert documentation</a> f
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.searchPage) {
       API.insert('vehicle-media', (elem, meta) => {
@@ -49,7 +49,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('vehicle-badge', (elem, meta) => {
     // This element is positioned below the vehicle tech specs area on vehicle search and detail pages.
   });
@@ -60,7 +60,7 @@ This element is positioned below the vehicle image area on vehicle search pages.
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('vehicle-badge', (elem, meta) => {
@@ -94,7 +94,7 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('vehicle-pricing', (elem, meta) => {
     // This element is positioned below the vehicle pricing area on vehicle search and detail pages.
   });
@@ -105,7 +105,7 @@ This element is positioned below the vehicle tech specs area on vehicle search a
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('page-load-v1', ev => {
     // Only execute the code on search results and vehicle details pages.
     if (ev.payload.searchPage || ev.payload.detailPage) {
@@ -133,7 +133,7 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('vehicle-media-container', (elem, meta) => {
     // This element is the media gallery container on vehicle details pages.
     // Injecting into this location will replace the media gallery with the elements you insert.
@@ -145,7 +145,7 @@ This element is positioned below the vehicle pricing area on vehicle search and 
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.detailPage) {
       API.insert('vehicle-media-container', (elem, meta) => {
@@ -167,7 +167,7 @@ This element is the media gallery container on vehicle details pages. Injecting 
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('primary-banner', (elem, meta) => {
     // This element is typically positioned in a prominent location above the vehicle listings on the Search Results Page.
     // On the Details page, it is near the top of the vehicle information, below the media gallery.
@@ -179,7 +179,7 @@ This element is the media gallery container on vehicle details pages. Injecting 
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.searchPage || ev.payload.detailPage) {
       API.insert('primary-banner', (elem, meta) => {
@@ -212,7 +212,7 @@ You can target either the listings or details page by first subscribing to the <
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('secondary-content', (elem, meta) => {
     // This element is the a secondary content container on vehicle details pages roughly 2/3 of the way down.
     // It may also be added custom to one or more standalone pages on the website.
@@ -224,7 +224,7 @@ You can target either the listings or details page by first subscribing to the <
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.detailPage) {
       API.insert('secondary-content', (elem, meta) => {
@@ -248,7 +248,7 @@ Since this may also be present on one or two standalone pages as custom addition
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.insert('content', (elem, meta) => {
     // This element is will only insert on pages created by us for your purposes.
     // It may also be present on pages created for another integration.
@@ -260,7 +260,7 @@ Since this may also be present on one or two standalone pages as custom addition
 
 ```javascript
 (async APILoader => {
-  const API = await APILoader.create();
+  const API = await APILoader.create(document.currentScript);
   API.subscribe('page-load-v1', ev => {
     if (ev.payload.pageName === 'YOUR_LANDING_PAGE') { // Note: Replace 'pageName' with the one we provide at page creation.
       API.insert('content', (elem, meta) => {
