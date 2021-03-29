@@ -97,7 +97,7 @@ Field Name | Purpose | Example Value(s) | Field Format
 -------------- | -------------- | -------------- | --------------
 `type` | The style of CTA that should be inserted. | `default`, `primary` | String
 `classes` | A space delimited list of class names to add to the CTA. | `custom-class1 custom-class2` | String
-`href` | The URL to access when the CTA is clicked. | `https://www.yourdomain.com/` | String
+`href` | The URL to access when the CTA is clicked. Must begin with `https://`. | `https://www.yourdomain.com/` | String
 `target` | The link target. | `_blank`, `_self` | String
 `onclick` | A function to attach as a click handler to the CTA. | `window.MyIntegation.clickFunction` | Function
 `text` | An object supplying text for the CTA in one or more languages. `en_US` is required at minimum. `fr_CA` is highly recommended. | See usage example | Object
@@ -346,7 +346,7 @@ The available options for the `button` type are as follows:
 
 Field Key | Example Value | Field Format | Purpose
 -------------- | -------------- | -------------- | --------------
-`href` | `https://www.google.com/` | `String` | The link URL.
+`href` | `https://www.google.com/` | `String` | The link URL. Must begin with `https://`.
 `text` | `See functional example.` | `Object` | The localized button text object.
 `classes` | `btn btn-primary` | `String` | Classes to place on the link element.
 `style` | `border: 2px solid #c00` | `String` | Inline styles to place on the link element.
