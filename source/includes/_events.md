@@ -75,59 +75,59 @@ Field Key | Example Value | Field Format
 
 ```javascript
 {
-  accountId: "futuredemodealer",
+  accountId: 'futuredemodealer',
   address: {
-    accountName: "ROI Motors",
-    city: "Burlington",
-    state: "VT",
-    postalCode: "05401",
-    country: "US"
+    accountName: 'ROI Motors',
+    city: 'Burlington',
+    state: 'VT',
+    postalCode: '05401',
+    country: 'US'
   },
-  autodataCaId: "1234567",
-  bodyStyle: "SUV",
+  autodataCaId: '1234567',
+  bodyStyle: 'SUV',
   certified: false,
-  chromeId: "411601",
+  chromeId: '411601',
   cityFuelEconomy: 28,
-  classification: "primary",
+  classification: 'primary',
   dealerCodes: {
-    "dealertrack-post": "futuredemodealer",
-    dtid: "12345",
-    "dt-dr-profile": "futuredemodealer",
-    affiliate_promotions: "avis",
-    "at-kbb": "12345678"
+    'dealertrack-post': 'futuredemodealer',
+    dtid: '12345',
+    'dt-dr-profile': 'futuredemodealer',
+    affiliate_promotions: 'avis',
+    'at-kbb': '12345678'
   },
-  driveLine: "Front-wheel Drive",
-  engine: "I-4 cyl",
-  engineSize: "1.5L",
-  exteriorColor: "Crystal Black Pearl",
+  driveLine: 'Front-wheel Drive',
+  engine: 'I-4 cyl',
+  engineSize: '1.5L',
+  exteriorColor: 'Crystal Black Pearl',
   finalPrice: 32000,
-  fuelType: "Regular Unleaded",
+  fuelType: 'Regular Unleaded',
   highestPrice: 34500,
   highwayFuelEconomy: 34,
   images: [
-    "https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg"
+    'https://pictures.dealer.com/f/futuredemodealer/1182/0686eb936bd7a4905f751493cc28dcb9x.jpg'
   ],
   internetPrice: 33000,
-  interiorColor: "White",
-  inventoryType: "new",
-  link: "https://www.roimotors.com/new/Honda/2020-Honda-Accord-burlington-ab119e0e0a0a00f944d6f3031cd34854.htm",
-  make: "Honda",
-  model: "CR-V",
-  modelCode: "RW1H9LKNW",
+  interiorColor: 'White',
+  inventoryType: 'new',
+  link: 'https://www.roimotors.com/new/Honda/2020-Honda-Accord-burlington-ab119e0e0a0a00f944d6f3031cd34854.htm',
+  make: 'Honda',
+  model: 'CR-V',
+  modelCode: 'RW1H9LKNW',
   msrp: 34000,
   odometer: 3,
   optionCodes: [
-    "ABC",
-    "123",
-    "321"
+    'ABC',
+    '123',
+    '321'
   ],
   startingPrice: 34000,
-  status: "live",
-  stockNumber: "00100060",
-  transmission: "Variable",
-  trim: "Touring 2WD",
-  uuid: "ab119e0e0a0a00f944d6f3031cd34854",
-  vin: "1HGCV1F42JA141468",
+  status: 'live',
+  stockNumber: '00100060',
+  transmission: 'Variable',
+  trim: 'Touring 2WD',
+  uuid: 'ab119e0e0a0a00f944d6f3031cd34854',
+  vin: '1HGCV1F42JA141468',
   year: 2020
 }
 ```
