@@ -23,12 +23,12 @@ Please see the <a href="#event-subscriptions">specific event documentation</a> f
   const API = await APILoader.create(document.currentScript);
   API.insertCallToAction('button', 'value-a-trade', meta => {
     return {
-      "type": "default",
-      "href": "https://www.yourdomain.com/value-a-trade/?vin=" + meta.vin,
-      "target": "_blank",
-      "text": {
-        "en_US": "Value My Trade",
-        "fr_CA": "Valeur mon commerce"
+      type: 'default',
+      href: 'https://www.yourdomain.com/value-a-trade/?vin=' + meta.vin,
+      target: '_blank',
+      text: {
+        en_US: 'Value My Trade',
+        fr_CA: 'Valeur mon commerce'
       }
     }
   });
@@ -132,13 +132,13 @@ After creating the callback object, you must then return it for the API to creat
         API.insertCallToActionOnce('button', 'value-a-trade', meta => {
           if (serviceData.hasOwnProperty(meta.vin)) {
             return {
-              "type": "default",
-              "classes": "custom-class1 custom-class2",
-              "href": "https://www.yourdomain.com/value-a-trade/?vin=" + meta.vin,
-              "target": "_blank",
-              "text": {
-                "en_US": "Value My Trade",
-                "fr_CA": "Valeur mon commerce"
+              type: 'default',
+              classes: 'custom-class1 custom-class2',
+              href: 'https://www.yourdomain.com/value-a-trade/?vin=' + meta.vin,
+              target: '_blank',
+              text: {
+                en_US: 'Value My Trade',
+                fr_CA: 'Valeur mon commerce'
               }
             }
           } else {
