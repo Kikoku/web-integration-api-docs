@@ -53,6 +53,13 @@ Field Key | Example Value | Field Format
   dealershipAddress1: '1 Howard Street',
   dealershipAddress2: '',
   dealershipCity: 'Burlington',
+  dealershipCodes: [
+    {"dealertrack-post": "futuredemodealer"},
+    {dtid: "34482"},
+    {"dt-dr-profile": "futuredemodealer"},
+    {"affiliate_promotions": "avis"}
+  ],
+  dealershipFranchises: ['honda'],
   dealershipPostalCode: '05401',
   dealershipStateProvince: 'VT',
   dealershipCountry: 'US'
@@ -65,6 +72,8 @@ Field Key | Example Value | Field Format
 `dealershipAddress1` | `1 Howard Street` | `String`
 `dealershipAddress2` | | `String`
 `dealershipCity` | `Burlington` | `String`
+`dealershipCodes` | `See Example` | `Array of Objects`
+`dealershipFranchises` | `['honda']` | `Array`
 `dealershipPostalCode` | `05401` | `String`
 `dealershipStateProvince` | `VT` | `String`
 `dealershipCountry` | `US` | `String`
