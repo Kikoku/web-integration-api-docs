@@ -24,4 +24,6 @@ bundle exec middleman build --clean
 cd $GITHUB_WORKSPACE
 mv /usr/src/app/build $INTERNAL_DOC_BUILD
 
+## Zipping the build to tag them as released in github
+echo "Zipping the generated docs"
 zip -r $ZIP_DOC_BUILD $EXTERNAL_DOC_BUILD $INTERNAL_DOC_BUILD
