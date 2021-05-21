@@ -48,7 +48,7 @@ jobs:
 
     - name: Generate release timestamp
       id: tag
-      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H.%M.%S')"
 
     - name: Push a release tag
       id: push_tag
