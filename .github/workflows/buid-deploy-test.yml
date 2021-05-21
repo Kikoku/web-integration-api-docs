@@ -88,7 +88,7 @@ jobs:
       run: |
         git config user.name "GitHub actions"
         git config user.email noreply@github.com
-        git add CHANGELOG.md package.json
-        git commit --message "Prepare release ${{ github.event.inputs.version }}"
+        git add CHANGELOG.md
+        git commit --message "Updating Changelog"
         echo "::set-output name=commit::$(git rev-parse HEAD)"
         git push
