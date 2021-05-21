@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build external and internal document
-      ## Use our deploy docker file
+      ## Use our build docker file
       ## Which sets up the ruby env to build the slate template
       uses: ./
       env:
