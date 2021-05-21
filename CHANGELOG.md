@@ -8,3 +8,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 * Added a changelog enforcer to the workflow.
 * Tagging and uploading the releases.
+* Updating the changelog after a release
