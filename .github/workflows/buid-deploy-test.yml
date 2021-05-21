@@ -83,3 +83,13 @@ jobs:
       uses: thomaseizinger/keep-a-changelog-new-release@v1
       with:
         version: v${{ steps.tag.outputs.date }}
+
+    - name: Commit changelog
+        id: make-commit
+        run: |
+          git config user.name "GitHub actions"
+          git config user.email noreply@github.com
+          git add CHANGELOG.md package.json
+          git commit --message "Prepare release ${{ github.event.inputs.version }}"
+          echo "::set-output name=commit::$(git rev-parse HEAD)"
+          git push
