@@ -10,6 +10,7 @@ jobs:
     env:
       external-doc-build: external_build
       internal-doc-build: internal_build
+      zip-doc-build: documents.zip
 
     steps:
     - name: Accessing github project files
@@ -22,6 +23,60 @@ jobs:
       env:
         EXTERNAL_DOC_BUILD: ${{ env.external-doc-build }}
         INTERNAL_DOC_BUILD: ${{ env.internal-doc-build }}
+        ZIP_DOC_BUILD: ${{ env.zip-doc-build }}
+
+    - name: Get changes from CHANGELOG.md
+      id: changelog_reader
+      uses: mindsers/changelog-reader-action@v2
+      with:
+          version: Unreleased
+
+    - name: Generate release timestamp
+      id: tag
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H.%M.%S')"
+
+    - name: Push a release tag
+      id: push_tag
+      uses: mathieudutour/github-tag-action@v4.6
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        custom_tag: ${{ steps.tag.outputs.date }}
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1.1.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      with:
+        tag_name: v${{ steps.tag.outputs.date }}
+        release_name:  ${{ steps.tag.outputs.date }}
+        body: ${{ steps.changelog_reader.outputs.changes }}
+        prerelease: false
+        draft: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./${{ env.zip-doc-build }}
+        asset_name: ${{ env.zip-doc-build }}
+        asset_content_type: application/zip
+
+    - name: Update changelog
+      uses: thomaseizinger/keep-a-changelog-new-release@v1
+      with:
+        version: v${{ steps.tag.outputs.date }}
+
+    - name: Commit changelog
+      run: |
+        git config user.name "GitHub actions"
+        git config user.email noreply@github.com
+        git add CHANGELOG.md
+        git commit --message "Updating Changelog"
+        echo "::set-output name=commit::$(git rev-parse HEAD)"
+        git push
 
     - name: Deploy external documentation
       uses: peaceiris/actions-gh-pages@v3.7.0-8
