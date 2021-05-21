@@ -6,7 +6,7 @@ COPY .github/build.sh /usr/src/bin/
 
 RUN gem install bundler
 
-RUN apk --no-cache --update add nodejs g++ make coreutils git && \
+RUN apk --no-cache --update add nodejs g++ make coreutils git zip && \
     git clone https://github.com/slatedocs/slate.git /usr/src/app && \
     bundle install && \
     chmod +x /usr/src/bin/*.sh
