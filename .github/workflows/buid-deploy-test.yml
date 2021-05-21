@@ -78,3 +78,8 @@ jobs:
         asset_path: ./${{ env.zip-doc-build }}
         asset_name: ${{ env.zip-doc-build }}
         asset_content_type: application/zip
+
+    - name: Update changelog
+      uses: thomaseizinger/keep-a-changelog-new-release@v1
+      with:
+        version: v${{ steps.tag.outputs.date }}
