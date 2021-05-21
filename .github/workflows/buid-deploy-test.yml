@@ -1,0 +1,78 @@
+name: Test Build and Deploy
+
+on:
+  push:
+    branches: [ 'feature/changelog' ]
+
+jobs:
+  test-build-and-deploy:
+    runs-on: ubuntu-18.04
+    env:
+      external-doc-build: external_build
+      internal-doc-build: internal_build
+      zip-doc-build: documents.zip
+
+    steps:
+    - name: Accessing github project files
+      uses: actions/checkout@v2
+
+    - name: Build external and internal document
+      ## Use our build docker file
+      ## Which sets up the ruby env to build the slate template
+      uses: ./
+      env:
+        EXTERNAL_DOC_BUILD: ${{ env.external-doc-build }}
+        INTERNAL_DOC_BUILD: ${{ env.internal-doc-build }}
+        ZIP_DOC_BUILD: ${{ env.zip-doc-build }}
+
+    # - name: Deploy external documentation
+    #   uses: peaceiris/actions-gh-pages@v3.7.0-8
+    #   with:
+    #     github_token: ${{ secrets.GH_TOKEN }}
+    #     publish_dir: ${{ env.external-doc-build }}
+    #     keep_files: false
+
+    # - name: Deploy internal documentation
+    #   uses: peaceiris/actions-gh-pages@v3.7.0-8
+    #   with:
+    #     github_token: ${{ secrets.GH_TOKEN }}
+    #     destination_dir: internal
+    #     publish_dir: ${{ env.internal-doc-build }}
+    #     keep_files: false
+
+    - name: Get changes from CHANGELOG.md
+      id: changelog_reader
+      uses: mindsers/changelog-reader-action@v2
+
+    - name: Generate release timestamp
+      id: tag
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+
+    - name: Push a tag
+        id: push_tag
+        uses: mathieudutour/github-tag-action@v4.6
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          custom_tag: ${{ steps.tag.outputs.date }}
+
+    - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.1.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: v${{ steps.tag.outputs.date }}
+          release_name:  ${{ steps.tag.outputs.date }}
+          body: ${{ steps.changelog_reader.outputs.changes }}
+          prerelease: false
+          draft: false
+
+    - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ env.zip-doc-build }}
+          asset_name: ${{ env.zip-doc-build }}
+          asset_content_type: application/zip

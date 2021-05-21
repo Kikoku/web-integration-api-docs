@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Added
 * Added a changelog enforcer to the workflow.
+* Tagging and uploading the releases.
 
 ## Documentation Update <sub><sup>(February 16, 2021)</sup></sub>
 ### Changed
