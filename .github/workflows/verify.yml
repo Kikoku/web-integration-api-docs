@@ -1,0 +1,44 @@
+name: Verify
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+
+jobs:
+  verify-template-resource:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        resource: [
+          "index.html.external.md", 
+          "index.html.internal.md",
+          "fonts",
+          "includes",
+          "javascripts",
+          "layouts",
+          "stylesheets",
+          "downloads"
+        ]
+
+    steps:
+    - name: Accessing github project files
+      uses: actions/checkout@v2
+
+    - name: Validate Resource
+      run: |
+        RESOURCE_PATH=./source/${{ matrix.resource }}
+        RESOURCE_TYPE=-d
+        if [[ ${{ matrix.resource }} == *.* ]] ; then
+        RESOURCE_TYPE=-f
+        fi
+
+        if test $RESOURCE_TYPE "$RESOURCE_PATH"; then
+          echo "Resource $RESOURCE_PATH exists."
+        else
+         echo "Resource $RESOURCE_PATH does not exists."
+         exit 1
+        fi
+      

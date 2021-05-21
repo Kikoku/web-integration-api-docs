@@ -1,0 +1,39 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ 'master' ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-18.04
+    env:
+      external-doc-build: external_build
+      internal-doc-build: internal_build
+
+    steps:
+    - name: Accessing github project files
+      uses: actions/checkout@v2
+
+    - name: Build external and internal document
+      ## Use our deploy docker file
+      ## Which sets up the ruby env to build the slate template
+      uses: ./
+      env:
+        EXTERNAL_DOC_BUILD: ${{ env.external-doc-build }}
+        INTERNAL_DOC_BUILD: ${{ env.internal-doc-build }}
+
+    - name: Deploy external documentation
+      uses: peaceiris/actions-gh-pages@v3.7.0-8
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        publish_dir: ${{ env.external-doc-build }}
+        keep_files: false
+
+    - name: Deploy internal documentation
+      uses: peaceiris/actions-gh-pages@v3.7.0-8
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        destination_dir: internal
+        publish_dir: ${{ env.internal-doc-build }}
+        keep_files: false
