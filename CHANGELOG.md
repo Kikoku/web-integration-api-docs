@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Protecting the master branch but allowing force push to enable git actions to update the changelog
+
 ## [v2021-05-22T20.06.03] - 2021-05-22
 
 ### Fixed
