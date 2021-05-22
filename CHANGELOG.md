@@ -6,19 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [v2021-05-22T21.30.10] - 2021-05-22
+
 ### Updated
-- Removed branch protection. Not able to force push to master.
-- Run verify workflow only on PRs
+
+-   Removed branch protection. Not able to force push to master.
+-   Run verify workflow only on PRs
 
 ## [v2021-05-22T21.22.12] - 2021-05-22
+
 ### Fixed
 
-- Trying forced push again
+-   Trying forced push again
+
 ## [v2021-05-22T21.01.02] - 2021-05-22
 
 ### Fixed
 
-- Protecting the master branch but allowing force push to enable git actions to update the changelog
+-   Protecting the master branch but allowing force push to enable git actions to update the changelog
 
 ## [v2021-05-22T20.06.03] - 2021-05-22
 
@@ -40,7 +46,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Tagging and uploading the releases.
 -   Updating the changelog after a release
 
-[Unreleased]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-05-22T20.06.03...HEAD
+[Unreleased]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-05-22T21.30.10...HEAD
+
+[v2021-05-22T21.30.10]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-05-22T21.22.12...v2021-05-22T21.30.10
 
 [v2021-05-22T20.06.03]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-05-22T19.34.49...v2021-05-22T20.06.03
 
