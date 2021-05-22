@@ -56,4 +56,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v2021-05-22T19.34.49]: https://github.com/DealerDotCom/web-integration-api-docs/compare/5cc6e2726e8d1db5484b56a99f416c5aef5cbe2a...v2021-05-22T19.34.49
 
+[v2021-05-22T21.22.12]: https://github.com/DealerDotCom/web-integration-api-docs/compare/5cc6e2726e8d1db5484b56a99f416c5aef5cbe2a...v2021-05-22T21.22.12
+
 [v2021-05-22T21.01.02]: https://github.com/DealerDotCom/web-integration-api-docs/compare/5cc6e2726e8d1db5484b56a99f416c5aef5cbe2a...v2021-05-22T21.01.02
