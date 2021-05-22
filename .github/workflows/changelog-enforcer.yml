@@ -5,12 +5,12 @@ on:
 
 jobs:
   # Enforces the update of a changelog file on every pull request 
-  changelog:
+  verify-new-unreleased-changelog-entry:
     runs-on: ubuntu-latest
     steps:
     - name: Accessing github project files
       uses: actions/checkout@v2
-      
+
     - uses: dangoslen/changelog-enforcer@v2
       with:
         changeLogPath: 'CHANGELOG.md'
