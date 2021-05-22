@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Fixed
+
+- Fixing issue with changelog update by workflow on protected branch. By disabling branch protection since wf doesn't allows this ability yet.
+
+## [v2021-05-22T19.34.49] - 2021-05-22
 ### Added
 
 - Added ability to run project locally via a dockerized container.
@@ -21,3 +27,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-05-21T19.31.40...HEAD
 
 [v2021-05-21T19.31.40]: https://github.com/DealerDotCom/web-integration-api-docs/compare/5cc6e2726e8d1db5484b56a99f416c5aef5cbe2a...v2021-05-21T19.31.40
+[v2021-05-22T19.34.49]: https://github.com/DealerDotCom/web-integration-api-docs/compare/5cc6e2726e8d1db5484b56a99f416c5aef5cbe2a...v2021-05-22T19.34.49
