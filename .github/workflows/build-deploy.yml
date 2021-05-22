@@ -76,7 +76,7 @@ jobs:
         git add CHANGELOG.md
         git commit --message "Updating Changelog"
         echo "::set-output name=commit::$(git rev-parse HEAD)"
-        git push
+        git push --force
 
     - name: Deploy external documentation
       uses: peaceiris/actions-gh-pages@v3.7.0-8
