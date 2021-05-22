@@ -7,14 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2021-05-22T20.06.03] - 2021-05-22
+
 ### Fixed
 
-- Fixing issue with changelog update by workflow on protected branch. By disabling branch protection since wf doesn't allows this ability yet.
+-   Fixing issue with changelog update by workflow on protected branch. By disabling branch protection since wf doesn't allows this ability yet.
 
 ## [v2021-05-22T19.34.49] - 2021-05-22
+
 ### Added
 
-- Added ability to run project locally via a dockerized container.
+-   Added ability to run project locally via a dockerized container.
 
 ## [v2021-05-21T19.31.40] - 2021-05-21
 
@@ -24,7 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Tagging and uploading the releases.
 -   Updating the changelog after a release
 
-[Unreleased]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-05-21T19.31.40...HEAD
+[Unreleased]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-05-22T20.06.03...HEAD
+
+[v2021-05-22T20.06.03]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-05-22T19.34.49...v2021-05-22T20.06.03
 
 [v2021-05-21T19.31.40]: https://github.com/DealerDotCom/web-integration-api-docs/compare/5cc6e2726e8d1db5484b56a99f416c5aef5cbe2a...v2021-05-21T19.31.40
+
 [v2021-05-22T19.34.49]: https://github.com/DealerDotCom/web-integration-api-docs/compare/5cc6e2726e8d1db5484b56a99f416c5aef5cbe2a...v2021-05-22T19.34.49
