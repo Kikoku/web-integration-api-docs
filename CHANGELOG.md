@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+
+-   re-added doc for `updateLink` method for internal users due to github action failure
 
 ## [v2021-08-10T23.15.33] - 2021-08-10
 
