@@ -292,6 +292,33 @@ Field Name | Purpose | Field Format
 `callback(elem, meta)` | The DOM element where the markup should be inserted, and the payload object for the current insertion point. | Element, Object
 
 
+## API.updateLink(intent, setupFunction(meta))
+The `updateLink` method is used to override links on the page where the integration is enabled. 
+
+Field Name | Purpose | Field Format
+-------------- | -------------- | --------------
+`intent` | The functionality of the overriding links. | String
+`setupFunction(meta)` | The payload object for the current page. | Object
+
+Currently, we support `x-time` and `schedule-service` link intents.
+
+And, we only support limited attributes of the link to be modified in order to preserve the look and feel of the link.
+The attributes that can be modified are `href`, `target`, `onclick`, `popover` and `attributes (data-*)`.
+
+> Usage:
+
+```javascript
+(async APILoader => {
+  const API = await APILoader.create(document.currentScript);
+  API.updateLink('x-time', meta => {
+    return {
+      href: 'https://www.yourdomain.com/?account=' + meta.accountId,
+      target: '_blank',
+    }
+  });
+})(window.DDC.APILoader);
+```
+
 ## API.create(type, options)
 
 > Create a Button
