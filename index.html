@@ -302,6 +302,9 @@
                     <a href="#api-insertonce-name-callback-elem-meta" class="toc-h2 toc-link" data-title="API.insertOnce(name, callback(elem, meta))">API.insertOnce(name, callback(elem, meta))</a>
                   </li>
                   <li>
+                    <a href="#api-updatelink-intent-setupfunction-meta" class="toc-h2 toc-link" data-title="API.updateLink(intent, setupFunction(meta))">API.updateLink(intent, setupFunction(meta))</a>
+                  </li>
+                  <li>
                     <a href="#api-create-type-options" class="toc-h2 toc-link" data-title="API.create(type, options)">API.create(type, options)</a>
                   </li>
                   <li>
@@ -1487,7 +1490,46 @@
 <td>Element, Object</td>
 </tr>
 </tbody></table>
-<h2 id='api-create-type-options'>API.create(type, options)</h2>
+<h2 id='api-updatelink-intent-setupfunction-meta'>API.updateLink(intent, setupFunction(meta))</h2>
+<p>The <code>updateLink</code> method is used to override links on the page where the integration is enabled. </p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Purpose</th>
+<th>Field Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>intent</code></td>
+<td>The functionality of the overriding links.</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>setupFunction(meta)</code></td>
+<td>The payload object for the current page.</td>
+<td>Object</td>
+</tr>
+</tbody></table>
+
+<p>Currently, we support <code>x-time</code> and <code>schedule-service</code> link intents.</p>
+
+<p>And, we only support limited attributes of the link to be modified in order to preserve the look and feel of the link.
+The attributes that can be modified are <code>href</code>, <code>target</code>, <code>onclick</code>, <code>popover</code> and <code>attributes (data-*)</code>.</p>
+
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="k">async</span> <span class="nx">APILoader</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">updateLink</span><span class="p">(</span><span class="dl">'</span><span class="s1">x-time</span><span class="dl">'</span><span class="p">,</span> <span class="nx">meta</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">href</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://www.yourdomain.com/?account=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">accountId</span><span class="p">,</span>
+      <span class="na">target</span><span class="p">:</span> <span class="dl">'</span><span class="s1">_blank</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
+</code></pre></div><h2 id='api-create-type-options'>API.create(type, options)</h2>
 <blockquote>
 <p>Create a Button</p>
 </blockquote>
