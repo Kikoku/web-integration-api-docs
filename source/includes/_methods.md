@@ -300,7 +300,7 @@ Field Name | Purpose | Field Format
 `intent` | The functionality of the overriding links. | String
 `setupFunction(meta)` | The payload object for the current page. | Object
 
-Currently, we support `x-time` and `schedule-service` link intents.
+Currently, we only support `schedule-service` link intent.
 
 And, we only support limited attributes of the link to be modified in order to preserve the look and feel of the link.
 The attributes that can be modified are `href`, `target`, `onclick`, `popover` and `attributes (data-*)`.
