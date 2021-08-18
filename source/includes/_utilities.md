@@ -168,3 +168,70 @@ Will return the following object:
   });
 })(window.DDC.APILoader);
 ```
+
+## API.utils.getUnlockedVehicles()
+The utility method `getUnlockedVehicles` returns an array of vehicle UUIDs where the vehicle's pricing has already been unlocked.
+
+This can be useful when paired with the `unlockPricing` method. When `vehicle-data-updated-v1` triggers, a list of currently displayed vehicles is provided. You could gather the list of vehicles, skip the ones which are already unlocked, and then call your service for a smaller subset of vehicles which may need to be unlocked.
+
+> Usage:
+
+```javascript
+(async APILoader => {
+  const API = await APILoader.create(document.currentScript);
+  API.subscribe('vehicle-data-updated-v1', data => {
+    const unlockedUuids = await API.utils.getUnlockedVehicles();
+  });
+})(window.DDC.APILoader);
+```
+
+> Another example:
+
+```javascript
+(async APILoader => {
+  const API = await APILoader.create(document.currentScript);
+  API.subscribe('vehicle-data-updated-v1', data => {
+    // Get the list of unlocked vehicles
+    const unlockedUuids = await API.utils.getUnlockedVehicles();
+
+    // Get the list of all vehicles
+    const uuids = API.utils.getAttributeForVehicles('uuid');
+
+    // Filter the unlocked UUIDs from the UUIDs.
+    const finalUuids = uuids.filter((el) => !unlockedUuids.includes(el));
+
+    // Call your service with the list of finalUuids here, to reduce network overhead.
+    // Note: `callToYourService` is just an example here and not an implemented function in the API.
+    const uuidsToUnlock = await callToYourService(finalUuids);
+
+    // Unlock vehicles which are not already unlocked, and your service indicates should be unlocked.
+    API.utils.unlockPricing(uuidsToUnlock);
+
+  });
+})(window.DDC.APILoader);
+```
+
+## API.utils.unlockPricing(uuids)
+The utility method `unlockPricing` is used to unlock special pricing for specific vehicles on a page.
+
+You can provide the vehicles to unlock by passing an array of vehicle UUIDs to the method. If you would like to unlock all vehicles on the page, omit the `uuids` parameter from the function call.
+
+The method must be called on each page where you want the vehicles to be unlocked. If a vehicle has been previously unlocked, it will be initially displayed unlocked on a subsequent view of the vehicle. However, when faceting and searching vehicles it is common for a mix of locked and unlocked vehicles to be rendered. Therefore, it is necessary to call the function each time the `vehicle-data-updated-v1` event is triggered.
+
+> Usage:
+
+```javascript
+(async APILoader => {
+  const API = await APILoader.create(document.currentScript);
+  API.subscribe('vehicle-data-updated-v1', data => {
+    // You could call a service here to determine the list of vehicles to unlock based on the set
+    // of vehicles presented on the current view, then construct the array of uuids accordingly.
+    const uuids = [
+      'f4b436e10a0e09a844d99ec8c92cf29c',
+      '1db75afc0a0e09713efa52d69381e2f1',
+      '808bb6a00a0e09716fa39a4a8b079353'
+    ];
+    API.utils.unlockPricing(uuids);
+  });
+})(window.DDC.APILoader);
+```
