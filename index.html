@@ -371,6 +371,12 @@
                   <li>
                     <a href="#api-utils-getvehicledata" class="toc-h2 toc-link" data-title="API.utils.getVehicleData()">API.utils.getVehicleData()</a>
                   </li>
+                  <li>
+                    <a href="#api-utils-getunlockedvehicles" class="toc-h2 toc-link" data-title="API.utils.getUnlockedVehicles()">API.utils.getUnlockedVehicles()</a>
+                  </li>
+                  <li>
+                    <a href="#api-utils-unlockpricing-uuids" class="toc-h2 toc-link" data-title="API.utils.unlockPricing(uuids)">API.utils.unlockPricing(uuids)</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2103,6 +2109,68 @@ The attributes that can be modified are <code>href</code>, <code>target</code>, 
   <span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getVehicleData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicleData</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// Outputs the current set of vehicle data.</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">vehicleData</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
+</code></pre></div><h2 id='api-utils-getunlockedvehicles'>API.utils.getUnlockedVehicles()</h2>
+<p>The utility method <code>getUnlockedVehicles</code> returns an array of vehicle UUIDs where the vehicle&#39;s pricing has already been unlocked.</p>
+
+<p>This can be useful when paired with the <code>unlockPricing</code> method. When <code>vehicle-data-updated-v1</code> triggers, a list of currently displayed vehicles is provided. You could gather the list of vehicles, skip the ones which are already unlocked, and then call your service for a smaller subset of vehicles which may need to be unlocked.</p>
+
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="k">async</span> <span class="nx">APILoader</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">vehicle-data-updated-v1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">unlockedUuids</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getUnlockedVehicles</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>Another example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="k">async</span> <span class="nx">APILoader</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">vehicle-data-updated-v1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Get the list of unlocked vehicles</span>
+    <span class="kd">const</span> <span class="nx">unlockedUuids</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getUnlockedVehicles</span><span class="p">();</span>
+
+    <span class="c1">// Get the list of all vehicles</span>
+    <span class="kd">const</span> <span class="nx">uuids</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="dl">'</span><span class="s1">uuid</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="c1">// Filter the unlocked UUIDs from the UUIDs.</span>
+    <span class="kd">const</span> <span class="nx">finalUuids</span> <span class="o">=</span> <span class="nx">uuids</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">el</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">unlockedUuids</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">el</span><span class="p">));</span>
+
+    <span class="c1">// Call your service with the list of finalUuids here, to reduce network overhead.</span>
+    <span class="c1">// Note: `callToYourService` is just an example here and not an implemented function in the API.</span>
+    <span class="kd">const</span> <span class="nx">uuidsToUnlock</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">callToYourService</span><span class="p">(</span><span class="nx">finalUuids</span><span class="p">);</span>
+
+    <span class="c1">// Unlock vehicles which are not already unlocked, and your service indicates should be unlocked.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">unlockPricing</span><span class="p">(</span><span class="nx">uuidsToUnlock</span><span class="p">);</span>
+
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
+</code></pre></div><h2 id='api-utils-unlockpricing-uuids'>API.utils.unlockPricing(uuids)</h2>
+<p>The utility method <code>unlockPricing</code> is used to unlock special pricing for specific vehicles on a page.</p>
+
+<p>You can provide the vehicles to unlock by passing an array of vehicle UUIDs to the method. If you would like to unlock all vehicles on the page, omit the <code>uuids</code> parameter from the function call.</p>
+
+<p>The method must be called on each page where you want the vehicles to be unlocked. If a vehicle has been previously unlocked, it will be initially displayed unlocked on a subsequent view of the vehicle. However, when faceting and searching vehicles it is common for a mix of locked and unlocked vehicles to be rendered. Therefore, it is necessary to call the function each time the <code>vehicle-data-updated-v1</code> event is triggered.</p>
+
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="k">async</span> <span class="nx">APILoader</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">vehicle-data-updated-v1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// You could call a service here to determine the list of vehicles to unlock based on the set</span>
+    <span class="c1">// of vehicles presented on the current view, then construct the array of uuids accordingly.</span>
+    <span class="kd">const</span> <span class="nx">uuids</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="dl">'</span><span class="s1">f4b436e10a0e09a844d99ec8c92cf29c</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">1db75afc0a0e09713efa52d69381e2f1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">808bb6a00a0e09716fa39a4a8b079353</span><span class="dl">'</span>
+    <span class="p">];</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">unlockPricing</span><span class="p">(</span><span class="nx">uuids</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
 </code></pre></div><h1 id='jwt-usage-documentation'>JWT Usage Documentation</h1>
