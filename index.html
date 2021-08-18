@@ -366,13 +366,13 @@
                     <a href="#api-utils-getpagedata" class="toc-h2 toc-link" data-title="API.utils.getPageData()">API.utils.getPageData()</a>
                   </li>
                   <li>
+                    <a href="#api-utils-getunlockedvehicles" class="toc-h2 toc-link" data-title="API.utils.getUnlockedVehicles()">API.utils.getUnlockedVehicles()</a>
+                  </li>
+                  <li>
                     <a href="#api-utils-geturlparams" class="toc-h2 toc-link" data-title="API.utils.getUrlParams()">API.utils.getUrlParams()</a>
                   </li>
                   <li>
                     <a href="#api-utils-getvehicledata" class="toc-h2 toc-link" data-title="API.utils.getVehicleData()">API.utils.getVehicleData()</a>
-                  </li>
-                  <li>
-                    <a href="#api-utils-getunlockedvehicles" class="toc-h2 toc-link" data-title="API.utils.getUnlockedVehicles()">API.utils.getUnlockedVehicles()</a>
                   </li>
                   <li>
                     <a href="#api-utils-unlockpricing-uuids" class="toc-h2 toc-link" data-title="API.utils.unlockPricing(uuids)">API.utils.unlockPricing(uuids)</a>
@@ -2074,44 +2074,7 @@ The attributes that can be modified are <code>href</code>, <code>target</code>, 
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
 </code></pre></div>
 <p>This fetches the <a href="#page-event">Page Event object</a> for the current website and page.</p>
-<h2 id='api-utils-geturlparams'>API.utils.getUrlParams()</h2>
-<blockquote>
-<p>Usage:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="k">async</span> <span class="nx">APILoader</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getUrlParams</span><span class="p">();</span> <span class="c1">// Returns the current URL parameters as object attributes, so you can easily access the values.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urlParams</span><span class="p">);</span> <span class="c1">// Log the entire object.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urlParams</span><span class="p">.</span><span class="nx">query</span><span class="p">);</span> <span class="c1">// Access just the `query` parameter, for example.</span>
-<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
-</code></pre></div>
-<p>NOTE: This method returns synchronously, not as a Promise, because the URL Params are already available and do not require asynchronous behavior for performance.</p>
-
-<p>Running this function at a URL such as this:</p>
-
-<p><a href="https://www.roimotors.com/?query=This%20is%20the%20query&amp;hello=world&amp;foo=bar">https://www.roimotors.com/?query=This%20is%20the%20query&amp;hello=world&amp;foo=bar</a></p>
-
-<p>Will return the following object:</p>
-
-<p><code>
-{
-  query: &quot;This is the query&quot;,
-  hello: &quot;world&quot;,
-  foo: &quot;bar&quot;
-}
-</code></p>
-<h2 id='api-utils-getvehicledata'>API.utils.getVehicleData()</h2>
-<blockquote>
-<p>Usage:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="k">async</span> <span class="nx">APILoader</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getVehicleData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicleData</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="c1">// Outputs the current set of vehicle data.</span>
-    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">vehicleData</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
-</code></pre></div><h2 id='api-utils-getunlockedvehicles'>API.utils.getUnlockedVehicles()</h2>
+<h2 id='api-utils-getunlockedvehicles'>API.utils.getUnlockedVehicles()</h2>
 <p>The utility method <code>getUnlockedVehicles</code> returns an array of vehicle UUIDs where the vehicle&#39;s pricing has already been unlocked.</p>
 
 <p>This can be useful when paired with the <code>unlockPricing</code> method. When <code>vehicle-data-updated-v1</code> triggers, a list of currently displayed vehicles is provided. You could gather the list of vehicles, skip the ones which are already unlocked, and then call your service for a smaller subset of vehicles which may need to be unlocked.</p>
@@ -2148,6 +2111,43 @@ The attributes that can be modified are <code>href</code>, <code>target</code>, 
     <span class="c1">// Unlock vehicles which are not already unlocked, and your service indicates should be unlocked.</span>
     <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">unlockPricing</span><span class="p">(</span><span class="nx">uuidsToUnlock</span><span class="p">);</span>
 
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
+</code></pre></div><h2 id='api-utils-geturlparams'>API.utils.getUrlParams()</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="k">async</span> <span class="nx">APILoader</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getUrlParams</span><span class="p">();</span> <span class="c1">// Returns the current URL parameters as object attributes, so you can easily access the values.</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urlParams</span><span class="p">);</span> <span class="c1">// Log the entire object.</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urlParams</span><span class="p">.</span><span class="nx">query</span><span class="p">);</span> <span class="c1">// Access just the `query` parameter, for example.</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
+</code></pre></div>
+<p>NOTE: This method returns synchronously, not as a Promise, because the URL Params are already available and do not require asynchronous behavior for performance.</p>
+
+<p>Running this function at a URL such as this:</p>
+
+<p><a href="https://www.roimotors.com/?query=This%20is%20the%20query&amp;hello=world&amp;foo=bar">https://www.roimotors.com/?query=This%20is%20the%20query&amp;hello=world&amp;foo=bar</a></p>
+
+<p>Will return the following object:</p>
+
+<p><code>
+{
+  query: &quot;This is the query&quot;,
+  hello: &quot;world&quot;,
+  foo: &quot;bar&quot;
+}
+</code></p>
+<h2 id='api-utils-getvehicledata'>API.utils.getVehicleData()</h2>
+<blockquote>
+<p>Usage:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">(</span><span class="k">async</span> <span class="nx">APILoader</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getVehicleData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicleData</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Outputs the current set of vehicle data.</span>
+    <span class="nx">API</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">vehicleData</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">DDC</span><span class="p">.</span><span class="nx">APILoader</span><span class="p">);</span>
 </code></pre></div><h2 id='api-utils-unlockpricing-uuids'>API.utils.unlockPricing(uuids)</h2>
