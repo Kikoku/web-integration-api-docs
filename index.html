@@ -1354,7 +1354,7 @@
   <span class="kd">const</span> <span class="nx">API</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">APILoader</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">currentScript</span><span class="p">);</span>
 
   <span class="c1">// This informs your script when the displayed list of vehicles has changed, or when a Vehicle Details Page has loaded.</span>
-  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">vehicle-data-updated-v1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">API</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">vehicle-data-updated-v1</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">ev</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
     <span class="c1">// This obtains a list of VINs for the displayed vehicles.</span>
     <span class="kd">const</span> <span class="nx">vins</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">API</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">getAttributeForVehicles</span><span class="p">(</span><span class="dl">'</span><span class="s1">vin</span><span class="dl">'</span><span class="p">);</span>
