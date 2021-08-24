@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2021-08-24T16.36.35] - 2021-08-24
+
 ### Updated
 
--  Updated `insertGalleryContent` documentation.
+-   Updated `insertGalleryContent` documentation.
 
 ## [v2021-08-18T15.45.40] - 2021-08-18
 
@@ -84,7 +86,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Tagging and uploading the releases.
 -   Updating the changelog after a release
 
-[Unreleased]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-08-18T15.45.40...HEAD
+[Unreleased]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-08-24T16.36.35...HEAD
+
+[v2021-08-24T16.36.35]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-08-18T15.45.40...v2021-08-24T16.36.35
 
 [v2021-08-18T15.45.40]: https://github.com/DealerDotCom/web-integration-api-docs/compare/v2021-08-16T14.23.55...v2021-08-18T15.45.40
 
