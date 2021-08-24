@@ -159,41 +159,87 @@ Field Name | Purpose | Field Format
 `intent` | The intention of the CTA you are inserting. | String
 `setupFunction(meta)` | The payload object for the current vehicle. | Object
 
-## API.insertGalleryContent(target, objOrArray)
+## API.insertGalleryContent(target, arrayOfObjects)
 
 > Usage
 
 ```javascript
 (async APILoader => {
   const API = await APILoader.create(document.currentScript);
-  API.insertGalleryContent('vehicle-media', [
-    {
-      type: 'image',
-      position: 'primary',
-      src: 'https://yourdomain.com/primary.jpg',
-      thumbnail: 'https://yourdomain.com/primary-thumb.jpg'
-    },
-    {
-      type: 'image',
-      position: 'secondary',
-      src: 'https://yourdomain.com/secondary.jpg',
-      thumbnail: 'https://yourdomain.com/secondary-thumb.jpg'
-    },
-    {
-      type: 'image',
-      position: 'last',
-      src: 'https://yourdomain.com/last.jpg',
-      thumbnail: 'https://yourdomain.com/last-thumb.jpg'
-    }
-  ]);
+
+  // This informs your script when the displayed list of vehicles has changed, or when a Vehicle Details Page has loaded.
+  API.subscribe('vehicle-data-updated-v1', ev => {
+
+    // This obtains a list of VINs for the displayed vehicles.
+    const vins = await API.utils.getAttributeForVehicles('vin');
+
+    // With the list of VINs, you could query your service
+    // to obtain the dataset of imagery for those vehicles.
+
+    // Code to query your service goes here.
+    const imagesData = await queryYourService(vins);
+
+    // With the returned `imagesData`, you could then construct an array of objects in the following format to use when calling `API.insertGalleryContent`.
+    const imagesToInsert = [
+      {
+        vin: '1HGCV1F46LA144134',
+        images: [
+          {
+            type: 'image',
+            position: 'primary',
+            src: 'https://via.placeholder.com/530x360.png?text=Vehicle 1 Primary Image',
+            thumbnail: 'https://via.placeholder.com/530x360.png?text=Vehicle 1 Primary Image',
+          },
+          {
+            type: 'image',
+            position: 'secondary',
+            src: 'https://via.placeholder.com/530x360.png?text=Vehicle 1 Secondary Image',
+            thumbnail: 'https://via.placeholder.com/530x360.png?text=Vehicle 1 Secondary Image',
+          },
+          {
+            type: 'image',
+            position: 'last',
+            src: 'https://via.placeholder.com/530x360.png?text=Vehicle 1 Last Image',
+            thumbnail: 'https://via.placeholder.com/530x360.png?text=Vehicle 1 Last Image',
+          }
+        ]
+      },
+      {
+        vin: '1HGCV1F48LA139453',
+        images: [
+          {
+            type: 'image',
+            position: 'primary',
+            src: 'https://via.placeholder.com/530x360.png?text=Vehicle 2 Primary Image',
+            thumbnail: 'https://via.placeholder.com/530x360.png?text=Vehicle 2 Primary Image',
+          },
+          {
+            type: 'image',
+            position: 'secondary',
+            src: 'https://via.placeholder.com/530x360.png?text=Vehicle 2 Secondary Image',
+            thumbnail: 'https://via.placeholder.com/530x360.png?text=Vehicle 2 Secondary Image',
+          },
+          {
+            type: 'image',
+            position: 'last',
+            src: 'https://via.placeholder.com/530x360.png?text=Vehicle 2 Last Image',
+            thumbnail: 'https://via.placeholder.com/530x360.png?text=Vehicle 2 Last Image',
+          }
+        ]
+      }
+    ];
+
+    // And finally, call insertGalleryContent with the new imagery data.
+    API.insertGalleryContent('vehicle-media', imagesToInsert);
+  });
 })(window.DDC.APILoader);
 ```
 
-The `insertGalleryContent` method allows you to add media to media galleries across various pages of Dealer.com sites. The only currently supported target is `vehicle-media`, which will insert media into the media carousel of Vehicle Details Pages.
+The `insertGalleryContent` method allows you to add media to media galleries across various pages of Dealer.com sites. The only currently supported target is `vehicle-media`, which will insert media into the media carousels on Search Results Pages and Vehicle Details Pages.
 
-`objOrArray` is an array of objects describing the media to be inserted. If you have a single image, you can pass a single object instead. Each object has a `type` field to specify the type of media to be inserted. The only currently supported media type is `image`.
+`arrayOfObjects` is an array of objects describing the media to be inserted. Each object requires a `vin` field for the target vehicle, as well as an `images` array with fields describing the images to insert for that vehicle. The `type` field specifies the type of media to be inserted. The only currently supported media type is `image`. Utilizing `vehicle-data-updated-v1` to know when the list of vehicles changes combined with `API.utils.getAttributeForVehicles`, you can easily obtain a list of the VINs for vehicles shown on the page. With this data, you could query your service to get the dataset of imagery for those vehicles, then construct the array of objects for `API.insertGalleryContent`. See the example code for more details on this approach.
 
-The `image` type supports the following additional attributes:
+The `images` array objects support the following additional attributes:
 
 Name | Description
 -------------- | --------------
