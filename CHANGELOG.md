@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Updated
+
+-  Updated `insertGalleryContent` documentation.
+
 ## [v2021-08-18T15.45.40] - 2021-08-18
 
 ## [v2021-08-16T14.23.55] - 2021-08-16
