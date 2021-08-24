@@ -168,7 +168,7 @@ Field Name | Purpose | Field Format
   const API = await APILoader.create(document.currentScript);
 
   // This informs your script when the displayed list of vehicles has changed, or when a Vehicle Details Page has loaded.
-  API.subscribe('vehicle-data-updated-v1', ev => {
+  API.subscribe('vehicle-data-updated-v1', async ev => {
 
     // This obtains a list of VINs for the displayed vehicles.
     const vins = await API.utils.getAttributeForVehicles('vin');
