@@ -183,6 +183,7 @@ Field Name | Purpose | Field Format
     const imagesToInsert = [
       {
         vin: '1HGCV1F46LA144134',
+        insertMethod: 'insert',
         images: [
           {
             type: 'image',
@@ -206,6 +207,7 @@ Field Name | Purpose | Field Format
       },
       {
         vin: '1HGCV1F48LA139453',
+        insertMethod: 'replace',
         images: [
           {
             type: 'image',
@@ -238,6 +240,13 @@ Field Name | Purpose | Field Format
 The `insertGalleryContent` method allows you to add media to media galleries across various pages of Dealer.com sites. The only currently supported target is `vehicle-media`, which will insert media into the media carousels on Search Results Pages and Vehicle Details Pages.
 
 `arrayOfObjects` is an array of objects describing the media to be inserted. Each object requires a `vin` field for the target vehicle, as well as an `images` array with fields describing the images to insert for that vehicle. The `type` field specifies the type of media to be inserted. The only currently supported media type is `image`. Utilizing `vehicle-data-updated-v1` to know when the list of vehicles changes combined with `API.utils.getAttributeForVehicles`, you can easily obtain a list of the VINs for vehicles shown on the page. With this data, you could query your service to get the dataset of imagery for those vehicles, then construct the array of objects for `API.insertGalleryContent`. See the example code for more details on this approach.
+
+The `insertMethod` accepts the following values:
+
+Value | Description
+-------------- | --------------
+`insert` | This is the default value for inserting media.  This method inserts the content into the pre-existing media.
+`replace` | This method removes all pre-existing media from before inserting the new content.
 
 The `images` array objects support the following additional attributes:
 
