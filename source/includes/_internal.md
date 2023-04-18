@@ -8,7 +8,19 @@ The PageAlis list can be overriden in the site level to capture any sitebuilder 
 
 The WIAPI would deduce the link of the corresponding PageAlias in the site level letting you to modify the link element.
 
-Currently, we only support `schedule-service` link intent.
+The current supported intent types are: 
+
+* `payment-search`
+
+* `pre-approva`
+
+* `quote-build`
+
+* `schedule-service`
+
+* `value-a-trade`
+
+* `x-time`
 
 And, we only support limited attributes of the link to be modified in order to preserve the look and feel of the link.
 The attributes that can be modified are `href`, `target`, `onclick`, `popover` and `attributes (data-*)`.
